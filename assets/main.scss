@@ -4,13 +4,13 @@
 @import "minima";
 
 .cryostat-heading-1 {
-    @extend .page-heading;
+  @extend .page-heading;
 }
 
 .cryostat-heading-2 {
-    padding-bottom: 1em;
-    margin-bottom: 2em;
-    border-bottom: 1px solid $grey-color-light;
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid $grey-color-light;
 }
 
 .footer-col-1 {
@@ -26,4 +26,18 @@
 .footer-col-3 {
   width: -webkit-calc(40% - (#{$spacing-unit} / 2));
   width:         calc(40% - (#{$spacing-unit} / 2));
+}
+
+details {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
+
+details > summary {
+  cursor: pointer;
+  margin-bottom: 0.8em;
+}
+
+details > a > img {
+  border: 2px solid $grey-color-light;
 }

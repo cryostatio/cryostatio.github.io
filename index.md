@@ -53,7 +53,31 @@ spec:
 ```
 
 Or, create the resource graphically in the OperatorHub UI:
-TODO insert an image of creating a Cryostat resource graphically in OpenShift
+
+<details open>
+  <summary>Installed Operators View</summary>
+  <a href="{{site.url}}/images/installed-operators.png" target="_blank">
+    <img src="{{site.url}}/images/installed-operators.png" alt="Installed Operators View">
+  </a>
+</details>
+<details>
+  <summary>Cryostat Resources Before</summary>
+  <a href="{{site.url}}/images/cryostat-resources-before.png" target="_blank">
+    <img src="{{site.url}}/images/cryostat-resources-before.png" alt="Cryostat Resources Before">
+  </a>
+</details>
+<details>
+  <summary>Cryostat Resource Creation</summary>
+  <a href="{{site.url}}/images/cryostat-resource-creation.png" target="_blank">
+    <img src="{{site.url}}/images/cryostat-resource-creation.png" alt="Cryostat Resource Creation Wizard">
+  </a>
+</details>
+<details>
+  <summary>Cryostat Resources After</summary>
+  <a href="{{site.url}}/images/cryostat-resources-after.png" target="_blank">
+    <img src="{{site.url}}/images/cryostat-resources-after.png" alt="Cryostat Resources After">
+  </a>
+</details>
 
 ### Deploy an Application
 For demo purposes, let's go ahead and deploy a sample application to our
@@ -75,10 +99,22 @@ determine that this is a compatible application that it should pay attention to.
 Let's visit the Cryostat web dashboard UI.
 
 We can get there from the Cryostat resource's Status field:
-TODO insert an image of the Cryostat resource
+
+<details open>
+  <summary>Cryostat Resource Status</summary>
+  <a href="{{site.url}}/images/cryostat-resource-status.png" target="_blank">
+    <img src="{{site.url}}/images/cryostat-resource-status.png" alt="Cryostat Resource Status">
+  </a>
+</details>
 
 Or, we can open the application link from the Topology view:
-TODO insert an image of a topology view with the Cryostat application link indicated
+
+<details open>
+  <summary>Topology View</summary>
+  <a href="{{site.url}}/images/topology-view.png" target="_blank">
+    <img src="{{site.url}}/images/topology-view.png" alt="Topology View">
+  </a>
+</details>
 
 We can also find the URL using `oc`:
 ```bash
@@ -93,4 +129,9 @@ your OpenShift account token. When using the web client you will be asked once
 when the client first loads, after which your token will be remembered for the
 duration of the session so you don't need to re-authenticate on every request.
 
-TODO insert an image of the token authentication page
+<details open>
+  <summary>Token Authentication</summary>
+  <a href="{{site.url}}/images/token-auth-page.png" target="_blank">
+    <img src="{{site.url}}/images/token-auth-page.png" alt="Token Authentication">
+  </a>
+</details>
