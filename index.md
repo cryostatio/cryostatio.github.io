@@ -135,3 +135,11 @@ duration of the session so you don't need to re-authenticate on every request.
     <img src="{{site.url}}/images/token-auth-page.png" alt="Token Authentication">
   </a>
 </details>
+
+We can retrieve our token like so:
+
+```bash
+$ oc whoami -t
+```
+
+and paste the output into the `Token` input field.
