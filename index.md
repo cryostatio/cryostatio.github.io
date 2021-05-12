@@ -93,8 +93,8 @@ $ oc patch svc/quarkus-test -p '{"spec":{"$setElementOrder/ports":[{"port":9096}
 
 This is a Quarkus container in JVM mode with JMX enabled and pre-configured to
 listen on port 9096.  After deploying the container we patch its service to
-name the 9096 service port `jfr-jmx`, which Cryostat will detect and use to
-determine that this is a compatible application that it should pay attention to.
+name the 9096 service port `jfr-jmx`. Cryostat will detect and use this port
+to determine that this is a compatible Java application that it should monitor.
 
 ### Open the Cryostat Web UI
 Let's visit the Cryostat web dashboard UI.
