@@ -52,7 +52,8 @@ spec:
   minimal: false
 ```
 
-Or, create the resource graphically in the OperatorHub UI:
+Or, create the resource graphically in the OperatorHub UI (only available if
+you installed Cryostat via operator bundle):
 
 <details open>
   <summary>Installed Operators View</summary>
