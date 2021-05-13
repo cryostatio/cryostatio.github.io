@@ -8,3 +8,5 @@ Made with [Jekyll](https://jekyllrb.com). For development help, see
 In brief:
 - `bundle install`
 - `bundle exec jekyll serve`
+
+On Fedora, you will likely need to `dnf install rubygem-bundler ruby-devel`.
