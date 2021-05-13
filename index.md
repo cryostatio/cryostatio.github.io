@@ -34,7 +34,7 @@ $ kubectl apply -k github.com/cryostatio/cryostat-operator//config/default?ref=v
     $ operator-sdk run bundle quay.io/cryostat/cryostat-operator-bundle:1.0.0
     ```
 
-## [Getting Started](#getting-started)
+## [Setup](#setup)
 
 ### Deploying Cryostat
 Create a `Cryostat` object to deploy and set up Cryostat in the `cryostat-operator-system` namespace. For

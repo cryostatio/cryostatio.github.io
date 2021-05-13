@@ -17,21 +17,23 @@ common actions and workflows of interest and why they are useful.
 * auto-gen TOC:
 {:toc}
 
-## [Start/Stop a Recording](#startstop-a-recording)
-{% include_relative _getting-started/todo.md %}
+{% include_relative _getting-started/startstop-a-recording.md %}
 
-## [Archive a Recording](#archive-a-recording)
-{% include_relative _getting-started/todo.md %}
+[comment]: # ## [Snapshot a Recording](#snapshot-a-recording)
+[comment]: # TODO
 
-## [Download an Active or Archived Recording](#download-an-active-or-archived-recording)
-{% include_relative _getting-started/todo.md %}
+[comment]: # ## [Archive a Recording](#archive-a-recording)
+[comment]: # TODO
 
-## [Re-Upload a Recording to Archives](#re-upload-a-recording-to-archives)
-{% include_relative _getting-started/todo.md %}
+[comment]: # ## [Download an Active or Archived Recording](#download-an-active-or-archived-recording)
+[comment]: # TODO
 
-## [Download, Edit, and Upload a Customized Event Template](#download-edit-and-upload-a-customized-event-template)
-{% include_relative _getting-started/todo.md %}
+[comment]: # ## [Re-Upload a Recording to Archives](#re-upload-a-recording-to-archives)
+[comment]: # TODO
 
-## [Analyze Recordings Online](#analyze-recordings-online)
-{% include_relative _getting-started/todo.md %}
+[comment]: # ## [Download, Edit, and Upload a Customized Event Template](#download-edit-and-upload-a-customized-event-template)
+[comment]: # TODO
+
+[comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
+[comment]: # TODO
 
