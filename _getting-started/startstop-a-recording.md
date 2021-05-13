@@ -14,6 +14,9 @@ JVM.
   <li>
     <details>
       <summary>Navigate to Recordings</summary>
+      <a href="{{site.url}}/images/startstop-a-recording-2.png" target="_blank">
+        <img src="{{site.url}}/images/startstop-a-recording-2.png">
+      </a>
       <p>
         Supply JMX credentials to authenticate to the target, if necessary. If
         the target is not configured with JMX authentication then the
@@ -30,16 +33,16 @@ JVM.
   <li>
     <details>
       <summary>Click <i>Create</i></summary>
-      <a href="{{site.url}}/images/startstop-a-recording-2.png" target="_blank">
-        <img src="{{site.url}}/images/startstop-a-recording-2.png">
+      <a href="{{site.url}}/images/startstop-a-recording-3.png" target="_blank">
+        <img src="{{site.url}}/images/startstop-a-recording-3.png">
       </a>
     </details>
   </li>
   <li>
     <details>
       <summary>Configure and create the new recording</summary>
-      <a href="{{site.url}}/images/startstop-a-recording-3.png" target="_blank">
-        <img src="{{site.url}}/images/startstop-a-recording-3.png">
+      <a href="{{site.url}}/images/startstop-a-recording-4.png" target="_blank">
+        <img src="{{site.url}}/images/startstop-a-recording-4.png">
       </a>
       <p>
         Enter a name for the new recording. The form will alert you if the name
@@ -66,8 +69,8 @@ JVM.
   <li>
     <details>
       <summary>Stop the recording</summary>
-      <a href="{{site.url}}/images/startstop-a-recording-4.png" target="_blank">
-        <img src="{{site.url}}/images/startstop-a-recording-4.png">
+      <a href="{{site.url}}/images/startstop-a-recording-5.png" target="_blank">
+        <img src="{{site.url}}/images/startstop-a-recording-5.png">
       </a>
       <p>
         When you no longer desire for the Flight Recording to be active and
