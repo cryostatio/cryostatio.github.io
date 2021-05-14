@@ -3,7 +3,7 @@ Snapshotting an active recording produces a new recording in the target JVM
 named `snapshot-n`, where `n` is a natural number. This snapshot contains all of
 the JFR data that was present in the target JVM at the time that the snapshot
 was taken and is in the `STOPPED` state as soon as it is created (that is, the
-snapshot will never recording any further information and is fixed in size).
+snapshot will never record any further information and is fixed in size).
 This is useful when you have an ongoing, continuous recording active in a
 target application and want to preserve the specific information at a given
 point in time. If the continuous source recording is configured with a maximum
