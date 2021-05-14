@@ -21,8 +21,7 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _getting-started/startstop-a-recording.md %}
 
-[comment]: # ## [Snapshot a Recording](#snapshot-a-recording)
-[comment]: # TODO
+{% include_relative _getting-started/snapshot-a-recording.md %}
 
 [comment]: # ## [Archive a Recording](#archive-a-recording)
 [comment]: # TODO
