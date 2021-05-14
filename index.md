@@ -34,7 +34,7 @@ $ kubectl apply -k github.com/cryostatio/cryostat-operator//config/default?ref=v
     $ operator-sdk run bundle quay.io/cryostat/cryostat-operator-bundle:1.0.0
     ```
 
-## [Getting Started](#getting-started)
+## [Setup](#setup)
 
 ### Deploying Cryostat
 Create a `Cryostat` object to deploy and set up Cryostat in the `cryostat-operator-system` namespace. For
@@ -144,3 +144,8 @@ $ oc whoami -t
 ```
 
 and paste the output into the `Token` input field.
+
+## [Next Steps](#next-steps)
+Now that you have installed and deployed Cryostat and know how to access its
+web client, continue on to [Getting Started]({{site.url}}/getting-started) for
+guides through various common actions and workflows.
