@@ -55,30 +55,23 @@ spec:
 Or, create the resource graphically in the OperatorHub UI (only available if
 you installed Cryostat via operator bundle):
 
-<details open>
-  <summary>Installed Operators View</summary>
-  <a href="{{site.url}}/images/installed-operators.png" target="_blank">
-    <img src="{{site.url}}/images/installed-operators.png" alt="Installed Operators View">
-  </a>
-</details>
-<details>
-  <summary>Cryostat Resources Before</summary>
-  <a href="{{site.url}}/images/cryostat-resources-before.png" target="_blank">
-    <img src="{{site.url}}/images/cryostat-resources-before.png" alt="Cryostat Resources Before">
-  </a>
-</details>
-<details>
-  <summary>Cryostat Resource Creation</summary>
-  <a href="{{site.url}}/images/cryostat-resource-creation.png" target="_blank">
-    <img src="{{site.url}}/images/cryostat-resource-creation.png" alt="Cryostat Resource Creation Wizard">
-  </a>
-</details>
-<details>
-  <summary>Cryostat Resources After</summary>
-  <a href="{{site.url}}/images/cryostat-resources-after.png" target="_blank">
-    <img src="{{site.url}}/images/cryostat-resources-after.png" alt="Cryostat Resources After">
-  </a>
-</details>
+{% include howto_step.html
+  details-attributes="open"
+  summary="Installed Operators View"
+  image-name="installed-operators.png"
+%}
+{% include howto_step.html
+  summary="Cryostat Resources Before"
+  image-name="cryostat-resources-before.png"
+%}
+{% include howto_step.html
+  summary="Cryostat Resource Creation"
+  image-name="cryostat-resource-creation.png"
+%}
+{% include howto_step.html
+  summary="Cryostat Resources After"
+  image-name="cryostat-resources-after.png"
+%}
 
 ### Deploy an Application
 For demo purposes, let's go ahead and deploy a sample application to our
@@ -101,21 +94,19 @@ Let's visit the Cryostat web dashboard UI.
 
 We can get there from the Cryostat resource's Status field:
 
-<details open>
-  <summary>Cryostat Resource Status</summary>
-  <a href="{{site.url}}/images/cryostat-resource-status.png" target="_blank">
-    <img src="{{site.url}}/images/cryostat-resource-status.png" alt="Cryostat Resource Status">
-  </a>
-</details>
+{% include howto_step.html
+  details-attributes="open"
+  summary="Cryostat Resource Status"
+  image-name="cryostat-resource-status.png"
+%}
 
 Or, we can open the application link from the Topology view:
 
-<details open>
-  <summary>Topology View</summary>
-  <a href="{{site.url}}/images/topology-view.png" target="_blank">
-    <img src="{{site.url}}/images/topology-view.png" alt="Topology View">
-  </a>
-</details>
+{% include howto_step.html
+  details-attributes="open"
+  summary="Topology View"
+  image-name="topology-view.png"
+%}
 
 We can also find the URL using `oc`:
 ```bash
@@ -130,12 +121,11 @@ your OpenShift account token. When using the web client you will be asked once
 when the client first loads, after which your token will be remembered for the
 duration of the session so you don't need to re-authenticate on every request.
 
-<details open>
-  <summary>Token Authentication</summary>
-  <a href="{{site.url}}/images/token-auth-page.png" target="_blank">
-    <img src="{{site.url}}/images/token-auth-page.png" alt="Token Authentication">
-  </a>
-</details>
+{% include howto_step.html
+  details-attributes="open"
+  summary="Token Authentication"
+  image-name="token-auth-page.png"
+%}
 
 We can retrieve our token like so:
 
