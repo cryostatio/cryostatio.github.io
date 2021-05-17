@@ -13,10 +13,7 @@ from the source recording and lost.
 
 <ol>
   <li>
-    {% include howto_step.html
-      summary="Select the target application"
-      image-name="startstop-a-recording-1.png"
-    %}
+    {% include_relative _subsections/common/select-target-application.md %}
   </li>
   <li>
     {% capture navigate-recordings-additional-content %}
