@@ -16,27 +16,7 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
     {% include_relative _subsections/common/select-target-application.md %}
   </li>
   <li>
-    {% capture navigate-recordings-additional-content %}
-      <p>
-        If the target JVM has SSL/TLS enabled on JMX connections then it may be
-        necessary to add the target's certificate to Cryostat's trust store. Go
-        to <a href="{{ site.url }}/getting-started#add-a-trusted-certificate">Add a Trusted Certificate</a>
-        and return to this section after completing that guide.
-        <a href="{{ site.url }}/images/archive-a-recording-3.png" target="_blank">
-          <img src="{{ site.url }}/images/archive-a-recording-3.png">
-        </a>
-      </p>
-    {% endcapture %}
-    {% include howto_step.html
-      summary="Navigate to Recordings"
-      image-name="archive-a-recording-2.png"
-      caption="
-        Supply JMX credentials to authenticate to the target, if necessary. If
-        the target is not configured with JMX authentication then the
-        connection attempt will continue without prompting for credentials.
-      "
-      text=navigate-recordings-additional-content
-    %}
+    {% include_relative _subsections/common/navigate-to-recordings.md %}
   </li>
   <li>
     {% capture select-recording-additional-content %}
