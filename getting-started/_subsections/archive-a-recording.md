@@ -20,13 +20,15 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
   </li>
   <li>
     {% capture navigate-recordings-additional-content %}
-      If the target JVM has SSL/TLS enabled on JMX connections then it may be
-      necessary to add the target's certificate to Cryostat's trust store. Go
-      to <a href="{{site.url}}/getting-started#add-a-trusted-certificate">Add a Trusted Certificate</a>
-      and return to this section after completing that guide.
-      <a href="{{site.url}}/images/archive-a-recording-3.png" target="_blank">
-        <img src="{{site.url}}/images/archive-a-recording-3.png">
-      </a>
+      <p>
+        If the target JVM has SSL/TLS enabled on JMX connections then it may be
+        necessary to add the target's certificate to Cryostat's trust store. Go
+        to <a href="{{site.url}}/getting-started#add-a-trusted-certificate">Add a Trusted Certificate</a>
+        and return to this section after completing that guide.
+        <a href="{{site.url}}/images/archive-a-recording-3.png" target="_blank">
+          <img src="{{site.url}}/images/archive-a-recording-3.png">
+        </a>
+      </p>
     {% endcapture %}
     {% include howto_step.html
       summary="Navigate to Recordings"
@@ -41,10 +43,12 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
   </li>
   <li>
     {% capture select-recording-additional-content %}
-      If you do not have any recordings present in the Active Recordings
-      view, follow
-      <a href="{{site.url}}/getting-started#startstop-a-recording">Start/Stop a Recording</a>
-      to create one, or select a different target application.
+      <p>
+        If you do not have any recordings present in the Active Recordings
+        view, follow
+        <a href="{{site.url}}/getting-started#startstop-a-recording">Start/Stop a Recording</a>
+        to create one, or select a different target application.
+      </p>
     {% endcapture %}
     {% include howto_step.html
       summary="Select an active recording"
