@@ -147,5 +147,5 @@ and paste the output into the `Token` input field.
 
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed Cryostat and know how to access its
-web client, continue on to [Getting Started]({{site.url}}/getting-started) for
+web client, continue on to [Getting Started]({% link getting-started/index.md %}) for
 guides through various common actions and workflows.
