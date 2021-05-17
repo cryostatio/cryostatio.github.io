@@ -32,7 +32,7 @@ from the source recording and lost.
   <li>
     {% include howto_step.html
       summary="Switch to the <i>Snapshot Recording</i> tab"
-      image-name="snapshot-a-recording-5.png"
+      image-name="snapshot-a-recording-1.png"
       caption="
         Switch to the <i>Snapshot Recording</i> tab and click the <i>Create</i>
         button.
@@ -42,7 +42,7 @@ from the source recording and lost.
   <li>
     {% include howto_step.html
       summary="Observe the new snapshot"
-      image-name="snapshot-a-recording-6.png"
+      image-name="snapshot-a-recording-2.png"
       caption="
         After clicking the <i>Create</i> button you will be returned to the
         Active Recordings view and the new snapshot recording will be present
