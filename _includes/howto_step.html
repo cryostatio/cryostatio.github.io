@@ -1,8 +1,8 @@
-<details>
+<details {{ include.details-attributes }}>
   <summary>{{ include.summary }}</summary>
   <figure>
     <a href="{{ site.url }}/images/{{ include.image-name }}" target="_blank">
-      <img src="{{ site.url }}/images/{{ include.image-name }}">
+      <img src="{{ site.url }}/images/{{ include.image-name }}" alt="{{ include.summary }}">
     </a>
     <figcaption>{{ include.caption }}</figcaption>
   </figure>
