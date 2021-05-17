@@ -13,12 +13,10 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
 
 <ol>
   <li>
-    <details>
-      <summary>Select the target application</summary>
-      <a href="{{site.url}}/images/archive-a-recording-1.png" target="_blank">
-        <img src="{{site.url}}/images/archive-a-recording-1.png">
-      </a>
-    </details>
+    {% include howto_step.html
+      summary="Select the target application"
+      image-name="archive-a-recording-1.png"
+    %}
   </li>
   <li>
     <details>
