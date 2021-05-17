@@ -19,11 +19,11 @@ common actions and workflows of interest and why they are useful.
 * auto-gen TOC:
 {:toc}
 
-{% include_relative _getting-started/startstop-a-recording.md %}
+{% include_relative _subsections/startstop-a-recording.md %}
 
-{% include_relative _getting-started/snapshot-a-recording.md %}
+{% include_relative _subsections/snapshot-a-recording.md %}
 
-{% include_relative _getting-started/archive-a-recording.md %}
+{% include_relative _subsections/archive-a-recording.md %}
 
 [comment]: # ## [Download an Active or Archived Recording](#download-an-active-or-archived-recording)
 [comment]: # TODO
