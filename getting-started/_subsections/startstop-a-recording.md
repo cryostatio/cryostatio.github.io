@@ -14,7 +14,7 @@ JVM.
       <p>
         If the target JVM has SSL/TLS enabled on JMX connections then it may be
         necessary to add the target's certificate to Cryostat's trust store. Go
-        to <a href="{{site.url}}/getting-started#add-a-trusted-certificate">Add a Trusted Certificate</a>
+        to <a href="{{ site.url }}/getting-started#add-a-trusted-certificate">Add a Trusted Certificate</a>
         and return to this section after completing that guide.
       </p>
     {% endcapture %}
@@ -85,7 +85,7 @@ JVM.
         target JVM crashes, is killed, or the process otherwise restarts, then
         the recording data will be lost. To learn how to persist the Flight
         Recording data, continue on to
-        <a href="{{site.url}}/getting-started#archive-a-recording">Archive a Recording</a>.
+        <a href="{{ site.url }}/getting-started#archive-a-recording">Archive a Recording</a>.
       </p>
     {% endcapture %}
     {% include howto_step.html
