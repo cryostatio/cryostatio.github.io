@@ -19,16 +19,7 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
     %}
   </li>
   <li>
-    <details>
-      <summary>Navigate to Recordings</summary>
-      <a href="{{site.url}}/images/archive-a-recording-2.png" target="_blank">
-        <img src="{{site.url}}/images/archive-a-recording-2.png">
-      </a>
-      <p>
-        Supply JMX credentials to authenticate to the target, if necessary. If
-        the target is not configured with JMX authentication then the
-        connection attempt will continue without prompting for credentials.
-      </p>
+    {% capture navigate-recordings-additional-content %}
       <p>
         If the target JVM has SSL/TLS enabled on JMX connections then it may be
         necessary to add the target's certificate to Cryostat's trust store. Go
@@ -38,32 +29,39 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
       <a href="{{site.url}}/images/archive-a-recording-3.png" target="_blank">
         <img src="{{site.url}}/images/archive-a-recording-3.png">
       </a>
-    </details>
+    {% endcapture %}
+    {% include howto_step.html
+      summary="Navigate to Recordings"
+      image-name="archive-a-recording-2.png"
+      caption="
+        Supply JMX credentials to authenticate to the target, if necessary. If
+        the target is not configured with JMX authentication then the
+        connection attempt will continue without prompting for credentials.
+      "
+      text=navigate-recordings-additional-content
+    %}
   </li>
   <li>
-    <details>
-      <summary>Select an active recording</summary>
-      <a href="{{site.url}}/images/archive-a-recording-4.png" target="_blank">
-        <img src="{{site.url}}/images/archive-a-recording-4.png">
-      </a>
-      <p>
-        If you do not have any recordings present in the Active Recordings
-        view, follow
-        <a href="{{site.url}}/getting-started#startstop-a-recording">Start/Stop a Recording</a>
-        to create one, or select a different target application.
-      </p>
-    </details>
+    {% capture select-recording-additional-content %}
+      If you do not have any recordings present in the Active Recordings
+      view, follow
+      <a href="{{site.url}}/getting-started#startstop-a-recording">Start/Stop a Recording</a>
+      to create one, or select a different target application.
+    {% endcapture %}
+    {% include howto_step.html
+      summary="Select an active recording"
+      image-name="archive-a-recording-4.png"
+      caption=select-recording-additional-content
+    %}
   </li>
   <li>
     <summary>Click the <i>Archive</i> button</summary>
   </li>
   <li>
-    <details>
-      <summary>Navigate to the <i>Archived Recordings</i> tab</summary>
-      <a href="{{site.url}}/images/archive-a-recording-5.png" target="_blank">
-        <img src="{{site.url}}/images/archive-a-recording-5.png">
-      </a>
-      <p>
+    {% include howto_step.html
+      summary="Navigate to the <i>Archived Recordings</i> tab"
+      image-name="archive-a-recording-5.png"
+      caption="
         Once the recording has been archived, a new entry will appear in the
         <i>Archived Recordings</i> table. All recordings in the archives are
         displayed here, regardless of the selected target application. The
@@ -71,7 +69,7 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
         application and the original name of the active recording that it was
         retrieved from, and includes a timestamp indicating when the archived
         recording was created.
-      </p>
-    </details>
+      "
+    %}
   </li>
 </ol>
