@@ -10,10 +10,7 @@ JVM.
     {% include_relative _subsections/common/navigate-to-recordings.md %}
   </li>
   <li>
-    {% include howto_step.html
-      summary="Click <i>Create</i>"
-      image-name="startstop-a-recording-3.png"
-    %}
+    {% include_relative _subsections/common/click-create.md %}
   </li>
   <li>
     {% include howto_step.html

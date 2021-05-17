@@ -27,10 +27,7 @@ from the source recording and lost.
     {% include_relative _subsections/common/navigate-to-recordings.md additional-content=navigate-recordings-additional-content %}
   </li>
   <li>
-    {% include howto_step.html
-      summary="Click <i>Create</i>"
-      image-name="snapshot-a-recording-4.png"
-    %}
+    {% include_relative _subsections/common/click-create.md %}
   </li>
   <li>
     {% include howto_step.html
