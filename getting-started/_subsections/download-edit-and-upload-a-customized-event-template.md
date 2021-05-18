@@ -8,7 +8,7 @@ The *Continuous* template:
 - is intended to be left on at all times, even in production
 
 The *Profiling* template:
-- may have some detectable runime overhead
+- may have some detectable runtime overhead
 - collects more in-depth data
 - should be used for a fixed duration when a specific problem is discovered at runtime
 
