@@ -40,7 +40,7 @@ definition to download.
     <p>
       If the target JVM has SSL/TLS enabled on JMX connections then it may be
       necessary to add the target's certificate to Cryostat's trust store. Go
-      to <a href="{{ site.url }}/getting-started#add-a-trusted-certificate">Add a Trusted Certificate</a>
+      to <a href="{{ page.url }}#add-a-trusted-certificate">Add a Trusted Certificate</a>
       and return to this section after completing that guide.
       <a href="{{ site.url }}/images/navigate-to-events-2.png" target="_blank">
         <img src="{{ site.url }}/images/navigate-to-events-2.png">
@@ -73,7 +73,7 @@ definition to download.
       The template definition is an XML file, so you may open and edit it
       with your favourite text editor or XML document editor. The JMC
       Template Manager can also be used for this purpose, as described
-      <a href="{{ site.url }}/getting-started#edit-template-with-jmc">
+      <a href="{{ page.url }}#edit-template-with-jmc">
         in this section
       </a>.
     {% endcapture %}

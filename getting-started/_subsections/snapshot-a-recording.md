@@ -20,7 +20,7 @@ from the source recording and lost.
       <p>
         If you do not have any recordings present in the Active Recordings
         view, follow
-        <a href="{{ site.url }}/getting-started#startstop-a-recording">Start/Stop a Recording</a>
+        <a href="{{ page.url }}#startstop-a-recording">Start/Stop a Recording</a>
         to create one, or select a different target application.
       </p>
     {% endcapture %}
