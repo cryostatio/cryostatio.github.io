@@ -4,46 +4,19 @@ JVM.
 
 <ol>
   <li>
-    <details>
-      <summary>Select the target application</summary>
-      <a href="{{site.url}}/images/startstop-a-recording-1.png" target="_blank">
-        <img src="{{site.url}}/images/startstop-a-recording-1.png">
-      </a>
-    </details>
+    {% include_relative _subsections/common/select-target-application.md %}
   </li>
   <li>
-    <details>
-      <summary>Navigate to Recordings</summary>
-      <a href="{{site.url}}/images/startstop-a-recording-2.png" target="_blank">
-        <img src="{{site.url}}/images/startstop-a-recording-2.png">
-      </a>
-      <p>
-        Supply JMX credentials to authenticate to the target, if necessary. If
-        the target is not configured with JMX authentication then the
-        connection attempt will continue without prompting for credentials.
-      </p>
-      <p>
-        If the target JVM has SSL/TLS enabled on JMX connections then it may be
-        necessary to add the target's certificate to Cryostat's trust store. Go
-        to <a href="{{site.url}}/getting-started#add-a-trusted-certificate">Add a Trusted Certificate</a>
-        and return to this section after completing that guide.
-      </p>
-    </details>
+    {% include_relative _subsections/common/navigate-to-recordings.md %}
   </li>
   <li>
-    <details>
-      <summary>Click <i>Create</i></summary>
-      <a href="{{site.url}}/images/startstop-a-recording-3.png" target="_blank">
-        <img src="{{site.url}}/images/startstop-a-recording-3.png">
-      </a>
-    </details>
+    {% include_relative _subsections/common/click-create.md %}
   </li>
   <li>
-    <details>
-      <summary>Configure and create the new recording</summary>
-      <a href="{{site.url}}/images/startstop-a-recording-4.png" target="_blank">
-        <img src="{{site.url}}/images/startstop-a-recording-4.png">
-      </a>
+    {% include howto_step.html
+      summary="Configure and create the new recording"
+      image-name="startstop-a-recording-1.png"
+      text="
       <p>
         Enter a name for the new recording. The form will alert you if the name
         entered has an invalid format. If the name is already in use then the
@@ -64,14 +37,11 @@ JVM.
         When you are satisfied with the recording configuration click
         <i>Create</i>.
       </p>
-    </details>
+      "
+    %}
   </li>
   <li>
-    <details>
-      <summary>Stop the recording</summary>
-      <a href="{{site.url}}/images/startstop-a-recording-5.png" target="_blank">
-        <img src="{{site.url}}/images/startstop-a-recording-5.png">
-      </a>
+    {% capture stop-the-recording-additional-content %}
       <p>
         When you no longer desire for the Flight Recording to be active and
         collecting data in your target application, select the recording from
@@ -92,8 +62,13 @@ JVM.
         target JVM crashes, is killed, or the process otherwise restarts, then
         the recording data will be lost. To learn how to persist the Flight
         Recording data, continue on to
-        <a href="{{site.url}}/getting-started#archive-a-recording">Archive a Recording</a>.
+        <a href="{{ site.url }}/getting-started#archive-a-recording">Archive a Recording</a>.
       </p>
-    </details>
+    {% endcapture %}
+    {% include howto_step.html
+      summary="Stop the recording"
+      image-name="startstop-a-recording-2.png"
+      text=stop-the-recording-additional-content
+    %}
   </li>
 </ol>
