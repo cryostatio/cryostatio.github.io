@@ -25,8 +25,7 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/archive-a-recording.md %}
 
-[comment]: # ## [Download an Active or Archived Recording](#download-an-active-or-archived-recording)
-[comment]: # TODO
+{% include_relative _subsections/download-an-active-or-archived-recording.md %}
 
 [comment]: # ## [Re-Upload a Recording to Archives](#re-upload-a-recording-to-archives)
 [comment]: # TODO
