@@ -62,7 +62,7 @@ JVM.
         target JVM crashes, is killed, or the process otherwise restarts, then
         the recording data will be lost. To learn how to persist the Flight
         Recording data, continue on to
-        <a href="{{ site.url }}/getting-started#archive-a-recording">Archive a Recording</a>.
+        <a href="{{ page.url }}#archive-a-recording">Archive a Recording</a>.
       </p>
     {% endcapture %}
     {% include howto_step.html

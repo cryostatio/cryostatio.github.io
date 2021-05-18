@@ -25,13 +25,14 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/archive-a-recording.md %}
 
-[comment]: # ## [Download an Active or Archived Recording](#download-an-active-or-archived-recording)
+{% include_relative _subsections/download-an-active-or-archived-recording.md %}
+
+{% include_relative _subsections/download-edit-and-upload-a-customized-event-template.md %}
+
+[comment]: # ## [Edit Template With JMC](#edit-template-with-jmc)
 [comment]: # TODO
 
 [comment]: # ## [Re-Upload a Recording to Archives](#re-upload-a-recording-to-archives)
-[comment]: # TODO
-
-[comment]: # ## [Download, Edit, and Upload a Customized Event Template](#download-edit-and-upload-a-customized-event-template)
 [comment]: # TODO
 
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
