@@ -29,8 +29,7 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/download-edit-and-upload-a-customized-event-template.md %}
 
-[comment]: # ## [Edit Template With JMC](#edit-template-with-jmc)
-[comment]: # TODO
+{% include_relative _subsections/edit-template-with-jmc.md %}
 
 [comment]: # ## [Re-Upload a Recording to Archives](#re-upload-a-recording-to-archives)
 [comment]: # TODO
