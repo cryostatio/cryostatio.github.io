@@ -1,6 +1,6 @@
 ## [Re-Upload a Recording to Archives](#re-upload-a-recording-to-archives)
-After download an archived recording from Cryostat it can be re-uploaded into
-Cryotat's archives later. This is useful if, for example, your Cryostat
+After downloading an archived recording from Cryostat, it can be re-uploaded
+into Cryotat's archives later. This is useful if, for example, your Cryostat
 instance has been scaled down or undeployed for some time and the attached
 storage lost, and you then want to use Cryostat's analysis tools with a
 previously retrieved recording in a new Cryostat instance.
