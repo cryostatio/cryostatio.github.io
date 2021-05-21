@@ -31,8 +31,7 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/edit-template-with-jmc.md %}
 
-[comment]: # ## [Re-Upload a Recording to Archives](#re-upload-a-recording-to-archives)
-[comment]: # TODO
+{% include_relative _subsections/re-upload-a-recording-to-archives.md %}
 
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
 [comment]: # TODO
