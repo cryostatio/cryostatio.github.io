@@ -17,6 +17,12 @@ Now available for Kubernetes 1.19+ and OpenShift 4.6+
 Coming soon to [OperatorHub](https://operatorhub.io/). In the meantime, you can install
 the Cryostat Operator using kubectl, or by deploying the bundle image with Operator SDK.
 
+### Install cert-manager
+The Cryostat Operator requires [cert-manager](https://cert-manager.io/) to run.
+If not already installed in your cluster, please 
+[install](https://cert-manager.io/docs/installation/) it using your preferred method.
+Once installed, proceed with one of the Cryostat Operator installation options below.
+
 ### Install with kubectl
 ```
 $ kubectl create namespace cryostat-operator-system
