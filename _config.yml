@@ -19,20 +19,23 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Cryostat
-author: The Cryostat Authors
 email: cryostat-development@googlegroups.com
 description: >- # this means to ignore newlines until "baseurl:"
-  JDK Flight Recorder for Kubernetes
+  JDK Flight Recorder Management for Kubernetes and OpenShift
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://cryostat.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: 
 github_username: cryostatio
+github_fork_url: "https://github.com/cryostatio/cryostat"
 
 # Build settings
 error_mode: strict
 theme: minima
 plugins:
   - jekyll-feed
+
+sass:
+  style: compressed
 
 # Exclude from processing.
 # The following items will not be processed, by default.

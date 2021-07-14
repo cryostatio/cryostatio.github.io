@@ -1,7 +1,11 @@
 ---
 ---
 
+@import "core/colors";
+@import "includes/redhat-footer";
+
 @import "minima";
+
 
 .cryostat-heading-1 {
   @extend .page-heading;
