@@ -3,10 +3,11 @@ Cryostat provides integration with Grafana to plot curated time series
 metrics from a recording. By selecting _View in Grafana_ on either an
 _Active_ or _Archived Recording_, Cryostat uploads your recording to
 a custom Grafana Data Source, and launches Grafana in a new browser
-tab. To log into Grafana, you must retrieve the credentials generated
-by the Cryostat Operator. The credentials are stored in a Kubernetes
-Secret. Once logged in, navigate to the dashboard titled _Dashboard_. You
-will see a variety of metrics plotted from your recording.
+tab. If Cryostat was installed to a Kubernetes/OpenShift cluster using the
+Cryostat Operator, you must retrieve the credentials generated
+by the operator in order to log into Grafana. These credentials are stored
+in a Kubernetes Secret. Once logged in, navigate to the dashboard titled
+_Dashboard_. You will see a variety of metrics plotted from your recording.
 
 <ol>
   <li>
@@ -20,8 +21,11 @@ kubectl get secret ${CRYOSTAT_NAME}-grafana-basic -o jsonpath='{$.data.GF_SECURI
 # Password
 kubectl get secret ${CRYOSTAT_NAME}-grafana-basic -o jsonpath='{$.data.GF_SECURITY_ADMIN_PASSWORD}' | base64 -d
         {% endhighlight %}
-        <figcaption>Use <i>kubectl</i> or <i>oc</i> to get the generated username and password
-          for Grafana and save them for later</figcaption>
+        <figcaption>
+          If you installed Cryostat into Kubernetes or OpenShift using the
+          Cryostat Operator, use <i>kubectl</i> or <i>oc</i> to get the
+          generated username and password for Grafana and save them for later.
+        </figcaption>
       </figure>
     </details>
   </li>
