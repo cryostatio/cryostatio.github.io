@@ -33,6 +33,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/re-upload-a-recording-to-archives.md %}
 
+{% include_relative _subsections/view-in-grafana.md %}
+
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
 [comment]: # TODO
 
