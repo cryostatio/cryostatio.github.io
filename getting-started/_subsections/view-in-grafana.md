@@ -45,7 +45,7 @@ kubectl get secret ${CRYOSTAT_NAME}-grafana-basic -o jsonpath='{$.data.GF_SECURI
       </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Select an active or archived recording"
+      summary="Choose an active or archived recording"
       image-name="view-in-grafana-1.png"
       caption=select-recording-additional-content
     %}

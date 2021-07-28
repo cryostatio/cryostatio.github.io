@@ -35,6 +35,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/view-in-grafana.md %}
 
+{% include_relative _subsections/automated-analysis.md %}
+
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
 [comment]: # TODO
 
