@@ -1,5 +1,6 @@
 ---
 layout: home
+title: Getting Started
 ---
 
 {:.cryostat-heading-1}
