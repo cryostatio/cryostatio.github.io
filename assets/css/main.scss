@@ -7,6 +7,18 @@
 
 @import "minima";
 
+.logo-title {
+  width: 75%;
+}
+
+.cryostat-header {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.site-nav {
+  margin-top: .25em;
+}
 
 .cryostat-heading-1 {
   @extend .page-heading;

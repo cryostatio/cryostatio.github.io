@@ -2,7 +2,7 @@
 <p>
   If the target JVM has SSL/TLS enabled on JMX connections then it may be
   necessary to add the target's certificate to Cryostat's trust store. Go
-  to <a href="{{ site.url }}/getting-started#add-a-trusted-certificate">Add a Trusted Certificate</a>
+  to <a href="{{ site.url }}/get-started#add-a-trusted-certificate">Add a Trusted Certificate</a>
   and return to this section after completing that guide.
   <a href="{{ site.url }}/images/navigate-to-recordings-2.png" target="_blank">
     <img src="{{ site.url }}/images/navigate-to-recordings-2.png">

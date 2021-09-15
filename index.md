@@ -2,9 +2,6 @@
 layout: home
 ---
 
-{:.cryostat-heading-1}
-Cryostat
-
 Create and manage JDK Flight Recordings to troubleshoot your containerized Java applications
 
 {:.cryostat-heading-2}
