@@ -9,11 +9,6 @@ permalink: /version/1.0.0/guides/
 {:.cryostat-heading-1}
 Cryostat 1.0.0
 
-Create and manage JDK Flight Recordings to troubleshoot your containerized Java applications
-
-{:.cryostat-heading-2}
-Now available for Kubernetes 1.19+ and OpenShift 4.6+
-
 ## [Installing Cryostat Operator](#installing-cryostat-operator)
 Coming soon to [OperatorHub](https://operatorhub.io/). In the meantime, you can install
 the Cryostat Operator using kubectl, or by deploying the bundle image with Operator SDK.
