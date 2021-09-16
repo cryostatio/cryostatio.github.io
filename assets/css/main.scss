@@ -20,6 +20,13 @@
   margin-top: .25em;
 }
 
+.footer-heading {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
 .cryostat-heading-1 {
   @extend .page-heading;
 }
