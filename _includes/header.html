@@ -4,8 +4,8 @@
       {%- assign default_paths = site.pages | map: "path" -%}
       {%- assign page_paths = site.header_pages | default: default_paths -%}
       {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
-      <div class="site-title">
-        <a href="{{ "/" | relative_url }}"><img class="logo-title" src="{{site.baseurl}}/assets/images/logo-cryostat-3-horizontal.svg"></a>
+      <div class="site-title logo-title">
+        <a href="{{ "/" | relative_url }}"><img src="{{site.baseurl}}/assets/images/logo-cryostat-3-horizontal.svg"></a>
       </div>
       {%- if titles_size > 0 -%}
         <nav class="site-nav">

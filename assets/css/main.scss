@@ -8,7 +8,7 @@
 @import "minima";
 
 .logo-title {
-  width: 75%;
+  width: 25%;
 }
 
 .cryostat-header {
@@ -29,6 +29,12 @@
 
 .cryostat-heading-1 {
   @extend .page-heading;
+}
+
+.cryostat-blurb {
+  @extend .page-heading;
+  margin-bottom: 2em;
+  color: $cryostat-blue;
 }
 
 .cryostat-heading-2 {
