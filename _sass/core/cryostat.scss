@@ -1,0 +1,125 @@
+
+.logo-title {
+  width: 100%;
+  max-width: 200px;
+}
+
+.cryostat-header {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.site-nav {
+  margin-top: .25em;
+}
+
+.footer-heading {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 150px;
+}
+
+.cryostat-heading-1 {
+  @extend .page-heading;
+}
+
+.cryostat-blurb {
+  display: inline-block;
+  text-align: center;
+  margin-top: 2em;
+}
+
+.cryostat-blurb-left {
+  float: left;
+  width: 40%;
+  font-size: 2.5em;
+  padding-right: 1em;
+}
+
+.cryostat-blurb-right {
+  width: 40%;
+  float: right;
+  padding-left: 1em;
+}
+
+.cryostat-heading-2 {
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid $grey-0;
+}
+
+.footer-col-1 {
+  width: -webkit-calc(45% - (#{$spacing-unit} / 2));
+  width:         calc(45% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-2 {
+  width: -webkit-calc(15% - (#{$spacing-unit} / 2));
+  width:         calc(15% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-3 {
+  width: -webkit-calc(40% - (#{$spacing-unit} / 2));
+  width:         calc(40% - (#{$spacing-unit} / 2));
+}
+
+details {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
+
+details > summary {
+  cursor: pointer;
+  margin-bottom: 0.8em;
+}
+
+details > figure > a > img {
+  border: 2px solid $grey-0;
+}
+
+.page-link {
+  color: $cryostat-blue !important;
+  font-size: 1.25em;
+}
+
+.cryostat-get-started-button {
+  color: $cryostat-blue !important;
+  background-color: $white;
+  border: 2px solid $cryostat-blue;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 2.5;
+  transition: background .2s ease-in 0s;
+  text-decoration: none;
+  padding: 0 3rem;
+  display: inline-block;
+  white-space: normal;
+  &:hover, &:active, &:focus {
+    background-color: $cryostat-blue;
+    border-color: $cryostat-blue;
+    color: $white !important;
+
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: .75rem 0;
+  }
+  margin-top: 4em;
+  margin-bottom: 4em;
+
+  &.btn-sm {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    font-weight: 400;
+    padding: .5rem 2rem;
+    @media screen and (max-width: 768px) {
+      padding: .5rem 0;
+    }
+  }
+}
+
+.centre {
+  text-align: center;
+}
