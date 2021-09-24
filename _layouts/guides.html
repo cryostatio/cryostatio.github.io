@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% include back-to-top.html %}
+
 {% assign versioned_page = page.url | startswith: '/version/' %}
 {% if versioned_page %}
   {% assign docversion = page.url | replace_regex: '^/version/([^/]+)/.*', '\1' %}
