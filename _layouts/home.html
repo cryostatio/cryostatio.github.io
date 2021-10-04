@@ -1,20 +1,39 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-<div class="cryostat-blurb">
-    <div class="cryostat-blurb-top">JFR for Containerized Java Applications</div>
-    <div>
-        <div>
-            Securely manage JFR recordings for your containerized Java workloads. Start, stop, and dump recordings for further analysis with triggers on Kubernetes
-        </div>
-        <div style="margin-top: 2em">
-            Now available for Kubernetes 1.19+ and OpenShift 4.6+
-        </div>
-    </div>
-</div>
+  {%- include head.html -%}
 
-<div class="centre">
-    <a class="cryostat-get-started-button" href="/get-started/">Get Started</a>
-</div>
+  <body>
+
+    {%- include header.html -%}
+
+    <main class="page-content cryostat-home" aria-label="Content">
+      <div class="wrapper">
+            <div class="cryostat-blurb">
+                <div class="cryostat-blurb-top">JFR for Containerized Java Applications</div>
+                <div>
+                    <div>
+                        Securely manage JFR recordings for your containerized Java workloads. Start, stop, and dump recordings for further analysis with triggers on Kubernetes
+                    </div>
+                    <div style="margin-top: 2em">
+                        Now available for Kubernetes 1.19+ and OpenShift 4.6+
+                    </div>
+                </div>
+            </div>
+            <div class="centre">
+                <a class="cryostat-get-started-button" href="/get-started/">Get Started</a>
+            </div>
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+    {%- include redhat-footer.html -%}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{ '/assets/javascript/guides-version-dropdown.js' | relative_url }}" type="text/javascript"></script>
+    <script src="{{ '/assets/javascript/back-to-top.js' | relative_url }}" type="text/javascript"></script>
+  </body>
+
+</html>
+
+
 
