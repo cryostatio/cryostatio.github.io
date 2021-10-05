@@ -1,6 +1,6 @@
 ---
 layout: guides
-title: Get Started
+title: Guides on Using Cryostat
 ---
 
 This section explains some common Cryostat features by example, illustrating
