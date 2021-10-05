@@ -143,7 +143,7 @@ guides through various common actions and workflows.
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
 In order to ensure that objects created by the operator and recordings created
-by Cryostat are properly removed, the Cryostat Operator must be installed
+by Cryostat are properly removed, the Cryostat Operator must remain installed
 when attempting to delete the Cryostat custom resource, or any Recording
 custom resources.
 
@@ -151,9 +151,11 @@ To completely remove Cryostat and all objects and recordings created by it:
 1. Delete any Recording custom resources.
     - If Cryostat is no longer deployed, you must redeploy it by creating a
       Cryostat custom resource.
-    - If the Cryostat Operator has already been uninstalled, please reinstall it.
+    - If the Cryostat Operator has already been uninstalled, please reinstall it
+      before deleting any Recording custom resources.
 2. Delete the Cryostat custom resource.
-    - If the Cryostat Operator has already been uninstalled, please reinstall it.
+    - If the Cryostat Operator has already been uninstalled, please reinstall it
+      before deleting the Cryostat custom resource.
 3. Uninstall the Cryostat Operator.
     - If installed using kubectl, run:
       ```
