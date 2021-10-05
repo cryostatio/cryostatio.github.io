@@ -6,7 +6,7 @@ layout: posts
 ---
 
 {:.cryostat-heading-1}
-Cryostat 2.0.0
+Cryostat 1.0.0
 
 ## [Installing Cryostat Operator](#installing-cryostat-operator)
 Coming soon to [OperatorHub](https://operatorhub.io/). In the meantime, you can install
