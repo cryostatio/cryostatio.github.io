@@ -1,0 +1,33 @@
+<footer class="site-footer">
+
+    <div class="wrapper">
+  
+      <img class="footer-heading" src="{{site.baseurl}}/assets/images/logo-cryostat-3-horizontal.svg">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li>Reach us at:</li>
+            <li><a href="https://groups.google.com/g/cryostat-development">Cryostat Mailing List</a></li>
+          </ul>
+        </div>
+  
+        <div class="footer-col footer-col-2">
+          <ul class="social-media-list">
+            <li>Contribute at:</li>
+            {% if site.github_username %}
+            <li>
+              {% include icon-github.html username=site.github_username %}
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+  
+        <div class="footer-col footer-col-3">
+          <p>{{ site.description | escape }}</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer>

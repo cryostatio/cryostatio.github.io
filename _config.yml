@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Cryostat
-author: The Cryostat Authors
+author: Cryostat Community
 email: cryostat-development@googlegroups.com
 description: >- # this means to ignore newlines until "baseurl:"
   JDK Flight Recorder Management for Kubernetes and OpenShift
@@ -30,12 +30,37 @@ github_username: cryostatio
 
 # Build settings
 error_mode: strict
+markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
 
 sass:
   style: compressed
+
+collections:
+  guides:
+    output: true
+  versions:
+    output: true
+    permalink: /version/:path
+
+# Pages permalink
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "guides" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "guides"
+      permalink: /guides/:name
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "versions"
+    values:
+      layout: "guides"
+      permalink: /version/:path
 
 # Exclude from processing.
 # The following items will not be processed, by default.

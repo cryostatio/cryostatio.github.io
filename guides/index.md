@@ -1,18 +1,8 @@
 ---
-layout: home
+layout: guides
+title: Guides on Using Cryostat
 ---
 
-{:.cryostat-heading-1}
-Cryostat 1.0.0
-
-Create and manage JDK Flight Recordings to troubleshoot your containerized Java applications
-
-{:.cryostat-heading-2}
-Now available for Kubernetes 1.19+ and OpenShift 4.6+
-
-<h2>
-Getting Started
-</h2>
 This section explains some common Cryostat features by example, illustrating
 common actions and workflows of interest and why they are useful.
 

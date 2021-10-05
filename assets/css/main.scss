@@ -3,46 +3,9 @@
 @import "core/grid";
 @import "core/colors";
 
-@import "includes/redhat-footer";
-
 @import "minima";
 
+@import "core/cryostat";
 
-.cryostat-heading-1 {
-  @extend .page-heading;
-}
-
-.cryostat-heading-2 {
-  padding-bottom: 1em;
-  margin-bottom: 2em;
-  border-bottom: 1px solid $grey-color-light;
-}
-
-.footer-col-1 {
-  width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-  width:         calc(45% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-2 {
-  width: -webkit-calc(15% - (#{$spacing-unit} / 2));
-  width:         calc(15% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-3 {
-  width: -webkit-calc(40% - (#{$spacing-unit} / 2));
-  width:         calc(40% - (#{$spacing-unit} / 2));
-}
-
-details {
-  padding-top: 0.8em;
-  padding-bottom: 0.8em;
-}
-
-details > summary {
-  cursor: pointer;
-  margin-bottom: 0.8em;
-}
-
-details > figure > a > img {
-  border: 2px solid $grey-color-light;
-}
+@import "includes/redhat-footer";
+@import "includes/back-to-top.scss"
