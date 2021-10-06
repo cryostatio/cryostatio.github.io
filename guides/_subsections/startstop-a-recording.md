@@ -14,7 +14,7 @@ JVM.
   </li>
   <li>
     {% include howto_step.html
-      summary="Configure and create the new recording"
+      summary="Configure the new recording"
       image-name="startstop-a-recording-1.png"
       text="
       <p>
@@ -30,15 +30,42 @@ JVM.
         collecting extra information for troubleshooting a specifically
         identified problem with a fixed recording duration.
       </p>
+      "
+    %}
+  </li>
+  <li>
+    {% include howto_step.html
+      summary="<i>(Optional)</i> Adjust any <i>Advanced Options</i> for the recording"
+      image-name="startstop-a-recording-2.png"
+      text="
       <p>
-        Leave the <i>Advanced Options</i> to their default values for now.
+        In many cases, the <i>Advanced Options</i> can be left with their
+        default values. To view and change their values, select <i>Show
+        advanced options</i> above the <i>Create</i> button. The following
+        options are configurable:
       </p>
       <p>
-        When you are satisfied with the recording configuration click
-        <i>Create</i>.
+        <i>To Disk</i>: Use this parameter to specify whether to write data to
+        disk while recording. By default, this parameter is true.
+      </p>
+      <p>
+        <i>Maximum Size</i>: Use this parameter to specify the maximum size of
+        disk data to keep for the recording. This parameter is valid only when
+        the disk parameter is set to true. By default, the maximum size of disk
+        data isn’t limited, and this parameter is set to 0.
+      </p>
+      <p>
+        <i>Maximum Age</i>: Use this parameter to specify the maximum number of
+        seconds, minutes, or hours that events should be kept in the recording
+        before being discarded. This parameter is valid only when the disk
+        parameter is set to true. By default, this parameter is set to 0, which
+        means there is no limit set.
       </p>
       "
     %}
+  </li>
+  <li>
+    <summary>Click the <i>Create</i> button</summary>
   </li>
   <li>
     {% capture stop-the-recording-additional-content %}
@@ -67,7 +94,7 @@ JVM.
     {% endcapture %}
     {% include howto_step.html
       summary="Stop the recording"
-      image-name="startstop-a-recording-2.png"
+      image-name="startstop-a-recording-3.png"
       text=stop-the-recording-additional-content
     %}
   </li>
