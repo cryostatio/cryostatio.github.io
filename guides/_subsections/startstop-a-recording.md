@@ -46,7 +46,8 @@ JVM.
       </p>
       <p>
         <i>To Disk</i>: Use this parameter to specify whether to write data to
-        disk while recording. By default, this parameter is true.
+        your JVM container's disk while recording. By default, this parameter
+        is true.
       </p>
       <p>
         <i>Maximum Size</i>: Use this parameter to specify the maximum size of
