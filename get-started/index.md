@@ -21,7 +21,7 @@ Once installed, proceed with one of the Cryostat Operator installation options b
 ### Install with kubectl
 ```
 $ kubectl create namespace cryostat-operator-system
-$ kubectl apply -k github.com/cryostatio/cryostat-operator//config/default?ref=v1.0.0
+$ kubectl apply -k 'github.com/cryostatio/cryostat-operator//config/default?ref=v1.0.0'
 ```
 
 ### Install with operator bundle
