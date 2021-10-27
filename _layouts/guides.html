@@ -16,7 +16,7 @@ layout: default
         <label id="guidesindex-version-label">Version</label>
         <select id="guidesindex-version-dropdown">
             {% for version in site.data.versions.documentation %}
-              <option value="{{ version }}" {% if docversion == version %}selected{% endif %}>{% if version == 'latest' %}{{ site.data.versions.cryostat.version | replace_regex: "\.[0-9+]\.Final", "" }} - {% endif %}{{ version | capitalize }}{% if version == 'main' %} - SNAPSHOT{% endif %}</option>
+              <option value="{{ version }}" {% if docversion == version %}selected{% endif %}>{% if version == 'latest' %}{{ site.data.versions.cryostat.version }} - {% endif %}{{ version | capitalize }}{% if version == 'main' %} - SNAPSHOT{% endif %}</option>
             {% endfor %}
           </select>
     </div>
