@@ -6,7 +6,7 @@ layout: posts
 ---
 
 {:.cryostat-heading-1}
-Cryostat 1.0.0
+Cryostat {{ site.data.versions.cryostat.version }}
 
 ## [Installing Cryostat Operator](#installing-cryostat-operator)
 Coming soon to [OperatorHub](https://operatorhub.io/). In the meantime, you can install
@@ -21,7 +21,7 @@ Once installed, proceed with one of the Cryostat Operator installation options b
 ### Install with kubectl
 ```
 $ kubectl create namespace cryostat-operator-system
-$ kubectl apply -k 'github.com/cryostatio/cryostat-operator//config/default?ref=v1.0.0'
+$ kubectl apply -k 'github.com/cryostatio/cryostat-operator//config/default?ref=v{{ site.data.versions.cryostat.version }}'
 ```
 
 ### Install with operator bundle
@@ -32,7 +32,7 @@ $ kubectl apply -k 'github.com/cryostatio/cryostat-operator//config/default?ref=
     ```
 3. Install the operator bundle
     ```
-    $ operator-sdk run bundle quay.io/cryostat/cryostat-operator-bundle:1.0.0
+    $ operator-sdk run bundle quay.io/cryostat/cryostat-operator-bundle:{{ site.data.versions.cryostat.version }}
     ```
 
 ## [Setup](#setup)
@@ -40,7 +40,7 @@ $ kubectl apply -k 'github.com/cryostatio/cryostat-operator//config/default?ref=
 ### Deploying Cryostat
 Create a `Cryostat` object to deploy and set up Cryostat in the `cryostat-operator-system` namespace. For
 full details on how to configure the Cryostat deployment, see
-[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/v1.0.0/docs/config.md).
+[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md).
 
 To create the resource manually, use a YAML definition like the following:
 
@@ -159,7 +159,7 @@ To completely remove Cryostat and all objects and recordings created by it:
 3. Uninstall the Cryostat Operator.
     - If installed using kubectl, run:
       ```
-      $ kubectl delete -k github.com/cryostatio/cryostat-operator//config/default?ref=v1.0.0
+      $ kubectl delete -k github.com/cryostatio/cryostat-operator//config/default?ref=v{{ site.data.versions.cryostat.version }}
       ```
     - If installed using the operator bundle, run:
       ```
