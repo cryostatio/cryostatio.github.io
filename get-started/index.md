@@ -133,23 +133,15 @@ $ oc get cryostat -o jsonpath='{$.items[0].status.applicationUrl}'
 When deployed in OpenShift, Cryostat will use the existing internal cluster
 authentication system to ensure all requests come from users with correct
 access to the namespace. In practical terms, this means that you must supply
-your OpenShift account token. When using the web client you will be asked once
-when the client first loads, after which your token will be remembered for the
+your username and password corresponding to your OpenShift account. When using the web client, you will be redirected
+to the OpenShift Container Platform login page when the client first loads, after which your credentials will be remembered for the
 duration of the session so you don't need to re-authenticate on every request.
 
 {% include howto_step.html
   details-attributes="open"
-  summary="Token Authentication"
-  image-name="token-auth-page.png"
+  summary="OpenShift Authentication"
+  image-name="openshift-auth-page.png"
 %}
-
-We can retrieve our token like so:
-
-```bash
-$ oc whoami -t
-```
-
-and paste the output into the `Token` input field.
 
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed Cryostat and know how to access its
