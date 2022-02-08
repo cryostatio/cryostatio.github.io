@@ -16,6 +16,11 @@ If not already installed in your cluster, please
 [install](https://cert-manager.io/docs/installation/) it using your preferred method.
 Once installed, proceed with one of the Cryostat Operator installation options below.
 
+**Warning**: Although it is possible to [disable cert-manager integration](https://github.com/cryostatio/cryostat-operator/blob/v2/docs/config.md#disabling-cert-manager-integration), it is NOT recommended to
+do so unless cert-manager is unavailable AND one of the following applies to you:
+- You have another solution for encrypting traffic
+- You trust everything running in the same cluster where the Cryostat Operator is deployed
+
 ### Install via OperatorHub (recommended)
 See below for a summary of the installation steps from the Cryostat Operator page on [OperatorHub](https://operatorhub.io/cryostat-operator). For more details, visit [Installing the Cryostat Operator from OperatorHub](https://developers.redhat.com/articles/2022/01/20/install-cryostat-operator-kubernetes-operatorhubio#). 
 
