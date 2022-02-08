@@ -19,19 +19,19 @@ Once installed, proceed with one of the Cryostat Operator installation options b
 ### Install via OperatorHub (recommended)
 See below for a summary of the installation steps from the Cryostat Operator page on [OperatorHub](https://operatorhub.io/cryostat-operator). For more details, visit [Installing the Cryostat Operator from OperatorHub](https://developers.redhat.com/articles/2022/01/20/install-cryostat-operator-kubernetes-operatorhubio#). 
 
-1. Install the Operator Lifecycle Manager (OLM)
+1. Install the Operator Lifecycle Manager (OLM):
 ```
 $ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.20.0/install.sh | bash -s v0.20.0
 ```
-2. Verify the installation was successful by confirming all pods are `READY`.
+2. Verify the installation was successful by confirming all pods are `READY`:
 ```
 $ kubectl get pods -n olm
 ```
-3. Install the Cryostat Operator
+3. Install the Cryostat Operator:
 ```
 $ kubectl create -f https://operatorhub.io/install/cryostat-operator.yaml
 ```
-4. Check the status of the operator deployment. When the operator phase reads `Succeeded`, you are ready to set up and deploy Cryostat.
+4. Check the status of the operator deployment. When the operator phase reads `Succeeded`, you are ready to set up and deploy Cryostat:
 ```
 $ kubectl get csv -n my-cryostat-operator -w
 ```
