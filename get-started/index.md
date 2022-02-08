@@ -15,7 +15,7 @@ Follow the steps below to install the Cryostat Operator via [OperatorHub](https:
 The Cryostat Operator requires [cert-manager](https://cert-manager.io/) to run.
 If not already installed in your cluster, please 
 [install](https://cert-manager.io/docs/installation/) it using your preferred method.
-Once installed, proceed with one of the Cryostat Operator installation options below.
+Once installed, proceed with the operator installation steps below.
 
 **Warning**: Although it is possible to [disable cert-manager integration](https://github.com/cryostatio/cryostat-operator/blob/v2/docs/config.md#disabling-cert-manager-integration), it is NOT recommended to
 do so unless cert-manager is unavailable AND one of the following applies to you:
@@ -69,7 +69,7 @@ Then apply the resource:
 $ kubectl apply -f cryostat.yaml
 ```
 
-If you installed the Cryostat Operator via operator bundle, you can also create the resource graphically in the OperatorHub UI:
+You can also create the resource graphically in the OperatorHub UI:
 
 {% include howto_step.html
   details-attributes="open"
