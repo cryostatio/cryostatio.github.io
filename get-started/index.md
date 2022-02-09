@@ -9,38 +9,49 @@ layout: posts
 Cryostat {{ site.data.versions.cryostat.version }}
 
 ## [Installing Cryostat Operator](#installing-cryostat-operator)
-Coming soon to [OperatorHub](https://operatorhub.io/). In the meantime, you can install
-the Cryostat Operator using kubectl, or by deploying the bundle image with Operator SDK.
+Follow the steps below to install the Cryostat Operator via [OperatorHub](https://operatorhub.io/cryostat-operator).
 
-### Install cert-manager
+### [Install cert-manager](#install-cert-manager)
 The Cryostat Operator requires [cert-manager](https://cert-manager.io/) to run.
 If not already installed in your cluster, please 
 [install](https://cert-manager.io/docs/installation/) it using your preferred method.
-Once installed, proceed with one of the Cryostat Operator installation options below.
+Once installed, proceed with the operator installation steps below.
 
-### Install with kubectl
+**Warning**: Although it is possible to [disable cert-manager integration](https://github.com/cryostatio/cryostat-operator/blob/v2/docs/config.md#disabling-cert-manager-integration), it is NOT recommended to
+do so unless cert-manager is unavailable AND one of the following applies to you:
+- You have another solution for encrypting traffic
+- You trust everything running in the same cluster where the Cryostat Operator is deployed
+
+### Install via OperatorHub
+See below for a summary of the installation steps from the Cryostat Operator page on [OperatorHub](https://operatorhub.io/cryostat-operator). For more details, visit [Installing the Cryostat Operator from OperatorHub](https://developers.redhat.com/articles/2022/01/20/install-cryostat-operator-kubernetes-operatorhubio#). 
+
+1. Install the Operator Lifecycle Manager (OLM):
 ```
-$ kubectl create namespace cryostat-operator-system
-$ kubectl apply -k 'github.com/cryostatio/cryostat-operator//config/default?ref=v{{ site.data.versions.cryostat.version }}'
+$ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.20.0/install.sh | bash -s v0.20.0
+```
+2. Verify the installation was successful by confirming all pods are `READY`:
+```
+$ kubectl get pods -n olm
+```
+3. Install the Cryostat Operator:
+```
+$ kubectl create -f https://operatorhub.io/install/cryostat-operator.yaml
+```
+4. Check the status of the operator deployment. When the operator phase reads `Succeeded`, you are ready to set up and deploy Cryostat:
+```
+$ kubectl get csv -n my-cryostat-operator -w
 ```
 
-### Install with operator bundle
-1. Download [Operator SDK](https://github.com/operator-framework/operator-sdk/releases/tag/v1.5.2) >= 1.5.2
-2. Install Operator Lifecycle Manager into your cluster, if not already present.
-    ```
-    $ operator-sdk olm install
-    ```
-3. Install the operator bundle
-    ```
-    $ operator-sdk run bundle quay.io/cryostat/cryostat-operator-bundle:{{ site.data.versions.cryostat.version }}
-    ```
-
+Note: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
 ## [Setup](#setup)
 
 ### Deploying Cryostat
 Create a `Cryostat` object to deploy and set up Cryostat in the `cryostat-operator-system` namespace. For
 full details on how to configure the Cryostat deployment, see
-[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md).
+[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md). 
+
+If running Cryostat on Kubernetes, you will also need to add Ingress configurations to your Cryostat resource.
+See the [Network Options](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md#network-options) section of Configuring Cryostat for examples.
 
 To create the resource manually, use a YAML definition like the following:
 
@@ -53,8 +64,12 @@ spec:
   minimal: false
 ```
 
-Or, create the resource graphically in the OperatorHub UI (only available if
-you installed Cryostat via operator bundle):
+Then apply the resource:
+```
+$ kubectl apply -f cryostat.yaml
+```
+
+You can also create the resource graphically in the OperatorHub UI:
 
 {% include howto_step.html
   details-attributes="open"
@@ -156,12 +171,8 @@ To completely remove Cryostat and all objects and recordings created by it:
 2. Delete the Cryostat custom resource.
     - If the Cryostat Operator has already been uninstalled, please reinstall it
       before deleting the Cryostat custom resource.
-3. Uninstall the Cryostat Operator.
-    - If installed using kubectl, run:
-      ```
-      $ kubectl delete -k github.com/cryostatio/cryostat-operator//config/default?ref=v{{ site.data.versions.cryostat.version }}
-      ```
-    - If installed using the operator bundle, run:
-      ```
-      $ operator-sdk cleanup cryostat-operator
-      ```
+3. Uninstall the Cryostat Operator. 
+    - **Warning**: This command also removes the `my-cryostat-operator` namespace and all of its contents, including any applications deployed in the namespace.
+    ```
+    $ kubectl delete -f https://operatorhub.io/install/cryostat-operator.yaml
+    ```
