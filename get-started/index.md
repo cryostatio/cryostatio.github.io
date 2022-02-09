@@ -171,7 +171,8 @@ To completely remove Cryostat and all objects and recordings created by it:
 2. Delete the Cryostat custom resource.
     - If the Cryostat Operator has already been uninstalled, please reinstall it
       before deleting the Cryostat custom resource.
-3. Uninstall the Cryostat Operator.
+3. Uninstall the Cryostat Operator. 
+    - **Warning**: This command also removes the `my-cryostat-operator` namespace and all of its contents, including any applications deployed in the namespace.
     ```
     $ kubectl delete -f https://operatorhub.io/install/cryostat-operator.yaml
     ```
