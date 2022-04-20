@@ -27,6 +27,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/automated-analysis.md %}
 
+{% include_relative _subsections/add-and-edit-recording-metadata-labels.md %}
+
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
 [comment]: # TODO
 
