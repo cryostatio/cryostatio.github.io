@@ -24,10 +24,10 @@ Here’s how to manage stored JMX credentials with the Cryostat web UI.
   </li>
     <li>
     {% include howto_step.html
-      summary="(Alternative Option) Store JMX Credentials when connecting to a target JVM"
+      summary="(Alternative to Steps 1 and 2) Store JMX Credentials when connecting to a target JVM"
       image-name="navigate-to-recordings-1.png"
       text="
-        Alternatively, JMX credentials will also be stored if you navigate to the <i>Recordings</i> tab and select a target JVM with JMX authentication enabled. The authentication form will appear, prompting you to enter your JMX credentials. The credentials will be automatically stored and will appear in the Stored JMX Credentials table.
+        Alternatively, JMX credentials will also be stored if you navigate to either the <i>Recordings</i> tab or the <i>Events</i> tab and select a target JVM with JMX authentication enabled. The authentication form will appear, prompting you to enter your JMX credentials. The credentials will be automatically stored and will appear in the Stored JMX Credentials table.
       "
     %}
   </li>
