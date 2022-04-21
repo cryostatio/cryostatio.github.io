@@ -1,5 +1,5 @@
 ## [Store JMX Credentials](#store-jmx-credentials)
-If you have Java Management Extensions (JMX) authentication enabled on your containerized JVMs, Cryostat will prompt you to enter your JMX credentials before it can access the JDK flight recordings on your target JVMs. When monitoring multiple target JVMs with Cryostat features such as <a href="{{ page.url }}#create-an-automated-rule">Automatic Rules</a>, you may want Cryostat to remember and reuse your JMX credentials for each target connection. 
+If you have Java Management Extensions (JMX) authentication enabled on your containerized JVMs, Cryostat will prompt you to enter your JMX credentials before it can access the JDK flight recordings on your target JVMs. When monitoring multiple target JVMs with Cryostat features such as <a href="{{ page.url }}#create-an-automated-rule">Automatic Rules</a>, you may want Cryostat to remember and reuse your JMX credentials for each target connection. JMX credentials are automatically stored when you navigate to the <i>Recordings</i> tab and select a target JVM with JMX authentication enabled.
 
 Cryostat stores JMX credentials according to each target’s unique JMX service URL, also known as a connection URL. Even if the underlying JVM instance changes, the target alias changes, or the target application restarts, Cryostat will apply the stored JMX credentials to the connection URL that the credentials are associated with.
 
@@ -22,12 +22,21 @@ Here’s how to manage stored JMX credentials with the Cryostat web UI.
       text="A modal will appear, prompting you to select a target JVM and enter your JMX credentials."
     %}
   </li>
+    <li>
+    {% include howto_step.html
+      summary="(Alternative Option) Store JMX Credentials when connecting to a target JVM"
+      image-name="navigate-to-recordings-1.png"
+      text="
+        Alternatively, JMX credentials will also be stored if you navigate to the <i>Recordings</i> tab and select a target JVM with JMX authentication enabled. The authentication form will appear, prompting you to enter your JMX credentials. The credentials will be automatically stored and will appear in the Stored JMX Credentials table.
+      "
+    %}
+  </li>
   <li>
     {% include howto_step.html
       summary="View your stored JMX credentials"
       image-name="store-jmx-credentials-3.png"
       text="
-        The target name will appear on the <i>Stored Credentials</i> table to indicate that Cryostat has stored JXM credentials for that target. As a security precaution, you will not be able to view the actual credentials after you have submitted them. To remove any stored credentials, select the checkbox next to the target and click <i>Delete</i>.
+        The target name will appear on the <i>Stored Credentials</i> table to indicate that Cryostat has stored JMX credentials for that target. As a security precaution, you will not be able to view the actual credentials after you have submitted them. To remove any stored credentials, select the checkbox next to the target and click <i>Delete</i>.
       "
     %}
   </li>
