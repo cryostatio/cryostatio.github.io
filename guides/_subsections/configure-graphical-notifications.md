@@ -1,9 +1,9 @@
 ## [Configure Graphical Notifications](#configure-graphical-notifications)
 Actions such as starting/stopping/archiving recordings and state changes such as running recordings stopping produce
 graphical notifications. These notifications appear both when an interactive user performs the action via the web-client,
-as well as when an Automated Rule (ADD LINK) performs the action, or when any other API client performs the action. If
-many Automated Rules or other API clients are active then the notification stream within the web-client graphical console
-can become quite noisy.
+as well as when an [Automated Rule](#create-an-automated-rule) performs the action, or when any other API client performs
+the action. If many Automated Rules or other API clients are active then the notification stream within the web-client
+graphical console can become quite noisy.
 
 <ol>
   <li>
