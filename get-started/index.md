@@ -22,25 +22,42 @@ do so unless cert-manager is unavailable AND one of the following applies to you
 - You have another solution for encrypting traffic
 - You trust everything running in the same cluster where the Cryostat Operator is deployed
 
-### Install via OperatorHub
+### [Install via OperatorHub](#install-via-operatorhub)
 See below for a summary of the installation steps from the Cryostat Operator page on [OperatorHub](https://operatorhub.io/cryostat-operator). For more details, visit [Installing the Cryostat Operator from OperatorHub](https://developers.redhat.com/articles/2022/01/20/install-cryostat-operator-kubernetes-operatorhubio#). 
 
-1. Install the Operator Lifecycle Manager (OLM):
+**If Operator Lifecycle Manager (OLM) and OperatorHub are already installed and available on your cluster, skip to Step 3:**
+
+1. Install the Operator Lifecycle Manager:
 ```
-$ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.20.0/install.sh | bash -s v0.20.0
+$ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.21.1/install.sh | bash -s v0.21.1
 ```
 2. Verify the installation was successful by confirming all pods are `READY`:
 ```
 $ kubectl get pods -n olm
 ```
-3. Install the Cryostat Operator:
-```
-$ kubectl create -f https://operatorhub.io/install/cryostat-operator.yaml
-```
-4. Check the status of the operator deployment. When the operator phase reads `Succeeded`, you are ready to set up and deploy Cryostat:
-```
-$ kubectl get csv -n my-cryostat-operator -w
-```
+3. Install Cryostat from OperatorHub:
+{% include howto_step.html
+  details-attributes="open"
+  summary="Cryostat on OperatorHub"
+  image-name="cryostat-operatorhub-search.png"
+%}
+Use the search bar to find the Cryostat (provided by Red Hat) catalog item.
+{% include howto_step.html
+  summary="Select the Cryostat Operator and click the Install button"
+  image-name="cryostat-operatorhub-install.png"
+%}
+Choose the namespace for Cryostat to be deployed into. This should be the same namespace that contains your JVM applications which you intend to monitor or profile using Cryostat.
+{% include howto_step.html
+  summary="Install the Operator"
+  image-name="cryostat-operatorhub-install-in-progress.png"
+%}
+Click "Install" and wait for the installation to complete.
+{% include howto_step.html
+  summary="Create a Cryostat instance"
+  image-name="cryostat-operatorhub-install-complete.png"
+%}
+Once the installation is complete, click "Create Cryostat" to create a Cryostat Custom Resource instance. This provides configuration information for the Operator to know
+the specifics of how to deploy your Cryostat instance. Continue to [Setup](#setup).
 
 Note: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
 ## [Setup](#setup)
@@ -53,23 +70,7 @@ full details on how to configure the Cryostat deployment, see
 If running Cryostat on Kubernetes, you will also need to add Ingress configurations to your Cryostat resource.
 See the [Network Options](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md#network-options) section of Configuring Cryostat for examples.
 
-To create the resource manually, use a YAML definition like the following:
-
-```yaml
-apiVersion: operator.cryostat.io/v1beta1
-kind: Cryostat
-metadata:
-  name: cryostat-sample
-spec:
-  minimal: false
-```
-
-Then apply the resource:
-```
-$ kubectl apply -f cryostat.yaml
-```
-
-You can also create the resource graphically in the OperatorHub UI:
+You can create the resource graphically in the OperatorHub UI after following [Install via OperatorHub](#install-via-operatorhub):
 
 {% include howto_step.html
   details-attributes="open"
@@ -88,6 +89,32 @@ You can also create the resource graphically in the OperatorHub UI:
   summary="Cryostat Resources After"
   image-name="cryostat-resources-after.png"
 %}
+
+You can also create the resource manually using a YAML definition like the following:
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta1
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+spec:
+  minimal: false
+  enableCertManager: true
+  trustedCertSecrets: []
+  eventTemplates: []
+  storageOptions:
+    pvc:
+      labels: {}
+      annotations: {}
+      spec: {}
+  reportOptions:
+    replicas: 0
+```
+
+Then apply the resource:
+```
+$ kubectl apply -f cryostat.yaml
+```
 
 ### Deploy an Application
 For demo purposes, let's go ahead and deploy a sample application to our
@@ -130,26 +157,42 @@ $ oc get cryostat -o jsonpath='{$.items[0].status.applicationUrl}'
 ```
 
 ### Authenticate through Cryostat
+
+#### OpenShift
 When deployed in OpenShift, Cryostat will use the existing internal cluster
 authentication system to ensure all requests come from users with correct
-access to the namespace. In practical terms, this means that you must supply
-your OpenShift account token. When using the web client you will be asked once
-when the client first loads, after which your token will be remembered for the
-duration of the session so you don't need to re-authenticate on every request.
+access to the namespace.
 
 {% include howto_step.html
   details-attributes="open"
-  summary="Token Authentication"
+  summary="OpenShift SSO Login"
+  image-name="sso-auth-page.png"
+%}
+{% include howto_step.html
+  details-attributes="open"
+  summary="OpenShift Service Account Permissions"
+  image-name="permissions-auth-page.png"
+%}
+Once you have authenticated through the cluster's SSO login you will be
+redirected back to the Cryostat web application. The redirect URL contains
+an access token for Cryostat's service account with the permissions you have
+granted to it. This access token will eventually expire and you will be
+required to log back in on the cluster SSO login page.
+
+#### Kubernetes
+
+When deployed in other Kubernetes environments, Cryostat will use a Bearer
+Token authentication scheme. This will require you to paste in an access token
+for Cryostat to use when making Kubernetes API requests. You may create and
+configure a separate Service Account for Cryostat to use for this purpose, or
+you may simply use an access token from your own user account.
+
+[comment]: FIXME This token auth page contains outdated nav drawer and masthead.
+{% include howto_step.html
+  details-attributes="open"
+  summary="OpenShift SSO Login"
   image-name="token-auth-page.png"
 %}
-
-We can retrieve our token like so:
-
-```bash
-$ oc whoami -t
-```
-
-and paste the output into the `Token` input field.
 
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed Cryostat and know how to access its
