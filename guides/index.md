@@ -35,6 +35,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/upload-an-automated-rule.md %}
 
+{% include_relative _subsections/download-an-automated-rule.md %}
+
 {% include_relative _subsections/configure-graphical-notifications.md %}
 
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
