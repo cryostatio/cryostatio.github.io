@@ -8,7 +8,7 @@ Automated Rules can easily be downloaded for viewing and editting.
       {% include howto_step.html
         summary="Open action menu for a selected rule"
         image-name="download-an-automated-rule-1.png"
-        caption="Click on kebab icon at the end of the selected rule row."
+        caption="Click the action overflow three-dot menu on the right side of selected rule entry in the table."
       %}  
   </li>
   <li>
