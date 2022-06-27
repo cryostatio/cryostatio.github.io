@@ -58,21 +58,21 @@ Previously, if we wanted to enable always-on continuous monitoring using JDK Fli
             The match expression in a rule definition is a Java-like snippet of code that Cryostat interprets and uses to determine if a rule should be applied to any given target. Match expressions should thus evaluate to a boolean value. The simplest match expressions would be the booleans true or false; if we use true, the rule will apply to every target. The expression has a target object in global scope, with the following form in JSON notation:
         </p>
         <figure>
-{% highlight bash %}
+{% highlight json %}
 {
-  “alias”: “myAppAlias”,
-  “connectUrl”: “service:jmx:rmi:///jndi/rmi://cryostat:9091/jmxrmi”,
-  “labels”: {
-    “com.example/service”: “customer-login”,
+  "alias": "myAppAlias",
+  "connectUrl": "service:jmx:rmi:///jndi/rmi://cryostat:9091/jmxrmi",
+  "labels": {
+    "com.example/service": "customer-login",
   },
-  “annotations”: {
-    “platform”: {
-      “io.kubernetes/annotation”: “annotated”
+  "annotations": {
+    "platform": {
+      "io.kubernetes/annotation": "annotated"
     },
-    “cryostat”: {
-      “PORT”: 9091,
-      “HOST”: “cryostat”,
-      “NAMESPACE”: “myproject”
+    "cryostat": {
+      "PORT": 9091,
+      "HOST": "cryostat",
+      "NAMESPACE": "myproject"
     }
   }
 }
@@ -168,15 +168,15 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
 We can define a rule that applies to any target application that has platform-specific attributes, such as Kubernetes labels or annotations. Here's an example in JSON notation:
 
 <figure>
-{% highlight bash %}
+{% highlight json %}
 
 {
-"name": "k8sMonitoring",
-"description": "Enable the Demo template on any target with the jfrMonitoring=true annotation",
-"matchExpression": "target.annotations.platform[‘jfrMonitoring’]==’enabled’",
-"eventSpecifier": "template=Demo,type=CUSTOM",
-"archivalPeriodSeconds": 300,
-"preservedArchives": 12
+  "name": "k8sMonitoring",
+  "description": "Enable the Demo template on any target with the jfrMonitoring=true annotation",
+  "matchExpression": "target.annotations.platform[‘jfrMonitoring’]==’enabled’",
+  "eventSpecifier": "template=Demo,type=CUSTOM",
+  "archivalPeriodSeconds": 300,
+  "preservedArchives": 12
 }
 
 {% endhighlight %}

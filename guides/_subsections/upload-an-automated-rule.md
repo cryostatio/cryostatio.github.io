@@ -4,7 +4,7 @@ Instead of stepping through the form every time, you can also edit your Automate
 
 Below is an example of a rule file content:
 
-{% highlight bash %}
+{% highlight json %}
 {
   "name":"My Rule",
   "description":"",
