@@ -7,6 +7,6 @@ Made with [Jekyll](https://jekyllrb.com). For development help, see
 
 In brief:
 - `bundle install`
-- `bundle exec jekyll serve`
+- `bundle exec jekyll serve --watch --livereload --open-url --config _config.yml,_config-dev.yml`
 
 On Fedora, you will likely need to `dnf install rubygem-bundler ruby-devel`.
