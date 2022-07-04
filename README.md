@@ -9,7 +9,17 @@ Made with [Jekyll](https://jekyllrb.com). For development help, see
 
 ### Prerequisites
 
-On Fedora, you will likely need to `dnf install rubygem-bundler ruby-devel`. Other distros should be similar. Then,
+On Fedora, you will likely need to `dnf install:`
+
+- `rubygem-bundler`
+- `ruby-devel`
+- `rubygems`
+- `ruby`
+- `make`
+- `gcc`
+- `gcc-c++`
+
+Other distros should be similar. Then,
 
 - `bundle install`
 
