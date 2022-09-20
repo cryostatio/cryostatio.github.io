@@ -22,7 +22,7 @@ title: Cryostat
 author: Cryostat Community
 email: cryostat-development@googlegroups.com
 description: >- # this means to ignore newlines until "baseurl:"
-  JDK Flight Recorder Management for Kubernetes and OpenShift
+  JDK Flight Recorder Management for Kubernetes and OpenShift. Sponsored by Red Hat.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://cryostat.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: 
