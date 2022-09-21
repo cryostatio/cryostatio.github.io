@@ -1,6 +1,7 @@
 cryostat:
-  version: 2.1.0
+  version: 2.2.0
 documentation:
   - 'latest'
+  - 2.1.0
   - 2.0.0
   - 1.0.0
