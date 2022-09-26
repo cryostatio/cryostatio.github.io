@@ -9,7 +9,7 @@ Here's how to add a trusted SSL certificate with the Cryostat web UI.
           summary="Navigate to the Security tab"
           image-name="store-jmx-credentials-1.png"
           text="
-            First, navigate to the <i>Security</i> tab. The Import SSL Certificates card contains an <i>Upload</i> button. Click <i>Upload</i> to summon a file upload dialog and choose the certificate you wish to upload. You may repeat this process multiple times to add multiple trusted certificates.
+            First, navigate to the <i>Security</i> tab. The Import SSL Certificates card contains an <i>Upload</i> button. Click <i>Upload</i> to open a file upload dialog and choose the certificate you wish to upload. You may repeat this process multiple times to add multiple trusted certificates.
           "
         %}
     </li>
