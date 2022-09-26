@@ -17,13 +17,16 @@ Here's how to add a trusted SSL certificate with the Cryostat web UI.
         Restart Cryostat to apply the changes. If Cryostat is not restarted then the newly-added certificates are not reloaded and trusted by the Cryostat JMX client and connections will continue to fail. Depending on your deployment platform and configuration, restarting Cryostat might entail any of the following:
         <ul>
             <li>
-                <pre>oc delete cryostat/&lt;my-cryostat-name&gt;<br>oc create -f &lt;my-cryostat-name&gt;.yaml</pre>
+                On OpenShift/Kubernetes with Cryostat Operator:
+                <pre>oc delete cryostat/&lt;my-cryostat-cr-name&gt;<br>oc create -f &lt;my-cryostat-cr-name&gt;.yaml</pre>
             </li>
             <li>
-                <pre>oc rollout retry dc/&lt;my-cryostat-name&gt;</pre>
+                On OpenShift/Kubernetes without Cryostat Operator:
+                <pre>oc rollout retry dc/&lt;my-cryostat-dc-name&gt;</pre>
             </li>
             <li>
-                <pre>podman restart &lt;my-cryostat-name&gt;</pre>
+                On Podman:
+                <pre>podman restart &lt;my-cryostat-container-id&gt;</pre>
             </li>
         </ul>
     </li>
