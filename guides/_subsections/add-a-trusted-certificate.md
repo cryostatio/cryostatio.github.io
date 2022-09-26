@@ -1,5 +1,5 @@
 ## [Add a Trusted Certificate](#-add-a-trusted-certificate)
-If you have Java Management Extensions (JMX) over SSL enabled on your containerized JVMs, you must configure Cryostat to trust the SSL certificate presented by the containerized JVM when Cryostat attempts to open a JMX connection. If this configuration is not completed then Cryostat will be unable to open the connection and unable to perform JFR management tasks.
+If you have Java Management Extensions (JMX) over SSL enabled on your containerized JVMs, you must configure Cryostat to trust the SSL certificate presented by the containerized JVM when Cryostat attempts to open a JMX connection. If you do not complete this configuration, Cryostat cannot open a JMX connection for the purposes of performing JFR management tasks.
 
 Here's how to add a trusted SSL certificate with the Cryostat web UI.
 
@@ -9,12 +9,19 @@ Here's how to add a trusted SSL certificate with the Cryostat web UI.
           summary="Navigate to the Security tab"
           image-name="store-jmx-credentials-1.png"
           text="
-            First, navigate to the <i>Security</i> tab. The Import SSL Certificates card contains an <i>Upload</i> button. Click <i>Upload</i> to open a file upload dialog and choose the certificate you wish to upload. You may repeat this process multiple times to add multiple trusted certificates.
+            <ol>
+                <li>
+                    Click the <i>Security</i> tab.
+                </li>
+                <li>
+                    Click the <i>Upload</i> button on the <i>Import SSL Certificates</i> card. This action opens a file-upload dialog, where you can choose the certificate that you want to upload to Cryostat. You can repeat this process multiple times to add multiple trusted certificates.
+                </li>
+            </ol>
           "
         %}
     </li>
     <li>
-        Restart Cryostat to apply the changes. If Cryostat is not restarted then the newly-added certificates are not reloaded and trusted by the Cryostat JMX client and connections will continue to fail. Depending on your deployment platform and configuration, restarting Cryostat might entail any of the following:
+        Restart Cryostat to apply the changes. If you do not restart your Cryostat instance, the added certificates are not reloaded. This causes connections to fail because the Cryostat JMX client cannot trust the certificates. Depending on your deployment platform and configuration, restarting Cryostat might require any of the following:
         <ul>
             <li>
                 On OpenShift/Kubernetes with Cryostat Operator:
