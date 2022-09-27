@@ -1,0 +1,43 @@
+---
+layout: default
+title: Blog
+---
+
+{% include back-to-top.html %}
+
+<h1>Blog</h1>
+
+<!-- This loops through the paginated posts -->
+<div class="blog-list">
+{% for post in paginator.posts %}
+<div class="blog-list-item">
+  <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+  <p class="byline">{{ post.date | date: '%B %d, %Y' }} <br> By {{ post.author }} </p>
+  {% if post.synopsis %}
+    <p class="synopsis">{{ post.synopsis | strip_html }}</p>
+    {% else %}
+              <p class="synopsis">{{ post.content | strip_html | truncatewords: 75 }}</p>
+    {% endif %}
+</div>
+{% endfor %}
+
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="primary-cta-button">
+      Previous
+    </a>
+  {% else %}
+    <span class="primary-disabled-button">Previous</span>
+  {% endif %}
+  <span class="page_number">
+    Page: {{ paginator.page }} of {{ paginator.total_pages }}
+  </span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="primary-cta-button">Next</a>
+  {% else %}
+    <span class="primary-disabled-button">Next</span>
+  {% endif %}
+</div>
+
+</div>
