@@ -130,7 +130,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
         <p>Maximum Age: The maximum age of recording data retained in the target application's recording buffer. Values less than 1 indicate no limit.</p>
         <p>Archival Period: Time between copies of active recording data being pulled into Cryostat archive storage.
         Values less than 1 prevent data from being copied into archives - recordings will be started and remain only in target JVM memory.</p>
-        <p>Initial Delay: Time between rule creation and when the first archived copy should be transerred. Values less than 1 are treated as being equal to the <b>Archival Period</b> above.</p>
+        <p>Initial Delay: Time between rule creation and when the first archived copy should be transferred. Values less than 1 are treated as being equal to the <b>Archival Period</b> above.</p>
         <p>Preserved Archives: The number of recording copies to preserve in archives for each target application affected by this rule. Values less than 1 prevent data from being copied into archives - recordings will be started and remain only in target JVM memory.</p>
 
         <p>In the example image, the maximum recording age was set to 300 seconds and the archival period was set to a slightly shorter time period of 285 seconds. This overlap ensures that all of your flight recorder data is preserved in Cryostat's archives. The initial delay is set to 60 seconds however, so the first archive copy will be made 1 minute after the rule is created. The next copy will be made 5 minutes after that, the next another 5 minute later, etc.</p>
