@@ -5,3 +5,11 @@ James Cobb:
   job_title: "Designer"
   twitter: "insectengine"
   bio: ""
+
+Andrew Azores:
+  name: "Andrew Azores"
+  email: "aazores@redhat.com"
+  emailhash: "0039ddbe30680575cc454d1e717de3e3"
+  job_title: "Software Engineer"
+  twitter: ""
+  bio: "Cryostat Lead Developer & Maintainer"
