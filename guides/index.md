@@ -31,6 +31,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/store-jmx-credentials.md %}
 
+{% include_relative _subsections/configure-jmx-credentials-storage.md %}
+
 {% include_relative _subsections/add-a-trusted-certificate.md %}
 
 {% include_relative _subsections/create-an-automated-rule.md %}
