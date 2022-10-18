@@ -10,6 +10,7 @@ Below is an example of a rule file content:
   "description":"",
   "matchExpression":"target.alias == 'io.cryostat.Cryostat' || target.annotations.cryostat['PORT'] == 9091","eventSpecifier":"template=Profiling,type=TARGET",
   "archivalPeriodSeconds":300,
+  "initialDelay": 30,
   "preservedArchives":12,
   "maxAgeSeconds":1000,
   "maxSizeBytes":1000
