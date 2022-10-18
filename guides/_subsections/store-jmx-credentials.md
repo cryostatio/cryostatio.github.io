@@ -1,7 +1,7 @@
 ## [Store JMX Credentials](#store-jmx-credentials)
 If you have Java Management Extensions (JMX) authentication enabled on your containerized JVMs, Cryostat will prompt you to enter your JMX credentials before it can access the JDK flight recordings on your target JVMs. You can <a href="#configure-jmx-credentials-storage">Configure JMX Credentials Storage</a> and choose whether these credentials are held in browser memory for the current session only, or if they are uploaded to Cryostat's JMX credentials keyring.
 
-If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rules</a> then you should store target application JMX credentials in Cryostat's JMX credentials keyring, which is outlined below. Even if you do not use Automated Rules you may find it more convenient to store credentials in the keyring, so that the Cryostat web UI does not need to prompt you for credentials when you manually access JFR information about target applications.
+If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rules</a>, then you should store target application JMX credentials in Cryostat's JMX credentials keyring, which is outlined below. Even if you do not use Automated Rules, you may find it more convenient to store credentials in the keyring. This way, the Cryostat web UI does not need to prompt you for credentials when you manually access JFR information about target applications.
 
 <ol>
   <li>
@@ -31,7 +31,7 @@ If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rule
       summary="(Alternative to Steps 1 and 2) Store JMX Credentials when connecting to a target JVM"
       image-name="navigate-to-recordings-1-220.png"
       text="
-        Alternatively, JMX credentials may also be stored if you navigate to either the <i>Recordings</i> tab or the <i>Events</i> tab and select a target JVM with JMX authentication enabled. The authentication form will appear, prompting you to enter your JMX credentials. If you have <a href='#configure-jmx-credentials-storage'>configured Backend JMX Credentials Storage</a> then a new credentials definition with the provided username and password will be stored for this specific target application in the Cryostat keyring. If you have configured JMX credentials with the <i>Session</i> option then these entered credentials will <i>not</i> be stored in the Cryostat keyring.
+        Alternatively, JMX credentials may also be stored if you navigate to either the <i>Recordings</i> tab or the <i>Events</i> tab and select a target JVM with JMX authentication enabled. The authentication form will appear, prompting you to enter your JMX credentials. If you have <a href='#configure-jmx-credentials-storage'>configured Backend JMX Credentials Storage</a>, then a new credentials definition with the provided username and password will be stored for this specific target application in the Cryostat keyring. If you have configured JMX credentials with the <i>Session</i> option then these entered credentials will <i>not</i> be stored in the Cryostat keyring.
       "
     %}
   </li>
