@@ -48,8 +48,8 @@ The All-Targets view is a view which gathers all of Cryostat's discovered target
     {% endcapture %}
     {% include howto_step.html
         summary="Navigate to the All-Targets Archived Recordings view"
-        caption="The option to automatically hide all targets with zero archived recordings is on by default and can be toggled."
         image-name="navigate-to-all-targets.png"
+        caption="The option to automatically hide all targets with zero archived recordings is on by default and can be toggled. They can also be filtered in the search bar."
         text=navigate-to-all-targets-include-text
     %}
 
@@ -72,9 +72,9 @@ The All-Targets view is a view which gathers all of Cryostat's discovered target
 
 The third method is to navigate to the new <i>All-Archives</i> archived recording view within the <i>Archives</i> tab on Cryostat console sidebar. 
 
-The All-Archives view is a view which queries Cryostat's internal file-system for any archived recordings that have been created during runtime. The web-client maps the directories into nested recordings tables, laid out in rows.
+The All-Archives view is a view which queries Cryostat's internal file-system for any archived recordings that have been created during runtime and the directories that contain them. A Cryostat file-system directory is created and used to store archived recordings that have been saved from an active target JVM. The web-client maps the directories into nested recordings tables, laid out in rows.
 
-A Cryostat file-system directory is created and used to store archived recordings that have been saved from an active target JVM. This view is used to save any lost archived recordings in case any target JVM expectedly or unexpectedly restarts. The view will be empty if no recordings are currently saved into the file-system.
+This view is used to save any lost archived recordings in case any target JVM expectedly or unexpectedly restarts. The view will be empty if no recordings are currently saved into the file-system.
 
 <ol>
   <li>
@@ -86,6 +86,7 @@ A Cryostat file-system directory is created and used to store archived recording
     {% include howto_step.html
         summary="Navigate to the All-Archives Archived Recordings view"
         image-name="navigate-to-all-archives.png"
+        caption="Directories can be filtered in the search bar."
         text=navigate-to-all-archives-include-text
     %}
 
