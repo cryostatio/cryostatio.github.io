@@ -5,7 +5,7 @@ There are two ways to view <i>Archived Recordings</i>. The first method is to na
 
 The second method is to navigate to the <i>Archives</i> tab on Cryostat console sidebar.
 
-The Archives view gathers all of Cryostat's saved archived recordings into one view. Here, we are able to interact with any archived recordings that have been saved from discovered target JVMs, or that have been re-uploaded to Cryostat. 
+The Archives view gathers all of Cryostat's saved archived recordings into one view. Here, we are able to interact with any archived recordings that have been saved from discovered target JVMs, or that have been re-uploaded to Cryostat.
 
 <ol>
   <li>
@@ -18,7 +18,7 @@ The Archives view gathers all of Cryostat's saved archived recordings into one v
     </a>
     <p>
       <br>
-        Here, we can directly re-upload saved <i>Archived Recordings</i> to this view. See <a href="#re-upload-a-recording-to-archives">Re-Upload a Recording to Archives</a> for a similar guide.
+        Here, we can also directly re-upload saved <i>Archived Recordings</i>. See <a href="#re-upload-a-recording-to-archives">Re-Upload a Recording to Archives</a> for a similar guide.
     </p>
     {% endcapture %}
     {% include howto_step.html
