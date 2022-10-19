@@ -13,17 +13,17 @@ There is a new option by default for Custom Flight Recording creation to have th
 
 When manually capturing a new recording in the **Recordings** tab, it is possible to select if it is going to be *Continuous* or with a fixed duration of time. Create a recording with a defined duration and keep the **Archive On Stop** option checked as below:
 
-![Alt text](/images/archive-on-stop-1-post.png?raw=true "Archive On Stop option")
+![Alt text](/images/archive-on-stop-1-post.png "Archive On Stop option")
 
 The recording state will change from RUNNING to STOPPED when the capture is concluded and the recording is automatically archived:
 
-![Alt text](/images/archive-on-stop-2-post.png?raw=true "Recording created")
+![Alt text](/images/archive-on-stop-2-post.png "Recording created")
 
-![Alt text](/images/archive-on-stop-3-post.png?raw=true "Recording stopped and archived")
+![Alt text](/images/archive-on-stop-3-post.png "Recording stopped and archived")
 
 Go to the Archived Recording tab to see the recording archived:
 
-![Alt text](/images/archive-on-stop-4-post.png?raw=true "Archived recording")
+![Alt text](/images/archive-on-stop-4-post.png "Archived recording")
 
 I hope you find this new option helpful and if you have any suggestions, comments, questions or want to contribute, feel free to connect with us on [Github](https://github.com/cryostatio).
 
