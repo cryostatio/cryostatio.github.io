@@ -17,7 +17,11 @@ layout: default
     {% if author.emailhash %}
     <img class="headshot" src="https://www.gravatar.com/avatar/{{ author.emailhash }}">
     {% endif %}
-    <p class="byline">By {{ author.name }}</p>
+    <p class="by">By &nbsp;</p>
+    <p class="byline">{{ author.name }}</p>
+    {% if author.bio and author.bio != '' %}
+    <p>: {{ author.bio }}</p>
+    {% endif %}
   </div>
 
   {{ content }}
