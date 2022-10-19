@@ -15,6 +15,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/archive-a-recording.md %}
 
+{% include_relative _subsections/view-archived-recordings.md %}
+
 {% include_relative _subsections/download-an-active-or-archived-recording.md %}
 
 {% include_relative _subsections/download-edit-and-upload-a-customized-event-template.md %}
