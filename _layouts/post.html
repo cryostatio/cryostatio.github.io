@@ -19,7 +19,7 @@ layout: default
     {% endif %}
     <p class="by">By&nbsp;</p>
     <p class="byline">{{ author.name }}</p>
-    {% if author.bio and author.job_title != '' %}
+    {% if author.job_title and author.job_title != '' %}
       <p>: {{ author.job_title }}</p>
     {% endif %}
   </div>
