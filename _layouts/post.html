@@ -15,12 +15,12 @@ layout: default
   <div class="byline-wrapper">
     {% assign author = site.data.authors[page.author] %}
     {% if author.emailhash %}
-    <img class="headshot" src="https://www.gravatar.com/avatar/{{ author.emailhash }}">
+      <img class="headshot" src="https://www.gravatar.com/avatar/{{ author.emailhash }}">
     {% endif %}
     <p class="by">By &nbsp;</p>
     <p class="byline">{{ author.name }}</p>
-    {% if author.bio and author.bio != '' %}
-    <p>: {{ author.bio }}</p>
+    {% if author.bio and author.job_title != '' %}
+      <p>: {{ author.job_title }}</p>
     {% endif %}
   </div>
 
