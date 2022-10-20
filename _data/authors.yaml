@@ -1,0 +1,23 @@
+James Cobb:
+  name: "James Cobb"
+  email: "jcobb@redhat.com"
+  emailhash: "79a19dd43fbe2d3767ec71aba84d5ed0"
+  job_title: "Designer"
+  twitter: "insectengine"
+  bio: ""
+
+Andrew Azores:
+  name: "Andrew Azores"
+  email: "aazores@redhat.com"
+  emailhash: "0039ddbe30680575cc454d1e717de3e3"
+  job_title: "Principal Software Engineer"
+  twitter: ""
+  bio: "Cryostat Lead Developer & Maintainer"
+
+Leticia Konno:
+  name: "Leticia Konno"
+  email: "lkonno@redhat.com"
+  emailhash: "bb1e9b65a3752602357bb24a8744c53a"
+  job_title: "Technical Support Engineer"
+  twitter: ""
+  bio: ""

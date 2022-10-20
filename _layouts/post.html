@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+{% include back-to-top.html %}
+
+<p><a href="{{site.baseurl}}/blog">Blog</a> <i class="fas fa-chevron-right"></i> {{ page.title }}</p>
+
+
+<div class="home post-page">
+  {{ page.date | date: '%B %d, %Y' }} 
+
+  <h1>{{ page.title }}</h1>
+  
+  <div class="byline-wrapper">
+    {% assign author = site.data.authors[page.author] %}
+    {% if author.emailhash %}
+      <img class="headshot" src="https://www.gravatar.com/avatar/{{ author.emailhash }}">
+    {% endif %}
+    <p class="by">By&nbsp;</p>
+    <p class="byline">{{ author.name }}</p>
+    {% if author.job_title and author.job_title != '' %}
+      <p>: {{ author.job_title }}</p>
+    {% endif %}
+  </div>
+
+  {{ content }}
+
+</div>
+
+

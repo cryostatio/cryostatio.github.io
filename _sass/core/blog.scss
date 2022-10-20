@@ -1,0 +1,51 @@
+.blog-list {
+
+  h2.post-title {
+    margin: 3rem 0 0 0 ;
+    font-size: 1.5rem;
+  }
+
+  .byline, .synopsis {
+    margin: .5rem 0 .75rem 0 !important;
+  }
+
+  .pagination {
+
+    .page_number {
+      margin: 0 1rem;
+    }
+  }
+}
+
+.blog-list-item {
+  border-bottom: 2px solid $grey-0;
+  padding-bottom: 1.5rem;
+}
+
+.post-page {
+
+  h1 {
+    margin-top: 2rem;
+  }
+
+  .byline-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  .headshot, .byline {
+    display: inline;
+  }
+
+  p.by {
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+
+  p.byline {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+}
