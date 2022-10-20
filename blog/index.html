@@ -15,9 +15,9 @@ title: Blog
     <p class="byline">{{ post.date | date: '%B %d, %Y' }} <br> By {{ post.author }} </p>
     {% if post.synopsis %}
       <p class="synopsis">{{ post.synopsis | strip_html }}</p>
-      {% else %}
-        <p class="synopsis">{{ post.content | strip_html | truncatewords: 75 }}</p>
     {% endif %}
+    <p class="synopsis">{{ post.content | strip_html | truncatewords: 28 }}
+    <a href="{{ post.url }}">read full post</a></p>
   </div>
 {% endfor %}
 
