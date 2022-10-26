@@ -1,0 +1,35 @@
+
+.site-header {
+    background-color: $cryostat-blue-4;
+    border-bottom: 1px solid $cryostat-blue-4;
+}
+
+.cryostat-header {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.site-nav {
+  margin-top: .25em;
+
+  .page-link {
+  color: $white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+
+  &:hover, &:active, &:focus {
+    color: $cryostat-blue-2;
+    text-decoration: none;
+    } 
+
+  @media screen and (max-width: 768px) {
+    color: $cryostat-blue-4;
+    font-weight: 400;
+
+    &:hover, &:active, &:focus {
+    color: $cryostat-blue-3;
+    } 
+    }
+  }
+}

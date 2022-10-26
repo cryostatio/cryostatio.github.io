@@ -1,16 +1,51 @@
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: $cryostat-blue-4;
+
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+
+h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+
+h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+
+h6 {
+font-family: 'Montserrat', sans-serif;
+  font-weight: 800;}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
 
 .logo-title {
   width: 100%;
   max-width: 200px;
-}
-
-.cryostat-header {
-  margin-top: .5em;
-  margin-bottom: .5em;
-}
-
-.site-nav {
-  margin-top: .25em;
 }
 
 .footer-heading {
@@ -22,12 +57,19 @@
 
 .cryostat-heading-1 {
   @extend .page-heading;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  color: $cryostat-blue-4;
+
 }
 
 .cryostat-blurb {
   display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
   text-align: center;
   margin-top: 2em;
+  color: $white;
 }
 
 .cryostat-blurb-top {
@@ -38,8 +80,23 @@
 .cryostat-heading-2 {
   padding-bottom: 1em;
   margin-bottom: 2em;
-  border-bottom: 1px solid $grey-0;
+  border-bottom: 1px solid ;
 }
+
+a {
+  color: $link;
+  text-decoration: underline;
+
+ &:visited {
+    color: darken($link, 15%);
+    }
+
+  &:hover, &:active, &:focus {
+    color: $link-hover;
+    } 
+ 
+}
+
 
 .footer-col-1 {
   width: -webkit-calc(45% - (#{$spacing-unit} / 2));
@@ -54,6 +111,19 @@
 .footer-col-3 {
   width: -webkit-calc(40% - (#{$spacing-unit} / 2));
   width:         calc(40% - (#{$spacing-unit} / 2));
+}
+
+.site-footer {
+  background-color: $cryostat-blue-0;
+  border-top: 1px solid $cryostat-blue-1;
+
+  a {
+    color: $cryostat-blue-4;
+    text-decoration: underline;}
+}
+
+.footer-col-wrapper {
+  color: $cryostat-blue-4;
 }
 
 details {
@@ -71,14 +141,13 @@ details > figure > a > img {
 }
 
 .page-link {
-  color: $cryostat-blue !important;
   font-size: 1.25em;
 }
 
 .primary-cta-button {
-  color: $cryostat-blue !important;
-  background-color: $white;
-  border: 2px solid $cryostat-blue;
+  color: $cryostat-blue-4 !important;
+  background-color: $cryostat-blue-0;
+  border: 2px solid $cryostat-blue-1;
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 2.5;
@@ -88,15 +157,15 @@ details > figure > a > img {
   display: inline-block;
   white-space: normal;
   &:hover, &:active, &:focus {
-    background-color: $cryostat-blue;
-    border-color: $cryostat-blue;
-    color: $white !important;
+    background-color: $cryostat-blue-4;
+    border-color: $cryostat-blue-4;
+    color: $cryostat-blue-2 !important;
 
   }
   @media screen and (max-width: 768px) {
     font-size: 1rem;
     line-height: 1rem;
-    padding: .75rem 0;
+    padding: .75rem 2rem;
   }
   margin-top: 4em;
   margin-bottom: 4em;
@@ -148,16 +217,9 @@ details > figure > a > img {
   text-align: center;
 }
 
-.back-to-top {
-  color: $white
-}
-
-a {
-  color: $cryostat-blue !important
-}
-
 .cryostat-home {
-  background-image: url(/assets/images/cryostat-background-2.png);
+  background-image: url(/assets/images/cryostat-homehero-bkg.png);
+  background-color: $cryostat-blue-3;
   background-size: 100%;
   background-repeat: no-repeat;
 }
