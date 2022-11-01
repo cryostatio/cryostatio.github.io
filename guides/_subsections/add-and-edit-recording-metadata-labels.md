@@ -13,7 +13,7 @@ Users can attach metadata or custom labels to JDK flight recordings managed by C
       summary="Add metadata labels to the Create Recording form"
       image-name="2.2.0/add-and-edit-recording-metadata-labels-1.png"
       text="
-        While creating a recording, click <i>Show metadata options</i>. Then click <i>Add Label</i> and add key-value label pairs to the form. Finally, click <i>Create</i> to attach the labels and create the recording.
+        When creating a custom flight recording with Cryostat, expand the form section <i>Show metadata options</i>. Click <i>Add Label</i> and add key-value label pairs to the form. Finally, click <i>Create</i> to attach the labels and create the recording.
       "
     %}
   </li>
