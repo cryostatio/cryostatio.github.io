@@ -6,14 +6,16 @@ Below is an example of a rule file content:
 
 {% highlight json %}
 {
-  "name":"My Rule",
-  "description":"",
-  "matchExpression":"target.alias == 'io.cryostat.Cryostat' || target.annotations.cryostat['PORT'] == 9091","eventSpecifier":"template=Profiling,type=TARGET",
-  "archivalPeriodSeconds":300,
-  "initialDelay": 30,
-  "preservedArchives":12,
-  "maxAgeSeconds":1000,
-  "maxSizeBytes":1000
+  "name":"my_automated_rule",
+  "description":"This is an example automated rule.",
+  "matchExpression":"target.alias == 'io.cryostat.Cryostat'",
+  "eventSpecifier":"template=Continuous,type=TARGET",
+  "archivalPeriodSeconds":285,
+  "initialDelaySeconds":60,
+  "preservedArchives":10,
+  "maxAgeSeconds":300,
+  "maxSizeBytes":0,
+  "enabled":true
 }
 {% endhighlight %}
 
@@ -21,14 +23,14 @@ Below is an example of a rule file content:
   <li>
       {% include howto_step.html
         summary="Open <i>Automated Rules</i> upload prompt"
-        image-name="upload-an-automated-rule-1.png"
+        image-name="2.2.0/upload-an-automated-rule-1.png"
         caption="Click on upload icon button to open upload prompt."
       %}  
   </li>
   <li>
       {% include howto_step.html
         summary="Attach a rule file by dragging & dropping or clicking <i>Browse...</i>."
-        image-name="upload-an-automated-rule-2.png"
+        image-name="2.2.0/upload-an-automated-rule-2.png"
         caption="Select a rule file to upload."
       %}  
   </li>
@@ -38,7 +40,7 @@ Below is an example of a rule file content:
   <li>
       {% include howto_step.html
         summary="Observe the new rule in the <i>Automated Rules</i> table"
-        image-name="upload-an-automated-rule-3.png"
+        image-name="2.2.0/create-an-automated-rule-5.png"
         caption="
           The new rule will appear in the <i>Automated Rules</i> table."
       %}  

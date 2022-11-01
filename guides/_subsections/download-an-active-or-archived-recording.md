@@ -12,10 +12,8 @@ use [JDK Mission Control](https://github.com/openjdk/jmc) for the heavy lifting.
     {% include_relative _subsections/common/navigate-to-recordings.md %}
   </li>
   <li>
-    {% include howto_step.html
-      summary="Select a recording"
-      image-name="download-a-recording-1.png"
-      caption="
+    {% include_relative _subsections/common/select-a-recording.md
+        select-a-recording-caption="
         Determine the recording you wish to download to your local workstation.
         This may be either an <i>Active</i> or <i>Archived</i> recording.
         Select the appropriate tab in the Recordings view. No actual action
@@ -26,7 +24,7 @@ use [JDK Mission Control](https://github.com/openjdk/jmc) for the heavy lifting.
   <li>
     {% include howto_step.html
       summary="Download the recording"
-      image-name="download-a-recording-2.png"
+      image-name="2.2.0/download-an-active-or-archived-recording-1.png"
       caption="
         Click the action overflow three-dot menu on the right side of the
         recording entry in the table, then click <i>Download Recording</i>.
@@ -36,7 +34,7 @@ use [JDK Mission Control](https://github.com/openjdk/jmc) for the heavy lifting.
   <li>
     {% include howto_step.html
       summary="Choose what to do with the recording file"
-      image-name="download-a-recording-3.png"
+      image-name="2.2.0/download-an-active-or-archived-recording-2.png"
       caption="
         Your browser will present you with its standard file-save dialog. It
         may take some time for this to appear. Once it does, you can choose to
