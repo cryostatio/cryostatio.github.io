@@ -28,14 +28,14 @@ for offline use.
     {% endcapture %}
     {% include howto_step.html
       summary="Choose an active or archived recording"
-      image-name="automated-analysis-1.png"
+      image-name="2.1.0/automated-analysis-1.png"
       caption=select-recording-additional-content
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Expand the recording"
-      image-name="automated-analysis-2.png"
+      image-name="2.1.0/automated-analysis-2.png"
       caption="
         Expand the recording with the chevron to the left of the recording
         name. The automated analysis report will appear below the recording.
@@ -45,7 +45,7 @@ for offline use.
   <li>
     {% include howto_step.html
       summary="View details and suggestions for results"
-      image-name="automated-analysis-3.png"
+      image-name="2.1.0/automated-analysis-3.png"
       caption="
         Click the <i>+</i> button on the right side of each result to view
         specifics on what the result means and possible suggestions to fix
@@ -56,7 +56,7 @@ for offline use.
   <li>
     {% include howto_step.html
       summary="Select <i>Download Report</i>"
-      image-name="automated-analysis-4.png"
+      image-name="2.1.0/automated-analysis-4.png"
       caption="
         To download the automated analysis report for offline viewing,
         select <i>Download Report</i> from the recording's overflow
@@ -67,7 +67,7 @@ for offline use.
   <li>
     {% include howto_step.html
       summary="Open the downloaded report in your browser"
-      image-name="automated-analysis-5.png"
+      image-name="2.1.0/automated-analysis-5.png"
       caption="
         View the report on its own without connecting to Cryostat.
         Check <i>Show OK Results</i> to include results where the rules

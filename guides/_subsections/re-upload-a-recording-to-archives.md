@@ -8,40 +8,43 @@ previously retrieved recording in a new Cryostat instance.
 <ol>
   <li>
     {% include howto_step.html
-      summary="Select an application"
-      image-name="select-target-application.png"
-      text="
-        Although the archived storage is global to the Cryostat instance and is
-        not target application specific, the view for <i>Archived Recordings</i>
-        is only visible when a target application is selected.
+      summary="Navigate to the <i>Archives</i> tab"
+      image-name="2.2.0/re-upload-a-recording-to-archives-1.png"
+      caption="Select the Uploads tab."
+      text="The entire Archives view contains several tabs related to performing operations
+      on archived recordings. See <a href='#view-archived-recordings'>Viewing Archived Recordings</a>.
       "
-    %}
-  </li>
-  <li>
-    {% include_relative _subsections/common/navigate-to-recordings.md %}
-  </li>
-  <li>
-    {% include howto_step.html
-      summary="Select the Archived Recordings tab"
-      image-name="re-upload-a-recording-to-archives-1.png"
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Select the Recording to Upload"
-      image-name="re-upload-a-recording-to-archives-2.png"
+      image-name="2.2.0/re-upload-a-recording-to-archives-2.png"
       caption="
-        Click the '+' button, then click <i>Browse...</i> and select the .jfr
-        file to upload. Then click 'Submit'.
+        Click the '+' button to bring up the upload prompt. Then click <i>Browse...</i> and select the
+        <code>.jfr</code> file to upload. Note that the file must follow the Cryostat archive recording
+        naming convention. Mouse over the <sup>[?]</sup> tooltip on the prompt for more information.
+      "
+    %}
+  </li>
+  <li>
+    {% include howto_step.html
+      summary="<i>(Optional)</i> Add metadata labels"
+      image-name="2.2.0/re-upload-a-recording-to-archives-3.png"
+      caption="
+        Click <i>Show metadata options</i> to add optional metadata labels to recording.
+        You can either add labels by clicking the <i>Add Label</i> button, or by uploading
+        a custom <code>.json</code> labels file from your local storage. For more on Cryostat
+        metadata labels, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
       "
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Upload the Recording"
-      image-name="re-upload-a-recording-to-archives-3.png"
-      caption="Click 'Upload' and observe that the recording is now present in
-      the <i>Archived Recordings</i> tab."
+      image-name="2.2.0/re-upload-a-recording-to-archives-4.png"
+      caption="Click <i>Upload</i> and observe that the recording is now present in
+      the <i>Uploads</i> tab of the <i>Archives</i> view."
     %}
   </li>
 </ol>

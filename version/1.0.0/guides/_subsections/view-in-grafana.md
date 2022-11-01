@@ -46,14 +46,14 @@ kubectl get secret ${CRYOSTAT_NAME}-grafana-basic -o jsonpath='{$.data.GF_SECURI
     {% endcapture %}
     {% include howto_step.html
       summary="Choose an active or archived recording"
-      image-name="view-in-grafana-1.png"
+      image-name="2.1.0/view-in-grafana-1.png"
       caption=select-recording-additional-content
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Select <i>View in Grafana...</i>"
-      image-name="view-in-grafana-2.png"
+      image-name="2.1.0/view-in-grafana-2.png"
       caption="
         Select <i>View in Grafana...</i> from the recording's overflow
         menu.
@@ -63,7 +63,7 @@ kubectl get secret ${CRYOSTAT_NAME}-grafana-basic -o jsonpath='{$.data.GF_SECURI
   <li>
     {% include howto_step.html
       summary="Log into Grafana"
-      image-name="view-in-grafana-3.png"
+      image-name="2.1.0/view-in-grafana-3.png"
       caption="
         Use the credentials retrieved in step 1 to log into the Grafana
         web client.
@@ -73,7 +73,7 @@ kubectl get secret ${CRYOSTAT_NAME}-grafana-basic -o jsonpath='{$.data.GF_SECURI
   <li>
     {% include howto_step.html
       summary="Select Cryostat's dashboard"
-      image-name="view-in-grafana-4.png"
+      image-name="2.1.0/view-in-grafana-4.png"
       caption="
         Navigate to the Dashboards tab in Grafana and select the dashboard
         named <i>Dashboard</i>.
@@ -83,7 +83,7 @@ kubectl get secret ${CRYOSTAT_NAME}-grafana-basic -o jsonpath='{$.data.GF_SECURI
   <li>
     {% include howto_step.html
       summary="View and interact with data from your recording"
-      image-name="view-in-grafana-5.png"
+      image-name="2.1.0/view-in-grafana-5.png"
       caption="
         Observe the plotted time series data from curated metrics in your
         recording. Select time ranges to zoom into the data.

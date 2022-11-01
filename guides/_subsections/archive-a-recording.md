@@ -28,7 +28,7 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
       </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Select an active recording"
+      summary="Select an Active Recording"
       image-name="2.2.0/archive-a-recording-1.png"
       caption=select-recording-additional-content
     %}

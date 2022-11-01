@@ -60,7 +60,7 @@ definition to download.
   </li>
   <li>
     {% include howto_step.html
-      summary="Download the template"
+      summary="Download the Template"
       image-name="2.2.0/download-edit-and-upload-a-customized-event-template-1.png"
       caption="
         Click the action overflow three-dot menu on the right side of the
@@ -78,7 +78,7 @@ definition to download.
       </a>.
     {% endcapture %}
     {% include howto_step.html
-      summary="Edit the template"
+      summary="Edit the Template"
       image-name="2.2.0/download-edit-and-upload-a-customized-event-template-2.png"
       caption=edit-template-additional-content
       text="
@@ -96,7 +96,7 @@ definition to download.
   </li>
   <li>
     {% include howto_step.html
-      summary="Open the template upload dialog"
+      summary="Open the Template upload dialog"
       image-name="2.2.0/download-edit-and-upload-a-customized-event-template-3.png"
       caption="
         Back on the Cryostat Events view, click the plus (<code>+</code>) icon
@@ -106,7 +106,7 @@ definition to download.
   </li>
   <li>
     {% include howto_step.html
-      summary="Upload the template"
+      summary="Upload the Template"
       image-name="2.2.0/download-edit-and-upload-a-customized-event-template-4.png"
       caption="
         Click the <code>Browse</code> button. Your browser will present its
@@ -119,7 +119,7 @@ definition to download.
   </li>
   <li>
     {% include howto_step.html
-      summary="Observe the new template"
+      summary="Observe the new Template"
       image-name="2.2.0/download-edit-and-upload-a-customized-event-template-5.png"
       caption="
         Once the template has been uploaded you will be returned to the

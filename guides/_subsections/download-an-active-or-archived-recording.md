@@ -36,10 +36,11 @@ use [JDK Mission Control](https://github.com/openjdk/jmc) for the heavy lifting.
       summary="Choose what to do with the recording file"
       image-name="2.2.0/download-an-active-or-archived-recording-2.png"
       caption="
-        Your browser will present you with its standard file-save dialog. It
-        may take some time for this to appear. Once it does, you can choose to
-        open the file directly in <i>JDK Mission Control</i>, or (recommended)
-        to save the file to disk.
+        Your browser will present you with its standard file-save dialog for both 
+        the <i>Archived Recording</i>, and a <code>.json</code> file containing any
+        metadata labels that were attached. It may take some time for these dialogs 
+        to appear. Once it does, you can choose to open the recording file directly 
+        in <i>JDK Mission Control</i>, or (recommended) to save the recording to disk.
       "
     %}
   </li>
