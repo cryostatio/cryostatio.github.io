@@ -1,6 +1,6 @@
 ## [Download an Automated Rule](#download-an-automated-rule)
 
-Automated Rules can easily be downloaded for viewing and editting.
+Automated Rules can easily be downloaded for viewing and editing.
 
 
 <ol>

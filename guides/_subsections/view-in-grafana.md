@@ -68,16 +68,6 @@ kubectl get secret ${CRYOSTAT_NAME}-grafana-basic -o jsonpath='{$.data.GF_SECURI
   </li>
   <li>
     {% include howto_step.html
-      summary="Select Cryostat's dashboard"
-      image-name="2.2.0/view-in-grafana-3.png"
-      caption="
-        Navigate to the Dashboards tab in Grafana and select the dashboard
-        named <i>Dashboard</i>.
-      "
-    %}
-  </li>
-  <li>
-    {% include howto_step.html
       summary="View and interact with data from your recording"
       image-name="2.2.0/view-in-grafana-4.png"
       caption="

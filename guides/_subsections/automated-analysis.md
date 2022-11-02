@@ -50,25 +50,39 @@ for offline use.
     %}
   </li>
   <li>
+    {% capture download-report-text %}
+    <p>
+      <figure>
+        <a href="{{ site.url }}/images/2.2.0/automated-analysis-4.png" target="_blank">
+          <img src="{{ site.url }}/images/2.2.0/automated-analysis-4.png">
+        </a>
+        <figcaption>
+          View the report on its own without connecting to Cryostat.
+          Check <i>Show OK Results</i> to include results where the rules
+          engine found no issues in the recording.
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="{{ site.url }}/images/2.2.0/automated-analysis-5.png" target="_blank">
+          <img src="{{ site.url }}/images/2.2.0/automated-analysis-5.png">
+        </a>
+        <figcaption>
+          To download the HTML <i>Automated Analysis</i> report to local disk, right click 
+          the page and select <i>Save Page As...</i>. Alternatively, press <kbd>Ctrl</kbd>
+          +<kbd>S</kbd> on Windows/Linux, or <kbd>⌘</kbd>+<kbd>S</kbd> on macOS.
+        </figcaption>
+      </figure>
+    </p>
+    {% endcapture %}
     {% include howto_step.html
-      summary="Select <i>Download Report</i>"
+      summary="Download the report"
       image-name="2.2.0/automated-analysis-3.png"
       caption="
         To download the automated analysis report for offline viewing,
-        select <i>Download Report</i> from the recording's overflow
+        select <i>View Report ...</i> from the recording's overflow
         menu.
       "
-    %}
-  </li>
-  <li>
-    {% include howto_step.html
-      summary="Open the downloaded report in your browser"
-      image-name="2.2.0/automated-analysis-4.png"
-      caption="
-        View the report on its own without connecting to Cryostat.
-        Check <i>Show OK Results</i> to include results where the rules
-        engine found no issues in the recording.
-      "
+      text=download-report-text
     %}
   </li>
 </ol>
