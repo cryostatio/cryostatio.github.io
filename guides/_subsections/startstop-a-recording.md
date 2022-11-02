@@ -36,6 +36,9 @@ JVM.
         collecting extra information for troubleshooting a specifically
         identified problem with a fixed recording duration.
       </p>
+      <p>
+        To learn about <i>Metadata Options</i>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
+      </p>
       "
     %}
   </li>

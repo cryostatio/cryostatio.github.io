@@ -42,14 +42,14 @@ definition to download.
       necessary to add the target's certificate to Cryostat's trust store. Go
       to <a href="{{ page.url }}#add-a-trusted-certificate">Add a Trusted Certificate</a>
       and return to this section after completing that guide.
-      <a href="{{ site.url }}/images/navigate-to-events-2.png" target="_blank">
-        <img src="{{ site.url }}/images/navigate-to-events-2.png">
+      <a href="{{ site.url }}/images/2.1.0/navigate-to-events-2.png" target="_blank">
+        <img src="{{ site.url }}/images/2.1.0/navigate-to-events-2.png">
       </a>
     </p>
     {% endcapture %}
     {% include howto_step.html
       summary="Navigate to Events"
-      image-name="navigate-to-events-1.png"
+      image-name="2.1.0/navigate-to-events-1.png"
       caption="
         Supply JMX credentials to authenticate to the target, if necessary. If
         the target is not configured with JMX authentication then the
@@ -61,7 +61,7 @@ definition to download.
   <li>
     {% include howto_step.html
       summary="Download the template"
-      image-name="download-a-template-1.png"
+      image-name="2.1.0/download-a-template-1.png"
       caption="
         Click the action overflow three-dot menu on the right side of the
         template entry in the table, then click <i>Download</i>.
@@ -79,7 +79,7 @@ definition to download.
     {% endcapture %}
     {% include howto_step.html
       summary="Edit the template"
-      image-name="download-a-template-2.png"
+      image-name="2.1.0/download-a-template-2.png"
       caption=edit-template-additional-content
       text="
         Edit the template definition to suit your requirements. When you are
@@ -97,7 +97,7 @@ definition to download.
   <li>
     {% include howto_step.html
       summary="Open the template upload dialog"
-      image-name="download-a-template-3.png"
+      image-name="2.1.0/download-a-template-3.png"
       caption="
         Back on the Cryostat Events view, click the plus (<code>+</code>) icon
         in the table toolbar. A dialog will appear.
@@ -107,7 +107,7 @@ definition to download.
   <li>
     {% include howto_step.html
       summary="Upload the template"
-      image-name="download-a-template-4.png"
+      image-name="2.1.0/download-a-template-4.png"
       caption="
         Click the <code>Browse</code> button. Your browser will present its
         native file chooser dialog to select the file to upload. Browse and
@@ -120,7 +120,7 @@ definition to download.
   <li>
     {% include howto_step.html
       summary="Observe the new template"
-      image-name="download-a-template-5.png"
+      image-name="2.1.0/download-a-template-5.png"
       caption="
         Once the template has been uploaded you will be returned to the
         <code>Events</code> view, and your template will be present in the

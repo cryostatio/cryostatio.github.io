@@ -9,7 +9,7 @@ previously retrieved recording in a new Cryostat instance.
   <li>
     {% include howto_step.html
       summary="Select an application"
-      image-name="select-target-application.png"
+      image-name="2.1.0/select-target-application.png"
       text="
         Although the archived storage is global to the Cryostat instance and is
         not target application specific, the view for <i>Archived Recordings</i>
@@ -23,13 +23,13 @@ previously retrieved recording in a new Cryostat instance.
   <li>
     {% include howto_step.html
       summary="Select the Archived Recordings tab"
-      image-name="re-upload-a-recording-to-archives-1.png"
+      image-name="2.1.0/re-upload-a-recording-to-archives-1.png"
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Select the Recording to Upload"
-      image-name="re-upload-a-recording-to-archives-2.png"
+      image-name="2.1.0/re-upload-a-recording-to-archives-2.png"
       caption="
         Click the '+' button, then click <i>Browse...</i> and select the .jfr
         file to upload. Then click 'Submit'.
@@ -39,7 +39,7 @@ previously retrieved recording in a new Cryostat instance.
   <li>
     {% include howto_step.html
       summary="Upload the Recording"
-      image-name="re-upload-a-recording-to-archives-3.png"
+      image-name="2.1.0/re-upload-a-recording-to-archives-3.png"
       caption="Click 'Upload' and observe that the recording is now present in
       the <i>Archived Recordings</i> tab."
     %}

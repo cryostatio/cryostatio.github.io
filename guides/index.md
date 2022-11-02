@@ -19,11 +19,11 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/download-an-active-or-archived-recording.md %}
 
+{% include_relative _subsections/re-upload-a-recording-to-archives.md %}
+
 {% include_relative _subsections/download-edit-and-upload-a-customized-event-template.md %}
 
 {% include_relative _subsections/edit-template-with-jmc.md %}
-
-{% include_relative _subsections/re-upload-a-recording-to-archives.md %}
 
 {% include_relative _subsections/view-in-grafana.md %}
 
