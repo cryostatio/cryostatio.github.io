@@ -34,8 +34,10 @@ previously retrieved recording in a new Cryostat instance.
       caption="
         Click <i>Show metadata options</i> to add optional metadata labels to recording.
         You can either add labels by clicking the <i>Add Label</i> button, or by uploading
-        a custom <code>.json</code> labels file from your local storage. For more on Cryostat
-        metadata labels, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
+        a custom <code>.json</code> labels file from your local storage. A custom labels file 
+        can be downloaded alongside downloading a recording. To learn how to download a recording
+        and any associated labels, see <a href='#download-an-active-or-archived-recording'>Download and Active or Archived Recording</a>. 
+        and for more on Cryostat metadata labels, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
       "
     %}
   </li>
