@@ -68,8 +68,8 @@ for offline use.
         </a>
         <figcaption>
           To download the HTML <i>Automated Analysis</i> report to local disk, right click 
-          the page and select <i>Save Page As...</i>. Alternatively, press <kbd>Ctrl</kbd>
-          +<kbd>S</kbd> on Windows/Linux, or <kbd>⌘</kbd>+<kbd>S</kbd> on macOS.
+          the page and select <i>Save Page As...</i>. Alternatively, press <kbd>Ctrl</kbd>+<kbd>S</kbd> 
+          on Windows/Linux, or <kbd>⌘</kbd>+<kbd>S</kbd> on macOS.
         </figcaption>
       </figure>
     </p>
