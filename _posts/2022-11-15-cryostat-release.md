@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Croystat 2.2.0 is Released!
+title: Cryostat 2.2.0 is Released!
 date: 2022-11-15
 synopsis: Cryostat 2.2.0 is here. Learn what's new in this release.
 author: Andrew Azores
