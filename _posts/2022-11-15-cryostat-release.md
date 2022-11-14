@@ -24,7 +24,7 @@ With that preamble out of the way, let's talk about what is new and different in
 ## Breaking Changes
 
 - A new environment variable, `CRYOSTAT_JMX_CREDENTIALS_DB_PASSWORD`, must be defined with a non-empty value. If you
-are using the Cryostat Operator to deploy Cryostat then this value will be automatically generated and used if you
+are using the Cryostat Operator to deploy Cryostat, then this value will be automatically generated and used if you
 do not supply one. This is used by Cryostat's new backend JMX Credentials Keyring, which stores the JMX credentials
 required by your target applications in an encrypted database managed by Cryostat. The password you supply is used to
 encrypt those credentials within the database. Cryostat uses the password to decrypt the credentials as needed to
