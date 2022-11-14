@@ -11,7 +11,7 @@ Hello readers, and welcome back to the Cryostat blog. Today we have exciting new
 
 Upstream container images and assets are available at the usual sources:
 - [quay.io/repository/cryostat/cryostat](https://quay.io/repository/cryostat/cryostat?tab=tags)
-- [quay.io/repository/cryostat/cryostat-operator](https://quay.io/repository/cryostat/cryostat-operator)
+- [quay.io/repository/cryostat/cryostat-operator](https://quay.io/repository/cryostat/cryostat-operator?tab=tags)
 - [github.com/cryostatio/cryostat-helm](https://github.com/cryostatio/cryostat-helm/tree/cryostat-v2.2)
 - etc.
 
