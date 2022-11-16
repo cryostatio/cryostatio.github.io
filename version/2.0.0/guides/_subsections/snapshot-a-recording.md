@@ -32,7 +32,7 @@ from the source recording and lost.
   <li>
     {% include howto_step.html
       summary="Switch to the <i>Snapshot Recording</i> tab"
-      image-name="snapshot-a-recording-1.png"
+      image-name="2.1.0/snapshot-a-recording-1.png"
       caption="
         Switch to the <i>Snapshot Recording</i> tab and click the <i>Create</i>
         button.

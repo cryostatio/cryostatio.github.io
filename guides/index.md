@@ -19,11 +19,11 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/download-an-active-or-archived-recording.md %}
 
+{% include_relative _subsections/re-upload-a-recording-to-archives.md %}
+
 {% include_relative _subsections/download-edit-and-upload-a-customized-event-template.md %}
 
 {% include_relative _subsections/edit-template-with-jmc.md %}
-
-{% include_relative _subsections/re-upload-a-recording-to-archives.md %}
 
 {% include_relative _subsections/view-in-grafana.md %}
 
@@ -32,6 +32,8 @@ common actions and workflows of interest and why they are useful.
 {% include_relative _subsections/add-and-edit-recording-metadata-labels.md %}
 
 {% include_relative _subsections/store-jmx-credentials.md %}
+
+{% include_relative _subsections/configure-jmx-credentials-storage.md %}
 
 {% include_relative _subsections/add-a-trusted-certificate.md %}
 

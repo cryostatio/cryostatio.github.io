@@ -15,7 +15,7 @@ JVM.
   <li>
     {% include howto_step.html
       summary="Configure the new recording"
-      image-name="startstop-a-recording-1.png"
+      image-name="2.2.0/startstop-a-recording-1.png"
       text="
       <p>
         Enter a name for the new recording. The form will alert you if the name
@@ -23,12 +23,21 @@ JVM.
         creation will fail and you will need to try again.
       </p>
       <p>
+        Select the duration of the recording. The duration can be specified in
+        seconds, minutes, or hours. If you want to record indefinitely, select the
+        <i>Continuous</i> option. You may also want to save the recording to Cryostat archive
+        storage when the recording stops with the <i>Archive on Stop</i> option.
+      </p>
+      <p>
         Select an event template or enter a custom event definition. If you are
-        unsure which to choose, the <i>Continuous</i> template is useful for
-        always-on production monitoring with the <i>continuous</i> recording
-        duration setting, and the <i>Profiling</i> template is useful for
+        unsure which to choose, the <code>Continuous</code> template is useful for
+        always-on production monitoring with the <i>Continuous</i> recording
+        duration setting, and the <code>Profiling</code> template is useful for
         collecting extra information for troubleshooting a specifically
         identified problem with a fixed recording duration.
+      </p>
+      <p>
+        To learn about <i>Metadata Options</i>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
       </p>
       "
     %}
@@ -36,7 +45,7 @@ JVM.
   <li>
     {% include howto_step.html
       summary="<i>(Optional)</i> Adjust any <i>Advanced Options</i> for the recording"
-      image-name="startstop-a-recording-2.png"
+      image-name="2.2.0/startstop-a-recording-2.png"
       text="
       <p>
         In many cases, the <i>Advanced Options</i> can be left with their
@@ -59,8 +68,8 @@ JVM.
         <i>Maximum Age</i>: Use this parameter to specify the maximum number of
         seconds, minutes, or hours that events should be kept in the recording
         before being discarded. This parameter is valid only when the disk
-        parameter is set to true. By default, this parameter is set to 0, which
-        means there is no limit set.
+        parameter is set to true, and the recording duration is not <i>Continuous</i>.
+        By default, this parameter is set to 0, which means there is no limit set.
       </p>
       "
     %}
@@ -95,7 +104,7 @@ JVM.
     {% endcapture %}
     {% include howto_step.html
       summary="Stop the recording"
-      image-name="startstop-a-recording-3.png"
+      image-name="2.2.0/startstop-a-recording-3.png"
       text=stop-the-recording-additional-content
     %}
   </li>

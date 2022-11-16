@@ -17,7 +17,7 @@ Previously, if we wanted to enable always-on continuous monitoring using JDK Fli
   <li>
       {% include howto_step.html
       summary="Navigate to the <i>Automated Rules</i> tab"
-      image-name="create-an-automated-rule-1.png"
+      image-name="2.2.0/create-an-automated-rule-1.png"
       caption="Switch to the <i>Automated Rules</i> tab."
     %}
   </li>
@@ -27,21 +27,24 @@ Previously, if we wanted to enable always-on continuous monitoring using JDK Fli
   <li>
       {% include howto_step.html
         summary="Configure the new automated rule"
-        image-name="create-an-automated-rule-2.png"
+        image-name="2.2.0/create-an-automated-rule-2.png"
         text="
       <p>
-        Name: Enter a name for the new rule. The form will alert you if the name
+        <b>Name:</b> Enter a name for the new rule. The form will alert you if the name
         entered has an invalid format. If the name is already in use then the
         creation will fail and you will need to try again.
       </p>
       <p>
-        Description: Enter an optional description for your rule.
+        <b>Description:</b> Enter an optional description for your rule.
       </p>
       <p>
-        Match Expression: We will fill this field in the next step.
+        <b>Match Expression:</b> We will fill this field in the next step.
       </p>
       <p>
-        Template: Select an event template or enter a custom event definition. If you are
+        <b>Enabled:</b> Enable or disable the rule. If disabled, the rule will not be applied to any targets.
+      </p>
+      <p>
+        <b>Template:</b> Select an event template or enter a custom event definition. If you are
         unsure which to choose, the <i>Continuous</i> template is useful for
         always-on production monitoring with the <i>continuous</i> recording
         duration setting, and the <i>Profiling</i> template is useful for
@@ -110,7 +113,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   <li>
       {% include howto_step.html
         summary="Evaluate your match expression"
-        image-name="create-an-automated-rule-3.png"
+        image-name="2.2.0/create-an-automated-rule-3.png"
         text="
           <p>
           When you enter a match expression in the <i>Match Expression</i> field, the <i>Match Expression Evaluator</i> will test if your match expression matches the target selected in the dropdown. You can check that your match expression
@@ -121,18 +124,19 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   </li>
   <li>
       {% include howto_step.html
-        summary="<i>(Optional)</i> Adjust recording options"
-        image-name="create-an-automated-rule-4.png"
+        summary="<i>(Optional)</i> Adjust rule parameters"
+        image-name="2.2.0/create-an-automated-rule-4.png"
         caption="
-          Optionally set the recording options."
+          Optionally set the recording options and rule parameters."
         text="
-        <p>Maximum Size: The maximum size of recording data retained in the target application's recording buffer. Values less than 1 indicate no limit.</p>
-        <p>Maximum Age: The maximum age of recording data retained in the target application's recording buffer. Values less than 1 indicate no limit.</p>
-        <p>Archival Period: Time between copies of active recording data being pulled into Cryostat archive storage.
+        <p><b>Maximum Size:</b> The maximum size of recording data retained in the target application's recording buffer. Values less than 1 indicate no limit.</p>
+        <p><b>Maximum Age:</b> The maximum age of recording data retained in the target application's recording buffer. Values less than 1 indicate no limit.</p>
+        <p><b>Archival Period:</b> Time between copies of active recording data being pulled into Cryostat archive storage.
         Values less than 1 prevent data from being copied into archives - recordings will be started and remain only in target JVM memory.</p>
-        <p>Preserved Archives: The number of recording copies to preserve in archives for each target application affected by this rule. Values less than 1 prevent data from being copied into archives - recordings will be started and remain only in target JVM memory.</p>
+        <p><b>Initial Delay:</b> Time between rule creation and when the first archived copy should be transferred. Values less than 1 are treated as being equal to the <b>Archival Period</b> above.</p>
+        <p><b>Preserved Archives:</b> The number of recording copies to preserve in archives for each target application affected by this rule. Values less than 1 prevent data from being copied into archives - recordings will be started and remain only in target JVM memory.</p>
 
-        <p>In the example image, the maximum recording age was set to 300 seconds and the archival period was set to a slightly shorter time period of 285 seconds. This overlap ensures that all of your flight recorder data is preserved in Cryostat's archives.</p>
+        <p>In the example image, the maximum recording age was set to 300 seconds and the archival period was set to a slightly shorter time period of 285 seconds. This overlap ensures that all of your flight recorder data is preserved in Cryostat's archives. The initial delay is set to 60 seconds however, so the first archive copy will be made 1 minute after the rule is created. The next copy will be made 5 minutes after that, the next another 5 minute later, etc.</p>
         "
       %}
 
@@ -143,7 +147,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   <li>
       {% include howto_step.html
         summary="Observe the new rule in the <i>Automated Rules</i> table"
-        image-name="create-an-automated-rule-5.png"
+        image-name="2.2.0/create-an-automated-rule-5.png"
         caption="
           The new rule will appear in the <i>Automated Rules</i> table."
       %}  
@@ -154,7 +158,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   <li>
       {% include howto_step.html
         summary="Observe the automatically generated recording in the <i>Active Recordings</i> table"
-        image-name="create-an-automated-rule-6.png"
+        image-name="2.2.0/create-an-automated-rule-6.png"
         caption="
           Switch to the <i>Recordings</i> tab and view the new recording in the <i>Active Recordings</i>
           table."

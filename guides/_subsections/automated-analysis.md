@@ -18,24 +18,20 @@ for offline use.
     {% include_relative _subsections/common/navigate-to-recordings.md %}
   </li>
   <li>
-    {% capture navigate-recordings-additional-content %}
-      <p>
+    {% include_relative _subsections/common/select-a-recording.md
+      select-a-recording-caption="
         If you do not have any recordings present in the Active Recordings
         view, follow
-        <a href="{{ page.url }}#startstop-a-recording">Start/Stop a Recording</a>
+        <a href='#startstop-a-recording'>Start/Stop a Recording</a>
         to create one, or select a different target application.
-      </p>
-    {% endcapture %}
-    {% include howto_step.html
-      summary="Choose an active or archived recording"
-      image-name="automated-analysis-1.png"
-      caption=select-recording-additional-content
+        You may also select an archived recording for automated analysis.
+      "
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Expand the recording"
-      image-name="automated-analysis-2.png"
+      image-name="2.2.0/automated-analysis-1.png"
       caption="
         Expand the recording with the chevron to the left of the recording
         name. The automated analysis report will appear below the recording.
@@ -45,7 +41,7 @@ for offline use.
   <li>
     {% include howto_step.html
       summary="View details and suggestions for results"
-      image-name="automated-analysis-3.png"
+      image-name="2.2.0/automated-analysis-2.png"
       caption="
         Click the <i>+</i> button on the right side of each result to view
         specifics on what the result means and possible suggestions to fix
@@ -54,25 +50,39 @@ for offline use.
     %}
   </li>
   <li>
+    {% capture download-report-text %}
+    <p>
+      <figure>
+        <a href="{{ site.url }}/images/2.2.0/automated-analysis-4.png" target="_blank">
+          <img src="{{ site.url }}/images/2.2.0/automated-analysis-4.png">
+        </a>
+        <figcaption>
+          View the report on its own without connecting to Cryostat.
+          Check <i>Show OK Results</i> to include results where the rules
+          engine found no issues in the recording.
+        </figcaption>
+      </figure>
+      <figure>
+        <a href="{{ site.url }}/images/2.2.0/automated-analysis-5.png" target="_blank">
+          <img src="{{ site.url }}/images/2.2.0/automated-analysis-5.png">
+        </a>
+        <figcaption>
+          To download the HTML <i>Automated Analysis</i> report to local disk, right click 
+          the page and select <i>Save Page As...</i>. Alternatively, press <kbd>Ctrl</kbd>+<kbd>S</kbd> 
+          on Windows/Linux, or <kbd>⌘</kbd>+<kbd>S</kbd> on macOS.
+        </figcaption>
+      </figure>
+    </p>
+    {% endcapture %}
     {% include howto_step.html
-      summary="Select <i>Download Report</i>"
-      image-name="automated-analysis-4.png"
+      summary="Download the report"
+      image-name="2.2.0/automated-analysis-3.png"
       caption="
         To download the automated analysis report for offline viewing,
-        select <i>Download Report</i> from the recording's overflow
+        select <i>View Report ...</i> from the recording's overflow
         menu.
       "
-    %}
-  </li>
-  <li>
-    {% include howto_step.html
-      summary="Open the downloaded report in your browser"
-      image-name="automated-analysis-5.png"
-      caption="
-        View the report on its own without connecting to Cryostat.
-        Check <i>Show OK Results</i> to include results where the rules
-        engine found no issues in the recording.
-      "
+      text=download-report-text
     %}
   </li>
 </ol>
