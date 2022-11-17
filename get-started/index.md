@@ -9,7 +9,7 @@ layout: guides
 Cryostat {{ site.data.versions.cryostat.version }}
 
 ## [Installing Cryostat Operator](#installing-cryostat-operator)
-Follow the steps below to install the Cryostat Operator via [OperatorHub](https://operatorhub.io/cryostat-operator).
+Follow the steps below to install the Cryostat Operator via [OperatorHub](https://operatorhub.io/operator/cryostat-operator).
 
 ### [Install cert-manager](#install-cert-manager)
 The Cryostat Operator requires [cert-manager](https://cert-manager.io/) to run.
