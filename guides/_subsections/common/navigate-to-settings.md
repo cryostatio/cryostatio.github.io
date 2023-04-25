@@ -8,7 +8,7 @@
 {% endcapture %}
 {% include howto_step.html
   summary="Navigate to Settings"
-  image-name="2.2.0/navigate-to-settings.png"
+  image-name="2.3.0/navigate-to-settings.png"
   caption="
     Click the cog or gear icon in the application masthead to access the Settings view.
   "

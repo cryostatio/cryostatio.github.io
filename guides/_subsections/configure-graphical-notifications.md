@@ -12,7 +12,7 @@ the web-client graphical console can become quite noisy.
   <li>
     {% include howto_step.html
       summary="Locate the Notifications card"
-      image-name="2.2.0/notifications-card.png"
+      image-name="2.3.0/notifications-card.png"
       text="
         The Notifications card within this view is used to control the graphical display of notifications that
         correspond to WebSocket messages sent by the Cryostat backend when actions and state changes occur. The card
