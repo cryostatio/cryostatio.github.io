@@ -32,7 +32,7 @@ or the other when you complete a JMX Authentication prompt.
   <li>
     {% include howto_step.html
       summary="Locate the JMX Credentials Storage card"
-      image-name="2.2.0/jmx-credentials-card.png"
+      image-name="2.3.0/jmx-credentials-card.png"
       text="
         This card contains a brief explanation of its purpose and a simple dropdown menu with selections for where any
         JMX Credentials entered into a JMX <i>Authentication Required</i> challenge modal will be stored.

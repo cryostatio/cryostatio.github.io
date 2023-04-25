@@ -6,7 +6,7 @@
 {% endcapture %}
 {% include howto_step.html
   summary="Select a recording"
-  image-name="2.2.0/select-a-recording.png"
+  image-name="2.3.0/select-a-recording.png"
   caption=caption-content
   text=text-content
 %}
