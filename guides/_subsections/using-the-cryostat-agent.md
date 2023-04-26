@@ -16,4 +16,4 @@ The programming interfaces for Cryostat and its Agent are designed to implement 
     <li>Once the Agent has been installed or attached to the running JVM instance, it can begin collecting data and sending it to Cryostat for analysis.</li>
 </ol>
 
-For instructions on how to install the Cryostat Agent into your applications, [check the Getting Started section](/get-started/#using-the-cryostat-agent).
+For instructions on how to install the Cryostat Agent into your applications, [check the Setup section in Getting Started](/get-started/#using-the-cryostat-agent).
