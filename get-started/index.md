@@ -264,7 +264,7 @@ is also more flexible than depending on `Service`s with specially-named or speci
 For more context about these concepts, please review
 the previous two sections on [using the Cryostat Agent](#using-the-cryostat-agent) and [using JMX](#using-jmx).
 
-Add dependency configuration to `pom.xml`:
+Add dependency configurations to `pom.xml`:
 ```xml
 <project>
   ...
