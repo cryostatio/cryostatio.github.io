@@ -225,7 +225,10 @@ spec:
           image: docker.io/myorg/myapp:latest
           env:
             - name: JAVA_OPTS
-              value: "-Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+              value: >-
+                -Dcom.sun.management.jmxremote.port=9091
+                -Dcom.sun.management.jmxremote.ssl=false
+                -Dcom.sun.management.jmxremote.authenticate=false
             ...
 ```
 
@@ -339,7 +342,11 @@ spec:
               # well as to enable JMX, since we want the Agent to register
               # itself as reachable via JMX.
             - name: JAVA_OPTS
-              value: "-javaagent:/deployments/app/cryostat-agent.jar -Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+              value: >-
+                -javaagent:/deployments/app/cryostat-agent.jar
+                -Dcom.sun.management.jmxremote.port=9091
+                -Dcom.sun.management.jmxremote.ssl=false
+                -Dcom.sun.management.jmxremote.authenticate=false
           ports:
             - containerPort: 9977
               protocol: TCP
