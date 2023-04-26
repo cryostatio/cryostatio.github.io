@@ -62,7 +62,7 @@ Click "Install" and wait for the installation to complete.
 Once the installation is complete, click "Create Cryostat" to create a Cryostat Custom Resource instance. This provides configuration information for the Operator to know
 the specifics of how to deploy your Cryostat instance. Continue to [Setup](#setup).
 
-Note: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
+**Note**: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
 ## [Setup](#setup)
 
 ### [Configuring Applications](#configuring-applications)
@@ -209,7 +209,7 @@ and [store the credentials](/guides/#store-jmx-credentials).
 
 Depending on your application or its framework, you may set these flags directly in a `Dockerfile` entrypoint, an environment variable, or similar. This may or
 may not require a container image rebuild, and it will require the container to be restarted. Once this is done the application container will be listening for
-incoming JMX connections on port 9091. Let's assume it can be done by setting an environment variable, so we only need to modify our `Deployment:`
+incoming JMX connections on port 9091. Let's assume it can be done by setting an environment variable, so we only need to modify our `Deployment`:
 
 ```yaml
 apiVersion: apps/v1
