@@ -256,7 +256,7 @@ The two prior sections have discussed:
 There is a third, hybrid approach: **using the Cryostat Agent to do application discovery, and JMX to expose data**. This may be
 useful since the Agent HTTP data model is readonly, whereas JMX is read-write. This means that using JMX to communicate between Cryostat and your applications
 allows for more dynamic flexibility, for example, the ability to start and stop Flight Recordings on demand. Using the Cryostat Agent for application discovery
-is also more flexible than depending on `Services` with specially-named or specially-numbered ports. 
+is also more flexible than depending on `Service`s with specially-named or specially-numbered ports. 
 
 For more context about these concepts, please review
 the previous two sections on [using the Cryostat Agent](#using-the-cryostat-agent) and [using JMX](#using-jmx).
