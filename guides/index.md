@@ -9,6 +9,8 @@ common actions and workflows of interest and why they are useful.
 * auto-gen TOC:
 {:toc}
 
+{% include_relative _subsections/using-the-cryostat-agent.md %}
+
 {% include_relative _subsections/startstop-a-recording.md %}
 
 {% include_relative _subsections/snapshot-a-recording.md %}
