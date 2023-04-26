@@ -121,6 +121,8 @@ or you may use the following snippet in your `pom.xml` to streamline this.
 </project>
 ```
 
+**Note**: You may be required to [authenticate to the GitHub Maven Packages registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#installing-a-package) in order to pull this JAR.
+
 The next time we build our application, the Cryostat Agent JAR will be located at `target/dependency/cryostat-agent.jar`. Then we can update our Dockerfile:
 
 ```Dockerfile
