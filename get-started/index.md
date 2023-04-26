@@ -73,7 +73,7 @@ but the instructions will be similar for other toolchains and platforms as well.
 #### [Using the Cryostat Agent](#using-the-cryostat-agent)
 
 [The Cryostat Agent](/guides/#using-the-cryostat-agent)
-is compatible with Cryostat versions 2.3.0 and newer, and application JDKs 11 and newer. If you are using an older version of Cryostat, please upgrade.
+is compatible with Cryostat versions 2.3.0 and newer, and application JDKs 11 and newer. If you are using an older version of Cryostat, we recommend upgrading to ensure compatibility.
 If your application uses a recent version of JDK8 with JFR support, please either upgrade to JDK11+ or [continue to the next section](#using-jmx)
 to learn how to configure your application without the Cryostat Agent.
 
