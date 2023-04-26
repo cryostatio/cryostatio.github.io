@@ -8,6 +8,9 @@ layout: get-started
 {:.cryostat-heading-1}
 Cryostat {{ site.data.versions.cryostat.version }}
 
+* auto-gen TOC:
+{:toc}
+
 ## [Installing Cryostat Operator](#installing-cryostat-operator)
 Follow the steps below to install the Cryostat Operator via [OperatorHub](https://operatorhub.io/operator/cryostat-operator).
 
@@ -61,6 +64,290 @@ the specifics of how to deploy your Cryostat instance. Continue to [Setup](#setu
 
 Note: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
 ## [Setup](#setup)
+
+### [Configuring Applications](#configuring-applications)
+The following sections will briefly describe how to configure your Java applications so that Cryostat is able to discover and monitor them.
+These examples will assume the application is built with Maven, packaged into an image with a `Dockerfile`, and running in OpenShift,
+but the instructions will be similar for other toolchains and platforms as well.
+
+#### [Using the Cryostat Agent](#using-the-cryostat-agent)
+
+[The Cryostat Agent](/guides/#using-the-cryostat-agent)
+is compatible with Cryostat versions 2.3.0 and newer, and application JDKs 11 and newer. If you are using an older version of Cryostat, please upgrade.
+If your application uses a recent version of JDK8 with JFR support, please either upgrade to JDK11+ or continue to the next section to learn how to configure your
+application without the Cryostat Agent.
+
+The Cryostat Agent JAR must be available to your application JVM. The JAR asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/releases),
+or you may use the following snippet in your `pom.xml` to streamline this.
+
+```xml
+<project>
+  ...
+  <repositories>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/cryostatio/cryostat-agent</url>
+    </repository>
+  </repositories>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>io.cryostat</groupId>
+                  <artifactId>cryostat-agent</artifactId>
+                  <version>0.2.0</version>
+                </artifactItem>
+              </artifactItems>
+              <stripVersion>true</stripVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    ...
+  </build>
+  ...
+</project>
+```
+
+The next time we build our application, the Cryostat Agent JAR will be located at `target/dependency/cryostat-agent.jar`. Then we can update our Dockerfile:
+
+```Dockerfile
+...
+COPY target/dependency/cryostat-agent.jar /deployments/app/
+...
+# We are using a framework where the JAVA_OPTS environment variable can be used to pass JVM flags
+ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent.jar"
+```
+
+Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
+Push that updated image or otherwise get it updated in your OpenShift registry, then modify your application `Deployment` to supply JVM system properties or environment variables configuring
+the Cryostat Agent:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      containers:
+        - name: sample-app
+          image: docker.io/myorg/myapp:latest
+          env:
+            - name: CRYOSTAT_AGENT_APP_NAME
+              value: "myapp"
+            - name: CRYOSTAT_AGENT_BASEURI
+              value: "http://cryostat.mynamespace.mycluster.svc:8181"
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.PodIP
+            - name: CRYOSTAT_AGENT_CALLBACK
+              value: "http://$(POD_IP):9977"
+            - name: CRYOSTAT_AGENT_AUTHORIZATION
+              value: "Bearer abcd1234"
+          ports:
+            - containerPort: 9977
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}
+```
+
+Port number `9977` is the default HTTP port that the Agent exposes for its internal webserver that services Cryostat requests. The `CRYOSTAT_AGENT_AUTHORIZATION` value is particularly
+noteworthy: these are the credentials that the Agent will include in API requests it makes to Cryostat to advertise its own presence. You should create an OpenShift Service Account for
+this purpose and replace `abcd1234` with the base64-encoded authentication token associated with the service account. For testing purposes you may use your own user account's
+authentication token, for example with `oc whoami --show-token`.
+
+Finally, create a Service to enable Cryostat to make requests to this Agent:
+
+```yaml
+apiVersion: v1
+kind: Service
+...
+spec:
+  ports:
+    - name: "cryostat-agent"
+      port: 9977
+      targetPort: 9977
+...
+```
+
+More details about the configuration options for the Cryostat Agent [are available here](https://github.com/cryostatio/cryostat-agent/blob/main/README.md#configuration).
+
+#### [Using JMX](#using-jmx)
+Cryostat is also able to use Java Management Extensions (JMX) to communicate with target applications. This is a standard JDK feature that can be enabled by passing JVM
+flags to your application at startup. A basic and insecure setup suitable for testing requires only the following three flags:
+
+```
+-Dcom.sun.management.jmxremote.port=9091
+-Dcom.sun.management.jmxremote.ssl=false
+-Dcom.sun.management.jmxremote.authenticate=false
+```
+
+[comment]: # TODO explain how to configure SSL and auth for JMX, or link to external docs
+
+In a real scenario you should enable both SSL and authentication on your application. You can then [trust the certificate](/guides/#add-a-trusted-certificate)
+and [store the credentials](/guides/#store-jmx-credentials).
+
+Depending on your application or its framework, you may set these flags directly in a `Dockerfile` entrypoint, an environment variable, or similar. This may or
+may not require a container image rebuild, and it will require the container to be restarted. Once this is done the application container will be listening for
+incoming JMX connections on port 9091. Let's assume it can be done by setting an environment variable, so we only need to mofify our Deployment:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      containers:
+        - name: sample-app
+          image: docker.io/myorg/myapp:latest
+          env:
+            - name: JAVA_OPTS
+              value: "-Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+            ...
+```
+
+Next, we need to configure an OpenShift Service to expose this port for cluster-internal traffic, so that Cryostat can see
+and connect to this application JMX port.
+
+```yaml
+apiVersion: v1
+kind: Service
+...
+spec:
+  ports:
+    - name: "jfr-jmx"
+      port: 9091
+      targetPort: 9091
+...
+```
+
+Cryostat queries the OpenShift API server and looks for Services with a port either named `jfr-jmx` or with the number `9091`. One or both of these conditions
+must be met or else Cryostat will not automatically detect your application. In this case you may wish to use the [Cryostat Agent](#using-the-cryostat-agent-with-jmx)
+to enable discovery, while keeping communications over JMX rather than HTTP.
+
+#### [Using the Cryostat Agent with JMX](#using-the-cryostat-agent-with-jmx)
+The two prior sections have discussed how to use the Cryostat Agent to do application discovery and expose data over HTTP, and how to use OpenShift configurations
+for discovery and JMX to expose data. There is a third, hybrid approach: using the Cryostat Agent to do application discovery, and JMX to expose data. This may be
+useful since the Agent HTTP data model is readonly, whereas JMX is read-write. This means that using JMX to communicate between Cryostat and your applications
+allows for more dynamic flexibility, for example the ability to start and stop Flight Recordings on demand. Using the Cryostat Agent for application discovery
+is also more flexible than depending on OpenShift Services with specially-named or specially-numbered ports. For more context about these concepts, please review
+the previous two sections on [using the Cryostat Agent](#using-the-cryostat-agent) and [using JMX](#using-jmx).
+
+`pom.xml`
+```xml
+<project>
+  ...
+  <repositories>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/cryostatio/cryostat-agent</url>
+    </repository>
+  </repositories>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>io.cryostat</groupId>
+                  <artifactId>cryostat-agent</artifactId>
+                  <version>0.2.0</version>
+                </artifactItem>
+              </artifactItems>
+              <stripVersion>true</stripVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    ...
+  </build>
+  ...
+</project>
+```
+
+`application Deployment`
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      containers:
+        - name: sample-app
+          image: docker.io/myorg/myapp:latest
+          env:
+            - name: CRYOSTAT_AGENT_APP_NAME
+              value: "myapp"
+            - name: CRYOSTAT_AGENT_BASEURI
+              value: "http://cryostat.mynamespace.mycluster.svc:8181"
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.PodIP
+            - name: CRYOSTAT_AGENT_CALLBACK
+              value: "http://$(POD_IP):9977"
+            - name: CRYOSTAT_AGENT_AUTHORIZATION
+              value: "Bearer abcd1234"
+            - name: CRYOSTAT_AGENT_REGISTRATION_PREFER_JMX
+              value: "true"
+            - name: JAVA_OPTS
+              value: "-javaagent:/deployments/app/cryostat-agent.jar -Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+          ports:
+            - containerPort: 9977
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}
+```
+
+`application Service`
+```yaml
+apiVersion: v1
+kind: Service
+...
+spec:
+  ports:
+    - name: "jfr-jmx"
+      port: 9091
+      targetPort: 9091
+    - name: "cryostat-agent"
+      port: 9977
+      targetPort: 9977
+...
+```
 
 ### [Deploying Cryostat](#deploying-cryostat)
 Create a `Cryostat` object to deploy and set up Cryostat in the `cryostat-operator-system` namespace. For
