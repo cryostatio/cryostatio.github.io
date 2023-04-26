@@ -74,8 +74,8 @@ but the instructions will be similar for other toolchains and platforms as well.
 
 [The Cryostat Agent](/guides/#using-the-cryostat-agent)
 is compatible with Cryostat versions 2.3.0 and newer, and application JDKs 11 and newer. If you are using an older version of Cryostat, please upgrade.
-If your application uses a recent version of JDK8 with JFR support, please either upgrade to JDK11+ or continue to the next section to learn how to configure your
-application without the Cryostat Agent.
+If your application uses a recent version of JDK8 with JFR support, please either upgrade to JDK11+ or [continue to the next section](#using-jmx)
+to learn how to configure your application without the Cryostat Agent.
 
 The Cryostat Agent JAR must be available to your application JVM. The JAR asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/releases),
 or you may use the following snippet in your `pom.xml` to streamline this.
@@ -407,7 +407,7 @@ $ kubectl apply -f cryostat.yaml
 For demo purposes, let's go ahead and deploy a sample application to our
 OpenShift cluster in the same namespace as our Cryostat instance. If you have
 deployed Cryostat into a namespace where you are already running other
-applications, feel free to continue to the next step.
+applications, feel free to [continue to the next step](#open-the-cryostat-web-ui).
 
 ```bash
 $ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.10
@@ -419,7 +419,7 @@ listen on port 9097.  After deploying the container we patch its service to
 name the 9097 service port `jfr-jmx`. Cryostat will detect and use this port
 to determine that this is a compatible Java application that it should monitor.
 
-### Open the Cryostat Web UI
+### [Open the Cryostat Web UI](#open-the-cryostat-web-ui)
 Let's visit the Cryostat web dashboard UI.
 
 We can get there from the Cryostat resource's Status field:
