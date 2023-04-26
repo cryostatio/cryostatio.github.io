@@ -1,6 +1,6 @@
 ## [Using the Cryostat Agent](#using-the-cryostat-agent)
 
-The Cryostat Agent is a new component of Cryostat, implemented as a Java Insutrumentation Agent, which acts as a plugin for applications running on the JVM. Prior to the Agent, Cryostat extracted data from the JVM by initiating a connection over JMX. It then fetches the data from JFR and pulls it over the network back toward the Cryostat to be accessible to end users.
+The Cryostat Agent is a new component of Cryostat, implemented as a Java Instrumentation Agent, which acts as a plugin for applications running on the JVM. Prior to the Agent, Cryostat extracted data from the JVM by initiating a connection over JMX. It then fetches the data from JFR and pulls it over the network back toward the Cryostat to be accessible to end users.
 
 The Agent works differently. It is responsible for fetching data from the JVM and sending it back to Cryostat over HTTP. The Agent works by looking for data within itself and the application it is plugged into. The Cryostat Agent locates Cryostat applications running on the network and it is able to initiate a connection with those applications. It is also able to communicate back to Cryostat about the Cryostat Agent and how to reach it. The Cryostat Agent also pushes its own Java Flight Recorder (JFR) data back to Cryostat by first initiating a network connection with Cryostat, which then analyzes and saves the data to makes it accessible to end users.
 
