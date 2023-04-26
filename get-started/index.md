@@ -303,7 +303,7 @@ Add dependency configuration to `pom.xml`:
 </project>
 ```
 
-Modify the `application Deployment`:
+Modify the application `Deployment`:
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -344,7 +344,7 @@ spec:
 status: {}
 ```
 
-Create an `application Service`:
+Create an application `Service`:
 ```yaml
 apiVersion: v1
 kind: Service
