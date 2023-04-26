@@ -152,7 +152,8 @@ spec:
           env:
             - name: CRYOSTAT_AGENT_APP_NAME
               value: "myapp"
-              # Replace this with the Kubernetes DNS record for the Cryostat Service
+              # Replace this with the Kubernetes DNS record
+              # for the Cryostat Service
             - name: CRYOSTAT_AGENT_BASEURI
               value: "http://cryostat.mynamespace.mycluster.svc:8181"
             - name: POD_IP
@@ -323,7 +324,8 @@ spec:
           env:
             - name: CRYOSTAT_AGENT_APP_NAME
               value: "myapp"
-              # Replace this with the Kubernetes DNS record for the Cryostat Service
+              # Replace this with the Kubernetes DNS record
+              # for the Cryostat Service
             - name: CRYOSTAT_AGENT_BASEURI
               value: "http://cryostat.mynamespace.mycluster.svc:8181"
             - name: POD_IP
