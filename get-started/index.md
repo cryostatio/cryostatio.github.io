@@ -67,7 +67,7 @@ Note: Alternative methods for installing the operator are described in [Alternat
 
 ### [Configuring Applications](#configuring-applications)
 The following sections will briefly describe how to configure your Java applications so that Cryostat is able to discover and monitor them.
-These examples will assume the application is built with Maven, packaged into an image with a `Dockerfile`, and running in OpenShift,
+These examples will assume the application is built with Maven, packaged into an image with a `Dockerfile`, and running in Kubernetes,
 but the instructions will be similar for other toolchains and platforms as well.
 
 #### [Using the Cryostat Agent](#using-the-cryostat-agent)
@@ -132,7 +132,7 @@ ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent.jar"
 ```
 
 Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
-Push that updated image or otherwise get it updated in your OpenShift registry, then modify your application `Deployment` to supply JVM system properties or environment variables configuring
+Push that updated image or otherwise get it updated in your Kubernetes registry, then modify your application `Deployment` to supply JVM system properties or environment variables configuring
 the Cryostat Agent:
 
 ```yaml
@@ -169,7 +169,7 @@ status: {}
 ```
 
 Port number `9977` is the default HTTP port that the Agent exposes for its internal webserver that services Cryostat requests. The `CRYOSTAT_AGENT_AUTHORIZATION` value is particularly
-noteworthy: these are the credentials that the Agent will include in API requests it makes to Cryostat to advertise its own presence. You should create an OpenShift `Service Account` for
+noteworthy: these are the credentials that the Agent will include in API requests it makes to Cryostat to advertise its own presence. You should create a Kubernetes `Service Account` for
 this purpose and replace `abcd1234` with the base64-encoded authentication token associated with the service account. For testing purposes you may use your own user account's
 authentication token, for example with `oc whoami --show-token`.
 
@@ -226,7 +226,7 @@ spec:
             ...
 ```
 
-Next, we need to configure an OpenShift `Service` to expose this port for cluster-internal traffic, so that Cryostat can see
+Next, we need to configure a Kubernetes `Service` to expose this port for cluster-internal traffic, so that Cryostat can see
 and connect to this application JMX port.
 
 ```yaml
@@ -241,16 +241,16 @@ spec:
 ...
 ```
 
-Cryostat queries the OpenShift API server and looks for `Service`s with a port either named `jfr-jmx` or with the number `9091`. One or both of these conditions
+Cryostat queries the Kubernetes API server and looks for `Service`s with a port either named `jfr-jmx` or with the number `9091`. One or both of these conditions
 must be met or else Cryostat will not automatically detect your application. In this case you may wish to use the [Cryostat Agent](#using-the-cryostat-agent-with-jmx)
 to enable discovery, while keeping communications over JMX rather than HTTP.
 
 #### [Using the Cryostat Agent with JMX](#using-the-cryostat-agent-with-jmx)
-The two prior sections have discussed how to use the Cryostat Agent to do application discovery and expose data over HTTP, and how to use OpenShift configurations
+The two prior sections have discussed how to use the Cryostat Agent to do application discovery and expose data over HTTP, and how to use Kubernetes configurations
 for discovery and JMX to expose data. There is a third, hybrid approach: using the Cryostat Agent to do application discovery, and JMX to expose data. This may be
 useful since the Agent HTTP data model is readonly, whereas JMX is read-write. This means that using JMX to communicate between Cryostat and your applications
 allows for more dynamic flexibility, for example the ability to start and stop Flight Recordings on demand. Using the Cryostat Agent for application discovery
-is also more flexible than depending on OpenShift `Service`s with specially-named or specially-numbered ports. For more context about these concepts, please review
+is also more flexible than depending on Kubernetes `Service`s with specially-named or specially-numbered ports. For more context about these concepts, please review
 the previous two sections on [using the Cryostat Agent](#using-the-cryostat-agent) and [using JMX](#using-jmx).
 
 `pom.xml`
