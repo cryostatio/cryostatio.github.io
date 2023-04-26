@@ -160,6 +160,7 @@ spec:
                   fieldPath: status.PodIP
             - name: CRYOSTAT_AGENT_CALLBACK
               value: "http://$(POD_IP):9977"
+              # Replace "abcd1234" with a base64-encoded authentication token
             - name: CRYOSTAT_AGENT_AUTHORIZATION
               value: "Bearer abcd1234"
           ports:
@@ -255,7 +256,7 @@ allows for more dynamic flexibility, for example the ability to start and stop F
 is also more flexible than depending on Kubernetes `Service`s with specially-named or specially-numbered ports. For more context about these concepts, please review
 the previous two sections on [using the Cryostat Agent](#using-the-cryostat-agent) and [using JMX](#using-jmx).
 
-`pom.xml`
+Add dependency configuration to `pom.xml`:
 ```xml
 <project>
   ...
@@ -297,7 +298,7 @@ the previous two sections on [using the Cryostat Agent](#using-the-cryostat-agen
 </project>
 ```
 
-`application Deployment`
+Modify the `application Deployment`:
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -322,9 +323,12 @@ spec:
             - name: CRYOSTAT_AGENT_CALLBACK
               value: "http://$(POD_IP):9977"
             - name: CRYOSTAT_AGENT_AUTHORIZATION
+              # Replace "abcd1234" with a base64-encoded authentication token
               value: "Bearer abcd1234"
+              # This environment variable is key to the "hybrid" setup. This instructs the Agent to register itself with Cryostat as reachable via JMX, rather than reachable via HTTP.
             - name: CRYOSTAT_AGENT_REGISTRATION_PREFER_JMX
               value: "true"
+              # Here we configure the application to load the Agent JAR as well as to enable JMX, since we want the Agent to register itself as reachable via JMX.
             - name: JAVA_OPTS
               value: "-javaagent:/deployments/app/cryostat-agent.jar -Dcom.sun.management.jmxremote.port=9091 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
           ports:
@@ -335,7 +339,7 @@ spec:
 status: {}
 ```
 
-`application Service`
+Create an `application Service`:
 ```yaml
 apiVersion: v1
 kind: Service
