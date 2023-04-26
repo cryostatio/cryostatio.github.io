@@ -169,11 +169,11 @@ status: {}
 ```
 
 Port number `9977` is the default HTTP port that the Agent exposes for its internal webserver that services Cryostat requests. The `CRYOSTAT_AGENT_AUTHORIZATION` value is particularly
-noteworthy: these are the credentials that the Agent will include in API requests it makes to Cryostat to advertise its own presence. You should create an OpenShift Service Account for
+noteworthy: these are the credentials that the Agent will include in API requests it makes to Cryostat to advertise its own presence. You should create an OpenShift `Service Account` for
 this purpose and replace `abcd1234` with the base64-encoded authentication token associated with the service account. For testing purposes you may use your own user account's
 authentication token, for example with `oc whoami --show-token`.
 
-Finally, create a Service to enable Cryostat to make requests to this Agent:
+Finally, create a `Service` to enable Cryostat to make requests to this Agent:
 
 ```yaml
 apiVersion: v1
@@ -206,7 +206,7 @@ and [store the credentials](/guides/#store-jmx-credentials).
 
 Depending on your application or its framework, you may set these flags directly in a `Dockerfile` entrypoint, an environment variable, or similar. This may or
 may not require a container image rebuild, and it will require the container to be restarted. Once this is done the application container will be listening for
-incoming JMX connections on port 9091. Let's assume it can be done by setting an environment variable, so we only need to mofify our Deployment:
+incoming JMX connections on port 9091. Let's assume it can be done by setting an environment variable, so we only need to modify our `Deployment:`
 
 ```yaml
 apiVersion: apps/v1
@@ -226,7 +226,7 @@ spec:
             ...
 ```
 
-Next, we need to configure an OpenShift Service to expose this port for cluster-internal traffic, so that Cryostat can see
+Next, we need to configure an OpenShift `Service` to expose this port for cluster-internal traffic, so that Cryostat can see
 and connect to this application JMX port.
 
 ```yaml
@@ -241,7 +241,7 @@ spec:
 ...
 ```
 
-Cryostat queries the OpenShift API server and looks for Services with a port either named `jfr-jmx` or with the number `9091`. One or both of these conditions
+Cryostat queries the OpenShift API server and looks for `Service`s with a port either named `jfr-jmx` or with the number `9091`. One or both of these conditions
 must be met or else Cryostat will not automatically detect your application. In this case you may wish to use the [Cryostat Agent](#using-the-cryostat-agent-with-jmx)
 to enable discovery, while keeping communications over JMX rather than HTTP.
 
@@ -250,7 +250,7 @@ The two prior sections have discussed how to use the Cryostat Agent to do applic
 for discovery and JMX to expose data. There is a third, hybrid approach: using the Cryostat Agent to do application discovery, and JMX to expose data. This may be
 useful since the Agent HTTP data model is readonly, whereas JMX is read-write. This means that using JMX to communicate between Cryostat and your applications
 allows for more dynamic flexibility, for example the ability to start and stop Flight Recordings on demand. Using the Cryostat Agent for application discovery
-is also more flexible than depending on OpenShift Services with specially-named or specially-numbered ports. For more context about these concepts, please review
+is also more flexible than depending on OpenShift `Service`s with specially-named or specially-numbered ports. For more context about these concepts, please review
 the previous two sections on [using the Cryostat Agent](#using-the-cryostat-agent) and [using JMX](#using-jmx).
 
 `pom.xml`
