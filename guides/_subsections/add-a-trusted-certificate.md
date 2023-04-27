@@ -1,4 +1,4 @@
-## [Add a Trusted Certificate](#-add-a-trusted-certificate)
+## [Add a Trusted Certificate](#add-a-trusted-certificate)
 If you have Java Management Extensions (JMX) over SSL enabled on your containerized JVMs, you must configure Cryostat to trust the SSL certificate presented by the containerized JVM when Cryostat attempts to open a JMX connection. If you do not complete this configuration, Cryostat cannot open a JMX connection for the purposes of performing JFR management tasks.
 
 Here's how to add a trusted SSL certificate with the Cryostat web UI.

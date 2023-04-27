@@ -1,5 +1,4 @@
 {% capture navigate-to-recordings-include-text %}
-<p>
   If the target JVM has SSL/TLS enabled on JMX connections then it may be
   necessary to add the target's certificate to Cryostat's trust store. Go
   to <a href="{{ site.url }}/guides/#add-a-trusted-certificate">Add a Trusted Certificate</a>
@@ -8,7 +7,6 @@
     <img src="{{ site.url }}/images/2.3.0/navigate-to-recordings-2.png">
   </a>
   {{ include.additional-content }}
-</p>
 {% endcapture %}
 {% include howto_step.html
   summary="Navigate to Recordings"
