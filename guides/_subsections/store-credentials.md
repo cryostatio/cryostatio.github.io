@@ -19,7 +19,7 @@ If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rule
       image-name="2.3.0/store-credentials-1.png"
       text="
           A modal will appear. You can select a target JVM to view its properties.
-          These properties can be used to define a <i>matchExpression</i> that tests whether this set of credentials should apply to the selected target JVM.
+          These properties can be used to define a <i>matchExpression</i> that tests whether this credential should apply to the selected target JVM.
           This is the same kind of <i>matchExpression</i> as those used by <a href='#create-an-automated-rule'>Automated Rules</a>, so you may find it useful to reuse the same
           <i>matchExpressions</i> from your rule definitions for your credentials definitions.
           The <i>matchExpression</i>, username, and password fields are all required.
