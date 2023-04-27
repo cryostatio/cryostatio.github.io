@@ -9,7 +9,7 @@ If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rule
       summary="Navigate to the Security tab"
       image-name="2.3.0/navigate-to-security.png"
       text="
-        First, navigate to the <i>Security</i> tab. The Store Credentials table lists all credentials in Cryostat's keyring. Click <i>Add</i> to define a new set of credentials.
+        First, navigate to the <i>Security</i> tab. The Store Credentials table lists all credentials in Cryostat's keyring. Click <i>Add</i> to define a new credential.
       "
     %}
   </li>
