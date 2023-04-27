@@ -1,4 +1,4 @@
-## [View a Recording in Grafana](#view-in-grafana)
+## [View a Recording in Grafana](#view-a-recording-in-grafana)
 Cryostat provides integration with Grafana to plot curated time series
 metrics from a recording. By selecting _View in Grafana_ on either an
 _Active_ or _Archived Recording_, Cryostat uploads your recording to

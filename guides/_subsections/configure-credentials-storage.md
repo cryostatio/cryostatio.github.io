@@ -1,14 +1,14 @@
-## [Configure JMX Credentials Storage](#configure-jmx-credentials-storage)
+## [Configure Credentials Storage](#configure-credentials-storage)
 
-Target JVM applications may require Cryostat to pass an authentication challenge before being able to communicate over JMX
-and manage JFR. Cryostat has two supported mechanisms for these JMX credentials:
+Target JVM applications may require Cryostat to pass an authentication challenge before being able to communicate over JMX or HTTP
+and manage JFR. Cryostat has two supported mechanisms for these credentials:
 <ol>
   <li>
-    <b>JMX Credentials Keyring</b>: see <a href="#store-jmx-credentials">Store JMX Credentials</a> for more detail.
-    This mechanism entails uploading a JMX Credentials definition to the Cryostat backend keyring storage. Cryostat
+    <b>Credentials Keyring</b>: see <a href="#store-credentials">Store Credentials</a> for more detail.
+    This mechanism entails uploading a Credentials definition to the Cryostat backend keyring storage. Cryostat
     automatically checks the keyring for credentials matching a target application when a request to that application
     is opened. If no credentials are found, Cryostat responds to the requesting client (e.g. the Cryostat Web UI) with
-    a response indicating the JMX authentication failure.
+    a response indicating the authentication failure.
   </li>
   <li>
     <b>X-JMX-Authorization</b> header passthrough: when the Cryostat Web UI receives a JMX authentication failure response
@@ -23,7 +23,7 @@ and manage JFR. Cryostat has two supported mechanisms for these JMX credentials:
 </ol>
 
 Now that you understand the difference, let's continue to see how you can configure the Cryostat Web UI to use one
-or the other when you complete a JMX Authentication prompt.
+or the other when you complete a Authentication prompt.
 
 <ol>
   <li>
@@ -31,11 +31,11 @@ or the other when you complete a JMX Authentication prompt.
   </li>
   <li>
     {% include howto_step.html
-      summary="Locate the JMX Credentials Storage card"
-      image-name="2.3.0/jmx-credentials-card.png"
+      summary="Locate the Credentials Storage setting"
+      image-name="2.3.0/credentials-setting.png"
       text="
-        This card contains a brief explanation of its purpose and a simple dropdown menu with selections for where any
-        JMX Credentials entered into a JMX <i>Authentication Required</i> challenge modal will be stored.
+        This setting contains a brief explanation of its purpose and a simple dropdown menu with selections for where any
+        Credentials entered into a <i>Authentication Required</i> challenge modal will be stored.
         Choose <i>Session (Browser Memory)</i> to use the header passthrough mechanism described above, or choose
         <i>Backend</i> to automatically store the credentials in the Cryostat server keyring.
       "

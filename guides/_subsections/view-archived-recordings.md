@@ -1,9 +1,9 @@
-## [Viewing Archived Recordings](#view-archived-recordings)
+## [Viewing Archived Recordings](#viewing-archived-recordings)
 There are several ways to view <i>Archived Recordings</i>. The first method is to navigate to the Archived Recordings tab. See <a href="#archive-a-recording">Archive a Recording</a>.
 
 ### [All-Targets Archived Recordings View](#all-targets-archived-recordings-view)
 
-The second method is to navigate to the new <i>All-Targets</i> archived recording view within the <i>Archives</i> tab on Cryostat console sidebar.
+The second method is to navigate to the <i>All-Targets</i> archived recording view within the <i>Archives</i> tab on Cryostat console sidebar.
 
 The All-Targets view gathers all of Cryostat's discovered target JVM applications into one section for ease of access. Here, we are able to interact with any archived recordings that have been saved from a source target by opening a target's nested recordings table. 
 
@@ -36,7 +36,7 @@ The All-Targets view gathers all of Cryostat's discovered target JVM application
 
 ### [All-Archives Archived Recordings View](#all-archives-archived-recordings-view)
 
-The third method is to navigate to the new <i>All-Archives</i> archived recording view within the <i>Archives</i> tab on Cryostat console sidebar. 
+The third method is to navigate to the <i>All-Archives</i> archived recording view within the <i>Archives</i> tab on Cryostat console sidebar. 
 
 The All-Archives view is a view which queries Cryostat's internal storage for any created archived recordings and the directories that contain them. Here, we are able to interact with any archived recordings that have been saved into storage by opening a nested recordings table within each directory.
 
