@@ -1,4 +1,4 @@
-## [View and Download Automated Analysis for a Recording](#automated-analysis)
+## [View and Download Automated Analysis for a Recording](#view-and-download-automated-analysis-for-a-recording)
 Cryostat integrates the same automated analysis reports that you would
 find in [JDK Mission Control](https://github.com/openjdk/jmc). The
 JMC rules engine analyzes your recording and looks for common problems

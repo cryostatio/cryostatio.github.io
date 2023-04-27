@@ -33,9 +33,9 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/add-and-edit-recording-metadata-labels.md %}
 
-{% include_relative _subsections/store-jmx-credentials.md %}
+{% include_relative _subsections/store-credentials.md %}
 
-{% include_relative _subsections/configure-jmx-credentials-storage.md %}
+{% include_relative _subsections/configure-credentials-storage.md %}
 
 {% include_relative _subsections/add-a-trusted-certificate.md %}
 
