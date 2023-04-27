@@ -40,7 +40,7 @@ If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rule
       summary="View your stored credentials"
       image-name="2.3.0/store-credentials-2.png"
       text="
-        The <i>Store Credentials</i> table will update with a row for each of the credentials you have stored in the keyring. The <i>matchExpression</i> is visible along with a count of the number of known target applications that these credentials will apply to. You can click the reverse chevron icon at the left of the table row to expand the row, which will display a list of those matched target applications. For security reasons it is not possible to view the stored username and password associated with a credentials definition in the keyring.
+        The <i>Store Credentials</i> table will update with a row for each of the credentials you have stored in the keyring. The <i>matchExpression</i> is visible along with a count of the number of known target applications that these credentials will apply to. You can expand the row to display a list of those matched target applications. For security reasons it is not possible to view the stored username and password associated with a credentials definition in the keyring.
       "
     %}
   </li>
