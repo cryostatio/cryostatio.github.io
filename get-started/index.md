@@ -207,7 +207,7 @@ flags to your application at startup. A basic and insecure setup suitable for te
 [comment]: # TODO explain how to configure SSL and auth for JMX, or link to external docs
 
 In a real scenario you should enable both SSL and authentication on your application. You can then [trust the certificate](/guides/#add-a-trusted-certificate)
-and [store the credentials](/guides/#store-jmx-credentials).
+and [store the credentials](/guides/#store-credentials).
 
 Depending on your application or its framework, you may set these flags directly in a `Dockerfile` entrypoint, an environment variable, or similar. This may or
 may not require a container image rebuild, and it will require the container to be restarted. Once this is done the application container will be listening for
