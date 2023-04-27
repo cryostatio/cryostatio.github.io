@@ -21,7 +21,7 @@ If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rule
           A modal will appear. You can select a target JVM to view its properties.
           These properties can be used to define a <i>matchExpression</i> that tests whether this credential should apply to the selected target JVM.
           This is the same kind of <i>matchExpression</i> as those used by <a href='#create-an-automated-rule'>Automated Rules</a>, so you may find it useful to reuse the same
-          <i>matchExpressions</i> from your rule definitions for your credentials definitions.
+          <i>matchExpressions</i> from your rule definitions for your credential definitions.
           The <i>matchExpression</i>, username, and password fields are all required.
       "
     %}
@@ -31,7 +31,7 @@ If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rule
       summary="(Alternative to Steps 1 and 2) Store Credentials when connecting to a target JVM"
       image-name="2.3.0/navigate-to-recordings-1.png"
       text="
-        Alternatively, credentials may also be stored if you navigate to either the <i>Recordings</i> tab or the <i>Events</i> tab and select a target JVM with authentication enabled. The authentication form will appear, prompting you to enter your credentials. If you have <a href='#configure-credentials-storage'>configured Backend Credentials Storage</a>, then a new credentials definition with the provided username and password will be stored for this specific target application in the Cryostat keyring. If you have configured credentials with the <i>Session</i> option then these entered credentials will <i>not</i> be stored in the Cryostat keyring.
+        Alternatively, credentials may also be stored if you navigate to either the <i>Recordings</i> tab or the <i>Events</i> tab and select a target JVM with authentication enabled. The authentication form will appear, prompting you to enter your credentials. If you have <a href='#configure-credentials-storage'>configured Backend Credentials Storage</a>, then a new credential definition with the provided username and password will be stored for this specific target application in the Cryostat keyring. If you have configured credentials with the <i>Session</i> option then these entered credentials will <i>not</i> be stored in the Cryostat keyring.
       "
     %}
   </li>
@@ -40,7 +40,7 @@ If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rule
       summary="View your stored credentials"
       image-name="2.3.0/store-credentials-2.png"
       text="
-        The <i>Store Credentials</i> table will update with a row for each of the credentials you have stored in the keyring. The <i>matchExpression</i> is visible along with a count of the number of known target applications that these credentials will apply to. You can expand the row to display a list of those matched target applications. For security reasons it is not possible to view the stored username and password associated with a credentials definition in the keyring.
+        The <i>Store Credentials</i> table will update with a row for each of the credentials you have stored in the keyring. The <i>matchExpression</i> is visible along with a count of the number of known target applications that these credentials will apply to. You can expand the row to display a list of those matched target applications. For security reasons it is not possible to view the stored username and password associated with a credential definition in the keyring.
       "
     %}
   </li>
