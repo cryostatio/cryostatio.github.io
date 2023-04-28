@@ -1,11 +1,11 @@
 $(document).ready(function() {
     $('#guidesindex-version-dropdown').on('change', function() {
-      var guideUrl = window.location.href.substring(window.location.href.indexOf("/guides/"));
-  
+      var url;
       if (this.value == 'latest') {
-        window.location.href = '/guides/';
+        url = '/guides/';
       } else {
-        window.location.href = '/version/' + this.value + guideUrl;
+        url = '/version/' + this.value + '/guides/';
       }
+      window.location.href = url;
     });
   });
