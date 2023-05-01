@@ -1,0 +1,13 @@
+--- assets/demo/site/index.html	2023-05-02 12:29:53.441676889 -0400
++++ assets/demo/site/index.patched.html	2023-05-02 12:29:49.434719680 -0400
+@@ -8,6 +8,10 @@
+     <base href="/" />
+     <link rel="icon" href="/assets/demo/site/favicon.ico" />
+     <script
++      type="module"
++      src="/demo/fake-api.js"
++    ></script>
++    <script
+       defer="defer"
+       src="/assets/demo/site/runtime.b70b8b6996893e0c.bundle.js"
+     ></script>
