@@ -20,7 +20,7 @@ git clone --depth 1 https://github.com/cryostatio/cryostat-web --branch "$1"
 pushd cryostat-web
 yarn install
 yarn run clean
-ASSET_PATH=/assets/demo/site yarn build:notests
+ASSET_PATH=/assets/demo/site/ yarn build:notests
 popd
 popd
 
