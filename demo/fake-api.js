@@ -8,9 +8,10 @@ import { Server } from "https://cdn.jsdelivr.net/npm/mock-socket@9.2.1/+esm";
 var wsUrl =
   (window.location.protocol === "https:" ? "wss" : "ws") +
   "://cryostat-demo.local:8181/fake";
-// window.WebSocket = WebSocket;
 var wsServer = new Server(wsUrl);
+var websocket;
 wsServer.on("connection", (socket) => {
+  websocket = socket;
   socket.on("message", (_) => {
     socket.send(
       JSON.stringify({
@@ -34,6 +35,7 @@ createServer({
   models: {
     target: Model,
     recording: Model,
+    archive: Model,
     rule: Model,
   },
 
@@ -122,13 +124,36 @@ createServer({
         },
       },
     }));
-    this.get("/api/v1/recordings", () => []);
+    this.get("/api/v1/recordings", (schema) => schema.archives.all().models);
     this.get("/api/beta/fs/recordings", () => []);
+    this.delete(
+      "/api/beta/recordings/:targetId/:recordingName",
+      (schema, request) => {
+        var recordingName = request.params.recordingName;
+        var recording = schema.archives.where({ name: recordingName });
+        schema.archives.findBy({ name: recordingName }).destroy();
+        var msg = {
+          meta: {
+            category: "ArchivedRecordingDeleted",
+            type: { type: "application", subType: "json" },
+            serverTime: +Date.now(),
+          },
+          message: {
+            recording: {
+              ...recording.models[0].attrs,
+            },
+            target: request.params.targetId,
+          },
+        };
+        websocket.send(JSON.stringify(msg));
+        return new Response(200);
+      }
+    );
 
     this.post("/api/v1/targets/:targetId/recordings", (schema, request) => {
       let attrs = request.requestBody;
-      console.log(attrs);
       return schema.recordings.create({
+        id: Math.floor(Math.random() * 1000),
         downloadUrl: "",
         reportUrl: "",
         name: attrs.get("recordingName"),
@@ -145,6 +170,76 @@ createServer({
     this.get(
       "/api/v1/targets/:targetId/recordings",
       (schema) => schema.recordings.all().models
+    );
+    this.delete(
+      "/api/v1/targets/:targetId/recordings/:recordingName",
+      (schema, request) => {
+        var recordingName = request.params.recordingName;
+        var recording = schema.recordings.where({ name: recordingName });
+        schema.recordings.findBy({ name: recordingName }).destroy();
+        var msg = {
+          meta: {
+            category: "ActiveRecordingDeleted",
+            type: { type: "application", subType: "json" },
+            serverTime: +Date.now(),
+          },
+          message: {
+            recording: {
+              ...recording.models[0].attrs,
+            },
+            target: request.params.targetId,
+          },
+        };
+        websocket.send(JSON.stringify(msg));
+        return new Response(200);
+      }
+    );
+    this.patch(
+      "/api/v1/targets/:targetId/recordings/:recordingName",
+      (schema, request) => {
+        var body = request.requestBody;
+        var recordingName = request.params.recordingName;
+        var recording = schema.recordings.where({ name: recordingName });
+        switch (body) {
+          case "STOP":
+            recording.update({ state: "STOPPED" });
+            var msg = {
+              meta: {
+                category: "ActiveRecordingStopped",
+                type: { type: "application", subType: "json" },
+                serverTime: +Date.now(),
+              },
+              message: {
+                recording: {
+                  ...recording.models[0].attrs,
+                },
+                target: request.params.targetId,
+              },
+            };
+            websocket.send(JSON.stringify(msg));
+            break;
+          case "SAVE":
+            var msg = {
+              meta: {
+                category: "ActiveRecordingSaved",
+                type: { type: "application", subType: "json" },
+                serverTime: +Date.now(),
+              },
+              message: {
+                recording: {
+                  ...recording.models[0].attrs,
+                  size: Math.ceil(Math.random() * 1000000),
+                  archivedTime: +Date.now(),
+                },
+                target: request.params.targetId,
+              },
+            };
+            websocket.send(JSON.stringify(msg));
+            schema.archives.create(recording.models[0].attrs);
+            break;
+        }
+        return new Response(200);
+      }
     );
     this.get("/api/v1/targets/:targetId/recordingOptions", () => []);
     this.get("/api/v1/targets/:targetId/events", () => [
@@ -179,7 +274,7 @@ createServer({
     this.get("/api/v2.2/credentials", () => ({ data: { result: [] } }));
 
     // TODO
-    this.post("/api/v2.2/graphql", (_, request) => {
+    this.post("/api/v2.2/graphql", (schema, request) => {
       var query = JSON.parse(request.requestBody).query.trim();
       var begin = query.substring(0, query.indexOf("{"));
       var name = "unknown";
@@ -208,7 +303,7 @@ createServer({
         case "UploadedRecordings":
           data = {
             archivedRecordings: {
-              data: [],
+              data: schema.archives.all().models,
             },
           };
           break;
