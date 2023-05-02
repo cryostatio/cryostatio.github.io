@@ -164,7 +164,7 @@ spec:
             - name: POD_IP
               valueFrom:
                 fieldRef:
-                  fieldPath: status.PodIP
+                  fieldPath: status.podIP
             - name: CRYOSTAT_AGENT_CALLBACK
               value: "http://$(POD_IP):9977"
               # Replace "abcd1234" with a base64-encoded authentication token
