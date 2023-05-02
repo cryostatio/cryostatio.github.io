@@ -83,7 +83,7 @@ createServer({
         new Response(
           400,
           {},
-          'Resource downloads are not supported in this demo'
+          "Resource downloads are not supported in this demo"
         )
     );
 
@@ -155,7 +155,9 @@ createServer({
       return schema.recordings.create({
         id: Math.floor(Math.random() * 1000),
         downloadUrl: "",
-        reportUrl: "",
+        reportUrl: `/api/beta/reports/${encodeURIComponent(
+          request.params.targetId
+        )}/${encodeURIComponent(attrs.get("recordingName"))}`,
         name: attrs.get("recordingName"),
         state: "RUNNING",
         startTime: +Date.now(),
@@ -239,6 +241,24 @@ createServer({
             break;
         }
         return new Response(200);
+      }
+    );
+    this.get(
+      "/api/beta/reports/:targetId/:recordingName",
+      (schema, request) => {
+        var targetId = request.params.targetId;
+        var recordingName = request.params.recordingName;
+        return new Response(
+          200,
+          {},
+          `
+      <html>
+        <body>
+          <p>Here would be some automated analysis overview information about [${targetId}] ${recordingName}</p>
+        </body>
+      </html>
+      `
+        );
       }
     );
     this.get("/api/v1/targets/:targetId/recordingOptions", () => []);
