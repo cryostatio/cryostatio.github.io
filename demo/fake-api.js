@@ -47,6 +47,8 @@ createServer({
   },
 
   routes() {
+    this.timing = 0;
+
     this.get("/health", () => ({
       cryostatVersion: "v2.3.0-live-demo",
       dashboardAvailable: false,
