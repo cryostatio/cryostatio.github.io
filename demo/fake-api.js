@@ -34,6 +34,7 @@ createServer({
   models: {
     target: Model,
     recording: Model,
+    rule: Model,
   },
 
   seeds(server) {
@@ -164,7 +165,17 @@ createServer({
     ]);
     this.get("/api/v2/probes", () => []);
 
-    this.get("/api/v2/rules", () => ({ data: { result: [] } }));
+    this.post("/api/v2/rules", (schema, request) => {
+      let attrs = JSON.parse(request.requestBody);
+      return {
+        data: {
+          result: schema.rules.create(attrs),
+        },
+      };
+    });
+    this.get("/api/v2/rules", (schema) => ({
+      data: { result: schema.rules.all().models },
+    }));
     this.get("/api/v2.2/credentials", () => ({ data: { result: [] } }));
 
     // TODO
