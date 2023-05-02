@@ -1,5 +1,6 @@
 import {
   createServer,
+  Model,
   Response,
 } from "https://cdn.jsdelivr.net/npm/miragejs@0.1.47/+esm";
 import { Server } from "https://cdn.jsdelivr.net/npm/mock-socket@9.2.1/+esm";
@@ -15,8 +16,14 @@ wsServer.on("connection", (socket) => {
       JSON.stringify({
         meta: {
           category: "WsClientActivity",
-          message: "Demo started",
+          type: {
+            type: "application",
+            subtype: "json",
+          },
           serverTime: +Date.now(),
+        },
+        message: {
+          localhost: "connected",
         },
       })
     );
@@ -24,6 +31,18 @@ wsServer.on("connection", (socket) => {
 });
 
 createServer({
+  models: {
+    target: Model,
+    recording: Model,
+  },
+
+  seeds(server) {
+    server.create("target", {
+      alias: "Fake Target",
+      connectUrl: "http://fake-target.local:1234",
+    });
+  },
+
   routes() {
     this.get("/health", () => ({
       cryostatVersion: "v2.3.0-live-demo",
@@ -61,16 +80,12 @@ createServer({
         new Response(
           400,
           {},
-          `${JSON.stringify(request.url)} currently unsupported in demo`
+          `${JSON.stringify(request.url)} unsupported in demo`
         )
     );
 
-    var target = {
-      alias: "Fake Target",
-      connectUrl: "http://fake-target.local:1234",
-    };
-    this.get("/api/v1/targets", () => [target]);
-    this.get("/api/v2.1/discovery", () => ({
+    this.get("/api/v1/targets", (schema) => schema.targets.all().models);
+    this.get("/api/v2.1/discovery", (schema) => ({
       meta: {
         status: "OK",
         type: "application/json",
@@ -91,7 +106,7 @@ createServer({
                   nodeType: "JVM",
                   labels: [],
                   target: {
-                    ...target,
+                    ...schema.targets.all()[0],
                     jvmId: "abcd1234",
                     annotations: {
                       platform: { "io.cryostat.demo": "this-is-not-real" },
@@ -109,22 +124,27 @@ createServer({
     this.get("/api/v1/recordings", () => []);
     this.get("/api/beta/fs/recordings", () => []);
 
-    this.get("/api/v1/targets/:targetId/recordings", () => [
-      {
+    this.post("/api/v1/targets/:targetId/recordings", (schema, request) => {
+      let attrs = request.requestBody;
+      console.log(attrs);
+      return schema.recordings.create({
         downloadUrl: "",
         reportUrl: "",
-        id: 1,
-        name: "Demo recording",
+        name: attrs.get("recordingName"),
         state: "RUNNING",
-        startTime: 0,
-        duration: 0,
-        continuous: true,
-        toDisk: true,
-        maxSize: 0,
-        maxAge: 0,
+        startTime: +Date.now(),
+        duration: attrs.get("duration") * 1000 || 0,
+        continuous: attrs.get("duration") == 0,
+        toDisk: attrs.get("toDisk") || false,
+        maxSize: attrs.get("maxSize") || 0,
+        maxAge: attrs.get("maxAge") || 0,
         metadata: { labels: { imaginary: true } },
-      },
-    ]);
+      });
+    });
+    this.get(
+      "/api/v1/targets/:targetId/recordings",
+      (schema) => schema.recordings.all().models
+    );
     this.get("/api/v1/targets/:targetId/recordingOptions", () => []);
     this.get("/api/v1/targets/:targetId/events", () => [
       {
