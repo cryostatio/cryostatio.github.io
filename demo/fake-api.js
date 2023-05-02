@@ -179,14 +179,42 @@ createServer({
     this.get("/api/v2.2/credentials", () => ({ data: { result: [] } }));
 
     // TODO
-    this.post(
-      "/api/v2.2/graphql",
-      (_, request) =>
-        new Response(
+    this.post("/api/v2.2/graphql", (_, request) => {
+      var query = JSON.parse(request.requestBody).query.trim();
+      var begin = query.substring(0, query.indexOf("{"));
+      var name = "unknown";
+      for (var n of begin.split(" ")) {
+        if (n == "{") {
+          break;
+        }
+        if (!n || n == "query") {
+          continue;
+        }
+        name = n.substring(0, n.indexOf("("));
+        break;
+      }
+      if (name === "unknown" || !name) {
+        return new Response(
           400,
           {},
-          `${JSON.stringify(request.url)} currently unsupported in demo`
-        )
-    );
+          `${JSON.stringify(
+            request.url
+          )} (query: '${name}') currently unsupported in demo`
+        );
+      }
+      let data = {};
+      switch (name) {
+        case "ArchivedRecordingsForTarget":
+        case "UploadedRecordings":
+          data = {
+            archivedRecordings: {
+              data: [],
+            },
+          };
+          break;
+      }
+      console.log(`Handling ${name}`);
+      return { data };
+    });
   },
 });
