@@ -66,9 +66,14 @@ the specifics of how to deploy your Cryostat instance. Continue to [Setup](#setu
 ## [Setup](#setup)
 
 ### [Configuring Applications](#configuring-applications)
-The following sections will briefly describe how to configure your Java applications so that Cryostat is able to discover and monitor them.
-These examples will assume the application is built with Maven, packaged into an image with a `Dockerfile`, and running in Kubernetes,
-but the instructions will be similar for other toolchains and platforms as well.
+There are three methods of configuring your Java applications so that Cryostat is able to discover and monitor them:
+
+1. using the Cryostat Agent for discovery and connectivity
+2. using platform mechanisms for discovery and Java Management Extensions (JMX) for connectivity
+3. using the Cryostat Agent for discovery and JMX for connectivity
+
+The following sections will briefly explain how to accomplish each of these approaches by example. For simplicity the examples will assume your application
+is built with Maven, packaged into an image with a `Dockerfile`, and running in Kubernetes, but the instructions will be similar for other toolchains and platforms as well.
 
 #### [Using the Cryostat Agent](#using-the-cryostat-agent)
 
