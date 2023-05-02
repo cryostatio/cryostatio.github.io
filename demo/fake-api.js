@@ -79,11 +79,11 @@ createServer({
     });
     this.post(
       "/api/v2.1/auth/token",
-      (_, request) =>
+      () =>
         new Response(
           400,
           {},
-          `${JSON.stringify(request.url)} unsupported in demo`
+          'Resource downloads are not supported in this demo'
         )
     );
 
