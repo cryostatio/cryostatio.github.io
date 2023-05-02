@@ -1,5 +1,5 @@
 import { createServer, Response } from 'https://cdn.jsdelivr.net/npm/miragejs@0.1.47/+esm';
-import { WebSocket, Server } from 'https://cdn.jsdelivr.net/npm/mock-socket@9.2.1/+esm';
+import { Server } from 'https://cdn.jsdelivr.net/npm/mock-socket@9.2.1/+esm';
 
 var wsUrl = (window.location.protocol === 'https:' ? 'wss' : 'ws') + '://cryostat-demo.local:8181/fake';
 // window.WebSocket = WebSocket;
