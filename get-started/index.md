@@ -156,18 +156,31 @@ spec:
           image: docker.io/myorg/myapp:latest
           env:
             - name: CRYOSTAT_AGENT_APP_NAME
+              # Replace this with any value you like to use to identify your application.
               value: "myapp"
-              # Replace this with the Kubernetes DNS record
-              # for the Cryostat Service
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
             - name: CRYOSTAT_AGENT_BASEURI
-              value: "http://cryostat.mynamespace.mycluster.svc:8181"
+              # Replace this with the Kubernetes DNS record for the Cryostat Service
+              # by changing the first 'cryostat' subdomain to the name of your Cryostat
+              # deployment, if needed.
+              # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+              value: "http://cryostat.$(NAMESPACE).svc:8181"
             - name: POD_IP
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
             - name: CRYOSTAT_AGENT_CALLBACK
+              # This infers the Agent Callback directly from the Pod's IP address using the
+              # Kubernetes Downward API. Use this value directly as provided. The port number
+              # 9977 can be changed but must match the containerPort below.
               value: "http://$(POD_IP):9977"
-              # Replace "abcd1234" with a base64-encoded authentication token
+              # Replace "abcd1234" with a base64-encoded authentication token. For example,
+              # in your terminal, do 'oc whoami -t | base64' to use your user account's
+              # token as the token that the Agent will pass to authorize itself with
+              # the Cryostat server.
             - name: CRYOSTAT_AGENT_AUTHORIZATION
               value: "Bearer abcd1234"
           ports:
@@ -328,19 +341,32 @@ spec:
           image: docker.io/myorg/myapp:latest
           env:
             - name: CRYOSTAT_AGENT_APP_NAME
+              # Replace this with any value you like to use to identify your application.
               value: "myapp"
-              # Replace this with the Kubernetes DNS record
-              # for the Cryostat Service
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
             - name: CRYOSTAT_AGENT_BASEURI
-              value: "http://cryostat.mynamespace.mycluster.svc:8181"
+              # Replace this with the Kubernetes DNS record for the Cryostat Service
+              # by changing the first 'cryostat' subdomain to the name of your Cryostat
+              # deployment, if needed.
+              # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+              value: "http://cryostat.$(NAMESPACE).svc:8181"
             - name: POD_IP
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
             - name: CRYOSTAT_AGENT_CALLBACK
+              # This infers the Agent Callback directly from the Pod's IP address using the
+              # Kubernetes Downward API. Use this value directly as provided. The port number
+              # 9977 can be changed but must match the containerPort below.
               value: "http://$(POD_IP):9977"
+              # Replace "abcd1234" with a base64-encoded authentication token. For example,
+              # in your terminal, do 'oc whoami -t | base64' to use your user account's
+              # token as the token that the Agent will pass to authorize itself with
+              # the Cryostat server.
             - name: CRYOSTAT_AGENT_AUTHORIZATION
-              # Replace "abcd1234" with a base64-encoded authentication token
               value: "Bearer abcd1234"
               # This environment variable is key to the "hybrid" setup.
               # This instructs the Agent to register itself with Cryostat
