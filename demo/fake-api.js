@@ -295,7 +295,6 @@ createServer({
     }));
     this.get("/api/v2.2/credentials", () => ({ data: { result: [] } }));
 
-    // TODO
     this.post("/api/v2.2/graphql", (schema, request) => {
       var query = JSON.parse(request.requestBody).query.trim();
       var begin = query.substring(0, query.indexOf("{"));
@@ -327,6 +326,26 @@ createServer({
             archivedRecordings: {
               data: schema.archives.all().models,
             },
+          };
+          break;
+        case "ArchivedRecordingsForAutomatedAnalysis":
+          data = {
+            archivedRecordings: {
+              data: schema.archives.all().models,
+            },
+          };
+          break;
+        case "ActiveRecordingsForAutomatedAnalysis":
+          data = {
+            targetNodes: [
+              {
+                recordings: {
+                  active: {
+                    data: schema.recordings.all().models,
+                  },
+                },
+              },
+            ],
           };
           break;
         case "MBeanMXMetricsForTarget":
