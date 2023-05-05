@@ -43,6 +43,11 @@ createServer({
     server.create("target", {
       alias: "Fake Target",
       connectUrl: "http://fake-target.local:1234",
+      jvmId: "1234",
+      annotations: {
+        platform: { "io.cryostat.demo": "this-is-not-real" },
+        cryostat: { hello: "world" },
+      },
     });
   },
 
@@ -89,6 +94,33 @@ createServer({
         )
     );
 
+    this.post("/api/v2/targets", (schema, request) => {
+      let attrs = request.requestBody;
+      let target = schema.targets.create({
+        jvmId: Math.floor(1000 * Math.random()),
+        alias: attrs.get("alias"),
+        connectUrl: attrs.get("connectUrl"),
+        annotations: {
+          platform: {},
+          cryostat: {},
+        },
+      });
+      websocket.send(
+        JSON.stringify({
+          meta: {
+            category: "TargetJvmDiscovery",
+            type: { type: "application", subType: "json" },
+            serverTime: +Date.now(),
+          },
+          message: { event: { serviceRef: target, kind: "FOUND" } },
+        })
+      );
+      return {
+        data: {
+          result: target,
+        },
+      };
+    });
     this.get("/api/v1/targets", (schema) => schema.targets.all().models);
     this.get("/api/v2.1/discovery", (schema) => ({
       meta: {
@@ -105,22 +137,11 @@ createServer({
               name: "Demo realm",
               nodeType: "Realm",
               labels: {},
-              children: [
-                {
-                  name: "Fake Target",
-                  nodeType: "JVM",
-                  labels: [],
-                  target: {
-                    ...schema.targets.all()[0],
-                    jvmId: "abcd1234",
-                    annotations: {
-                      platform: { "io.cryostat.demo": "this-is-not-real" },
-                      cryostat: { hello: "world" },
-                    },
-                    labels: { "app.selector": "cryostat-demo" },
-                  },
-                },
-              ],
+              children: schema.targets.all().models.map((t) => ({
+                name: t.alias,
+                nodeType: "JVM",
+                target: t,
+              })),
             },
           ],
         },
