@@ -31,4 +31,4 @@ pushd demo
 yarn install
 yarn format-html -- ../assets/demo/site/index.html
 popd
-patch -p0 < demo/index.html.patch
+patch -p1 < demo/index.html.patch
