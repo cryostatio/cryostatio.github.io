@@ -401,9 +401,6 @@ kind: Service
 ...
 spec:
   ports:
-    - name: "jfr-jmx"
-      port: 9091
-      targetPort: 9091
     - name: "cryostat-agent"
       port: 9977
       targetPort: 9977
