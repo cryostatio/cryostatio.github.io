@@ -163,11 +163,13 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: CRYOSTAT_AGENT_BASEURI
-              # Replace this with the Kubernetes DNS record for the Cryostat Service
-              # by changing the first 'cryostat' subdomain to the name of your Cryostat
-              # deployment, if needed.
+              # Update this to correspond to the name of your Cryostat instance
+              # if it is not 'cryostat'. This assumes that the target application
+              # and the Cryostat instance are in the same Namespace, but you may
+              # choose to configure the Agent to communicate with a Cryostat in
+              # a different Namespace, too.
               # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-              value: "http://cryostat.$(NAMESPACE).svc:8181"
+              value: https://cryostat.$(NAMESPACE).svc:8181
             - name: POD_IP
               valueFrom:
                 fieldRef:
@@ -348,11 +350,13 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: CRYOSTAT_AGENT_BASEURI
-              # Replace this with the Kubernetes DNS record for the Cryostat Service
-              # by changing the first 'cryostat' subdomain to the name of your Cryostat
-              # deployment, if needed.
+              # Update this to correspond to the name of your Cryostat instance
+              # if it is not 'cryostat'. This assumes that the target application
+              # and the Cryostat instance are in the same Namespace, but you may
+              # choose to configure the Agent to communicate with a Cryostat in
+              # a different Namespace, too.
               # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-              value: "http://cryostat.$(NAMESPACE).svc:8181"
+              value: https://cryostat.$(NAMESPACE).svc:8181
             - name: POD_IP
               valueFrom:
                 fieldRef:
