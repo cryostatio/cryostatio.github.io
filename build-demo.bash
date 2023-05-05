@@ -28,6 +28,7 @@ rm -rf assets/demo/site
 mkdir -p assets/demo
 cp -r "${scratch}/cryostat-web/dist" assets/demo/site
 pushd demo
+yarn install
 yarn format-html -- ../assets/demo/site/index.html
 popd
 patch -p0 < demo/index.html.patch
