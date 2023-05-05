@@ -111,7 +111,7 @@ or you may use the following snippet in your `pom.xml` to streamline this.
                 <artifactItem>
                   <groupId>io.cryostat</groupId>
                   <artifactId>cryostat-agent</artifactId>
-                  <version>0.2.0</version>
+                  <version>0.2.1</version>
                 </artifactItem>
               </artifactItems>
               <stripVersion>true</stripVersion>
@@ -313,7 +313,7 @@ Add dependency configurations to `pom.xml`:
                 <artifactItem>
                   <groupId>io.cryostat</groupId>
                   <artifactId>cryostat-agent</artifactId>
-                  <version>0.2.0</version>
+                  <version>0.2.1</version>
                 </artifactItem>
               </artifactItems>
               <stripVersion>true</stripVersion>
