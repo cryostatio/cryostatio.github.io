@@ -361,6 +361,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
+            - name: CRYOSTAT_AGENT_HOSTNAME
+              value: $(POD_IP)
             - name: CRYOSTAT_AGENT_CALLBACK
               # This infers the Agent Callback directly from the Pod's IP address using the
               # Kubernetes Downward API. Use this value directly as provided. The port number
