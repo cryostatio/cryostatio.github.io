@@ -7,5 +7,6 @@ vendor
 
 demo/node_modules/
 demo/.yarn/
+demo/.yarnrc.yml
 demo/.pnp.cjs
 web-client/dist/
