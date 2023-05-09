@@ -30,3 +30,9 @@ to install project dependencies.
 - `bundle exec jekyll serve --watch --livereload --open-url --future --config _config.yml,_config-dev.yml`
 
 This will start a local development server, open your default browser pointing to the local build on that server, with the server watching for project filesystem changes and hot-reloading the browser when changes are detected and rebuilt.
+
+### Updating Demo
+
+```bash
+$ bash build-demo.bash cryostat-v2.3
+```

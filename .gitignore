@@ -4,3 +4,8 @@ _site
 .jekyll-metadata
 vendor
 **/.DS_Store
+
+demo/node_modules/
+demo/.yarn/
+demo/.yarnrc.yml
+demo/.pnp.cjs
