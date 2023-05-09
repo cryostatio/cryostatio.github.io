@@ -189,7 +189,10 @@ createServer({
         toDisk: attrs.get("toDisk") || false,
         maxSize: attrs.get("maxSize") || 0,
         maxAge: attrs.get("maxAge") || 0,
-        metadata: { labels: { imaginary: true } },
+        metadata: { labels: {
+          'template.type': 'TARGET',
+          'template.name': 'Demo Template'
+        } },
       });
     });
     this.get(
@@ -370,7 +373,9 @@ createServer({
     this.get("/api/v2.2/credentials", () => ({ data: { result: [] } }));
 
     this.post("/api/v2.2/graphql", (schema, request) => {
-      var query = JSON.parse(request.requestBody).query.trim();
+      var body = JSON.parse(request.requestBody);
+      var query = body.query.trim();
+      var variables = body.variables;
       var begin = query.substring(0, query.indexOf("{"));
       var name = "unknown";
       for (var n of begin.split(" ")) {
@@ -402,6 +407,19 @@ createServer({
             },
           };
           break;
+        case "ActiveRecordingsForTarget":
+          data = {
+            targetNodes: [
+              {
+                recordings: {
+                  archived: {
+                    data: schema.archives.all().models,
+                  },
+                },
+              },
+            ],
+          };
+          break;
         case "ArchivedRecordingsForAutomatedAnalysis":
           data = {
             archivedRecordings: {
@@ -421,6 +439,98 @@ createServer({
               },
             ],
           };
+          break;
+        case "PostRecordingMetadata":
+          var labels = {};
+          for (var l of eval(variables.labels)) {
+            labels[l.key] = l.value;
+          }
+          schema.archives.findBy({ name: variables.recordingName }).update({
+            metadata: {
+              labels,
+            },
+          });
+          data = {
+            targetNodes: [
+              {
+                recordings: {
+                  archived: {
+                    data: [
+                      {
+                        doPutMetadata: {
+                          metadata: {
+                            labels,
+                          },
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          };
+          websocket.send(
+            JSON.stringify({
+              meta: {
+                category: "RecordingMetadataUpdated",
+                type: { type: "application", subType: "json" },
+                serverTime: +Date.now(),
+              },
+              message: {
+                recordingName: variables.recordingName,
+                target: variables.connectUrl,
+                metadata: {
+                  labels,
+                },
+              },
+            })
+          );
+          break;
+        case "PostActiveRecordingMetadata":
+          var labels = {};
+          for (var l of eval(variables.labels)) {
+            labels[l.key] = l.value;
+          }
+          schema.recordings.findBy({ name: variables.recordingName }).update({
+            metadata: {
+              labels,
+            },
+          });
+          data = {
+            targetNodes: [
+              {
+                recordings: {
+                  active: {
+                    data: [
+                      {
+                        doPutMetadata: {
+                          metadata: {
+                            labels,
+                          },
+                        },
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          };
+          websocket.send(
+            JSON.stringify({
+              meta: {
+                category: "RecordingMetadataUpdated",
+                type: { type: "application", subType: "json" },
+                serverTime: +Date.now(),
+              },
+              message: {
+                recordingName: variables.recordingName,
+                target: variables.connectUrl,
+                metadata: {
+                  labels,
+                },
+              },
+            })
+          );
           break;
         case "MBeanMXMetricsForTarget":
           data = {
