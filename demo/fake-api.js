@@ -175,7 +175,8 @@ createServer({
 
     this.post("/api/v1/targets/:targetId/recordings", (schema, request) => {
       let attrs = request.requestBody;
-      return schema.recordings.create({
+      var labels = JSON.parse(attrs.get("metadata")).labels;
+      var recording = schema.recordings.create({
         id: Math.floor(Math.random() * 1000),
         downloadUrl: "",
         reportUrl: `/api/beta/reports/${encodeURIComponent(
@@ -189,10 +190,13 @@ createServer({
         toDisk: attrs.get("toDisk") || false,
         maxSize: attrs.get("maxSize") || 0,
         maxAge: attrs.get("maxAge") || 0,
-        metadata: { labels: {
-          'template.type': 'TARGET',
-          'template.name': 'Demo Template'
-        } },
+        metadata: {
+          labels: {
+            ...labels,
+            "template.type": "TARGET",
+            "template.name": "Demo Template",
+          },
+        },
       });
       websocket.send(
         JSON.stringify({
