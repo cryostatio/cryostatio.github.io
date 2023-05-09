@@ -194,6 +194,20 @@ createServer({
           'template.name': 'Demo Template'
         } },
       });
+      websocket.send(
+        JSON.stringify({
+          meta: {
+            category: "ActiveRecordingCreated",
+            type: { type: "application", subType: "json" },
+            serverTime: +Date.now(),
+          },
+          message: {
+            target: request.params.targetId,
+            recording,
+          },
+        })
+      );
+      return recording;
     });
     this.get(
       "/api/v1/targets/:targetId/recordings",
