@@ -15,9 +15,9 @@ Core JFR functionality is not available in this stubbed out demo, but you can us
   </div>
   <iframe
     id="demo-frame"
+    class="demo-iframe"
     src="{{ "/assets/demo/site/index.html" | relative_url }}"
-    style="opacity: 0; max-width: initial !important; width: 99%; height: 54em; margin: 0px 10px 0px 10px; border: none">
-  </iframe>
+    ></iframe>
 </div>
 <script>
     var loading = document.getElementById("loading");

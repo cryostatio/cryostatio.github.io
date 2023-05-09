@@ -11,3 +11,13 @@
     clip-path: inset(0 -34% 0 0)
   }
 }
+
+.demo-iframe {
+  opacity: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 50em;
+  scale: 0.98;
+  border: 1px solid;
+  border-radius: 4px;
+}
