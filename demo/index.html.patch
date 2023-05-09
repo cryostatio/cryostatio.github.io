@@ -1,0 +1,19 @@
+diff --git a/assets/demo/site/index.html b/assets/demo/site/index.html
+index 186d189..93f885d 100644
+--- a/assets/demo/site/index.html
++++ b/assets/demo/site/index.html
+@@ -7,6 +7,14 @@
+     <meta name="viewport" content="width=device-width,initial-scale=1" />
+     <base href="/" />
+     <link rel="icon" href="/assets/demo/site/favicon.ico" />
++    <script
++      type="module"
++      src="/demo/fake-api.js"
++    ></script>
++    <script
++      type="module"
++      src="/demo/history.js"
++    ></script>
+     <script
+       defer="defer"
+       src="/assets/demo/site/runtime.426a4607a36ae108.bundle.js"
