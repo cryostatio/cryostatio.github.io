@@ -55,7 +55,7 @@ createServer({
     this.timing = 0;
 
     this.get("/health", () => ({
-      cryostatVersion: "v2.3.0-live-demo",
+      cryostatVersion: "v2.3.0-0-livedemo",
       dashboardAvailable: false,
       dashboardConfigured: false,
       datasourceAvailable: false,
