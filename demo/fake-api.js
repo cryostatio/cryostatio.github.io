@@ -272,6 +272,10 @@ createServer({
             websocket.send(JSON.stringify(msg));
             break;
           case "SAVE":
+            let archived = schema.archives.create({
+              ...recording.models[0].attrs,
+              size: Math.ceil(Math.random() * 1000000),
+            });
             msg = {
               meta: {
                 category: "ActiveRecordingSaved",
@@ -279,16 +283,11 @@ createServer({
                 serverTime: +Date.now(),
               },
               message: {
-                recording: {
-                  ...recording.models[0].attrs,
-                  size: Math.ceil(Math.random() * 1000000),
-                  archivedTime: +Date.now(),
-                },
+                recording: archived,
                 target: request.params.targetId,
               },
             };
             websocket.send(JSON.stringify(msg));
-            schema.archives.create(recording.models[0].attrs);
             break;
         }
         return new Response(200);
