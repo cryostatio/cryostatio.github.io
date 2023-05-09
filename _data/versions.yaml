@@ -1,5 +1,9 @@
 cryostat:
   version: 2.3.0
+openshift:
+  version: '4.10'
+kubernetes:
+  version: '1.19'
 documentation:
   - 'latest'
   - 2.2.0
