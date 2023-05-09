@@ -1,9 +1,13 @@
-.linear-dot-spinner{
-    width: 2em;
-    aspect-ratio: 4;
-    background: radial-gradient(circle closest-side, #73BCF7 90%,#0000) 0/calc(100%/3) 100% space;
-    clip-path: inset(0 100% 0 0);
-    animation: linear-dot-spinner-animate 1s steps(4) infinite;
+.linear-dot-spinner {
+  width: 2em;
+  aspect-ratio: 4;
+  background: radial-gradient(circle closest-side, #73BCF7 90%, #0000) 0/calc(100%/3) 100% space;
+  clip-path: inset(0 100% 0 0);
+  animation: linear-dot-spinner-animate 1s steps(4) infinite;
 }
 
-@keyframes linear-dot-spinner-animate {to {clip-path: inset(0 -34% 0 0)}}
+@keyframes linear-dot-spinner-animate {
+  to {
+    clip-path: inset(0 -34% 0 0)
+  }
+}
