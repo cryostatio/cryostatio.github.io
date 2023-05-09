@@ -9,9 +9,8 @@ Core JFR functionality is not available in this stubbed out demo, but you can us
 
 <div style="position: relative;">
   <div
-    id="loading"
     style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; align-items: center; display: flex; justify-content: center">
-      Demo loading...
+      <div id="loading" aria-label="Loading demo" class="linear-dot-spinner"></div>
   </div>
   <iframe
     id="demo-frame"
