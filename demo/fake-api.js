@@ -5,11 +5,11 @@ import {
 } from "https://cdn.jsdelivr.net/npm/miragejs@0.1.47/+esm";
 import { Server } from "https://cdn.jsdelivr.net/npm/mock-socket@9.2.1/+esm";
 
-var wsUrl =
+let wsUrl =
   (window.location.protocol === "https:" ? "wss" : "ws") +
   "://cryostat-demo.local:8181/fake";
-var wsServer = new Server(wsUrl);
-var websocket;
+let wsServer = new Server(wsUrl);
+let websocket;
 wsServer.on("connection", (socket) => {
   websocket = socket;
   socket.on("message", (_) => {
@@ -152,10 +152,10 @@ createServer({
     this.delete(
       "/api/beta/recordings/:targetId/:recordingName",
       (schema, request) => {
-        var recordingName = request.params.recordingName;
-        var recording = schema.archives.where({ name: recordingName });
+        let recordingName = request.params.recordingName;
+        let recording = schema.archives.where({ name: recordingName });
         schema.archives.findBy({ name: recordingName }).destroy();
-        var msg = {
+        let msg = {
           meta: {
             category: "ArchivedRecordingDeleted",
             type: { type: "application", subType: "json" },
@@ -175,8 +175,8 @@ createServer({
 
     this.post("/api/v1/targets/:targetId/recordings", (schema, request) => {
       let attrs = request.requestBody;
-      var labels = JSON.parse(attrs.get("metadata")).labels;
-      var recording = schema.recordings.create({
+      let labels = JSON.parse(attrs.get("metadata")).labels;
+      let recording = schema.recordings.create({
         id: Math.floor(Math.random() * 1000),
         downloadUrl: "",
         reportUrl: `/api/beta/reports/${encodeURIComponent(
@@ -220,10 +220,10 @@ createServer({
     this.delete(
       "/api/v1/targets/:targetId/recordings/:recordingName",
       (schema, request) => {
-        var recordingName = request.params.recordingName;
-        var recording = schema.recordings.where({ name: recordingName });
+        let recordingName = request.params.recordingName;
+        let recording = schema.recordings.where({ name: recordingName });
         schema.recordings.findBy({ name: recordingName }).destroy();
-        var msg = {
+        let msg = {
           meta: {
             category: "ActiveRecordingDeleted",
             type: { type: "application", subType: "json" },
@@ -243,13 +243,14 @@ createServer({
     this.patch(
       "/api/v1/targets/:targetId/recordings/:recordingName",
       (schema, request) => {
-        var body = request.requestBody;
-        var recordingName = request.params.recordingName;
-        var recording = schema.recordings.where({ name: recordingName });
+        let body = request.requestBody;
+        let recordingName = request.params.recordingName;
+        let recording = schema.recordings.where({ name: recordingName });
+        let msg = {};
         switch (body) {
           case "STOP":
             recording.update({ state: "STOPPED" });
-            var msg = {
+            msg = {
               meta: {
                 category: "ActiveRecordingStopped",
                 type: { type: "application", subType: "json" },
@@ -265,7 +266,7 @@ createServer({
             websocket.send(JSON.stringify(msg));
             break;
           case "SAVE":
-            var msg = {
+            msg = {
               meta: {
                 category: "ActiveRecordingSaved",
                 type: { type: "application", subType: "json" },
@@ -391,12 +392,12 @@ createServer({
     this.get("/api/v2.2/credentials", () => ({ data: { result: [] } }));
 
     this.post("/api/v2.2/graphql", (schema, request) => {
-      var body = JSON.parse(request.requestBody);
-      var query = body.query.trim();
-      var variables = body.variables;
-      var begin = query.substring(0, query.indexOf("{"));
-      var name = "unknown";
-      for (var n of begin.split(" ")) {
+      let body = JSON.parse(request.requestBody);
+      let query = body.query.trim();
+      let variables = body.variables;
+      let begin = query.substring(0, query.indexOf("{"));
+      let name = "unknown";
+      for (let n of begin.split(" ")) {
         if (n == "{") {
           break;
         }
@@ -459,8 +460,8 @@ createServer({
           };
           break;
         case "PostRecordingMetadata":
-          var labels = {};
-          for (var l of eval(variables.labels)) {
+          let labels = {};
+          for (let l of eval(variables.labels)) {
             labels[l.key] = l.value;
           }
           schema.archives.findBy({ name: variables.recordingName }).update({
@@ -505,8 +506,8 @@ createServer({
           );
           break;
         case "PostActiveRecordingMetadata":
-          var labels = {};
-          for (var l of eval(variables.labels)) {
+          labels = {};
+          for (let l of eval(variables.labels)) {
             labels[l.key] = l.value;
           }
           schema.recordings.findBy({ name: variables.recordingName }).update({
