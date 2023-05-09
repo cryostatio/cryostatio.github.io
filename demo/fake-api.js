@@ -148,7 +148,13 @@ createServer({
       },
     }));
     this.get("/api/v1/recordings", (schema) => schema.archives.all().models);
-    this.get("/api/beta/fs/recordings", () => []);
+    this.get("/api/beta/fs/recordings", (schema) => [
+      {
+        connectUrl: schema.targets.all().models[0].attrs.connectUrl,
+        jvmId: schema.targets.all().models[0].attrs.jvmId,
+        recordings: schema.archives.all().models,
+      },
+    ]);
     this.delete(
       "/api/beta/recordings/:targetId/:recordingName",
       (schema, request) => {
