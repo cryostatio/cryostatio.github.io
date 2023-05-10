@@ -195,14 +195,14 @@ curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.exa
 
 In non-OpenShift environments, Cryostat will default to no authentication.
 Access to the web application and the HTTP API will be unsecured. You should
-either configure Cryostat's built-in Basic authentication system, or better,
+either configure Cryostat's built-in `Basic` authentication system, or better,
 place an authenticating reverse proxy server in front of Cryostat so that
 accesses to the Cryostat application must first pass through the reverse
 proxy. The configuration of a reverse proxy is out of scope of this guide.
 
 ##### [Basic Auth](#basic-auth)
 
-Cryostat includes a very rudimentary HTTP Basic authentication implementation.
+Cryostat includes a very rudimentary HTTP `Basic` authentication implementation.
 This can be configured by creating a `cryostat-users.properties` file in the
 Cryostat server `conf` directory, defined by the environment variable
 `CRYOSTAT_CONFIG_PATH` and defaulting to `/opt/cryostat.d/conf.d`.
@@ -216,7 +216,7 @@ user2=def987
 ```
 Where `abc123` and `def987` are substituted for the SHA-256 sum hexes of the
 desired user passwords. These can be obtained by ex.
-`echo -n PASS | sha256sum | cut -d' ' -f1`. The Basic user credentials `user:pass`
+`echo -n PASS | sha256sum | cut -d' ' -f1`. The `Basic` user credentials `user:pass`
 would therefore be entered as
 `user:d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1`.
 
