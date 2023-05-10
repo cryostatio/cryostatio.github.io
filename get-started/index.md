@@ -187,7 +187,9 @@ For direct access to the Cryostat HTTP API you may follow the same pattern.
 Using a client such as `curl`, an OpenShift auth token can be passed with
 requests using the `Authorization: Bearer` header. The token must be base64
 encoded. For example,
-`curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets`.
+```
+curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
+```
 
 #### [Other Platforms Authentication](#other-platforms-authentication)
 
