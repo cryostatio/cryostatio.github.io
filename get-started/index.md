@@ -62,7 +62,7 @@ the specifics of how to deploy your Cryostat instance. Continue to [Setup](#setu
 Note: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
 ## [Setup](#setup)
 
-### Deploying Cryostat
+### [Deploying Cryostat](#deploying-cryostat)
 Create a `Cryostat` object to deploy and set up Cryostat in the `cryostat-operator-system` namespace. For
 full details on how to configure the Cryostat deployment, see
 [Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md). 
@@ -116,7 +116,7 @@ Then apply the resource:
 $ kubectl apply -f cryostat.yaml
 ```
 
-### Deploy an Application
+### [Deploy an Application](#deploy-an-application)
 For demo purposes, let's go ahead and deploy a sample application to our
 OpenShift cluster in the same namespace as our Cryostat instance. If you have
 deployed Cryostat into a namespace where you are already running other
@@ -156,12 +156,12 @@ We can also find the URL using `oc`:
 $ oc get cryostat -o jsonpath='{$.items[0].status.applicationUrl}'
 ```
 
-### Authenticate through Cryostat
+### [Authenticate through Cryostat](#authenticate-through-cryostat)
 
-#### OpenShift
+#### [OpenShift Authentication](#openshift-authentication)
 When deployed in OpenShift, Cryostat will use the existing internal cluster
 authentication system to ensure all requests come from users with correct
-access to the namespace.
+access to the Cryostat instance and the namespace that it is deployed within.
 
 {% include howto_step.html
   details-attributes="open"
@@ -177,22 +177,54 @@ Once you have authenticated through the cluster's SSO login you will be
 redirected back to the Cryostat web application. The redirect URL contains
 an access token for Cryostat's service account with the permissions you have
 granted to it. This access token will eventually expire and you will be
-required to log back in on the cluster SSO login page.
+required to log back in on the cluster SSO login page. The Cryostat
+web application passes this OpenShift token back to the Cryostat server
+on each request using `Bearer` authorization headers. The Cryostat server
+forwards this token back to the OpenShift auth server on each client
+request to check the token authorization for the current request.
 
-#### Kubernetes
+For direct access to the Cryostat HTTP API you may follow the same pattern.
+Using a client such as `curl`, an OpenShift auth token can be passed with
+requests using the `Authorization: Bearer` header. The token must be base64
+encoded. For example,
+`curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets`.
 
-When deployed in other Kubernetes environments, Cryostat will use a Bearer
-Token authentication scheme. This will require you to paste in an access token
-for Cryostat to use when making Kubernetes API requests. You may create and
-configure a separate Service Account for Cryostat to use for this purpose, or
-you may simply use an access token from your own user account.
+#### [Other Platforms Authentication](#other-platforms-authentication)
 
-[comment]: FIXME This token auth page contains outdated nav drawer and masthead.
-{% include howto_step.html
-  details-attributes="open"
-  summary="OpenShift SSO Login"
-  image-name="token-auth-page.png"
-%}
+In non-OpenShift environments, Cryostat will default to no authentication.
+Access to the web application and the HTTP API will be unsecured. You should
+either configure Cryostat's built-in Basic authentication system, or better,
+place an authenticating reverse proxy server in front of Cryostat so that
+accesses to the Cryostat application must first pass through the reverse
+proxy. The configuration of a reverse proxy is out of scope of this guide.
+
+##### [Basic Auth](#basic-auth)
+
+Cryostat includes a very rudimentary HTTP Basic authentication implementation.
+This can be configured by creating a `cryostat-users.properties` file in the
+Cryostat server `conf` directory, defined by the environment variable
+`CRYOSTAT_CONFIG_PATH` and defaulting to `/opt/cryostat.d/conf.d`.
+The credentials stored in the Java properties file are the user name and a
+SHA-256 sum hex of the user's password. The property file contents should look
+like:
+
+```
+user1=abc123
+user2=def987
+```
+Where `abc123` and `def987` are substituted for the SHA-256 sum hexes of the
+desired user passwords. These can be obtained by ex.
+`echo -n PASS | sha256sum | cut -d' ' -f1`. The Basic user credentials `user:pass`
+would therefore be entered as
+`user:d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1`.
+
+This mechanism only supports fully-privileged user definitions, authorized to
+perform any action within the Cryostat API.
+
+Once the `cryostat-users.properties` file defining the user credentials is
+created, the environment variable `CRYOSTAT_AUTH_MANAGER` should be set
+to the value `io.cryostat.net.BasicAuthManager` to enable the corresponding
+auth implementation.
 
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed Cryostat and know how to access its
