@@ -65,7 +65,173 @@ the specifics of how to deploy your Cryostat instance. Continue to [Setup](#setu
 **Note**: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
 ## [Setup](#setup)
 
-### [Configuring Applications](#configuring-applications)
+### [Deploying Cryostat](#deploying-cryostat)
+Create a `Cryostat` object to deploy and set up Cryostat in the `cryostat-operator-system` namespace. For
+full details on how to configure the Cryostat deployment, see
+[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md). 
+
+If running Cryostat on Kubernetes, you will also need to add Ingress configurations to your Cryostat resource.
+See the [Network Options](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md#network-options) section of Configuring Cryostat for examples.
+
+You can create the resource graphically in the OperatorHub UI after following [Install via OperatorHub](#install-via-operatorhub):
+
+{% include howto_step.html
+  details-attributes="open"
+  summary="Installed Operators View"
+  image-name="installed-operators.png"
+%}
+{% include howto_step.html
+  summary="Cryostat Resources Before"
+  image-name="cryostat-resources-before.png"
+%}
+{% include howto_step.html
+  summary="Cryostat Resource Creation"
+  image-name="cryostat-resource-creation.png"
+%}
+{% include howto_step.html
+  summary="Cryostat Resources After"
+  image-name="cryostat-resources-after.png"
+%}
+
+You can also create the resource manually using a YAML definition like the following:
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta1
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+spec:
+  minimal: false
+  enableCertManager: true
+  trustedCertSecrets: []
+  eventTemplates: []
+  storageOptions:
+    pvc:
+      labels: {}
+      annotations: {}
+      spec: {}
+  reportOptions:
+    replicas: 0
+```
+
+Then apply the resource:
+```
+$ kubectl apply -f cryostat.yaml
+```
+
+### [Open the Cryostat Web UI](#open-the-cryostat-web-ui)
+Let's visit the Cryostat web dashboard UI.
+
+We can get there from the Cryostat resource's Status field:
+
+{% include howto_step.html
+  details-attributes="open"
+  summary="Cryostat Resource Status"
+  image-name="cryostat-resource-status.png"
+%}
+
+Or, we can open the application link from the Topology view:
+
+{% include howto_step.html
+  details-attributes="open"
+  summary="Topology View"
+  image-name="topology-view.png"
+%}
+
+We can also find the URL using `oc`:
+```bash
+$ oc get cryostat -o jsonpath='{$.items[0].status.applicationUrl}'
+```
+
+#### [Authenticate through Cryostat](#authenticate-through-cryostat)
+
+##### [OpenShift Authentication](#openshift-authentication)
+When deployed in OpenShift, Cryostat will use the existing internal cluster
+authentication system to ensure all requests come from users with correct
+access to the Cryostat instance and the namespace that it is deployed within.
+
+{% include howto_step.html
+  details-attributes="open"
+  summary="OpenShift SSO Login"
+  image-name="sso-auth-page.png"
+%}
+{% include howto_step.html
+  details-attributes="open"
+  summary="OpenShift Service Account Permissions"
+  image-name="permissions-auth-page.png"
+%}
+Once you have authenticated through the cluster's SSO login you will be
+redirected back to the Cryostat web application. The redirect URL contains
+an access token for Cryostat's service account with the permissions you have
+granted to it. The Cryostat web application passes this OpenShift token back
+to the Cryostat server on each request using `Bearer` authorization headers.
+The Cryostat server forwards this token back to the OpenShift auth server on
+each client request to check the token authorization for the current request.
+This access token will eventually expire and you will be required to log back
+in on the cluster SSO login page.
+
+For direct access to the Cryostat HTTP API you may follow the same pattern.
+Using a client such as `curl`, an OpenShift auth token can be passed with
+requests using the `Authorization: Bearer` header. The token must be base64
+encoded. For example,
+```
+curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
+```
+
+##### [Other Platforms Authentication](#other-platforms-authentication)
+
+In non-OpenShift environments, Cryostat will default to no authentication.
+Access to the web application and the HTTP API will be unsecured. You should
+either configure Cryostat's built-in `Basic` authentication system, or better,
+place an authenticating reverse proxy server in front of Cryostat so that
+accesses to the Cryostat application must first pass through the reverse
+proxy. The configuration of a reverse proxy is out of scope of this guide.
+
+###### [Basic Auth](#basic-auth)
+
+Cryostat includes a very rudimentary HTTP `Basic` authentication implementation.
+This can be configured by creating a `cryostat-users.properties` file in the
+Cryostat server `conf` directory, defined by the environment variable
+`CRYOSTAT_CONFIG_PATH` and defaulting to `/opt/cryostat.d/conf.d`.
+The credentials stored in the Java properties file are the user name and a
+SHA-256 sum hex of the user's password. The property file contents should look
+like:
+
+```
+user1=abc123
+user2=def987
+```
+Where `abc123` and `def987` are substituted for the SHA-256 sum hexes of the
+desired user passwords. These can be obtained by ex.
+`echo -n PASS | sha256sum | cut -d' ' -f1`. The `Basic` user credentials `user:pass`
+would therefore be entered as
+`user:d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1`.
+
+This mechanism only supports fully-privileged user definitions, authorized to
+perform any action within the Cryostat API.
+
+Once the `cryostat-users.properties` file defining the user credentials is
+created, the environment variable `CRYOSTAT_AUTH_MANAGER` should be set
+to the value `io.cryostat.net.BasicAuthManager` to enable the corresponding
+auth implementation.
+
+### [Deploy an Application](#deploy-an-application)
+For demo purposes, let's go ahead and deploy a sample application to our
+OpenShift cluster in the same namespace as our Cryostat instance. If you have
+deployed Cryostat into a namespace where you are already running other
+applications, feel free to [continue to the next step](#open-the-cryostat-web-ui).
+
+```bash
+$ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.10
+$ oc patch svc/quarkus-test -p '{"spec":{"$setElementOrder/ports":[{"port":9097},{"port":8080}],"ports":[{"name":"jfr-jmx","port":9097}]}}'
+```
+
+This is a Quarkus container in JVM mode with JMX enabled and pre-configured to
+listen on port 9097.  After deploying the container we patch its service to
+name the 9097 service port `jfr-jmx`. Cryostat will detect and use this port
+to determine that this is a compatible Java application that it should monitor.
+
+#### [Configuring Applications](#configuring-applications)
 There are three methods of configuring your Java applications so that Cryostat is able to discover and monitor them:
 
 1. [using the Cryostat Agent for discovery and connectivity](#using-the-cryostat-agent)
@@ -75,7 +241,7 @@ There are three methods of configuring your Java applications so that Cryostat i
 The following sections will briefly explain how to accomplish each of these approaches by example. For simplicity the examples will assume your application
 is built with Maven, packaged into an image with a `Dockerfile`, and running in Kubernetes, but the instructions will be similar for other toolchains and platforms as well.
 
-#### [Using the Cryostat Agent](#using-the-cryostat-agent)
+##### [Using the Cryostat Agent](#using-the-cryostat-agent)
 
 [The Cryostat Agent](/guides/#using-the-cryostat-agent)
 is compatible with Cryostat versions 2.3.0 and newer, and application JDKs 11 and newer. If you are using an older version of Cryostat, we recommend upgrading to ensure compatibility.
@@ -214,7 +380,7 @@ spec:
 
 More details about the configuration options for the Cryostat Agent [are available here](https://github.com/cryostatio/cryostat-agent/blob/main/README.md#configuration).
 
-#### [Using JMX](#using-jmx)
+##### [Using JMX](#using-jmx)
 Cryostat is also able to use Java Management Extensions (JMX) to communicate with target applications. This is a standard JDK feature that can be enabled by passing JVM
 flags to your application at startup. A basic and insecure setup suitable for testing requires only the following three flags:
 
@@ -273,7 +439,7 @@ Cryostat queries the Kubernetes API server and looks for `Service`s with a port 
 must be met or else Cryostat will not automatically detect your application. In this case you may wish to use the [Cryostat Agent](#using-the-cryostat-agent-with-jmx)
 to enable discovery, while keeping communications over JMX rather than HTTP.
 
-#### [Using the Cryostat Agent with JMX](#using-the-cryostat-agent-with-jmx)
+##### [Using the Cryostat Agent with JMX](#using-the-cryostat-agent-with-jmx)
 The two prior sections have discussed:
   - How to use the Cryostat Agent to do application discovery and expose data over HTTP.
   - How to use Kubernetes `Service` configurations for discovery and JMX to expose data.
@@ -408,172 +574,6 @@ spec:
       targetPort: 9977
 ...
 ```
-
-### [Deploying Cryostat](#deploying-cryostat)
-Create a `Cryostat` object to deploy and set up Cryostat in the `cryostat-operator-system` namespace. For
-full details on how to configure the Cryostat deployment, see
-[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md). 
-
-If running Cryostat on Kubernetes, you will also need to add Ingress configurations to your Cryostat resource.
-See the [Network Options](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md#network-options) section of Configuring Cryostat for examples.
-
-You can create the resource graphically in the OperatorHub UI after following [Install via OperatorHub](#install-via-operatorhub):
-
-{% include howto_step.html
-  details-attributes="open"
-  summary="Installed Operators View"
-  image-name="installed-operators.png"
-%}
-{% include howto_step.html
-  summary="Cryostat Resources Before"
-  image-name="cryostat-resources-before.png"
-%}
-{% include howto_step.html
-  summary="Cryostat Resource Creation"
-  image-name="cryostat-resource-creation.png"
-%}
-{% include howto_step.html
-  summary="Cryostat Resources After"
-  image-name="cryostat-resources-after.png"
-%}
-
-You can also create the resource manually using a YAML definition like the following:
-
-```yaml
-apiVersion: operator.cryostat.io/v1beta1
-kind: Cryostat
-metadata:
-  name: cryostat-sample
-spec:
-  minimal: false
-  enableCertManager: true
-  trustedCertSecrets: []
-  eventTemplates: []
-  storageOptions:
-    pvc:
-      labels: {}
-      annotations: {}
-      spec: {}
-  reportOptions:
-    replicas: 0
-```
-
-Then apply the resource:
-```
-$ kubectl apply -f cryostat.yaml
-```
-
-### [Deploy an Application](#deploy-an-application)
-For demo purposes, let's go ahead and deploy a sample application to our
-OpenShift cluster in the same namespace as our Cryostat instance. If you have
-deployed Cryostat into a namespace where you are already running other
-applications, feel free to [continue to the next step](#open-the-cryostat-web-ui).
-
-```bash
-$ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.10
-$ oc patch svc/quarkus-test -p '{"spec":{"$setElementOrder/ports":[{"port":9097},{"port":8080}],"ports":[{"name":"jfr-jmx","port":9097}]}}'
-```
-
-This is a Quarkus container in JVM mode with JMX enabled and pre-configured to
-listen on port 9097.  After deploying the container we patch its service to
-name the 9097 service port `jfr-jmx`. Cryostat will detect and use this port
-to determine that this is a compatible Java application that it should monitor.
-
-### [Open the Cryostat Web UI](#open-the-cryostat-web-ui)
-Let's visit the Cryostat web dashboard UI.
-
-We can get there from the Cryostat resource's Status field:
-
-{% include howto_step.html
-  details-attributes="open"
-  summary="Cryostat Resource Status"
-  image-name="cryostat-resource-status.png"
-%}
-
-Or, we can open the application link from the Topology view:
-
-{% include howto_step.html
-  details-attributes="open"
-  summary="Topology View"
-  image-name="topology-view.png"
-%}
-
-We can also find the URL using `oc`:
-```bash
-$ oc get cryostat -o jsonpath='{$.items[0].status.applicationUrl}'
-```
-
-### [Authenticate through Cryostat](#authenticate-through-cryostat)
-
-#### [OpenShift Authentication](#openshift-authentication)
-When deployed in OpenShift, Cryostat will use the existing internal cluster
-authentication system to ensure all requests come from users with correct
-access to the Cryostat instance and the namespace that it is deployed within.
-
-{% include howto_step.html
-  details-attributes="open"
-  summary="OpenShift SSO Login"
-  image-name="sso-auth-page.png"
-%}
-{% include howto_step.html
-  details-attributes="open"
-  summary="OpenShift Service Account Permissions"
-  image-name="permissions-auth-page.png"
-%}
-Once you have authenticated through the cluster's SSO login you will be
-redirected back to the Cryostat web application. The redirect URL contains
-an access token for Cryostat's service account with the permissions you have
-granted to it. The Cryostat web application passes this OpenShift token back
-to the Cryostat server on each request using `Bearer` authorization headers.
-The Cryostat server forwards this token back to the OpenShift auth server on
-each client request to check the token authorization for the current request.
-This access token will eventually expire and you will be required to log back
-in on the cluster SSO login page.
-
-For direct access to the Cryostat HTTP API you may follow the same pattern.
-Using a client such as `curl`, an OpenShift auth token can be passed with
-requests using the `Authorization: Bearer` header. The token must be base64
-encoded. For example,
-```
-curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
-```
-
-#### [Other Platforms Authentication](#other-platforms-authentication)
-
-In non-OpenShift environments, Cryostat will default to no authentication.
-Access to the web application and the HTTP API will be unsecured. You should
-either configure Cryostat's built-in `Basic` authentication system, or better,
-place an authenticating reverse proxy server in front of Cryostat so that
-accesses to the Cryostat application must first pass through the reverse
-proxy. The configuration of a reverse proxy is out of scope of this guide.
-
-##### [Basic Auth](#basic-auth)
-
-Cryostat includes a very rudimentary HTTP `Basic` authentication implementation.
-This can be configured by creating a `cryostat-users.properties` file in the
-Cryostat server `conf` directory, defined by the environment variable
-`CRYOSTAT_CONFIG_PATH` and defaulting to `/opt/cryostat.d/conf.d`.
-The credentials stored in the Java properties file are the user name and a
-SHA-256 sum hex of the user's password. The property file contents should look
-like:
-
-```
-user1=abc123
-user2=def987
-```
-Where `abc123` and `def987` are substituted for the SHA-256 sum hexes of the
-desired user passwords. These can be obtained by ex.
-`echo -n PASS | sha256sum | cut -d' ' -f1`. The `Basic` user credentials `user:pass`
-would therefore be entered as
-`user:d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1`.
-
-This mechanism only supports fully-privileged user definitions, authorized to
-perform any action within the Cryostat API.
-
-Once the `cryostat-users.properties` file defining the user credentials is
-created, the environment variable `CRYOSTAT_AUTH_MANAGER` should be set
-to the value `io.cryostat.net.BasicAuthManager` to enable the corresponding
-auth implementation.
 
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed Cryostat and know how to access its
