@@ -176,12 +176,12 @@ access to the Cryostat instance and the namespace that it is deployed within.
 Once you have authenticated through the cluster's SSO login you will be
 redirected back to the Cryostat web application. The redirect URL contains
 an access token for Cryostat's service account with the permissions you have
-granted to it. This access token will eventually expire and you will be
-required to log back in on the cluster SSO login page. The Cryostat
-web application passes this OpenShift token back to the Cryostat server
-on each request using `Bearer` authorization headers. The Cryostat server
-forwards this token back to the OpenShift auth server on each client
-request to check the token authorization for the current request.
+granted to it. The Cryostat web application passes this OpenShift token back
+to the Cryostat server on each request using `Bearer` authorization headers.
+The Cryostat server forwards this token back to the OpenShift auth server on
+each client request to check the token authorization for the current request.
+This access token will eventually expire and you will be required to log back
+in on the cluster SSO login page.
 
 For direct access to the Cryostat HTTP API you may follow the same pattern.
 Using a client such as `curl`, an OpenShift auth token can be passed with
