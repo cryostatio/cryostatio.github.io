@@ -123,13 +123,13 @@ deployed Cryostat into a namespace where you are already running other
 applications, feel free to continue to the next step.
 
 ```bash
-$ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.2
-$ oc patch svc/quarkus-test -p '{"spec":{"$setElementOrder/ports":[{"port":9096},{"port":9999}],"ports":[{"name":"jfr-jmx","port":9096}]}}'
+$ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.10
+$ oc patch svc/quarkus-test -p '{"spec":{"$setElementOrder/ports":[{"port":9097},{"port":8080}],"ports":[{"name":"jfr-jmx","port":9097}]}}'
 ```
 
 This is a Quarkus container in JVM mode with JMX enabled and pre-configured to
-listen on port 9096.  After deploying the container we patch its service to
-name the 9096 service port `jfr-jmx`. Cryostat will detect and use this port
+listen on port 9097.  After deploying the container we patch its service to
+name the 9097 service port `jfr-jmx`. Cryostat will detect and use this port
 to determine that this is a compatible Java application that it should monitor.
 
 ### Open the Cryostat Web UI
