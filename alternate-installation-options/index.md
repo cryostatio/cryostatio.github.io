@@ -21,7 +21,7 @@ $ kubectl apply -k 'github.com/cryostatio/cryostat-operator//config/default?ref=
 ```
 
 ### Install with operator bundle
-1. Download [Operator SDK](https://github.com/operator-framework/operator-sdk/releases/tag/v1.5.2) >= 1.5.2
+1. Download [Operator SDK](https://github.com/operator-framework/operator-sdk/releases/tag/v{{ site.data.versions.operator-sdk.version }}) >= {{ site.data.versions.operator-sdk.version }}
 2. Install Operator Lifecycle Manager into your cluster, if not already present.
     ```
     $ operator-sdk olm install

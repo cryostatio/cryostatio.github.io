@@ -4,6 +4,8 @@ openshift:
   version: '4.10'
 kubernetes:
   version: '1.19'
+operator-sdk:
+  version: '1.28.0'
 documentation:
   - 'latest'
   - 2.2.0
