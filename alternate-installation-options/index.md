@@ -17,13 +17,13 @@ The recommended method to install the Cryostat Operator is via OperatorHub on th
 
 Once the operator is installed, proceed to the [Setup](/get-started#setup) section of the Get Started page.
 
-### Install with kubectl
+### [Install with kubectl](#install-with-kubectl)
 ```
 $ kubectl create namespace cryostat-operator-system
 $ kubectl apply -k 'github.com/cryostatio/cryostat-operator//config/default?ref=v{{ site.data.versions.cryostat.version }}'
 ```
 
-### Install with operator bundle
+### [Install with operator bundle](#install-with-operator-bundle)
 1. Download [Operator SDK](https://github.com/operator-framework/operator-sdk/releases/tag/v{{ site.data.versions.operator-sdk.version }}) >= {{ site.data.versions.operator-sdk.version }}
 2. Install Operator Lifecycle Manager into your cluster, if not already present.
     ```
@@ -35,13 +35,13 @@ $ kubectl apply -k 'github.com/cryostatio/cryostat-operator//config/default?ref=
     ```
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
-Follow steps 1 and 2 in the [Uninstalling Cryostat Operator](/get-started#uninstalling-cryostat-operator) section of the Get Started page. At step 3, run the following instead:
+Follow step 1 in the [Uninstalling Cryostat Operator](/get-started#uninstalling-cryostat-operator) section of the Get Started page. At step 2, run the following instead:
 
-### Uninstall with kubectl
+### [Uninstall with kubectl](#uninstall-with-kubectl)
 ```
 $ kubectl delete -k github.com/cryostatio/cryostat-operator//config/default?ref=v{{ site.data.versions.cryostat.version }}
 ```
-### Uninstall with operator bundle
+### [Uninstall with operator bundle](#uninstall-with-operator-bundle)
 ```
 $ operator-sdk cleanup cryostat-operator
 ```
