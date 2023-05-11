@@ -8,6 +8,9 @@ layout: default
 {:.cryostat-heading-1}
 Cryostat {{ site.data.versions.cryostat.version }}
 
+* auto-gen TOC:
+{:toc}
+
 ## [Alternate Installation Options](#alternate-installation-options)
 
 The recommended method to install the Cryostat Operator is via OperatorHub on the [Get Started](/get-started) page. If needed, see below for alternative methods to install the Cryostat Operator. All of the installation options require [cert-manager](/get-started#install-cert-manager) as a prerequisite.
