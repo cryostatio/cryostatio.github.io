@@ -591,33 +591,10 @@ web client, continue on to [Guides]({% link guides/index.md %}) for
 guides through various common actions and workflows.
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
-In order to ensure that objects created by the Operator and recordings created
-by Cryostat are properly removed, the Cryostat Operator must remain installed
-when attempting to delete the `Cryostat` or `ClusterCryostat` Custom Resources.
-
-To completely remove Cryostat and all objects created by it:
-1. Delete the `Cryostat` or `ClusterCryostat` custom resources (`CR`s) and
-    custom resource definitions (`CRD`s).
-    - If the Cryostat Operator has already been uninstalled, please reinstall it
-      before deleting the `Cryostat` or `ClusterCryostat` `CR`s and `CRD`s.
-2. Uninstall the Cryostat Operator. You may do this graphically via `OperatorHub`,
-or by deleting the associated resources:
-```yaml
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-    name: operatorgroup
-    spec: targetNamespaces:
-        - myapps
-        - mycryostat
----
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
-metadata:
-    name: my-cryostat-operator
-    spec:
-        channel: stable
-        name: cryostat-operator
-        source: operatorhubio-catalog
-        sourceNamespace: olm
-```
+Reference [Operator Lifecycle Manager's](https://olm.operatorframework.io/docs/tasks/uninstall-operator/#combine-steps-2-and-3)
+guide on uninstalling Operators. Please be sure to delete all `Cryostat` and `ClusterCryostat` Custom Resources before
+uninstalling the Cryostat Operator.
+- If your Cryostat Operator was installed in **All Namespaces** mode then its `ClusterServiceVersion` and `Subscription`
+can be found in the `Namespace` `openshift-operators`.
+- If your Cryostat Operator was installed in **A specific Namespace** then the `ClusterServiceVersion` and
+`Subscription` will be in that same `Namespace.`
