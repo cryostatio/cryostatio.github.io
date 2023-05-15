@@ -58,7 +58,7 @@ Operator instance will only watch for `Cryostat` or `ClusterCryostat` instances 
   summary="Install the Operator"
   image-name="cryostat-operatorhub-install-in-progress.png"
 %}
-Click "Install" and wait for the installation to complete.
+Click "Install" and wait for the installation to complete. In this example we will proceed with **All Namespaces**.
 {% include howto_step.html
   summary="Create a Cryostat instance"
   image-name="cryostat-operatorhub-install-complete.png"
