@@ -593,16 +593,31 @@ guides through various common actions and workflows.
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
 In order to ensure that objects created by the Operator and recordings created
 by Cryostat are properly removed, the Cryostat Operator must remain installed
-when attempting to delete the Cryostat custom resource, or any Recording
-custom resources.
+when attempting to delete the `Cryostat` or `ClusterCryostat` Custom Resources.
 
-To completely remove Cryostat and all objects and recordings created by it:
+To completely remove Cryostat and all objects created by it:
 1. Delete the `Cryostat` or `ClusterCryostat` custom resources (`CR`s) and
     custom resource definitions (`CRD`s).
     - If the Cryostat Operator has already been uninstalled, please reinstall it
       before deleting the `Cryostat` or `ClusterCryostat` `CR`s and `CRD`s.
-2. Uninstall the Cryostat Operator.
-    - **Warning**: This command also removes the `my-cryostat-operator` namespace and all of its contents, including any applications deployed in the namespace.
-    ```
-    $ kubectl delete -f https://operatorhub.io/install/cryostat-operator.yaml
-    ```
+2. Uninstall the Cryostat Operator. You may do this graphically via `OperatorHub`,
+or by deleting the associated resources:
+```yaml
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+    name: operatorgroup
+    spec: targetNamespaces:
+        - myapps
+        - mycryostat
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+    name: my-cryostat-operator
+    spec:
+        channel: stable
+        name: cryostat-operator
+        source: operatorhubio-catalog
+        sourceNamespace: olm
+```
