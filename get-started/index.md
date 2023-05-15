@@ -108,16 +108,18 @@ apiVersion: operator.cryostat.io/v1beta1
 kind: Cryostat
 metadata:
   name: cryostat-sample
-  namespace: $MY_NAMESPACE
 spec:
-  enableCertManager: true
   minimal: false
-  reportOptions:
-    resources: {}
+  enableCertManager: true
+  trustedCertSecrets: []
+  eventTemplates: []
   storageOptions:
     pvc:
-      spec:
-        resources: {}
+      labels: {}
+      annotations: {}
+      spec: {}
+  reportOptions:
+    replicas: 0
 ```
 
 Then apply the resource:
