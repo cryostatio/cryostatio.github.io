@@ -140,7 +140,7 @@ We can get there from the `Cryostat` `CR`'s status fields:
   image-name="cryostat-resource-status.png"
 %}
 
-Or, we can open the application link from the Topology view:
+Or, we can open the application link from the OpenShift Console Topology view:
 
 {% include howto_step.html
   details-attributes="open"
