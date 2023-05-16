@@ -1,5 +1,5 @@
 {% capture navigate-to-topology-include-text %}
-  Topology View provides a visual presentation of the all discovered JVMs and all resources that are associated with them. It also allows users to perform actions on one or multiple targets.
+  When you need to view or perform actions on multiple target JVMs at the same time, <b>Topology View</b> is the way.
 {% endcapture %}
 {% include howto_step.html
   summary="Navigate to Topology"
