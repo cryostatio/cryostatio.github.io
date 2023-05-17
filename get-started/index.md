@@ -8,6 +8,9 @@ layout: get-started
 {:.cryostat-heading-1}
 Cryostat {{ site.data.versions.cryostat.version }}
 
+* auto-gen TOC:
+{:toc}
+
 ## [Installing Cryostat Operator](#installing-cryostat-operator)
 Follow the steps below to install the Cryostat Operator via [OperatorHub](https://operatorhub.io/operator/cryostat-operator).
 
@@ -59,7 +62,7 @@ Click "Install" and wait for the installation to complete.
 Once the installation is complete, click "Create Cryostat" to create a Cryostat Custom Resource instance. This provides configuration information for the Operator to know
 the specifics of how to deploy your Cryostat instance. Continue to [Setup](#setup).
 
-Note: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
+**Note**: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
 ## [Setup](#setup)
 
 ### [Deploying Cryostat](#deploying-cryostat)
@@ -116,23 +119,7 @@ Then apply the resource:
 $ kubectl apply -f cryostat.yaml
 ```
 
-### [Deploy an Application](#deploy-an-application)
-For demo purposes, let's go ahead and deploy a sample application to our
-OpenShift cluster in the same namespace as our Cryostat instance. If you have
-deployed Cryostat into a namespace where you are already running other
-applications, feel free to continue to the next step.
-
-```bash
-$ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.10
-$ oc patch svc/quarkus-test -p '{"spec":{"$setElementOrder/ports":[{"port":9097},{"port":8080}],"ports":[{"name":"jfr-jmx","port":9097}]}}'
-```
-
-This is a Quarkus container in JVM mode with JMX enabled and pre-configured to
-listen on port 9097.  After deploying the container we patch its service to
-name the 9097 service port `jfr-jmx`. Cryostat will detect and use this port
-to determine that this is a compatible Java application that it should monitor.
-
-### Open the Cryostat Web UI
+### [Open the Cryostat Web UI](#open-the-cryostat-web-ui)
 Let's visit the Cryostat web dashboard UI.
 
 We can get there from the Cryostat resource's Status field:
@@ -156,9 +143,9 @@ We can also find the URL using `oc`:
 $ oc get cryostat -o jsonpath='{$.items[0].status.applicationUrl}'
 ```
 
-### [Authenticate through Cryostat](#authenticate-through-cryostat)
+#### [Authenticate through Cryostat](#authenticate-through-cryostat)
 
-#### [OpenShift Authentication](#openshift-authentication)
+##### [OpenShift Authentication](#openshift-authentication)
 When deployed in OpenShift, Cryostat will use the existing internal cluster
 authentication system to ensure all requests come from users with correct
 access to the Cryostat instance and the namespace that it is deployed within.
@@ -191,7 +178,7 @@ encoded. For example,
 curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
 ```
 
-#### [Other Platforms Authentication](#other-platforms-authentication)
+##### [Other Platforms Authentication](#other-platforms-authentication)
 
 In non-OpenShift environments, Cryostat will default to no authentication.
 Access to the web application and the HTTP API will be unsecured. You should
@@ -200,7 +187,7 @@ place an authenticating reverse proxy server in front of Cryostat so that
 accesses to the Cryostat application must first pass through the reverse
 proxy. The configuration of a reverse proxy is out of scope of this guide.
 
-##### [Basic Auth](#basic-auth)
+###### [Basic Auth](#basic-auth)
 
 Cryostat includes a very rudimentary HTTP `Basic` authentication implementation.
 This can be configured by creating a `cryostat-users.properties` file in the
@@ -227,6 +214,366 @@ Once the `cryostat-users.properties` file defining the user credentials is
 created, the environment variable `CRYOSTAT_AUTH_MANAGER` should be set
 to the value `io.cryostat.net.BasicAuthManager` to enable the corresponding
 auth implementation.
+
+### [Deploy an Application](#deploy-an-application)
+For demo purposes, let's go ahead and deploy a sample application to our
+OpenShift cluster in the same namespace as our Cryostat instance. If you have
+deployed Cryostat into a namespace where you are already running other
+applications, feel free to [continue to the next step](#open-the-cryostat-web-ui).
+
+```bash
+$ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.10
+$ oc patch svc/quarkus-test -p '{"spec":{"$setElementOrder/ports":[{"port":9097},{"port":8080}],"ports":[{"name":"jfr-jmx","port":9097}]}}'
+```
+
+This is a Quarkus container in JVM mode with JMX enabled and pre-configured to
+listen on port 9097.  After deploying the container we patch its service to
+name the 9097 service port `jfr-jmx`. Cryostat will detect and use this port
+to determine that this is a compatible Java application that it should monitor.
+
+#### [Configuring Applications](#configuring-applications)
+There are three methods of configuring your Java applications so that Cryostat is able to discover and monitor them:
+
+1. [using the Cryostat Agent for discovery and connectivity](#using-the-cryostat-agent)
+2. [using platform mechanisms for discovery and Java Management Extensions (JMX) for connectivity](#using-jmx)
+3. [using the Cryostat Agent for discovery and JMX for connectivity](#using-the-cryostat-agent-with-jmx)
+
+The following sections will briefly explain how to accomplish each of these approaches by example. For simplicity the examples will assume your application
+is built with Maven, packaged into an image with a `Dockerfile`, and running in Kubernetes, but the instructions will be similar for other toolchains and platforms as well.
+
+##### [Using the Cryostat Agent](#using-the-cryostat-agent)
+
+[The Cryostat Agent](/guides/#using-the-cryostat-agent)
+is compatible with Cryostat versions 2.3.0 and newer, and application JDKs 11 and newer. If you are using an older version of Cryostat, we recommend upgrading to ensure compatibility.
+If your application uses a recent version of JDK8 with JFR support, please either upgrade to JDK11+ or [continue to the next section](#using-jmx)
+to learn how to configure your application without the Cryostat Agent.
+
+The Cryostat Agent JAR must be available to your application JVM. The JAR asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/releases),
+or you may use the following snippet in your `pom.xml` to streamline this.
+
+```xml
+<project>
+  ...
+  <repositories>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/cryostatio/cryostat-agent</url>
+    </repository>
+  </repositories>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>io.cryostat</groupId>
+                  <artifactId>cryostat-agent</artifactId>
+                  <version>0.2.1</version>
+                </artifactItem>
+              </artifactItems>
+              <stripVersion>true</stripVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    ...
+  </build>
+  ...
+</project>
+```
+
+**Note**: You may be required to [authenticate to the GitHub Maven Packages registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#installing-a-package) in order to pull this JAR.
+
+The next time we build our application, the Cryostat Agent JAR will be located at `target/dependency/cryostat-agent.jar`. Then we can update our Dockerfile:
+
+```Dockerfile
+...
+COPY target/dependency/cryostat-agent.jar /deployments/app/
+...
+# We are using a framework where the JAVA_OPTS environment variable can be used to pass JVM flags
+ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent.jar"
+```
+
+Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
+Push that updated image or otherwise get it updated in your Kubernetes registry, then modify your application `Deployment` to supply JVM system properties or environment variables configuring
+the Cryostat Agent:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      containers:
+        - name: sample-app
+          image: docker.io/myorg/myapp:latest
+          env:
+            - name: CRYOSTAT_AGENT_APP_NAME
+              # Replace this with any value you like to use to identify your application.
+              value: "myapp"
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: CRYOSTAT_AGENT_BASEURI
+              # Update this to correspond to the name of your Cryostat instance
+              # if it is not 'cryostat'. This assumes that the target application
+              # and the Cryostat instance are in the same Namespace, but you may
+              # choose to configure the Agent to communicate with a Cryostat in
+              # a different Namespace, too.
+              # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+              value: https://cryostat.$(NAMESPACE).svc:8181
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: CRYOSTAT_AGENT_CALLBACK
+              # This infers the Agent Callback directly from the Pod's IP address using the
+              # Kubernetes Downward API. Use this value directly as provided. The port number
+              # 9977 can be changed but must match the containerPort below.
+              value: "http://$(POD_IP):9977"
+              # Replace "abcd1234" with a base64-encoded authentication token. For example,
+              # in your terminal, do 'oc whoami -t | base64' to use your user account's
+              # token as the token that the Agent will pass to authorize itself with
+              # the Cryostat server.
+            - name: CRYOSTAT_AGENT_AUTHORIZATION
+              value: "Bearer abcd1234"
+          ports:
+            - containerPort: 9977
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}
+```
+
+Port number `9977` is the default HTTP port that the Agent exposes for its internal webserver that services Cryostat requests. The `CRYOSTAT_AGENT_AUTHORIZATION` value is particularly
+noteworthy: these are the credentials that the Agent will include in API requests it makes to Cryostat to advertise its own presence. You should create a Kubernetes `Service Account` for
+this purpose and replace `abcd1234` with the base64-encoded authentication token associated with the service account. For testing purposes you may use your own user account's
+authentication token, for example with `oc whoami --show-token`.
+
+Finally, create a `Service` to enable Cryostat to make requests to this Agent:
+
+```yaml
+apiVersion: v1
+kind: Service
+...
+spec:
+  ports:
+    - name: "cryostat-agent"
+      port: 9977
+      targetPort: 9977
+...
+```
+
+More details about the configuration options for the Cryostat Agent [are available here](https://github.com/cryostatio/cryostat-agent/blob/main/README.md#configuration).
+
+##### [Using JMX](#using-jmx)
+Cryostat is also able to use Java Management Extensions (JMX) to communicate with target applications. This is a standard JDK feature that can be enabled by passing JVM
+flags to your application at startup. A basic and insecure setup suitable for testing requires only the following three flags:
+
+```
+-Dcom.sun.management.jmxremote.port=9091
+-Dcom.sun.management.jmxremote.ssl=false
+-Dcom.sun.management.jmxremote.authenticate=false
+```
+
+[comment]: # TODO explain how to configure SSL and auth for JMX, or link to external docs
+
+It is recommended that you enable both SSL and authentication on your application. You can then [trust the certificate](/guides/#add-a-trusted-certificate)
+and [store the credentials](/guides/#store-credentials).
+
+Depending on your application or its framework, you may set these flags directly in a `Dockerfile` entrypoint, an environment variable, or similar. This may or
+may not require a container image rebuild, and it will require the container to be restarted. Once this is done the application container will be listening for
+incoming JMX connections on port `9091`. Let's assume it can be done by setting an environment variable, so we only need to modify our `Deployment`:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      containers:
+        - name: sample-app
+          image: docker.io/myorg/myapp:latest
+          env:
+            - name: JAVA_OPTS
+              value: >-
+                -Dcom.sun.management.jmxremote.port=9091
+                -Dcom.sun.management.jmxremote.ssl=false
+                -Dcom.sun.management.jmxremote.authenticate=false
+            ...
+```
+
+Next, we need to configure a Kubernetes `Service` to expose this port for cluster-internal traffic, so that Cryostat can see
+and connect to this application JMX port.
+
+```yaml
+apiVersion: v1
+kind: Service
+...
+spec:
+  ports:
+    - name: "jfr-jmx"
+      port: 9091
+      targetPort: 9091
+...
+```
+
+Cryostat queries the Kubernetes API server and looks for `Service`s with a port either named `jfr-jmx` or with the number `9091`. One or both of these conditions
+must be met or else Cryostat will not automatically detect your application. In this case you may wish to use the [Cryostat Agent](#using-the-cryostat-agent-with-jmx)
+to enable discovery, while keeping communications over JMX rather than HTTP.
+
+##### [Using the Cryostat Agent with JMX](#using-the-cryostat-agent-with-jmx)
+The two prior sections have discussed:
+  - How to use the Cryostat Agent to do application discovery and expose data over HTTP.
+  - How to use Kubernetes `Service` configurations for discovery and JMX to expose data.
+
+There is a third, hybrid approach: **using the Cryostat Agent to do application discovery, and JMX to expose data**. This may be
+useful since the Agent HTTP data model is readonly, whereas JMX is read-write. This means that using JMX to communicate between Cryostat and your applications
+allows for more dynamic flexibility, for example, the ability to start and stop Flight Recordings on demand. Using the Cryostat Agent for application discovery
+is also more flexible than depending on `Service`s with specially-named or specially-numbered ports. 
+
+For more context about these concepts, please review
+the previous two sections on [using the Cryostat Agent](#using-the-cryostat-agent) and [using JMX](#using-jmx).
+
+Add dependency configurations to `pom.xml`:
+```xml
+<project>
+  ...
+  <repositories>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/cryostatio/cryostat-agent</url>
+    </repository>
+  </repositories>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>io.cryostat</groupId>
+                  <artifactId>cryostat-agent</artifactId>
+                  <version>0.2.1</version>
+                </artifactItem>
+              </artifactItems>
+              <stripVersion>true</stripVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    ...
+  </build>
+  ...
+</project>
+```
+
+Modify the application `Deployment`:
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      containers:
+        - name: sample-app
+          image: docker.io/myorg/myapp:latest
+          env:
+            - name: CRYOSTAT_AGENT_APP_NAME
+              # Replace this with any value you like to use to identify your application.
+              value: "myapp"
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: CRYOSTAT_AGENT_BASEURI
+              # Update this to correspond to the name of your Cryostat instance
+              # if it is not 'cryostat'. This assumes that the target application
+              # and the Cryostat instance are in the same Namespace, but you may
+              # choose to configure the Agent to communicate with a Cryostat in
+              # a different Namespace, too.
+              # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+              value: https://cryostat.$(NAMESPACE).svc:8181
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: CRYOSTAT_AGENT_HOSTNAME
+              value: $(POD_IP)
+            - name: CRYOSTAT_AGENT_CALLBACK
+              # This infers the Agent Callback directly from the Pod's IP address using the
+              # Kubernetes Downward API. Use this value directly as provided. The port number
+              # 9977 can be changed but must match the containerPort below.
+              value: "http://$(POD_IP):9977"
+              # Replace "abcd1234" with a base64-encoded authentication token. For example,
+              # in your terminal, do 'oc whoami -t | base64' to use your user account's
+              # token as the token that the Agent will pass to authorize itself with
+              # the Cryostat server.
+            - name: CRYOSTAT_AGENT_AUTHORIZATION
+              value: "Bearer abcd1234"
+              # This environment variable is key to the "hybrid" setup.
+              # This instructs the Agent to register itself with Cryostat
+              # as reachable via JMX, rather than reachable via HTTP.
+            - name: CRYOSTAT_AGENT_REGISTRATION_PREFER_JMX
+              value: "true"
+              # Here we configure the application to load the Agent JAR as
+              # well as to enable JMX, since we want the Agent to register
+              # itself as reachable via JMX.
+            - name: JAVA_OPTS
+              value: >-
+                -javaagent:/deployments/app/cryostat-agent.jar
+                -Dcom.sun.management.jmxremote.port=9091
+                -Dcom.sun.management.jmxremote.ssl=false
+                -Dcom.sun.management.jmxremote.authenticate=false
+          ports:
+            - containerPort: 9977
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}
+```
+
+Create an application `Service`:
+```yaml
+apiVersion: v1
+kind: Service
+...
+spec:
+  ports:
+    - name: "cryostat-agent"
+      port: 9977
+      targetPort: 9977
+...
+```
 
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed Cryostat and know how to access its
