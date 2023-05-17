@@ -26,7 +26,31 @@ If you intend to use Cryostat <a href="#create-an-automated-rule">Automated Rule
       "
     %}
   </li>
-    <li>
+  <li>
+    {% include howto_step.html
+      summary="Test your credentials"
+      image-name="2.3.0/store-credentials-3.png"
+      text="
+      Navigate to the <b>Test</b> tab to use the <b>Credential Test Table</b> to check if the entered credential is valid for the matched targets.
+      <br><br>
+
+      You can individually test each target or bulk test all targets at the same time. The <b>Status</b> column will report the following test status:
+
+      <ol>
+        <li>
+            <b>Valid:</b> valid credential for the target JVM.
+        </li>
+        <li>
+            <b>Invalid:</b> invalid credential for the target JVM.
+        </li>
+        <li>
+            <b>Not applicable:</b> JMX authentication is not enabled on the target JVM.
+        </li>
+      </ol>  
+      "
+    %}
+  </li>
+  <li>
     {% include howto_step.html
       summary="(Alternative to Steps 1 and 2) Store Credentials when connecting to a target JVM"
       image-name="2.3.0/navigate-to-recordings-1.png"
