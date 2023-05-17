@@ -112,12 +112,12 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   </li>
   <li>
       {% include howto_step.html
-        summary="Evaluate your match expression"
+        summary="Check your match expression"
         image-name="2.3.0/create-an-automated-rule-3.png"
+        caption="You can select a target JVM to view its properties and use them to build your Match Expression."
         text="
           <p>
-          When you enter a match expression in the <i>Match Expression</i> field, the <i>Match Expression Evaluator</i> will test if your match expression matches the target selected in the dropdown. You can check that your match expression
-          matches all of your desired targets by selecting different targets from the dropdown.
+          When you enter a match expression in the <i>Match Expression</i> field, the <i>Match Expression Visualizer</i> will highlight which targets are matched.
           </p>
           "
       %}
