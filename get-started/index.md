@@ -594,7 +594,7 @@ guides through various common actions and workflows.
 Reference [Operator Lifecycle Manager's](https://olm.operatorframework.io/docs/tasks/uninstall-operator/#combine-steps-2-and-3)
 guide on uninstalling Operators. Please be sure to delete all `Cryostat` and `ClusterCryostat` Custom Resources before
 uninstalling the Cryostat Operator.
-- If your Cryostat Operator was installed in **All Namespaces** mode then its `ClusterServiceVersion` and `Subscription`
-can be found in the `Namespace` `openshift-operators`.
-- If your Cryostat Operator was installed in **A specific Namespace** then the `ClusterServiceVersion` and
+- If your Cryostat Operator was installed in **All Namespaces** mode, then its `ClusterServiceVersion` and
+`Subscription` can be found in the `Namespace` `openshift-operators`.
+- If your Cryostat Operator was installed in **A specific Namespace**, then the `ClusterServiceVersion` and
 `Subscription` will be in that same `Namespace.`
