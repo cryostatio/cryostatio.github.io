@@ -20,7 +20,7 @@ If not already installed in your cluster, please
 [install](https://cert-manager.io/docs/installation/) it using your preferred method.
 Once installed, proceed with the Operator installation steps below.
 
-**Warning**: Although it is possible to [disable cert-manager integration](https://github.com/cryostatio/cryostat-operator/blob/main/docs/config.md#disabling-cert-manager-integration), it is NOT recommended to
+**Warning**: Although it is possible to [disable cert-manager integration](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#disabling-cert-manager-integration), it is NOT recommended to
 do so unless cert-manager is unavailable AND one of the following applies to you:
 - You have another solution for encrypting traffic
 - You trust everything running in the same cluster where the Cryostat Operator is deployed
@@ -76,11 +76,11 @@ Continue to [Setup](#setup).
 Once the installation is complete, click **Create Cryostat** to create a `Cryostat` `CR` instance in an OpenShift
 Project (Kubernetes `Namespace`) of your choice. This provides configuration information for the Operator to know the
 specifics of how to deploy your Cryostat instance. For full details on how to configure the Cryostat deployment, see
-[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/main/docs/config.md).
+[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md).
 
 If running Cryostat on Kubernetes, you will also need to add Ingress configurations to your Cryostat custom resource
 (`CR`).
-See the [Network Options](https://github.com/cryostatio/cryostat-operator/blob/main/docs/config.md#network-options) section of Configuring Cryostat for examples.
+See the [Network Options](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#network-options) section of Configuring Cryostat for examples.
 
 You can create the `CR` graphically in the OperatorHub UI after following [Install via OperatorHub](#install-via-operatorhub):
 
@@ -389,7 +389,7 @@ spec:
 ...
 ```
 
-More details about the configuration options for the Cryostat Agent [are available here](https://github.com/cryostatio/cryostat-agent/blob/main/README.md#configuration).
+More details about the configuration options for the Cryostat Agent [are available here](https://github.com/cryostatio/cryostat-agent/blob/{{site.data.versions.cryostat.release-branch}}/README.md#configuration).
 
 ##### [Using JMX](#using-jmx)
 Cryostat is also able to use Java Management Extensions (JMX) to communicate with target applications. This is a standard JDK feature that can be enabled by passing JVM
@@ -601,8 +601,8 @@ creating `CluterCryostat` `CR`s. In this configuration, the Operator is able to 
 `CR`s in any project (`Namespace`) and create Cryostat deployments corresponding to either `CR` kind. Both of these
 `CRs` are `Namespace`-specific, and the `Namespace` is also involved in determining which OpenShift users are able to
 access the Cryostat instance. For more information please see the following documents:
-- [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/main/docs/multi-namespace.md).
-- [Authorization Properties](https://github.com/cryostatio/cryostat-operator/blob/main/docs/config.md#authorization-properties)
+- [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/multi-namespace.md).
+- [Authorization Properties](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#authorization-properties)
 
 `ClusterCryostat` `CR`s instruct the Operator to deploy cross-namespace Cryostat instances. A `ClusterCryostat` has
 an `installNamespace`, which is the namespace where the Cryostat `Deployment` will reside, and a list of

@@ -1,5 +1,6 @@
 cryostat:
   version: 2.3.0
+  release-branch: cryostat-v2.3
 openshift:
   version: '4.10'
 kubernetes:
