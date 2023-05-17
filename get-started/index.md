@@ -600,7 +600,7 @@ If you chose to install the Operator in **All Namespaces** mode as assumed in th
 creating `CluterCryostat` `CR`s. In this configuration, the Operator is able to see `Cryostat` and `ClusterCryostat`
 `CR`s in any project (`Namespace`) and create Cryostat deployments corresponding to either `CR` kind in each of their
 respective `Namespaces`. Both of these `CRs` are `Namespace`-specific, and the `Namespace` is used to determine which
-OpenShift users are able to access the Cryostat instance. For more information please see the following documents:
+OpenShift users are able to access the Cryostat instance. For more information, please see the following documents:
 - [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/multi-namespace.md).
 - [Authorization Properties](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#authorization-properties)
 
