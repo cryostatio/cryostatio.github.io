@@ -596,11 +596,11 @@ Single-namespace `Cryostat` `CR`s instruct the Operator to deploy restricted Cry
 to see target applications deployed in the same namespace as the Cryostat instance, which is the same Namespace that
 the `CR` is created within.
 
-If you chose to install the Operator in **All Namespaces** mode, you may also be interested in
+If you chose to install the Operator in **All Namespaces** mode as assumed in this guide, you may also be interested in
 creating `CluterCryostat` `CR`s. In this configuration, the Operator is able to see `Cryostat` and `ClusterCryostat`
-`CR`s in any project (`Namespace`) and create Cryostat deployments corresponding to either `CR` kind. Both of these
-`CRs` are `Namespace`-specific, and the `Namespace` is also involved in determining which OpenShift users are able to
-access the Cryostat instance. For more information please see the following documents:
+`CR`s in any project (`Namespace`) and create Cryostat deployments corresponding to either `CR` kind in each of their
+respective `Namespaces`. Both of these `CRs` are `Namespace`-specific, and the `Namespace` is used to determine which
+OpenShift users are able to access the Cryostat instance. For more information please see the following documents:
 - [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/multi-namespace.md).
 - [Authorization Properties](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#authorization-properties)
 
