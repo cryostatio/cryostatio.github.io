@@ -59,22 +59,23 @@ Operator instance will only watch for `Cryostat` or `ClusterCryostat` instances 
   image-name="cryostat-operatorhub-install-in-progress.png"
 %}
 Click "Install" and wait for the installation to complete. In this example we will proceed with **All Namespaces**.
+
+Continue to [Setup](#setup).
+
+## [Setup](#setup)
+
+**Note:** An alternative setup using the multi-namespace `ClusterCryostat` `CR` is described in
+[Alternate Setup](#alternate-setup). For simplicity we will continue with the single-namespace `Cryostat` `CR`.
+
+### [Deploying Cryostat](#deploying-cryostat)
+
 {% include howto_step.html
   summary="Create a Cryostat instance"
   image-name="cryostat-operatorhub-install-complete.png"
 %}
-Once the installation is complete, click **Create Cryostat** to create a `Cryostat` `CR` instance. This provides
-configuration information for the Operator to know the specifics of how to deploy your Cryostat instance.
-Continue to [Setup](#setup).
-
-**Note:** Alternative methods for installing the Operator or using the  `ClusterCryostat` `CR` are described in
-[Alternate Installation Options](/alternate-installation-options).
-
-## [Setup](#setup)
-
-### [Deploying Cryostat](#deploying-cryostat)
-Create a `Cryostat` object to deploy and set up Cryostat in an OpenShift Project (Kubernetes `Namespace`) of your
-choice. For full details on how to configure the Cryostat deployment, see
+Once the installation is complete, click **Create Cryostat** to create a `Cryostat` `CR` instance in an OpenShift
+Project (Kubernetes `Namespace`) of your choice. This provides configuration information for the Operator to know the
+specifics of how to deploy your Cryostat instance. For full details on how to configure the Cryostat deployment, see
 [Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/main/docs/config.md).
 
 If running Cryostat on Kubernetes, you will also need to add Ingress configurations to your Cryostat custom resource
@@ -583,6 +584,51 @@ spec:
       port: 9977
       targetPort: 9977
 ...
+```
+
+### [Alternate Setup](#alternate-setup)
+
+#### [Using ClusterCryostats](#using-clustercryostats)
+In [Deploying Cryostat](#deploying-cryostat), you created a single-namespace `Cryostat` Custom Resource
+(`CR`) instance.
+
+Single-namespace `Cryostat` `CR`s instruct the Operator to deploy restricted Cryostat instances which are only able
+to see target applications deployed in the same namespace as the Cryostat instance, which is the same Namespace that
+the `CR` is created within.
+
+If you chose to install the Operator in **All Namespaces** mode, you may also be interested in
+creating `CluterCryostat` `CR`s. In this configuration, the Operator is able to see `Cryostat` and `ClusterCryostat`
+`CR`s in any project (`Namespace`) and create Cryostat deployments corresponding to either `CR` kind. Both of these
+`CRs` are `Namespace`-specific, and the `Namespace` is also involved in determining which OpenShift users are able to
+access the Cryostat instance. For more information please see the following documents:
+- [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/main/docs/multi-namespace.md).
+- [Authorization Properties](https://github.com/cryostatio/cryostat-operator/blob/main/docs/config.md#authorization-properties)
+
+`ClusterCryostat` `CR`s instruct the Operator to deploy cross-namespace Cryostat instances. A `ClusterCryostat` has
+an `installNamespace`, which is the namespace where the Cryostat `Deployment` will reside, and a list of
+`targetNamespaces`, which are all of the namespaces that the Cryostat server will watch for target applications.
+The `targetNamespaces` list does not necessarily need to contain the `installNamespace`, if you do not want Cryostat
+to see itself in the target applications that it watches.
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta1
+kind: ClusterCryostat
+metadata:
+  name: clustercryostat-sample
+spec:
+  enableCertManager: true
+  installNamespace: cryostat-testing
+  minimal: false
+  reportOptions:
+    resources: {}
+  storageOptions:
+    pvc:
+      spec:
+        resources: {}
+  targetNamespaces:
+  - cryostat-testing
+  - my-apps-a
+  - my-apps-b
 ```
 
 ## [Next Steps](#next-steps)
