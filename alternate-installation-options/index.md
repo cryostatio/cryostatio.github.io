@@ -55,15 +55,3 @@ spec:
   - my-apps-a
   - my-apps-b
 ```
-
-## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
-Follow step 1 in the [Uninstalling Cryostat Operator](/get-started#uninstalling-cryostat-operator) section of the Get Started page. At step 2, run the following instead:
-
-### [Uninstall with kubectl](#uninstall-with-kubectl)
-```
-$ kubectl delete -k github.com/cryostatio/cryostat-operator//config/default?ref=v{{ site.data.versions.cryostat.version }}
-```
-### [Uninstall with operator bundle](#uninstall-with-operator-bundle)
-```
-$ operator-sdk cleanup cryostat-operator
-```
