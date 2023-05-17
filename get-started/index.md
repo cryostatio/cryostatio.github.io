@@ -78,8 +78,8 @@ Project (Kubernetes `Namespace`) of your choice. This provides configuration inf
 specifics of how to deploy your Cryostat instance. For full details on how to configure the Cryostat deployment, see
 [Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md).
 
-If running Cryostat on Kubernetes, you will also need to add Ingress configurations to your Cryostat custom resource
-(`CR`).
+If running Cryostat on Kubernetes and not OpenShift, you will also need to add Ingress configurations to your Cryostat
+custom resource (`CR`).
 See the [Network Options](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#network-options) section of Configuring Cryostat for examples.
 
 You can create the `CR` graphically in the OperatorHub UI after following [Install via OperatorHub](#install-via-operatorhub):
