@@ -1,9 +1,14 @@
 cryostat:
   version: 2.3.0
+  release-branch: cryostat-v2.3
 openshift:
   version: '4.10'
 kubernetes:
   version: '1.19'
+operator-sdk:
+  version: '1.28.0'
+operator-lifecycle-manager:
+  version: '0.24.0'
 documentation:
   - 'latest'
   - 2.2.0

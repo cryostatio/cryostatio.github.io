@@ -18,9 +18,9 @@ Follow the steps below to install the Cryostat Operator via [OperatorHub](https:
 The Cryostat Operator requires [cert-manager](https://cert-manager.io/) to run.
 If not already installed in your cluster, please 
 [install](https://cert-manager.io/docs/installation/) it using your preferred method.
-Once installed, proceed with the operator installation steps below.
+Once installed, proceed with the Operator installation steps below.
 
-**Warning**: Although it is possible to [disable cert-manager integration](https://github.com/cryostatio/cryostat-operator/blob/v2/docs/config.md#disabling-cert-manager-integration), it is NOT recommended to
+**Warning**: Although it is possible to [disable cert-manager integration](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#disabling-cert-manager-integration), it is NOT recommended to
 do so unless cert-manager is unavailable AND one of the following applies to you:
 - You have another solution for encrypting traffic
 - You trust everything running in the same cluster where the Cryostat Operator is deployed
@@ -28,52 +28,81 @@ do so unless cert-manager is unavailable AND one of the following applies to you
 ### [Install via OperatorHub](#install-via-operatorhub)
 See below for a summary of the installation steps from the Cryostat Operator page on [OperatorHub](https://operatorhub.io/cryostat-operator). For more details, visit [Installing the Cryostat Operator from OperatorHub](https://developers.redhat.com/articles/2022/01/20/install-cryostat-operator-kubernetes-operatorhubio#). 
 
-**If Operator Lifecycle Manager (OLM) and OperatorHub are already installed and available on your cluster, skip to Step 3:**
-
 1. Install the Operator Lifecycle Manager:
-```
-$ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.21.1/install.sh | bash -s v0.21.1
-```
-2. Verify the installation was successful by confirming all pods are `READY`:
-```
+    Check if OLM is already installed:
+    ```bash
+    $ operator-sdk olm status
+    $ # or without the operator-sdk binary,
+    $ POD="$(kubectl get -l app=olm-operator -n olm pod -o 'jsonpath={.items[0].metadata.name}')"
+    $ kubectl exec -n olm "pod/${POD}" -- olm --version
+    ```
+
+    **If Operator Lifecycle Manager (OLM) and OperatorHub are already installed and available on your cluster, skip to Step 3:**
+
+    Install Operator Lifecycle Manager:
+
+    ```bash
+    $ operator-sdk olm install
+    $ # or without the operator-sdk binary,
+    $ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v{{site.data.versions.operator-lifecycle-manager.version}}/install.sh | bash -s v{{site.data.versions.operator-lifecycle-manager.version}}
+    ```
+
+2. Verify the installation was successful by confirming all pods are `Running`:
+```bash
 $ kubectl get pods -n olm
+NAME                                READY   STATUS    RESTARTS   AGE
+catalog-operator-77b8589cd8-8bntf   1/1     Running   0          3m9s
+olm-operator-5ccf676d8b-7rgss       1/1     Running   0          3m9s
+operatorhubio-catalog-pb896         1/1     Running   0          3m3s
+packageserver-8cccc99dd-dv8rp       1/1     Running   0          3m3s
+packageserver-8cccc99dd-g7lkh       1/1     Running   0          3m3s
 ```
+
 3. Install Cryostat from OperatorHub:
 {% include howto_step.html
   details-attributes="open"
   summary="Cryostat on OperatorHub"
   image-name="cryostat-operatorhub-search.png"
 %}
-Use the search bar to find the Cryostat (provided by Red Hat) catalog item.
+Use the search bar to find the **Red Hat build of Cryostat** catalog item.
 {% include howto_step.html
   summary="Select the Cryostat Operator and click the Install button"
   image-name="cryostat-operatorhub-install.png"
 %}
-Choose the namespace for Cryostat to be deployed into. This should be the same namespace that contains your JVM applications which you intend to monitor or profile using Cryostat.
+Choose your Operator installation mode:
+1. In **All Namespaces** installation mode, the Cryostat Operator instance will watch for `Cryostat` or
+`ClusterCryostat` Custom Resources (`CR`s) created in any Namespace and create corresponding Cryostat instances.
+2. In the **A specific namespace** installation mode, you must also select an installation Namespace, and the Cryostat
+Operator instance will only watch for `Cryostat` or `ClusterCryostat` instances created in that same Namespace.
 {% include howto_step.html
   summary="Install the Operator"
   image-name="cryostat-operatorhub-install-in-progress.png"
 %}
-Click "Install" and wait for the installation to complete.
+Click "Install" and wait for the installation to complete. In this example we will proceed with **All Namespaces**.
+
+Continue to [Setup](#setup).
+
+## [Setup](#setup)
+
+**Note:** An alternative setup using the multi-namespace `ClusterCryostat` `CR` is described in
+[Alternate Setup](#alternate-setup). For simplicity we will continue with the single-namespace `Cryostat` `CR`.
+
+### [Deploying Cryostat](#deploying-cryostat)
+
 {% include howto_step.html
   summary="Create a Cryostat instance"
   image-name="cryostat-operatorhub-install-complete.png"
 %}
-Once the installation is complete, click "Create Cryostat" to create a Cryostat Custom Resource instance. This provides configuration information for the Operator to know
-the specifics of how to deploy your Cryostat instance. Continue to [Setup](#setup).
+Once the installation is complete, click **Create Cryostat** to create a `Cryostat` `CR` instance in an OpenShift
+Project (Kubernetes `Namespace`) of your choice. This provides configuration information for the Operator to know the
+specifics of how to deploy your Cryostat instance. For full details on how to configure the Cryostat deployment, see
+[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md).
 
-**Note**: Alternative methods for installing the operator are described in [Alternate Installation Options](/alternate-installation-options) (not recommended).
-## [Setup](#setup)
+If running Cryostat on Kubernetes and not OpenShift, you will also need to add Ingress configurations to your Cryostat
+custom resource (`CR`).
+See the [Network Options](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#network-options) section of Configuring Cryostat for examples.
 
-### [Deploying Cryostat](#deploying-cryostat)
-Create a `Cryostat` object to deploy and set up Cryostat in the `cryostat-operator-system` namespace. For
-full details on how to configure the Cryostat deployment, see
-[Configuring Cryostat](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md). 
-
-If running Cryostat on Kubernetes, you will also need to add Ingress configurations to your Cryostat resource.
-See the [Network Options](https://github.com/cryostatio/cryostat-operator/blob/v{{ site.data.versions.cryostat.version }}/docs/config.md#network-options) section of Configuring Cryostat for examples.
-
-You can create the resource graphically in the OperatorHub UI after following [Install via OperatorHub](#install-via-operatorhub):
+You can create the `CR` graphically in the OperatorHub UI after following [Install via OperatorHub](#install-via-operatorhub):
 
 {% include howto_step.html
   details-attributes="open"
@@ -93,7 +122,7 @@ You can create the resource graphically in the OperatorHub UI after following [I
   image-name="cryostat-resources-after.png"
 %}
 
-You can also create the resource manually using a YAML definition like the following:
+You can also create the `CR` manually using a YAML definition like the following:
 
 ```yaml
 apiVersion: operator.cryostat.io/v1beta1
@@ -115,14 +144,16 @@ spec:
 ```
 
 Then apply the resource:
-```
+```bash
+$ oc apply -f cryostat.yaml
+$ # or alternatively
 $ kubectl apply -f cryostat.yaml
 ```
 
 ### [Open the Cryostat Web UI](#open-the-cryostat-web-ui)
 Let's visit the Cryostat web dashboard UI.
 
-We can get there from the Cryostat resource's Status field:
+We can get there from the `Cryostat` `CR`'s status fields:
 
 {% include howto_step.html
   details-attributes="open"
@@ -130,7 +161,7 @@ We can get there from the Cryostat resource's Status field:
   image-name="cryostat-resource-status.png"
 %}
 
-Or, we can open the application link from the Topology view:
+Or, we can open the application link from the OpenShift Console Topology view:
 
 {% include howto_step.html
   details-attributes="open"
@@ -174,8 +205,8 @@ For direct access to the Cryostat HTTP API you may follow the same pattern.
 Using a client such as `curl`, an OpenShift auth token can be passed with
 requests using the `Authorization: Bearer` header. The token must be base64
 encoded. For example,
-```
-curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
+```bash
+$ curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
 ```
 
 ##### [Other Platforms Authentication](#other-platforms-authentication)
@@ -197,7 +228,7 @@ The credentials stored in the Java properties file are the user name and a
 SHA-256 sum hex of the user's password. The property file contents should look
 like:
 
-```
+```properties
 user1=abc123
 user2=def987
 ```
@@ -378,7 +409,7 @@ spec:
 ...
 ```
 
-More details about the configuration options for the Cryostat Agent [are available here](https://github.com/cryostatio/cryostat-agent/blob/main/README.md#configuration).
+More details about the configuration options for the Cryostat Agent [are available here](https://github.com/cryostatio/cryostat-agent/blob/{{site.data.versions.cryostat.release-branch}}/README.md#configuration).
 
 ##### [Using JMX](#using-jmx)
 Cryostat is also able to use Java Management Extensions (JMX) to communicate with target applications. This is a standard JDK feature that can be enabled by passing JVM
@@ -575,28 +606,61 @@ spec:
 ...
 ```
 
+### [Alternate Setup](#alternate-setup)
+
+#### [Using ClusterCryostats](#using-clustercryostats)
+In [Deploying Cryostat](#deploying-cryostat), you created a single-namespace `Cryostat` Custom Resource
+(`CR`) instance.
+
+Single-namespace `Cryostat` `CR`s instruct the Operator to deploy restricted Cryostat instances which are only able
+to see target applications deployed in the same namespace as the Cryostat instance, which is the same Namespace that
+the `CR` is created within.
+
+If you chose to install the Operator in **All Namespaces** mode as assumed in this guide, you may also be interested in
+creating `CluterCryostat` `CR`s. In this configuration, the Operator is able to see `Cryostat` and `ClusterCryostat`
+`CR`s in any project (`Namespace`) and create Cryostat deployments corresponding to either `CR` kind in each of their
+respective `Namespaces`. Both of these `CRs` are `Namespace`-specific, and the `Namespace` is used to determine which
+OpenShift users are able to access the Cryostat instance. For more information, please see the following documents:
+- [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/multi-namespace.md).
+- [Authorization Properties](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#authorization-properties)
+
+`ClusterCryostat` `CR`s instruct the Operator to deploy cross-namespace Cryostat instances. A `ClusterCryostat` has
+an `installNamespace`, which is the namespace where the Cryostat `Deployment` will reside, and a list of
+`targetNamespaces`, which are all of the namespaces that the Cryostat server will watch for target applications.
+The `targetNamespaces` list does not necessarily need to contain the `installNamespace`, if you do not want Cryostat
+to see itself in the target applications that it watches.
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta1
+kind: ClusterCryostat
+metadata:
+  name: clustercryostat-sample
+spec:
+  enableCertManager: true
+  installNamespace: cryostat-testing
+  minimal: false
+  reportOptions:
+    resources: {}
+  storageOptions:
+    pvc:
+      spec:
+        resources: {}
+  targetNamespaces:
+  - cryostat-testing
+  - my-apps-a
+  - my-apps-b
+```
+
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed Cryostat and know how to access its
 web client, continue on to [Guides]({% link guides/index.md %}) for
 guides through various common actions and workflows.
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
-In order to ensure that objects created by the operator and recordings created
-by Cryostat are properly removed, the Cryostat Operator must remain installed
-when attempting to delete the Cryostat custom resource, or any Recording
-custom resources.
-
-To completely remove Cryostat and all objects and recordings created by it:
-1. Delete any Recording custom resources.
-    - If Cryostat is no longer deployed, you must redeploy it by creating a
-      Cryostat custom resource.
-    - If the Cryostat Operator has already been uninstalled, please reinstall it
-      before deleting any Recording custom resources.
-2. Delete the Cryostat custom resource.
-    - If the Cryostat Operator has already been uninstalled, please reinstall it
-      before deleting the Cryostat custom resource.
-3. Uninstall the Cryostat Operator. 
-    - **Warning**: This command also removes the `my-cryostat-operator` namespace and all of its contents, including any applications deployed in the namespace.
-    ```
-    $ kubectl delete -f https://operatorhub.io/install/cryostat-operator.yaml
-    ```
+Reference [Operator Lifecycle Manager's](https://olm.operatorframework.io/docs/tasks/uninstall-operator/#combine-steps-2-and-3)
+guide on uninstalling Operators. Please be sure to delete all `Cryostat` and `ClusterCryostat` Custom Resources before
+uninstalling the Cryostat Operator.
+- If your Cryostat Operator was installed in **All Namespaces** mode, then its `ClusterServiceVersion` and
+`Subscription` can be found in the `Namespace` `openshift-operators`.
+- If your Cryostat Operator was installed in **A specific Namespace**, then the `ClusterServiceVersion` and
+`Subscription` will be in that same `Namespace.`
