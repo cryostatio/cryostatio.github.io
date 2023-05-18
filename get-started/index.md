@@ -28,16 +28,36 @@ do so unless cert-manager is unavailable AND one of the following applies to you
 ### [Install via OperatorHub](#install-via-operatorhub)
 See below for a summary of the installation steps from the Cryostat Operator page on [OperatorHub](https://operatorhub.io/cryostat-operator). For more details, visit [Installing the Cryostat Operator from OperatorHub](https://developers.redhat.com/articles/2022/01/20/install-cryostat-operator-kubernetes-operatorhubio#). 
 
-**If Operator Lifecycle Manager (OLM) and OperatorHub are already installed and available on your cluster, skip to Step 3:**
-
 1. Install the Operator Lifecycle Manager:
-```
-$ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.21.1/install.sh | bash -s v0.21.1
-```
-2. Verify the installation was successful by confirming all pods are `READY`:
-```
+    Check if OLM is already installed:
+    ```bash
+    $ operator-sdk olm status
+    $ # or without the operator-sdk binary,
+    $ POD="$(kubectl get -l app=olm-operator -n olm pod -o 'jsonpath={.items[0].metadata.name}')"
+    $ kubectl exec -n olm "pod/${POD}" -- olm --version
+    ```
+
+    **If Operator Lifecycle Manager (OLM) and OperatorHub are already installed and available on your cluster, skip to Step 3:**
+
+    Install Operator Lifecycle Manager:
+
+    ```bash
+    $ operator-sdk olm install
+    $ # or without the operator-sdk binary,
+    $ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v{{site.data.versions.operator-lifecycle-manager.version}}/install.sh | bash -s v{{site.data.versions.operator-lifecycle-manager.version}}
+    ```
+
+2. Verify the installation was successful by confirming all pods are `Running`:
+```bash
 $ kubectl get pods -n olm
+NAME                                READY   STATUS    RESTARTS   AGE
+catalog-operator-77b8589cd8-8bntf   1/1     Running   0          3m9s
+olm-operator-5ccf676d8b-7rgss       1/1     Running   0          3m9s
+operatorhubio-catalog-pb896         1/1     Running   0          3m3s
+packageserver-8cccc99dd-dv8rp       1/1     Running   0          3m3s
+packageserver-8cccc99dd-g7lkh       1/1     Running   0          3m3s
 ```
+
 3. Install Cryostat from OperatorHub:
 {% include howto_step.html
   details-attributes="open"
