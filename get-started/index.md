@@ -144,7 +144,7 @@ spec:
 ```
 
 Then apply the resource:
-```
+```bash
 $ oc apply -f cryostat.yaml
 $ # or alternatively
 $ kubectl apply -f cryostat.yaml
@@ -205,8 +205,8 @@ For direct access to the Cryostat HTTP API you may follow the same pattern.
 Using a client such as `curl`, an OpenShift auth token can be passed with
 requests using the `Authorization: Bearer` header. The token must be base64
 encoded. For example,
-```
-curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
+```bash
+$ curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
 ```
 
 ##### [Other Platforms Authentication](#other-platforms-authentication)
@@ -228,7 +228,7 @@ The credentials stored in the Java properties file are the user name and a
 SHA-256 sum hex of the user's password. The property file contents should look
 like:
 
-```
+```properties
 user1=abc123
 user2=def987
 ```
