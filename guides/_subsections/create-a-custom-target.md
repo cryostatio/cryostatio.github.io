@@ -73,7 +73,7 @@ By default, Cryostat automatically discovers target JVMs over remote Java Manage
   </li>
   <li>
     {% include howto_step.html
-      summary="(Optional) Delete <i>Custom Targets</i>"
+      summary="<i>(Optional)</i> Delete <i>Custom Targets</i>"
       image-name="2.3.0/custom-target-6.png"
       caption="<i>Custom Targets</i> can be cleaned up with Actions menu."
       text="
