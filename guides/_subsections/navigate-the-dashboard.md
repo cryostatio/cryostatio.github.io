@@ -286,7 +286,7 @@ The <i>Dashboard</i> is highly customizable and can be configured to display the
                 Each card header contains a kebab icon that opens a menu of card actions. The actions menu contains the following options:
                 <ul>
                     <li>
-                        <b>View</b> - Opens the card in widescreen mode.
+                        <b>View</b> - Opens the card in fullscreen mode.
                     </li>
                     <li>
                         <b>Remove</b> - Removes the card from the dashboard.
