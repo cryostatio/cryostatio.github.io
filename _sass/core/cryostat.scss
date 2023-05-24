@@ -140,6 +140,26 @@ details > figure > a > img {
   border: 2px solid $grey-0;
 }
 
+details p {
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+details {
+  .multi-image {
+    display: flex;
+    figure {
+      figcaption {
+        text-align: center;
+      }
+    }
+  }
+}
+
+figcaption > code {
+  font-size: 0.9em;
+}
+
 .page-link {
   font-size: 1.25em;
 }

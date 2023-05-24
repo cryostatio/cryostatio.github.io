@@ -10,6 +10,8 @@ the rule name. These details often include suggestions on how to fix
 the problem. Cryostat also allows you to download the report HTML file
 for offline use.
 
+Cryostat also provides an *Automated Analysis Card* that is able to display the same information in a more user-friendly format, with more tools and control over the data you see. The card is available for use in the *Dashboard*. Read the section on the [Automated Analysis Card](#automated-analysis-card) for more information.
+
 <ol>
   <li>
     {% include_relative _subsections/common/select-target-application.md %}
