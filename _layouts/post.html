@@ -12,6 +12,7 @@ layout: default
 
   <h1>{{ page.title }}</h1>
   
+  <hr>
   <div class="byline-wrapper">
     {% assign author = site.data.authors[page.author] %}
     {% if author.emailhash %}
@@ -23,6 +24,12 @@ layout: default
       <p>: {{ author.job_title }}</p>
     {% endif %}
   </div>
+
+  <div>
+  Table of Contents:
+  </div>
+  {% toc %}
+  <hr>
 
   {{ content }}
 
