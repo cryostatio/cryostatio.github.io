@@ -9,6 +9,14 @@ common actions and workflows of interest and why they are useful.
 * auto-gen TOC:
 {:toc}
 
+{% include_relative _subsections/navigate-the-dashboard.md %}
+
+{% include_relative _subsections/use-topology-view.md %}
+
+{% include_relative _subsections/create-a-custom-target.md %}
+
+{% include_relative _subsections/using-the-cryostat-agent.md %}
+
 {% include_relative _subsections/startstop-a-recording.md %}
 
 {% include_relative _subsections/snapshot-a-recording.md %}
@@ -31,9 +39,9 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/add-and-edit-recording-metadata-labels.md %}
 
-{% include_relative _subsections/store-jmx-credentials.md %}
+{% include_relative _subsections/store-credentials.md %}
 
-{% include_relative _subsections/configure-jmx-credentials-storage.md %}
+{% include_relative _subsections/configure-credentials-storage.md %}
 
 {% include_relative _subsections/add-a-trusted-certificate.md %}
 

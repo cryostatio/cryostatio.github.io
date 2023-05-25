@@ -11,11 +11,11 @@ the web-client graphical console can become quite noisy.
   </li>
   <li>
     {% include howto_step.html
-      summary="Locate the Notifications card"
-      image-name="2.2.0/notifications-card.png"
+      summary="Locate the Notifications setting"
+      image-name="2.3.0/notifications-setting.png"
       text="
-        The Notifications card within this view is used to control the graphical display of notifications that
-        correspond to WebSocket messages sent by the Cryostat backend when actions and state changes occur. The card
+        The Notifications setting within this view is used to control the graphical display of notifications that
+        correspond to WebSocket messages sent by the Cryostat backend when actions and state changes occur. The setting
         contains a toggle switch for each category of notification, as well as a global switch to enable/disable all
         categories at once. Disabling a notification category only prevents it from appearing as a pop-up notification
         toast in the current web-client instance. The notification will still appear in the notification drawer, accessed
