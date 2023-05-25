@@ -4,7 +4,6 @@ title: 'An Introspective Investigation'
 date: 2023-05-03
 synopsis: Investigating a bug in the new Cryostat Agent, using Cryostat.
 author: Andrew Azores
-toc: true
 ---
 
 *Preface: this blog post is about the new [Cryostat Agent](https://github.com/cryostatio/cryostat-agent),
