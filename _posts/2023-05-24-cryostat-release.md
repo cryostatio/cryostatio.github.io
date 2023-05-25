@@ -40,7 +40,7 @@ or via a
 If this is your first time installing Cryostat on Kubernetes, you can [Get Started](/get-started) right here on this
 website.
 
-If you had previously installed Cryostat Operator 2.2.0 with OLM then you may have already been upgraded to 2.3.0, or
+If you had previously installed Cryostat Operator 2.2.0 with OLM, then you may have already been upgraded to 2.3.0, or
 else you should be able to approve and install the upgrade.
 
 ## Blogs
