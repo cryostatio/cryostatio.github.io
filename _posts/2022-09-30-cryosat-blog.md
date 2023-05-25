@@ -6,6 +6,11 @@ synopsis: Introducing Cryostat's Upstream Blog
 author: Andrew Azores
 ---
 
+#### Table of Contents
+* auto-gen TOC:
+{:toc}
+<hr>
+
 Hello, readers!
 
 The Cryostat team is excited to add this blog feature to our upstream guides and documentation website.

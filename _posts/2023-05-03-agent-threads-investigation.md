@@ -6,6 +6,11 @@ synopsis: Investigating a bug in the new Cryostat Agent, using Cryostat.
 author: Andrew Azores
 ---
 
+#### Table of Contents
+* auto-gen TOC:
+{:toc}
+<hr>
+
 *Preface: this blog post is about the new [Cryostat Agent](https://github.com/cryostatio/cryostat-agent),
 which is coming (very soon!) in the Cryostat 2.3 release. The problem being investigated could potentially
 affect any application running on a JVM however, so consider the Agent to just be a generic application

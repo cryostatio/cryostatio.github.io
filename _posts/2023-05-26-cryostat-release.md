@@ -6,6 +6,7 @@ synopsis: Cryostat 2.3.0 is here. Learn what's new in this release.
 author: Andrew Azores
 ---
 
+#### Table of Contents
 * auto-gen TOC:
 {:toc}
 <hr>

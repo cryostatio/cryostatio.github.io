@@ -6,6 +6,11 @@ synopsis: Cryostat 2.2 New features
 author: Leticia Konno
 ---
 
+#### Table of Contents
+* auto-gen TOC:
+{:toc}
+<hr>
+
 Hello, readers!
 
 There is a new option by default for Custom Flight Recording creation to have the recording automatically archived on stop. 
