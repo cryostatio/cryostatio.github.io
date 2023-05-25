@@ -11,7 +11,7 @@ Hello everyone,
 
 We are pleased to announce the release of Cryostat 2.3!
 
-## What’s New in 2.3?
+## [What’s New in 2.3?](#whats-new-in-23)
 - **[Cryostat Agent](/guides#using-the-cryostat-agent)**: an agent can be included in your deployment, which
     facilitates application discovery and JFR operations over HTTP API
 - **[Cross-namespace target discovery](/get-started/#using-clustercryostats)**: a `ClusterCryostat` custom resource can
@@ -45,7 +45,7 @@ else you should be able to approve and install the upgrade.
 
 ## Blogs
 This is a really big release with many new features, including several that have been long requested by the community.
-Watch this space for more posts about some of the "What's New" items above.
+Watch this space for more posts about some of the ["What's New"](#whats-new-in-23) items above.
 
 ## Feedback
 Our team is very excited to present this update to Cryostat and we look forward to your feedback. Please reach out to
