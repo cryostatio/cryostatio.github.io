@@ -34,7 +34,7 @@ We are pleased to announce the release of Cryostat 2.3!
 You can install Cryostat using our
 [Kubernetes operator on OperatorHub.io](https://operatorhub.io/operator/cryostat-operator)
 or via a
-[Helm Chart](https://github.com/cryostatio/cryostat-helm/tree/cryostat-v2.3)
+[Helm Chart](https://github.com/cryostatio/cryostat-helm/releases/tag/v0.3.0)
 . As always, you can also run Cryostat in other environments with a little more manual setup.
 
 If this is your first time installing Cryostat on Kubernetes, you can [Get Started](/get-started) right here on this
