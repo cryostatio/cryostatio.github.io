@@ -22,7 +22,7 @@ We are pleased to announce the release of Cryostat 2.3!
   view and create JFR recordings in bulk
   - **[Customizable dashboards](/guides#navigate-the-dashboard)**: view and configure cards displaying your JVM metrics on a dashboard
 - **Podman API**: Discover target applications using Podman HTTP API. This requires the Podman service to be running.
-    You might try `systemctl --user enable --now podman.socket`. The next time you run Cryostat under your user it will
+    You might try `systemctl --user enable --now podman.socket`. The next time you run Cryostat under your user, it will
     be able to talk to Podman and query for running containers with the label `io.cryostat.connectUrl`. The value of
     this label is expected to be a JMX service URL for the JVM within the container.
 
