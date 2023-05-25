@@ -4,8 +4,12 @@ title: Cryostat 2.2.0 is Released!
 date: 2022-11-15
 synopsis: Cryostat 2.2.0 is here. Learn what's new in this release.
 author: Andrew Azores
-toc: true
 ---
+
+#### Table of Contents
+* auto-gen TOC:
+{:toc}
+<hr>
 
 Hello readers, and welcome back to the Cryostat blog. Today we have exciting news: Cryostat 2.2.0 is released!
 

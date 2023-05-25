@@ -4,8 +4,12 @@ title: '"Archive On Stop" feature in the Cryostat 2.2'
 date: 2022-10-18
 synopsis: Cryostat 2.2 New features
 author: Leticia Konno
-toc: true
 ---
+
+#### Table of Contents
+* auto-gen TOC:
+{:toc}
+<hr>
 
 Hello, readers!
 

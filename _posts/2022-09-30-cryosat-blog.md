@@ -4,8 +4,12 @@ title: 'Hello World'
 date: 2022-09-30
 synopsis: Introducing Cryostat's Upstream Blog
 author: Andrew Azores
-toc: true
 ---
+
+#### Table of Contents
+* auto-gen TOC:
+{:toc}
+<hr>
 
 Hello, readers!
 
