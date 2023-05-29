@@ -257,3 +257,20 @@ kbd {
   padding: 2px 4px;
   white-space: nowrap;
 }
+
+.tip-callout {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  p {
+    font-style: italic;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
