@@ -19,7 +19,7 @@ Cryostat 2.3 introduces an improved settings page that offers a wide range of co
 Click the cog icon on the upper right corner of the web interface to take you to the General tab of the settings page.
 
 #### [General](#general)
-![Alt text](/images/blog/settings-page-general.png "General settings tab")
+![General settings tab](/images/blog/settings-page-general.png)
 The **General** settings tab is where you can adjust various general settings to tailor your experience with the application. You can select a preferred theme, the date locale, and the current timezone.
 ##### [Theme](#theme)
 Allows you to configure the theme of the Cryostat UI. Currently Cryostat only supports the Light and Dark theme. The web page defaults to `Auto` which defaults to the current theme of the browser you are working with.
@@ -27,7 +27,7 @@ Allows you to configure the theme of the Cryostat UI. Currently Cryostat only su
 Allows you to configure the current date locale, as well as the current timezone for more accurate analysis on any time-dependent data.
 
 #### [Connectivity](#connectivity)
-![Alt text](/images/blog/settings-page-connectivity.png "Connectivity settings tab")
+![Connectivity settings tab](/images/blog/settings-page-connectivity.png)
 The **Connectivity** settings tab allows you to configure settings related to the Cryostat web client and its WebSocket connection to the Cryostat server.
 ##### [WebSocket Connection Debounce](#websocket-connection-debounce)
 This setting allows you to configure the retry interval for establishing WebSocket connections. Increase this time if the web-interface repeatedly displays WebSocket connection/disconnection messages. Decrease this time if the web-interface takes a long time to populate on startup.
@@ -35,15 +35,15 @@ This setting allows you to configure the retry interval for establishing WebSock
 Sets the refresh period for content views. Views normally update dynamically via WebSocket notifications, so this should not be needed unless WebSockets are not working.
 
 #### [Notifications & Messages](#notifications-messages)
-![Alt text](/images/blog/settings-page-notifications&messages.png "Notifications & Messages settings tab")
+![Notifications & Messages settings tab](/images/blog/settings-page-notifications&messages.png)
 The **Notifications & Messages** tab allows you to configure settings related to the dynamic status notifications that pop up in the web interface.
 ##### [Notifications](#notifications)
-Here you can enable/disable notifications (enabled by default). By clicking `Show more` you can filter which type of notifications you want to receive. You may also control the maximum number of notification alerts that appear at once.
+Here you can enable/disable notifications (enabled by default). By clicking **Show more** you can filter which type of notifications you want to receive. You may also control the maximum number of notification alerts that appear at once.
 ##### [Show Deletion Dialogs](#show-deletion-dialogs)
 When deleting important resources such as recordings, Cryostat displays confirmation dialogs to confirm the deletion. You can control whether these dialogs are displayed or not and adjust each deletion warning category to your liking.
 
 #### [Dashboard](#dashboard)
-![Alt text](/images/blog/settings-page-dashboard.png "Dashboard settings tab")
+![Dashboard settings tab](/images/blog/settings-page-dashboard.png)
 The **Dashboard** tab allows you to configure settings related to the Dashboard. 
 ##### [Automated Analysis Recording Configuration](#automated-analysis-recording-configuration)
 The `Template` field allows you to specify the recording template to be used for automated analysis recordings. Meanwhile, the max-age and max-size fields set a limit on the recording's size and duration. Depending on how recent you want events to be recorded from the analysis, you may want to adjust the max-age and max-size values accordingly. Click the pencil icon on the settings card to edit the recording template.
@@ -55,7 +55,7 @@ text="We strongly recommend setting a maximum age and/or maximum size for your r
 We can configure the period between data refreshes for dashboard metric cards. Individual metrics cards may still request updates on a faster cycle, but the client application instance will throttle update requests to the server according to this setting. Depending on the performance of your machine and network, you may choose a longer minimum period to avoid overloading the application, or a shorter period if you prefer to have no throttling and allow quicker update frequency.
 
 #### [Advanced](#advanced)
-![Alt text](/images/blog/settings-page-advanced.png "Advanced settings tab")
+![Advanced settings tab](/images/blog/settings-page-advanced.png)
 Finally, the **Advanced** settings tab provides access to more advanced configurations and options for Cryostat.
 ##### [Credentials Storage](#credentials-storage)
 When attempting to connect to a target application that requires authentication, a prompt will appear asking for credentials to complete the connection. You have the option to choose where to store these credentials.
