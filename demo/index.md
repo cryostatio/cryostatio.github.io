@@ -16,8 +16,8 @@ Core JFR functionality is not available in this stubbed out demo, but you can us
   <iframe
     id="demo-frame"
     class="demo-iframe"
-    src="{{ "/assets/demo/site/index.html" | relative_url }}"
-    ></iframe>
+    src="https://cryostatio-cryostat-web-cryostat-v23.surge.sh"
+  />
 </div>
 <script>
     var loading = document.getElementById("loading");
