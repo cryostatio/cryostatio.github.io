@@ -59,7 +59,7 @@ By default, Cryostat automatically discovers target JVMs over remote Java Manage
     %}
   </li>
   <li>
-    <summary>Click <i>Create</i> button to generate a new </i>Custom Target</i> definition once the test is successful.</summary>
+    <summary>Click <i>Create</i> button to generate a new <i>Custom Target</i> definition once the test is successful.</summary>
   </li>
   <li>
     {% include howto_step.html
