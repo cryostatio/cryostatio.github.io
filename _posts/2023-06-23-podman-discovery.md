@@ -17,7 +17,7 @@ Last month, we [released Cryostat 2.3.0](/2023/05/26/cryostat-release) and calle
 
 ## Background
 
-Older versions of Cryostat supported automatic startup detection of one deployment platform at a time (Kubernetes API or JDP), plus the Custom Targets system. In Cryostat 2.2 a new Discovery Plugin system was introduced, enabling additional mechanisms for target application detection alongside those mentioned above. In Cryostat 2.3 this is expanded once again with the Cryostat Agent - more details on that in another post to come - which implements a Discovery Plugin, with a reorganized implementation that allows multiple deployment platforms to be enabled at once, and with a brand new deployment platform implementation for the Podman REST API.
+Older versions of Cryostat supported automatic startup detection of one deployment platform at a time (Kubernetes API or JDP), plus the Custom Targets system. In Cryostat 2.2, a new Discovery Plugin system was introduced, enabling additional mechanisms for target application detection alongside those mentioned above. In Cryostat 2.3, this is expanded once again with the Cryostat Agent - more details on that in another post to come - which implements a Discovery Plugin, with a reorganized implementation that allows multiple deployment platforms to be enabled at once, and with a brand new deployment platform implementation for the Podman REST API.
 
 ### Agent Side-note
 
