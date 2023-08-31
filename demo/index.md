@@ -17,7 +17,7 @@ Core JFR functionality is not available in this stubbed out demo, but you can us
     id="demo-frame"
     class="demo-iframe"
     src="https://cryostatio-cryostat-web-cryostat-v23.surge.sh"
-  />
+  ></iframe>
 </div>
 <script>
     var loading = document.getElementById("loading");
