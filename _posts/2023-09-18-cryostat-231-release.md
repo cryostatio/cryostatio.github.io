@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cryostat 2.3.1 is Released!
-date: 2023-09-14
+date: 2023-09-18
 synopsis: Cryostat 2.3.1 is here. Learn what's new in this release.
 author: Andrew Azores
 ---
