@@ -6,7 +6,7 @@ openshift:
 kubernetes:
   version: '1.19'
 operator-sdk:
-  version: '1.28.0'
+  version: '1.31.0'
 operator-lifecycle-manager:
   version: '0.24.0'
 documentation:
