@@ -308,7 +308,7 @@ or you may use the following snippet in your `pom.xml` to streamline this.
                 <artifactItem>
                   <groupId>io.cryostat</groupId>
                   <artifactId>cryostat-agent</artifactId>
-                  <version>0.2.1</version>
+                  <version>{{ site.data.versions.agent.version }}</version>
                 </artifactItem>
               </artifactItems>
               <stripVersion>true</stripVersion>
@@ -510,7 +510,7 @@ Add dependency configurations to `pom.xml`:
                 <artifactItem>
                   <groupId>io.cryostat</groupId>
                   <artifactId>cryostat-agent</artifactId>
-                  <version>0.2.1</version>
+                  <version>{{ site.data.versions.agent.version }}</version>
                 </artifactItem>
               </artifactItems>
               <stripVersion>true</stripVersion>
