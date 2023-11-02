@@ -3,7 +3,7 @@
 {% endcapture %}
 {% include howto_step.html
   summary="Navigate to <i>Dashboard</i>"
-  image-name="2.3.0/navigate-to-dashboard.png"
+  image-name="2.4.0/navigate-to-dashboard.png"
   caption="Add dashboard cards, switch between dashboard layouts, and modify the layout configuration to suit your needs."
   text=navigate-to-dashboard-include-text
 %}

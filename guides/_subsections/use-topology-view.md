@@ -33,13 +33,13 @@ The *Topology View* provides a visual presentation of all the discovered JVM app
 
     {% include howto_step.html
       summary="View JVM applications with Graph View"
-      image-name="2.3.0/topology-1.png"
+      image-name="2.4.0/topology-1.png"
       caption="View JVM applications with topology Graph view."
       text=topology-graphview-guide-text
     %}
     {% include howto_step.html
       summary="View JVM applications with List View"
-      image-name="2.3.0/topology-2.png"
+      image-name="2.4.0/topology-2.png"
       caption="View JVM applications with Topology List view."
       text=topology-listview-guide-text
     %}
@@ -72,13 +72,13 @@ The *Topology View* provides a visual presentation of all the discovered JVM app
 
     {% include howto_step.html
       summary="View JVM details"
-      image-name="2.3.0/topology-3.png"
+      image-name="2.4.0/topology-3.png"
       caption="View target JVM’s details with drawer panel."
       text=sidebar-detail-guide-text
     %}
     {% include howto_step.html
       summary="View JVM's associated resources"
-      image-name="2.3.0/topology-4.png"
+      image-name="2.4.0/topology-4.png"
       caption="View JVM's associated resources with drawer panel."
       text=sidebar-resource-guide-text
     %}
@@ -100,13 +100,13 @@ The *Topology View* provides a visual presentation of all the discovered JVM app
     
     {% include howto_step.html
       summary="Perform actions for a single JVM"
-      image-name="2.3.0/topology-5.png"
+      image-name="2.4.0/topology-5.png"
       caption="Perform actions on an individual JVM."
       text=single-action-guide-text
     %}
     {% include howto_step.html
       summary="Perform actions for a group of JVMs"
-      image-name="2.3.0/topology-6.png"
+      image-name="2.4.0/topology-6.png"
       caption="Perform actions on a group of JVMs."
       text=bulk-action-guide-text
     %}
