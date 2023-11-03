@@ -28,7 +28,7 @@ do so unless cert-manager is unavailable AND one of the following applies to you
 ### [Install via OperatorHub](#install-via-operatorhub)
 See below for a summary of the installation steps from the **Cryostat Operator** page on [**OperatorHub**](https://operatorhub.io/cryostat-operator). For more details, visit [Installing the **Cryostat Operator** from OperatorHub](https://developers.redhat.com/articles/2022/01/20/install-cryostat-operator-kubernetes-operatorhubio#).
 
-1. Install the **Operator** Lifecycle Manager **(OLM)**:
+1. Install the Operator Lifecycle Manager **(OLM)**:
     Check if **OLM** is already installed:
     ```bash
     $ operator-sdk olm status
@@ -70,9 +70,9 @@ Use the search bar to find the **Red Hat build of Cryostat** catalog item.
   image-name="`cryostat-operatorhub-install.png`"
 %}
 Choose your **Operator** installation mode:
-1. In **All Namespaces** installation mode, the **Cryostat Operator** instance will watch for **Cryostat** or
+1. In `All Namespaces` installation mode, the **Cryostat Operator** instance will watch for **Cryostat** or
 **ClusterCryostat** Custom Resources (**CR**s) created in any `Namespace` and create corresponding **Cryostat** instances.
-2. In the **A specific namespace** installation mode, you must also select an installation `Namespace`, and the **Cryostat Operator** instance will only watch for **Cryostat** or **ClusterCryostat** instances created in that same `Namespace`.
+2. In the `A specific namespace` installation mode, you must also select an installation `Namespace`, and the **Cryostat Operator** instance will only watch for **Cryostat** or **ClusterCryostat** instances created in that same `Namespace`.
 {% include howto_step.html
   summary="Install the Operator"
   image-name="cryostat-operatorhub-install-in-progress.png"
@@ -93,7 +93,7 @@ Continue to [Setup](#setup).
   image-name="cryostat-operatorhub-install-complete.png"
 %}
 Once the installation is complete, click *Create Cryostat* to create a **Cryostat CR** instance in an **OpenShift
-Project** (**Kubernetes** `Namespace`) of your choice. This provides configuration information for the **Operator** to know the
+Project** (**Kubernetes Namespace**) of your choice. This provides configuration information for the **Operator** to know the
 specifics of how to deploy your **Cryostat** instance. For full details on how to configure the **Cryostat** deployment, see
 [Configuring **Cryostat**](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md).
 
