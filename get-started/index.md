@@ -249,7 +249,7 @@ auth implementation.
 For demo purposes, let's go ahead and deploy a sample application to our
 **OpenShift** cluster in the same `namespace` as our **Cryostat** instance. If you have
 deployed **Cryostat** into a `namespace` where you are already running other
-applications, feel free to [continue to the next step](#open-the-cryostat-web-ui).
+applications, feel free to [continue to the next step](#configuring-applications).
 
 ```bash
 $ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.10
