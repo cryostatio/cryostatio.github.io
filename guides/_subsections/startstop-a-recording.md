@@ -15,7 +15,7 @@ JVM.
   <li>
     {% include howto_step.html
       summary="Configure the new recording"
-      image-name="2.3.0/startstop-a-recording-1.png"
+      image-name="2.4.0/startstop-a-recording-1.png"
       text="
       <p>
         Enter a name for the new recording. The form will alert you if the name
@@ -45,7 +45,7 @@ JVM.
   <li>
     {% include howto_step.html
       summary="<i>(Optional)</i> Adjust any <i>Advanced Options</i> for the recording"
-      image-name="2.3.0/startstop-a-recording-2.png"
+      image-name="2.4.0/startstop-a-recording-2.png"
       text="
       <p>
         In many cases, the <i>Advanced Options</i> can be left with their
@@ -104,7 +104,7 @@ JVM.
     {% endcapture %}
     {% include howto_step.html
       summary="Stop the recording"
-      image-name="2.3.0/startstop-a-recording-3.png"
+      image-name="2.4.0/startstop-a-recording-3.png"
       text=stop-the-recording-additional-content
     %}
   </li>

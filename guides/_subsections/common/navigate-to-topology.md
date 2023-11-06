@@ -3,7 +3,7 @@
 {% endcapture %}
 {% include howto_step.html
   summary="Navigate to Topology"
-  image-name="2.3.0/navigate-to-topology.png"
+  image-name="2.4.0/navigate-to-topology.png"
   caption="Use the bottom control bar to adjust the graph view as needed."
   text=navigate-to-topology-include-text
 %}

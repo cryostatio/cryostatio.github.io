@@ -24,7 +24,7 @@ use [JDK Mission Control](https://github.com/openjdk/jmc) for the heavy lifting.
   <li>
     {% include howto_step.html
       summary="Download the recording"
-      image-name="2.3.0/download-an-active-or-archived-recording-1.png"
+      image-name="2.4.0/download-an-active-or-archived-recording-1.png"
       caption="
         Click the action overflow three-dot menu on the right side of the
         recording entry in the table, then click <i>Download Recording</i>.
@@ -34,7 +34,7 @@ use [JDK Mission Control](https://github.com/openjdk/jmc) for the heavy lifting.
   <li>
     {% include howto_step.html
       summary="Choose what to do with the recording file"
-      image-name="2.3.0/download-an-active-or-archived-recording-2.png"
+      image-name="2.4.0/download-an-active-or-archived-recording-2.png"
       caption="
         Your browser will present you with its standard file-save dialog for both 
         the <i>Archived Recording</i>, and a <code>.json</code> file containing any
