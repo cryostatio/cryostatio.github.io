@@ -39,7 +39,7 @@ See below for a summary of the installation steps from the **Cryostat Operator**
 
     **If Operator Lifecycle Manager (OLM) and OperatorHub are already installed and available on your cluster, skip to Step 3:**
 
-    Install **Operator** Lifecycle Manager:
+    Install **OLM**:
 
     ```bash
     $ operator-sdk olm install
@@ -176,7 +176,7 @@ $ oc get cryostat -o jsonpath='{$.items[0].status.applicationUrl}'
 #### [Authenticate through Cryostat](#authenticate-through-cryostat)
 
 ##### [OpenShift Authentication](#openshift-authentication)
-When deployed in **OpenShift**, **Cryostat** will use the existing **internal cluster**
+When deployed in **OpenShift**, **Cryostat** will use the existing internal cluster
 authentication system to ensure all requests come from users with correct
 access to the **Cryostat** instance and the namespace that it is deployed within.
 
@@ -202,7 +202,7 @@ in on the cluster **SSO** login page.
 
 For direct access to the **Cryostat HTTP API** you may follow the same pattern.
 Using a client such as `curl`, an **OpenShift** auth token can be passed with
-requests using the `Authorization: Bearer` header. The token <span style="color:red">must</span> be base64
+requests using the `Authorization: Bearer` header. The token <span style="color:red">must</span> be `base64`
 encoded. For example,
 ```bash
 $ curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
@@ -269,7 +269,7 @@ There are three methods of configuring your Java applications so that **Cryostat
 3. [using the **Cryostat Agent** for discovery and **JMX** for connectivity](#using-the-cryostat-agent-with-jmx)
 
 The following sections will briefly explain how to accomplish each of these approaches by example. For simplicity the examples will assume your application
-is built with **Maven**, packaged into an image with a `Dockerfile`, and running in **Kubernetes**, but the instructions will be similar for other toolchains and platforms as well.
+is built with **Maven**, packaged into an image with a `Dockerfile`, and running in **Kubernetes**, but the procedure will be similar for other toolchains and platforms as well.
 
 ##### [Using the Cryostat Agent](#using-the-cryostat-agent)
 
@@ -334,7 +334,7 @@ COPY target/dependency/cryostat-agent.jar /deployments/app/
 ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent.jar"
 ```
 
-Next we <span style="color:red">must</span> rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
+Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
 **Push** that updated image or otherwise get it updated in your Kubernetes registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
 the **Cryostat Agent**:
 
@@ -391,7 +391,7 @@ status: {}
 
 Port number `9977` is the default HTTP port that the **Agent** exposes for its internal webserver that services **Cryostat** requests. The `CRYOSTAT_AGENT_AUTHORIZATION` value is particularly
 noteworthy: these are the credentials that the **Agent** will include in API requests it makes to **Cryostat** to advertise its own presence. You should create a **Kubernetes** `Service Account` for
-this purpose and replace `abcd1234` with the base64-encoded authentication token associated with the service account. For testing purposes you may use your own user account's
+this purpose and replace `abcd1234` with the `base64-encoded` authentication token associated with the service account. For testing purposes you may use your own user account's
 authentication token, for example with `oc whoami --show-token`.
 
 Finally, create a `Service` to enable **Cryostat** to make requests to this **Agent**:
@@ -611,19 +611,19 @@ spec:
 In [Deploying **Cryostat**](#deploying-cryostat), you created a single-namespace **Cryostat** Custom Resource
 (**CR**) instance.
 
-Single-namespace **Cryostat CR\`s** instruct the **Operator** to deploy restricted **Cryostat** instances which are only able
+Single-namespace **Cryostat CRs** instruct the **Operator** to deploy restricted **Cryostat** instances which are only able
 to see target applications deployed in the same namespace as the **Cryostat** instance, which is the same `Namespace` that
 the **CR** is created within.
 
 If you chose to install the **Operator** in **All Namespaces** mode as assumed in this guide, you may also be interested in
-creating **CluterCryostat CR\`s**. In this configuration, the **Operator** is able to see **Cryostat** and **ClusterCryostat
+creating **CluterCryostat CRs**. In this configuration, the **Operator** is able to see **Cryostat** and **ClusterCryostat
 CR\`s** in any project (`Namespace`) and create **Cryostat** deployments corresponding to either **CR** kind in each of their
 respective **Namespaces**. Both of these **CRs** are **Namespace**-specific, and the **Namespace** is used to determine which
 **OpenShift** users are able to access the **Cryostat** instance. For more information, please see the following documents:
 - [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/multi-namespace.md).
 - [Authorization Properties](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#authorization-properties)
 
-**ClusterCryostat CR\`s** instruct the **Operator** to deploy cross-namespace **Cryostat** instances. A **ClusterCryostat** has
+**ClusterCryostat CRs** instruct the **Operator** to deploy cross-namespace **Cryostat** instances. A **ClusterCryostat** has
 an `installNamespace`, which is the namespace where the **Cryostat Deployment** will reside, and a list of
 `targetNamespaces`, which are all of the namespaces that the **Cryostat** server will watch for target applications.
 The `targetNamespaces` list does not necessarily need to contain the `installNamespace`, if you do not want **Cryostat**
@@ -656,7 +656,7 @@ Now that you have installed and deployed **Cryostat** and know how to access its
 guides through various common actions and workflows.
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
-Reference [**Operator** Lifecycle Manager's](https://olm.operatorframework.io/docs/tasks/uninstall-operator/#combine-steps-2-and-3)
+Reference [**OLM**](https://olm.operatorframework.io/docs/tasks/uninstall-operator/#combine-steps-2-and-3)
 guide on uninstalling **Operators**. Please be sure to delete all **Cryostat** and **ClusterCryostat** Custom Resources before
 uninstalling the **Cryostat Operator**.
 - If your **Cryostat Operator** was installed in **All Namespaces** mode, then its **ClusterServiceVersion** and
