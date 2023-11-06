@@ -15,7 +15,7 @@ Cryostat {{ site.data.versions.cryostat.version }}
 Follow the steps below to install the **Cryostat Operator** via [**OperatorHub**](https://operatorhub.io/operator/cryostat-operator).
 
 ### [Install cert-manager](#install-cert-manager)
-The **Cryostat Operator** requires [cert-manager](https://cert-manager.io/) to run.
+The **Cryostat Operator** requires [**cert-manager**](https://cert-manager.io/) to run.
 If not already installed in your cluster, please
 [install](https://cert-manager.io/docs/installation/) it using your preferred method.
 Once installed, proceed with the **Operator** installation steps below.
@@ -67,7 +67,7 @@ packageserver-8cccc99dd-g7lkh       1/1     Running   0          3m3s
 Use the search bar to find the **Red Hat build of Cryostat** catalog item.
 {% include howto_step.html
   summary="Select the Cryostat Operator and click the Install button"
-  image-name="`cryostat-operatorhub-install.png`"
+  image-name="cryostat-operatorhub-install.png"
 %}
 Choose your **Operator** installation mode:
 1. In `All Namespaces` installation mode, the **Cryostat Operator** instance will watch for **Cryostat** or
@@ -335,7 +335,7 @@ ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent.jar"
 ```
 
 Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
-**Push** that updated image or otherwise get it updated in your Kubernetes registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
+Push that updated image or otherwise get it updated in your Kubernetes registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
 the **Cryostat Agent**:
 
 ```yaml
