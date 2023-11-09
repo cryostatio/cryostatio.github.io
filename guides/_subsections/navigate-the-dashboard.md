@@ -1,11 +1,11 @@
 ## [Navigate the Dashboard](#navigate-the-dashboard)
-The *Dashboard* is the first view you will see when you log into Cryostat. It provides a high-level overview of the state of your Cryostat instance and the target JVM applications it is monitoring.
+The *Dashboard* is the first view you will see when you log into **Cryostat**. It provides a high-level overview of the state of your **Cryostat** instance and the target JVM applications it is monitoring.
 
 {% include_relative _subsections/common/navigate-to-dashboard.md %}
 
 ### [Dashboard Cards](#dashboard-cards)
 
-Dashboard cards are widgets that display information about your Cryostat instance and the target JVM applications it is monitoring. Let's walk through the available cards and how to add them to your dashboard.
+Dashboard cards are widgets that display information about your **Cryostat** instance and the target JVM applications it is monitoring. Let's walk through the available cards and how to add them to your dashboard.
 
 {% include_relative _subsections/common/card-catalog.md %}
 
@@ -104,7 +104,7 @@ Dashboard cards are widgets that display information about your Cryostat instanc
             </a>
             <figcaption>
                 The <code>Discouraged Management Agent Settings</code> rule result with a severity score of 25.0.
-                A <i>Summary</i>, <i>Explanation</i>, and <i>Solution</i> can be seen in the <i>Result</i>.   
+                A <i>Summary</i>, <i>Explanation</i>, and <i>Solution</i> can be seen in the <i>Result</i>.
             </figcaption>
         </figure>
         <p>
@@ -317,7 +317,7 @@ The <i>Dashboard</i> is highly customizable and can be configured to display the
 
 By default, the `Default` layout is created for you. This layout contains the cards three *MBean Metrics Chart* cards. You can modify this layout's card configuration, but you cannot rename or delete it.
 
-*Layout Templates* save your layouts for later use. You can create a template from a layout, and then use that template to create a new layout with the same cards. You can also import and export templates to share them with other Cryostat users.
+*Layout Templates* save your layouts for later use. You can create a template from a layout, and then use that template to create a new layout with the same cards. You can also import and export templates to share them with other **Cryostat** users.
 
 #### [Create a new Dashboard Layout](#create-a-new-dashboard-layout)
 <ol>
@@ -383,7 +383,7 @@ By default, the `Default` layout is created for you. This layout contains the ca
                     <b>Suggested:</b> Templates that are suggested for you based on recent activity.
                 </li>
                 <li>
-                    <b>Cryostat:</b> Templates that come with Cryostat.
+                    <b>Cryostat:</b> Templates that come with **Cryostat**.
                 </li>
                 <li>
                     <b>User-submitted</b>: Templates that you have created or imported.
