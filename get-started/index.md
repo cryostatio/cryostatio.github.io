@@ -20,8 +20,8 @@ If not already installed in your cluster, please
 [install](https://cert-manager.io/docs/installation/) it using your preferred method.
 Once installed, proceed with the **Operator** installation steps below.
 
-<span style="color:red">**Warning**:</span> Although it is possible to [disable cert-manager integration](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#disabling-cert-manager-integration), it is NOT recommended to
-do so unless cert-manager is unavailable AND one of the following applies to you:
+<span style="color:red">**Warning**:</span> Although it is possible to [disable **cert-manager** integration](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#disabling-cert-manager-integration), it is NOT recommended to
+do so unless **cert-manager** is unavailable AND one of the following applies to you:
 - You have another solution for encrypting traffic
 - You trust everything running in the same cluster where the **Cryostat Operator** is deployed
 
@@ -617,7 +617,7 @@ the **CR** is created within.
 
 If you chose to install the **Operator** in **All Namespaces** mode as assumed in this guide, you may also be interested in
 creating **CluterCryostat CRs**. In this configuration, the **Operator** is able to see **Cryostat** and **ClusterCryostat
-CR\`s** in any project (`Namespace`) and create **Cryostat** deployments corresponding to either **CR** kind in each of their
+CRs** in any project (`Namespace`) and create **Cryostat** deployments corresponding to either **CR** kind in each of their
 respective **Namespaces**. Both of these **CRs** are **Namespace**-specific, and the **Namespace** is used to determine which
 **OpenShift** users are able to access the **Cryostat** instance. For more information, please see the following documents:
 - [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/multi-namespace.md).
