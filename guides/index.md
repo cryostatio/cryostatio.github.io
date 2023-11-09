@@ -3,7 +3,7 @@ layout: guides
 title: Guides on Using Cryostat
 ---
 
-This section explains some common Cryostat features by example, illustrating
+This section explains some common **Cryostat** features by example, illustrating
 common actions and workflows of interest and why they are useful.
 
 * auto-gen TOC:
