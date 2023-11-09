@@ -15,7 +15,8 @@ Cryostat {{ site.data.versions.cryostat.version }}
 Follow the steps below to install the **Cryostat Operator** via [**OperatorHub**](https://operatorhub.io/operator/cryostat-operator).
 
 ### [Install cert-manager](#install-cert-manager)
-The **Cryostat Operator** requires [**cert-manager**](https://cert-manager.io/) to run.
+
+The **Cryostat Operator** requires [**cert-manager**](https://cert-manager.io/) v{{ site.data.versions.cert-manager.version }}+ to run.
 If not already installed in your cluster, please
 [install](https://cert-manager.io/docs/installation/) it using your preferred method.
 Once installed, proceed with the **Operator** installation steps below.
@@ -307,7 +308,7 @@ or you may use the following snippet in your `pom.xml` to streamline this.
                 <artifactItem>
                   <groupId>io.cryostat</groupId>
                   <artifactId>cryostat-agent</artifactId>
-                  <version>0.2.1</version>
+                  <version>{{ site.data.versions.agent.version }}</version>
                 </artifactItem>
               </artifactItems>
               <stripVersion>true</stripVersion>
@@ -509,7 +510,7 @@ Add dependency configurations to `pom.xml`:
                 <artifactItem>
                   <groupId>io.cryostat</groupId>
                   <artifactId>cryostat-agent</artifactId>
-                  <version>0.2.1</version>
+                  <version>{{ site.data.versions.agent.version }}</version>
                 </artifactItem>
               </artifactItems>
               <stripVersion>true</stripVersion>
