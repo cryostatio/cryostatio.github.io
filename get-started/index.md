@@ -331,8 +331,8 @@ The next time we build our application, the **Cryostat Agent** **JAR** will be l
 ...
 COPY target/dependency/cryostat-agent.jar /deployments/app/
 ...
-# We are using a framework where the JAVA_OPTS environment variable can be used to pass JVM flags
-ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent.jar"
+# Assume we are using an application framework where the JAVA_OPTS environment variable can be used to pass JVM flags
+ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent-shaded.jar"
 ```
 
 Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
