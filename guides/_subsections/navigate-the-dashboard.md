@@ -1,11 +1,11 @@
 ## [Navigate the Dashboard](#navigate-the-dashboard)
-The *Dashboard* is the first view you will see when you log into **Cryostat**. It provides a high-level overview of the state of your **Cryostat** instance and the target JVM applications it is monitoring.
+The *Dashboard* is the first view you will see when you log into **Cryostat**. It provides a high-level overview of the state of your **Cryostat** instance and the target **JVM** applications it is monitoring.
 
 {% include_relative _subsections/common/navigate-to-dashboard.md %}
 
 ### [Dashboard Cards](#dashboard-cards)
 
-Dashboard cards are widgets that display information about your **Cryostat** instance and the target JVM applications it is monitoring. Let's walk through the available cards and how to add them to your dashboard.
+**Dashboard cards** are widgets that display information about your **Cryostat** instance and the target **JVM** applications it is monitoring. Let's walk through the available cards and how to add them to your dashboard.
 
 {% include_relative _subsections/common/card-catalog.md %}
 
@@ -14,37 +14,37 @@ Dashboard cards are widgets that display information about your **Cryostat** ins
 <ol>
   <li>
     {% capture target-jvm-details-text %}
-    The <i>Target JVM Details</i> card displays information about the target JVM application that is currently selected. There are two tabs that display different information:
+    The <i>Target JVM Details</i> card displays information about the target <b>JVM</b> application that is currently selected. There are two tabs that display different information:
     <ul>
         <li>
-            <b>Details tab</b> - Displays information about the target JVM application, including:
+            <b>Details tab</b> - Displays information about the target <b>JVM</b> application, including:
             <ol>
                 <li>
-                    <code>Connection URL</code> - The JMX connection URL of the target JVM application.
+                    <code>Connection URL</code> - The <b>JMX</b> connection URL of the target <b>JVM</b> application.
                 </li>
                 <li>
-                    <code>Alias</code> - The alias of the target JVM application.
+                    <code>Alias</code> - The alias of the target <b>JVM</b> application.
                 </li>
                 <li>
-                    <code>JVM ID</code> - The JVM ID of the target JVM application.
+                    <code>JVM ID</code> - The JVM ID of the target <b>JVM</b> application.
                 </li>
                 <li>
-                    <code>Labels</code> - The labels of the target JVM application.
+                    <code>Labels</code> - The labels of the target <b>JVM</b> application.
                 </li>
                 <li>
-                    <code>Annotations</code> - The annotations of the target JVM application.
+                    <code>Annotations</code> - The annotations of the target <b>JVM</b> application.
                 </li>
                 and more...
             </ol>
         </li>
         <li>
-            <b>Resources tab</b> - Displays the resources associated with the target JVM application. There are two tables:
+            <b>Resources tab</b> - Displays the resources associated with the target <b>JVM</b> application. There are two tables:
             <ul>
                 <li>
-                    <b>Owned Resources:</b> Resources that the JVM owns (i.e. <a href="#startstop-a-recording">Active Recordings</a>, <a href="#viewing-archived-recordings">Archived Recordings</a>, <a href="#download-edit-and-upload-a-customized-event-template">Event Templates</a> and <a href="#download-edit-and-upload-a-customized-event-template">Event Types</a>).
+                    <b>Owned Resources:</b> Resources that the <b>JVM</b> owns (i.e. <a href="#startstop-a-recording">Active Recordings</a>, <a href="#viewing-archived-recordings">Archived Recordings</a>, <a href="#download-edit-and-upload-a-customized-event-template">Event Templates</a> and <a href="#download-edit-and-upload-a-customized-event-template">Event Types</a>).
                 </li>
                 <li>
-                    <b>Related Resources:</b> Resources that are tied to the JVM by <i>Match Expression</i> (i.e. <a href="#create-an-automated-rule">Automated Rules</a> and <a href="#store-credentials">Credentials</a>).
+                    <b>Related Resources:</b> Resources that are tied to the <b>JVM</b> by <i>Match Expression</i> (i.e. <a href="#create-an-automated-rule">Automated Rules</a> and <a href="#store-credentials">Credentials</a>).
                 </li>
             </ul>
         </li>
@@ -87,7 +87,7 @@ Dashboard cards are widgets that display information about your **Cryostat** ins
   <li>
     {% capture automated-analysis-text %}
     <p>
-    The <i>Automated Analysis</i> card allows users to view JMC <i>Automated Analysis</i> reports in a nicely formatted dashboard card. The card allows the user to create a special recording, and then automatically generates a <i>Automated Analysis</i> report. The report displays potential problems with your JVM, and provides suggestions on how to improve the performance and security of your selected JVM application. The card also contains a toolbar that allows you to refresh the report, delete the report, filter results, and change the view.
+    The <i>Automated Analysis</i> card allows users to view <b>JMC</b> <i>Automated Analysis</i> reports in a nicely formatted dashboard card. The card allows the user to create a special recording, and then automatically generates a <i>Automated Analysis</i> report. The report displays potential problems with your <b>JVM</b>, and provides suggestions on how to improve the performance and security of your selected <b>JVM</b> application. The card also contains a toolbar that allows you to refresh the report, delete the report, filter results, and change the view.
     </p>
     <h4>Gallery view</h4>
         <figure>
@@ -96,7 +96,7 @@ Dashboard cards are widgets that display information about your **Cryostat** ins
             </a>
         </figure>
         <p>
-            The Gallery view of the Automated Analysis Card displays a <i>Result</i>, a report summary, for each <i>Rule</i> that was triggered in the selected recording. In this view, each rule is listed in categories based on the event type. For example, the <code>Thrown Errors</code> rule and the <code>Thrown Exceptions</code> rule are part of the <code>exceptions</code> category, as seen in the figure above. By clicking on each rule, you can view more details about the rule and the <i>Result</i> that was generated.
+            The <i>Gallery</i> view of the <b>Automated Analysis Card</b> displays a <i>Result</i>, a report summary, for each <i>Rule</i> that was triggered in the selected recording. In this view, each rule is listed in categories based on the event type. For example, the <code>Thrown Errors</code> rule and the <code>Thrown Exceptions</code> rule are part of the <code>exceptions</code> category, as seen in the figure above. By clicking on each rule, you can view more details about the rule and the <i>Result</i> that was generated.
         </p>
         <figure>
             <a href="{{ site.url }}/images/2.3.0/dashboard/automatedanalysis-result.png" target="_blank">
@@ -131,18 +131,18 @@ Dashboard cards are widgets that display information about your **Cryostat** ins
             </a>
         </figure>
         <p>
-            The List view of the Automated Analysis Card displays each <i>Result</i> in a listed table. The table can be sorted by clicking on the column headers. The <i>Result</i> will also show the Summary, Explanation, and Solution in the Description column.
+            The List view of the <b>Automated Analysis Card</b> displays each <i>Result</i> in a listed table. The table can be sorted by clicking on the <i>column headers</i>. The <i>Result</i> will also show the <b>Summary</b>, <b>Explanation</b>, and <b>Solution</b> in the <i>Description</i> column.
         </p>
     <h4>Toolbar</h4>
-        The toolbar allows you to filter results, change the view, refresh the report, and delete the report.
+        The <b>Toolbar</b> allows you to <i>filter</i> results, <i>change</i> the view, <i>refresh</i> the report, and <i>delete</i> the report.
 
-        You are able to filter:
+        You are able to <i>filter</i>:
          <ol>
             <li>
-                <b>By severity:</b> You can filter by severity score by dragging the score slider or typing a score in the score input. The <i>Result</i> table will only show results with the score greater or equal to the selected filter score. Additionally, if there are <i>Critical</i> or <i>Warning</i> results, click the corresponding labels in the card header to only show those <i>Results</i>. Reset the filter by clicking on the buttons next to the <code>Reset</code> text.
+                <b>By severity:</b> You can filter by severity score by dragging the <i>score slider</i> or typing a score in the <i>score input</i>. The <i>Result</i> table will only show results with the score greater or equal to the selected filter score. Additionally, if there are <i>Critical</i> or <i>Warning</i> results, click the corresponding labels in the card header to only show those <i>Results</i>. <i>Reset</i> the filter by clicking on the buttons next to the <i>Reset</i> text.
             </li>
             <li>
-                <b>By category:</b> You can filter by rule <i>Name</i> or <i>Topic</i> by clicking on the <i>Name</i> filter dropdown. Then select a filtered item by clicking the dropdown next to it. You may also type in this dropdown to search for a specific item. The <i>Result</i> table will only show results that match the selected filter.
+                <b>By category:</b> You can filter by rule <i>Name</i> or <i>Topic</i> by clicking on the <i>Name</i> filter dropdown. Then select a filtered item by clicking the <i>Dropdown</i> next to it. You may also type in this <i>Dropdown</i> to search for a specific item. The <i>Result</i> table will only show results that match the selected filter.
             </li>
         </ol>
     {% endcapture %}
@@ -158,10 +158,10 @@ Dashboard cards are widgets that display information about your **Cryostat** ins
   <li>
     {% capture configure-automated-analysis %}
     <p>
-      In the next steps of the card creation, you can optionally provide advanced configuration. You can configure the settings of the special recording that is used to generate the report. The <i>Current Configuration</i> will be shown and can be edited by clicking the Pencil icon. By default, the recording uses a <code>Continuous</code> template, a <code>Maximum size</code> of <code>10MB</code>, and a <code>0</code> second <code>Maximum age</code> (meaning an unlimited recording duration).
+      In the next steps of the card creation, you can optionally provide advanced configuration. You can configure the settings of the special recording that is used to generate the report. The <i>Current Configuration</i> will be shown and can be edited by clicking the <i>Pencil icon</i>. By default, the recording uses a <code>Continuous</code> template, a <code>Maximum size</code> of <code>10MB</code>, and a <code>0</code> second <code>Maximum age</code> (meaning an unlimited recording duration).
     </p>
     <p>
-        <b>Note:</b> It is possible that setting both an infinite maximum size and age will result in an <code>Out Of Memory</code> error during report generation.
+        <b style="color:red;">Note:</b> It is possible that setting both an infinite maximum size and age will result in an <code>Out Of Memory</code> error during report generation.
     </p>
     {% endcapture %}
     {% include howto_step.html
@@ -195,10 +195,10 @@ Dashboard cards are widgets that display information about your **Cryostat** ins
   <li>
     {% capture mbean-metrics-chart-text %}
     <p>
-        The <i>MBean Metrics Chart</i> card displays performance metrics about the target JVM through remote access to supported Java MXBeans interfaces of the JVM, including Thread, Runtime, OperatingSystem, and Memory MXBeans.
+        The <i>MBean Metrics Chart</i> card displays performance metrics about the target <b>JVM</b> through remote access to supported <b>Java MXBeans</b> interfaces of the <b>JVM</b>, including <i>Thread, Runtime, OperatingSystem</i>, and <i>Memory MXBeans</i>.
     </p>
     <p>
-        Cryostat gathers this data and displays them in various charts. You can customize each card by going through the card creation wizard. The wizard will guide you through the process of selecting the metrics you want to display, how you want to display them, and other various configuration options. Some examples of Performance Metrics that can be displayed are:
+        <b>Cryostat</b> gathers this data and displays them in various charts. You can customize each card by going through the card creation wizard. The wizard will guide you through the process of selecting the metrics you want to display, how you want to display them, and other various configuration options. Some examples of Performance Metrics that can be displayed are:
     </p>
     <ul>
         <li>Process CPU Load</li>
@@ -217,7 +217,7 @@ Dashboard cards are widgets that display information about your **Cryostat** ins
     <li>
     {% capture configure-mbean-metrics-chart %}
     <p>
-      In the next steps of the card creation, you can configure the details of the chart card. 
+      In the next steps of the card creation, you can configure the details of the chart card.
     </p>
     <p>
       Configure the metric data by clicking the <i>Performance Metric</i> dropdown and selecting a metric. You can also configure the <i>Data Window</i> to display a specific time range of data, the <i>Refresh Period</i> to control how often the chart is updated, and the <i>Color Theme</i> to change the chart metric color.
@@ -233,7 +233,7 @@ Dashboard cards are widgets that display information about your **Cryostat** ins
   <li>
     {% capture mbean-metrics-chart-finish %}
     <p>
-        After clicking <i>Finish</i>, the card will be added to the dashboard. You can click the refresh button "↻" on the top right of the card at any time to reload the metrics.
+        After clicking <i>Finish</i>, the card will be added to the dashboard. You can click the <i>refresh button</i> "↻" on the top right of the card at any time to reload the metrics.
     </p>
     {% endcapture %}
     {% include howto_step.html
@@ -246,9 +246,9 @@ Dashboard cards are widgets that display information about your **Cryostat** ins
 </ol>
 
 ### [Configuring the Dashboard](#configuring-the-dashboard)
-The <i>Dashboard</i> is highly customizable and can be configured to display the cards you want to see. You can customize the layout of the cards on the dashboard by moving, resizing, and removing cards.
+The <i>Dashboard</i> is highly customizable and can be configured to display the cards you want to see. You can customize the layout of the cards on the dashboard by <i>Moving, Resizing</i>, and <i>Removing</i> cards.
 
-#### [Moving, resizing, and removing cards](#moving-and-resizing-cards)
+#### [Moving, Resizing, and Removing cards](#moving-and-resizing-cards)
 <ol>
     <li>
         {% include howto_step.html
@@ -283,7 +283,7 @@ The <i>Dashboard</i> is highly customizable and can be configured to display the
     <li>
         {% capture remove-card-text %}
             <p>
-                Each card header contains a kebab icon that opens a menu of card actions. The actions menu contains the following options:
+                Each card header contains a <i>kebab</i> icon that opens a menu of card actions. The actions menu contains the following options:
                 <ul>
                     <li>
                         <b>View</b> - Opens the card in fullscreen mode.
@@ -306,18 +306,18 @@ The <i>Dashboard</i> is highly customizable and can be configured to display the
         {% include howto_step.html
         summary="Remove cards"
         image-name="2.3.0/dashboard/dashboard-cardkebab.png"
-        caption="Click the Kebab icon on the card header to open the card actions menu."
+        caption="Click the <i>Kebab</i> icon on the card header to open the card actions menu."
         text=remove-card-text
         %}
     </li>
 </ol>
 
 ### [Dashboard Layouts and Templates](#dashboard-layouts-and-templates)
-*Dashboard Layouts* are a way to organize your dashboard cards into different views. You can create multiple layouts and switch between them to view different cards. Favorite, rename, and delete layouts to customize your dashboard.
+*Dashboard Layouts* are a way to organize your dashboard cards into different views. You can create multiple layouts and switch between them to view different cards. <i>Favorite, Rename</i>, and <i>Delete</i> layouts to customize your dashboard.
 
-By default, the `Default` layout is created for you. This layout contains the cards three *MBean Metrics Chart* cards. You can modify this layout's card configuration, but you cannot rename or delete it.
+By default, the `Default` layout is created for you. This layout contains the cards three *MBean Metrics Chart* cards. You can modify this layout's card configuration, but you cannot *Rename* or *Delete* it.
 
-*Layout Templates* save your layouts for later use. You can create a template from a layout, and then use that template to create a new layout with the same cards. You can also import and export templates to share them with other **Cryostat** users.
+*Layout Templates* save your layouts for later use. You can *Create* a template from a layout, and then use that template to *Create* a new layout with the same cards. You can also *Import* and *Export* templates to share them with other **Cryostat** users.
 
 #### [Create a new Dashboard Layout](#create-a-new-dashboard-layout)
 <ol>
@@ -335,8 +335,8 @@ By default, the `Default` layout is created for you. This layout contains the ca
         {% include howto_step.html
         summary="<i>(Optional)</i> Rename layouts"
         image-name="2.3.0/dashboard/dashboard-renamelayout.png"
-        caption="Click the pencil button to rename the currently selected layout."
-        text="You are able to rename layouts by clicking the pencil button next to the layout selector. This will rename the currently selected layout. You can also rename layouts within the layout selector dropdown itself."
+        caption="Click the <i>Pencil</i> button to rename the currently selected layout."
+        text="You are able to rename layouts by clicking the <i>Pencil</i> button next to the layout selector. This will rename the currently selected layout. You can also rename layouts within the layout selector dropdown itself."
         %}
     </li>
     <li>
@@ -349,7 +349,7 @@ By default, the `Default` layout is created for you. This layout contains the ca
     </li>
 </ol>
 
-#### [Set a layout as a template](#set-a-layout-as-a-template)
+#### [Set a Layout as a Template](#set-a-layout-as-a-template)
 <ol>
     <li>
         {% include howto_step.html
@@ -361,7 +361,7 @@ By default, the `Default` layout is created for you. This layout contains the ca
     </li>
 </ol>
 
-#### [Create a new Dashboard Layout from a template](#create-a-new-dashboard-layout-from-a-template)
+#### [Create a new Dashboard Layout from a Template](#create-a-new-dashboard-layout-from-a-template)
 
 <ol>
     <li>
@@ -383,14 +383,14 @@ By default, the `Default` layout is created for you. This layout contains the ca
                     <b>Suggested:</b> Templates that are suggested for you based on recent activity.
                 </li>
                 <li>
-                    <b>Cryostat:</b> Templates that come with **Cryostat**.
+                    <b>Cryostat:</b> Templates that come with <b>Cryostat</b>.
                 </li>
                 <li>
                     <b>User-submitted</b>: Templates that you have created or imported.
                 </li>
             </ol>
-            <p>     
-            Additionally, you can search for templates by typing in the search bar or filter templates by category. You can also upload templates directly here by clicking <i>Upload</i>.
+            <p>
+            Additionally, you can search for templates by typing in the <i>Search</i> bar or <i>Filter</i> templates by category. You can also upload templates directly here by clicking <i>Upload</i>.
             </p>
             <p>
             Select a template by clicking on it.
@@ -408,7 +408,7 @@ By default, the `Default` layout is created for you. This layout contains the ca
         {% include howto_step.html
         summary="Enter a name for the new layout"
         image-name="2.3.0/dashboard/dashboard-templatepicker-name.png"
-        text="A layout name must be entered before the <i>Create</i> button is enabled. The name must be alphanumeric, can only contain underscores, dashes, and periods, and must be 20 characters or less."
+        text="A layout name must be entered before the <i>Create</i> button is enabled. The name must be <code>alphanumeric</code>, can only contain <code>underscores</code>, <code>dashes</code>, and <code>periods</code>, and must be <code>20</code> characters or less."
         %}
     </li>
     <li>

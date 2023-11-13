@@ -1,5 +1,5 @@
 {% capture navigate-to-dashboard-include-text %}
- The <i>Cryostat Dashboard</i> provides a high-level overview of the state of your Cryostat instance and the target JVM applications it is monitoring.
+ The <b>Cryostat</b> <i>Dashboard</i> provides a high-level overview of the state of your <b>Cryostat</b> instance and the target <b>JVM</b> applications it is monitoring.
 {% endcapture %}
 {% include howto_step.html
   summary="Navigate to <i>Dashboard</i>"
