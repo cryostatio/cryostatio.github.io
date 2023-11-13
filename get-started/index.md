@@ -263,7 +263,7 @@ name the 9097 service port `jfr-jmx`. Cryostat will detect and use this port
 to determine that this is a compatible Java application that it should monitor.
 
 #### [Configuring Applications](#configuring-applications)
-There are three methods of configuring your Java applications so that Cryostat is able to discover and monitor them:
+There are two methods of configuring your Java applications so that Cryostat is able to discover and monitor them:
 
 1. [using the Cryostat Agent for discovery and connectivity](#using-the-cryostat-agent)
 2. [using platform mechanisms for discovery and Java Management Extensions (JMX) for connectivity](#using-jmx)
@@ -308,6 +308,7 @@ or you may use the following snippet in your `pom.xml` to streamline this.
                   <groupId>io.cryostat</groupId>
                   <artifactId>cryostat-agent</artifactId>
                   <version>{{ site.data.versions.agent.version }}</version>
+                  <classifier>shaded</classifier>
                 </artifactItem>
               </artifactItems>
               <stripVersion>true</stripVersion>
@@ -324,11 +325,11 @@ or you may use the following snippet in your `pom.xml` to streamline this.
 
 **Note**: You may be required to [authenticate to the GitHub Maven Packages registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#installing-a-package) in order to pull this JAR.
 
-The next time we build our application, the Cryostat Agent JAR will be located at `target/dependency/cryostat-agent.jar`. Then we can update our Dockerfile:
+The next time we build our application, the Cryostat Agent JAR will be located at `target/dependency/cryostat-agent-shaded.jar`. Then we can update our Dockerfile:
 
 ```Dockerfile
 ...
-COPY target/dependency/cryostat-agent.jar /deployments/app/
+COPY target/dependency/cryostat-agent-shaded.jar /deployments/app/
 ...
 # Assume we are using an application framework where the JAVA_OPTS environment variable can be used to pass JVM flags
 ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent-shaded.jar"
