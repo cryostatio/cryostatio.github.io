@@ -366,7 +366,7 @@ spec:
               # choose to configure the Agent to communicate with a Cryostat in
               # a different Namespace, too.
               # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-              value: https://cryostat.$(NAMESPACE).svc:8181
+              value: https://cryostat.$(NAMESPACE).svc.cluster.local:8181
             - name: CRYOSTAT_AGENT_API_WRITES_ENABLED
               # Set this to 'true' to turn on the "write" or "mutation" capabilities of the
               # Agent's HTTP API. This defaults to 'false', so the Agent HTTP API only exposes
