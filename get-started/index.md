@@ -418,10 +418,12 @@ spec:
 
 More details about the configuration options for the **Cryostat Agent** [are available here](https://github.com/cryostatio/cryostat-agent/blob/{{site.data.versions.cryostat.release-branch}}/README.md#configuration).
 
-You may also be interested in using the Cryostat Agent for application discovery, but using JMX for remote management and data access rather than the Cryostat HTTP API.
-In that case, simply set `CRYOSTAT_AGENT_API_WRITES_ENABLED=false` to turn off as much of the Cryostat Agent HTTP API as possible, then continue to [the next section](#using-jmx)
-to additionally configure your application to enable and expose JMX for remote management and data access. If the Cryostat Agent detects that the application it is attached
-to has JMX enabled then it will publish itself to the Cryostat server with both an Agent HTTP URL and a JMX URL. If JMX is not detected then it will only publish the HTTP URL.
+You may also be interested in using the **Cryostat Agent** for application discovery, but using **JMX** for remote management and data
+access rather than the **Cryostat Agent** HTTP API. In that case, simply set `CRYOSTAT_AGENT_API_WRITES_ENABLED=false` to turn off as much
+of the **Cryostat Agent** HTTP API as possible, then continue to [the next section](#using-jmx) to additionally configure your application
+to enable and expose **JMX** for remote management and data access. If the **Cryostat Agent** detects that the application it is attached
+to has **JMX** enabled then it will publish itself to the **Cryostat** server with both an **Agent** HTTP URL and a **JMX** URL. If **JMX**
+is not detected then it will only publish the HTTP URL.
 
 ##### [Using JMX](#using-jmx)
 **Cryostat** is also able to use Java Management Extensions (**JMX**) to communicate with target applications. This is a standard JDK feature that can be enabled by passing **JVM**
