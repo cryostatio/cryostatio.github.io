@@ -267,7 +267,6 @@ There are three methods of configuring your Java applications so that Cryostat i
 
 1. [using the Cryostat Agent for discovery and connectivity](#using-the-cryostat-agent)
 2. [using platform mechanisms for discovery and Java Management Extensions (JMX) for connectivity](#using-jmx)
-3. [using the Cryostat Agent for discovery and JMX for connectivity](#using-the-cryostat-agent-with-jmx)
 
 The following sections will briefly explain how to accomplish each of these approaches by example. For simplicity the examples will assume your application
 is built with Maven, packaged into an image with a `Dockerfile`, and running in Kubernetes, but the instructions will be similar for other toolchains and platforms as well.
@@ -418,6 +417,11 @@ spec:
 
 More details about the configuration options for the Cryostat Agent [are available here](https://github.com/cryostatio/cryostat-agent/blob/{{site.data.versions.cryostat.release-branch}}/README.md#configuration).
 
+You may also be interested in using the Cryostat Agent for application discovery, but using JMX for remote management and data access rather than the Cryostat HTTP API.
+In that case, simply set `CRYOSTAT_AGENT_API_WRITES_ENABLED=false` to turn off as much of the Cryostat Agent HTTP API as possible, then continue to [the next section](#using-jmx)
+to additionally configure your application to enable and expose JMX for remote management and data access. If the Cryostat Agent detects that the application it is attached
+to has JMX enabled then it will publish itself to the Cryostat server with both an Agent HTTP URL and a JMX URL. If JMX is not detected then it will only publish the HTTP URL.
+
 ##### [Using JMX](#using-jmx)
 Cryostat is also able to use Java Management Extensions (JMX) to communicate with target applications. This is a standard JDK feature that can be enabled by passing JVM
 flags to your application at startup. A basic and insecure setup suitable for testing requires only the following three flags:
@@ -474,144 +478,9 @@ spec:
 ```
 
 Cryostat queries the Kubernetes API server and looks for `Service`s with a port either named `jfr-jmx` or with the number `9091`. One or both of these conditions
-must be met or else Cryostat will not automatically detect your application. In this case you may wish to use the [Cryostat Agent](#using-the-cryostat-agent-with-jmx)
-to enable discovery, while keeping communications over JMX rather than HTTP.
-
-##### [Using the Cryostat Agent with JMX](#using-the-cryostat-agent-with-jmx)
-The two prior sections have discussed:
-  - How to use the Cryostat Agent to do application discovery and expose data over HTTP.
-  - How to use Kubernetes `Service` configurations for discovery and JMX to expose data.
-
-There is a third, hybrid approach: **using the Cryostat Agent to do application discovery, and JMX to expose data**. This may be
-useful since the Agent HTTP data model is readonly, whereas JMX is read-write. This means that using JMX to communicate between Cryostat and your applications
-allows for more dynamic flexibility, for example, the ability to start and stop Flight Recordings on demand. Using the Cryostat Agent for application discovery
-is also more flexible than depending on `Service`s with specially-named or specially-numbered ports. 
-
-For more context about these concepts, please review
-the previous two sections on [using the Cryostat Agent](#using-the-cryostat-agent) and [using JMX](#using-jmx).
-
-Add dependency configurations to `pom.xml`:
-```xml
-<project>
-  ...
-  <repositories>
-    <repository>
-      <id>github</id>
-      <url>https://maven.pkg.github.com/cryostatio/cryostat-agent</url>
-    </repository>
-  </repositories>
-  ...
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.3.0</version>
-        <executions>
-          <execution>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>copy</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>io.cryostat</groupId>
-                  <artifactId>cryostat-agent</artifactId>
-                  <version>{{ site.data.versions.agent.version }}</version>
-                </artifactItem>
-              </artifactItems>
-              <stripVersion>true</stripVersion>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-    ...
-  </build>
-  ...
-</project>
-```
-
-Modify the application `Deployment`:
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-...
-spec:
-  ...
-  template:
-    ...
-    spec:
-      containers:
-        - name: sample-app
-          image: docker.io/myorg/myapp:latest
-          env:
-            - name: CRYOSTAT_AGENT_APP_NAME
-              # Replace this with any value you like to use to identify your application.
-              value: "myapp"
-            - name: NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: CRYOSTAT_AGENT_BASEURI
-              # Update this to correspond to the name of your Cryostat instance
-              # if it is not 'cryostat'. This assumes that the target application
-              # and the Cryostat instance are in the same Namespace, but you may
-              # choose to configure the Agent to communicate with a Cryostat in
-              # a different Namespace, too.
-              # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-              value: https://cryostat.$(NAMESPACE).svc:8181
-            - name: POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
-            - name: CRYOSTAT_AGENT_HOSTNAME
-              value: $(POD_IP)
-            - name: CRYOSTAT_AGENT_CALLBACK
-              # This infers the Agent Callback directly from the Pod's IP address using the
-              # Kubernetes Downward API. Use this value directly as provided. The port number
-              # 9977 can be changed but must match the containerPort below.
-              value: "http://$(POD_IP):9977"
-              # Replace "abcd1234" with a base64-encoded authentication token. For example,
-              # in your terminal, do 'oc whoami -t | base64' to use your user account's
-              # token as the token that the Agent will pass to authorize itself with
-              # the Cryostat server.
-            - name: CRYOSTAT_AGENT_AUTHORIZATION
-              value: "Bearer abcd1234"
-              # This environment variable is key to the "hybrid" setup.
-              # This instructs the Agent to register itself with Cryostat
-              # as reachable via JMX, rather than reachable via HTTP.
-            - name: CRYOSTAT_AGENT_REGISTRATION_PREFER_JMX
-              value: "true"
-              # Here we configure the application to load the Agent JAR as
-              # well as to enable JMX, since we want the Agent to register
-              # itself as reachable via JMX.
-            - name: JAVA_OPTS
-              value: >-
-                -javaagent:/deployments/app/cryostat-agent.jar
-                -Dcom.sun.management.jmxremote.port=9091
-                -Dcom.sun.management.jmxremote.ssl=false
-                -Dcom.sun.management.jmxremote.authenticate=false
-          ports:
-            - containerPort: 9977
-              protocol: TCP
-          resources: {}
-      restartPolicy: Always
-status: {}
-```
-
-Create an application `Service`:
-```yaml
-apiVersion: v1
-kind: Service
-...
-spec:
-  ports:
-    - name: "cryostat-agent"
-      port: 9977
-      targetPort: 9977
-...
-```
+must be met or else Cryostat will not automatically detect your application. In this case you may wish to use the [Cryostat Agent](#using-the-cryostat-agent)
+to enable discovery. If you do use the Cryostat Agent for discovery and JMX for remote management, you may combine both of the `Service` definitions into a single
+`Service` with two exposed `ports`.
 
 ### [Alternate Setup](#alternate-setup)
 
