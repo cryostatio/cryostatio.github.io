@@ -95,7 +95,7 @@ The *Topology View* provides a visual presentation of all the discovered **JVM**
     {% capture bulk-action-guide-text %}
     The details panel also supports performing actions on multiple target <b>JVMs</b>. Select a group of targets, for example, a <b>Pod</b>. A drawer panel will appear to show the group details. Select <b>Actions</b> menu to show available options.
     <br><br>
-    For example, select <i>Start recording</i> to start a recording on all target <b>JVMs</b> under this group. <b style="color:red">Caution:</b> repeatedly selecting this option will cause the recording to be restarted and may result in recording data loss.
+    For example, select <i>Start recording</i> to start a <code>Recording</code> on all target <b>JVMs</b> under this group. <b style="color:red">Caution:</b> repeatedly selecting this option will cause the <code>Recording</code> to be restarted and may result in <code>Recording</code> data loss.
     {% endcapture %}
     
     {% include howto_step.html

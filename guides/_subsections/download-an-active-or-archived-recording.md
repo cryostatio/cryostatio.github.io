@@ -2,7 +2,7 @@
 **Cryostat** provides some basic capabilities for analysis of **Flight Recording** data
 in-cluster. However, the core analysis workflow is to collect **JFR** files from
 target applications and copy them to local developer or admin workstations, then
-use [**JDK** Mission Control](https://github.com/openjdk/jmc) for the heavy lifting.
+use [`JDK Mission Control`](https://github.com/openjdk/jmc) for the heavy lifting.
 
 <ol>
   <li>
@@ -15,7 +15,7 @@ use [**JDK** Mission Control](https://github.com/openjdk/jmc) for the heavy lift
     {% include_relative _subsections/common/select-a-recording.md
         select-a-recording-caption="
         Determine the <code>Recording</code> you wish to download to your local workstation.
-        This may be either an <code>Active</code> or <code>Archived</code> recording.
+        This may be either an <code>Active</code> or <code>Archived Recording</code>.
         Select the appropriate tab in the <i>Recordings</i> view. No actual action
         needs to be taken at this step.
       "
@@ -23,24 +23,24 @@ use [**JDK** Mission Control](https://github.com/openjdk/jmc) for the heavy lift
   </li>
   <li>
     {% include howto_step.html
-      summary="Download the Recording"
+      summary="Download the <code>Recording</code>"
       image-name="2.3.0/download-an-active-or-archived-recording-1.png"
       caption="
-        Click the action overflow <i>three-dot</i> menu on the right side of the
+        Click the action overflow \"&#65049;\" <i>three-dot</i> menu on the right side of the
         recording entry in the table, then click <i>Download Recording</i>.
       "
     %}
   </li>
   <li>
     {% include howto_step.html
-      summary="Choose what to do with the Recording file"
+      summary="Choose what to do with the <code>Recording</code> File"
       image-name="2.3.0/download-an-active-or-archived-recording-2.png"
       caption="
         Your browser will present you with its standard file-save dialog for both
         the <code>Archived Recording</code>, and a <code>.json</code> file containing any
         metadata labels that were attached. It may take some time for these dialogs
-        to appear. Once it does, you can choose to open the recording file directly
-        in <code><b>JDK</b> Mission Control</code>, or (recommended) to save the recording to disk.
+        to appear. Once it does, you can choose to open the <code>Recording</code> file directly
+        in <code>JDK Mission Control</code>, or (recommended) to save the <code>Recording</code> to disk.
       "
     %}
   </li>

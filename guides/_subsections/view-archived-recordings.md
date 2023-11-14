@@ -40,7 +40,7 @@ The third method is to navigate to the <i>All-Archives</i> <code>Archived Record
 
 The *All-Archives* view is a view which queries **Cryostat's** internal storage for any created `Archived Recordings` and the directories that contain them. Here, we are able to interact with any `Archived Recordings` that have been saved into storage by opening a nested recordings table within each directory.
 
-This view is used to save any lost `Archived Recordings` in case any target **JVM** restarts or exits. It will be empty if no recordings are currently saved to storage.
+This view is used to save any lost `Archived Recordings` in case any target **JVM** restarts or exits. It will be empty if no <code>Recordings</code> are currently saved to storage.
 
 <ol>
   <li>

@@ -87,7 +87,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
     {% capture automated-analysis-text %}
     <p>
-    The <i>Automated Analysis</i> card allows users to view <b>JMC</b> <i>Automated Analysis</i> reports in a nicely formatted dashboard card. The card allows the user to create a special recording, and then automatically generates a <i>Automated Analysis</i> report. The report displays potential problems with your <b>JVM</b>, and provides suggestions on how to improve the performance and security of your selected <b>JVM</b> application. The card also contains a toolbar that allows you to refresh the report, delete the report, filter results, and change the view.
+    The <i>Automated Analysis</i> card allows users to view <b>JMC</b> <i>Automated Analysis</i> reports in a nicely formatted dashboard card. The card allows the user to create a special <code>Recording</code>, and then automatically generates a <i>Automated Analysis</i> report. The report displays potential problems with your <b>JVM</b>, and provides suggestions on how to improve the performance and security of your selected <b>JVM</b> application. The card also contains a toolbar that allows you to refresh the report, delete the report, filter results, and change the view.
     </p>
     <h4>Gallery view</h4>
         <figure>
@@ -96,7 +96,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
             </a>
         </figure>
         <p>
-            The <i>Gallery</i> view of the <b>Automated Analysis Card</b> displays a <i>Result</i>, a report summary, for each <i>Rule</i> that was triggered in the selected recording. In this view, each rule is listed in categories based on the event type. For example, the <code>Thrown Errors</code> rule and the <code>Thrown Exceptions</code> rule are part of the <code>exceptions</code> category, as seen in the figure above. By clicking on each rule, you can view more details about the rule and the <i>Result</i> that was generated.
+            The <i>Gallery</i> view of the <b>Automated Analysis Card</b> displays a <i>Result</i>, a report summary, for each <i>Rule</i> that was triggered in the selected <code>Recording</code>. In this view, each rule is listed in categories based on the event type. For example, the <code>Thrown Errors</code> rule and the <code>Thrown Exceptions</code> rule are part of the <code>exceptions</code> category, as seen in the figure above. By clicking on each rule, you can view more details about the rule and the <i>Result</i> that was generated.
         </p>
         <figure>
             <a href="{{ site.url }}/images/2.3.0/dashboard/automatedanalysis-result.png" target="_blank">
@@ -158,7 +158,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
     {% capture configure-automated-analysis %}
     <p>
-      In the next steps of the card creation, you can optionally provide advanced configuration. You can configure the settings of the special recording that is used to generate the report. The <i>Current Configuration</i> will be shown and can be edited by clicking the <i>Pencil icon</i>. By default, the recording uses a <code>Continuous</code> template, a <code>Maximum size</code> of <code>10MB</code>, and a <code>0</code> second <code>Maximum age</code> (meaning an unlimited recording duration).
+      In the next steps of the card creation, you can optionally provide advanced configuration. You can configure the settings of the special <code>Recording</code> that is used to generate the report. The <i>Current Configuration</i> will be shown and can be edited by clicking the <i>Pencil icon</i>. By default, the <code>Recording</code> uses a <code>Continuous</code> template, a <code>Maximum size</code> of <code>10MB</code>, and a <code>0</code> second <code>Maximum age</code> (meaning an unlimited recording duration).
     </p>
     <p>
         <b style="color:red;">Note:</b> It is possible that setting both an infinite maximum size and age will result in an <code>Out Of Memory</code> error during report generation.

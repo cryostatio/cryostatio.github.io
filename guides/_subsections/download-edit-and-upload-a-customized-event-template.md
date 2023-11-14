@@ -99,7 +99,7 @@ definition to download.
       summary="Open the Template Upload Dialog"
       image-name="2.3.0/download-edit-and-upload-a-customized-event-template-3.png"
       caption="
-        Back on the <i>Cryostat Events</i> view, click the plus (<code>+</code>) icon
+        Back on the <i>Cryostat Events</i> view, click the <i>Upload Icon</i>
         in the table toolbar. A dialog will appear.
       "
     %}
