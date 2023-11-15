@@ -1,6 +1,6 @@
 ## [Upload an Automated Rule](#upload-an-automated-rule)
 
-Instead of stepping through the form every time, you can also edit your Automated Rule definition files (JSON format) locally and quickly upload them.
+Instead of stepping through the form every time, you can also edit your `Automated Rule` definition files (`JSON` format) locally and quickly upload them.
 
 Below is an example of a rule file content:
 
@@ -22,20 +22,20 @@ Below is an example of a rule file content:
 <ol>
   <li>
       {% include howto_step.html
-        summary="Open <i>Automated Rules</i> upload prompt"
+        summary="Open <i>Automated Rules</i> upload Prompt"
         image-name="2.3.0/upload-an-automated-rule-1.png"
-        caption="Click on upload icon button to open upload prompt."
+        caption="Click on <i>Upload Icon</i> button to open upload prompt."
       %}  
   </li>
   <li>
       {% include howto_step.html
-        summary="Attach a rule file by dragging & dropping or clicking <i>Browse...</i>."
+        summary="Attach a Rule File by Dragging & Dropping or Clicking <i>Browse...</i>."
         image-name="2.3.0/upload-an-automated-rule-2.png"
         caption="Select a rule file to upload."
       %}  
   </li>
   <li>
-    <summary>Click <i>Submit</i> button to upload.</summary>
+    <summary>Click <i>Submit</i> Button to Upload.</summary>
   </li>
   <li>
       {% include howto_step.html

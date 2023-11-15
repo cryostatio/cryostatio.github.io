@@ -1,17 +1,17 @@
 ## [Create an Automated Rule](#create-an-automated-rule)
 
-Automated Rules are configurations that instruct Cryostat to create JDK Flight Recordings on matching
-target JVM applications. Each Automated Rule specifies parameters for which Event Template to use, how
-much data should be kept in the application recording buffer, and how frequently Cryostat should copy the
-application recording buffer into Cryostat's own archived storage.
+`Automated Rules` are configurations that instruct **Cryostat** to create **JDK** `Flight Recordings` on matching
+target **JVM** applications. Each `Automated Rule` specifies parameters for which `Event Template` to use, how
+much data should be kept in the application `Recording` buffer, and how frequently **Cryostat** should copy the
+application `Recording` buffer into **Cryostat's** own archived storage.
 
-Once you've created a rule, Cryostat immediately matches it against all existing discovered targets and starts your flight recording. Cryostat will also apply the rule to newly discovered targets that match its definition. You can create multiple rules to match different subsets of targets or to layer different recording options for your needs.
+Once you've created a rule, **Cryostat** immediately matches it against all existing discovered targets and starts your `Flight Recording`. **Cryostat** will also apply the rule to newly discovered targets that match its definition. You can create multiple rules to match different subsets of targets or to layer different recording options for your needs.
 
-We'll walk through two use cases: continuous monitoring in a containerized JVM, and custom monitoring with Kubernetes labels or annotations.
+We'll walk through two use cases: `Continuous` monitoring in a containerized **JVM**, and `Custom` monitoring with **Kubernetes** labels or annotations.
 
-### [Continuous monitoring in a containerized JVM](#continuous-monitoring-in-a-containerized-jvm)
+### [`Continuous` Monitoring in a Containerized **JVM**](#continuous-monitoring-in-a-containerized-jvm)
 
-Previously, if we wanted to enable always-on continuous monitoring using JDK Flight Recorder (JFR) in a containerized Java virtual machine (JVM), we would set JVM flags on the target application, then restart the application to start monitoring. With Cryostat's automated rules, we can enable JDK Flight Recorder at runtime to continuously monitor an already-running target application, with no restart, no redeploy, and no downtime.
+Previously, if we wanted to enable always-on `Continuous` monitoring using JDK Flight Recorder **(JFR)** in a containerized Java virtual machine **(JVM)**, we would set **JVM** flags on the target application, then restart the application to start monitoring. With **Cryostat's** `Automated Rules`, we can enable JDK Flight Recorder  **(JFR)** at runtime to continuously monitor an already-running target application, with no restart, no redeploy, and no downtime.
 
 <ol>
   <li>
@@ -26,25 +26,25 @@ Previously, if we wanted to enable always-on continuous monitoring using JDK Fli
   </li>
   <li>
       {% include howto_step.html
-        summary="Configure the new automated rule"
+        summary="Configure the New <code>Automated Rule</code>"
         image-name="2.3.0/create-an-automated-rule-2.png"
         text="
       <p>
-        <b>Name:</b> Enter a name for the new rule. The form will alert you if the name
+        <i>Name:</i> Enter a name for the new rule. The form will alert you if the name
         entered has an invalid format. If the name is already in use then the
         creation will fail and you will need to try again.
       </p>
       <p>
-        <b>Description:</b> Enter an optional description for your rule.
+        <i>Description:</i> Enter an optional description for your rule.
       </p>
       <p>
-        <b>Match Expression:</b> We will fill this field in the next step.
+        <i>Match Expression:</i> We will fill this field in the next step.
       </p>
       <p>
-        <b>Enabled:</b> Enable or disable the rule. If disabled, the rule will not be applied to any targets.
+        <i>Enabled:</i> Enable or disable the rule. If disabled, the rule will not be applied to any targets.
       </p>
       <p>
-        <b>Template:</b> Select an event template or enter a custom event definition. If you are
+        <i>Template:</i> Select an event template or enter a custom event definition. If you are
         unsure which to choose, the <i>Continuous</i> template is useful for
         always-on production monitoring with the <i>continuous</i> recording
         duration setting, and the <i>Profiling</i> template is useful for
@@ -52,13 +52,13 @@ Previously, if we wanted to enable always-on continuous monitoring using JDK Fli
         identified problem with a fixed recording duration.
       </p>
       "
-      %}  
+      %}
   </li>
   <li>
     <details>
-        <summary>Create your match expression</summary>
+        <summary>Create your Match Expression</summary>
         <p>
-            The match expression in a rule definition is a Java-like snippet of code that Cryostat interprets and uses to determine if a rule should be applied to any given target. Match expressions should thus evaluate to a boolean value. The simplest match expressions would be the booleans true or false; if we use true, the rule will apply to every target. The expression has a target object in global scope, with the following form in JSON notation:
+            The match expression in a rule definition is a <code>Java-like</code> snippet of code that <b>Cryostat</b> interprets and uses to determine if a rule should be applied to any given target. Match expressions should thus evaluate to a <code>boolean</code> value. The simplest match expressions would be the <code>booleans</code> true or false; if we use true, the rule will apply to every target. The expression has a target object in global scope, with the following form in <code>JSON</code> notation:
         </p>
         <figure>
 {% highlight json %}
@@ -82,9 +82,9 @@ Previously, if we wanted to enable always-on continuous monitoring using JDK Fli
 {% endhighlight %}
         </figure>
         <p>
-          The <i>alias, connectUrl, labels, annotations.platform,</i> and <i>annotations.cryostat</i> properties are all guaranteed to be present on the target object. <i>alias</i> and <i>connectUrl</i> will be non-empty strings. The <i>labels</i> and <i>platform annotations</i> may be empty—in OpenShift or Kubernetes, these are populated from the labels and annotations applied to the target’s pod, if any. The Cryostat annotations map will vary per platform, but on OpenShift or Kubernetes you can expect the <i>HOST, PORT, NAMESPACE,</i> and <i>POD_NAME</i> keys to be present and non-empty.
+          The <i>alias, connectUrl, labels, annotations.platform,</i> and <i>annotations.cryostat</i> properties are all guaranteed to be present on the target object. <i>alias</i> and <i>connectUrl</i> will be non-empty strings. The <i>labels</i> and <i>platform annotations</i> may be empty—in <b>OpenShift</b> or <b>Kubernetes</b>, these are populated from the labels and annotations applied to the target’s pod, if any. The <b>Cryostat</b> annotations map will vary per platform, but on <b>OpenShift</b> or <b>Kubernetes</b> you can expect the <i>HOST, PORT, NAMESPACE,</i> and <i>POD_NAME</i> keys to be present and non-empty.
 
-          Here are some examples of match expressions:
+          Here are some examples of <code>Match Expressions</code>:
         </p>
         <figure>
 
@@ -112,31 +112,31 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   </li>
   <li>
       {% include howto_step.html
-        summary="Check your match expression"
+        summary="Check your <code>Match Expression</code>"
         image-name="2.3.0/create-an-automated-rule-3.png"
-        caption="You can select a target JVM to view its properties and use them to build your Match Expression."
+        caption="You can select a target <b>JVM</b> to view its properties and use them to build your <code>Match Expression</code>."
         text="
           <p>
-          When you enter a match expression in the <i>Match Expression</i> field, the <i>Match Expression Visualizer</i> will highlight which targets are matched.
+          When you enter a <code>Match Expression</code> in the <i>Match Expression</i> field, the <i>Match Expression Visualizer</i> will highlight which targets are matched.
           </p>
           "
       %}
   </li>
   <li>
       {% include howto_step.html
-        summary="<i>(Optional)</i> Adjust rule parameters"
+        summary="<i>(Optional)</i> Adjust Rule Parameters"
         image-name="2.3.0/create-an-automated-rule-4.png"
         caption="
-          Optionally set the recording options and rule parameters."
+          Optionally set the <code>Recording</code> Options and Rule Parameters."
         text="
-        <p><b>Maximum Size:</b> The maximum size of recording data retained in the target application's recording buffer. Values less than 1 indicate no limit.</p>
-        <p><b>Maximum Age:</b> The maximum age of recording data retained in the target application's recording buffer. Values less than 1 indicate no limit.</p>
-        <p><b>Archival Period:</b> Time between copies of active recording data being pulled into Cryostat archive storage.
-        Values less than 1 prevent data from being copied into archives - recordings will be started and remain only in target JVM memory.</p>
-        <p><b>Initial Delay:</b> Time between rule creation and when the first archived copy should be transferred. Values less than 1 are treated as being equal to the <b>Archival Period</b> above.</p>
-        <p><b>Preserved Archives:</b> The number of recording copies to preserve in archives for each target application affected by this rule. Values less than 1 prevent data from being copied into archives - recordings will be started and remain only in target JVM memory.</p>
+        <p><i>Maximum Size:</i> The maximum size of <code>Recording</code> data retained in the target application's recording buffer. Values less than 1 indicate no limit.</p>
+        <p><i>Maximum Age:</i> The maximum age of <code>Recording</code> data retained in the target application's recording buffer. Values less than 1 indicate no limit.</p>
+        <p><i>Archival Period:</i> Time between copies of <code>Active recording</code> data being pulled into <b>Cryostat</b> archive storage.
+        Values less than 1 prevent data from being copied into archives - <code>Recordings</code> will be started and remain only in target <b>JVM</b> memory.</p>
+        <p><i>Initial Delay:</i> Time between rule creation and when the first archived copy should be transferred. Values less than 1 are treated as being equal to the <i>Archival Period</i> above.</p>
+        <p><i>Preserved Archives:</i> The number of <code>Recording</code> copies to preserve in archives for each target application affected by this rule. Values less than 1 prevent data from being copied into archives - <code>Recordings</code> will be started and remain only in target <b>JVM</b> memory.</p>
 
-        <p>In the example image, the maximum recording age was set to 300 seconds and the archival period was set to a slightly shorter time period of 285 seconds. This overlap ensures that all of your flight recorder data is preserved in Cryostat's archives. The initial delay is set to 60 seconds however, so the first archive copy will be made 1 minute after the rule is created. The next copy will be made 5 minutes after that, the next another 5 minute later, etc.</p>
+        <p>In the example image, the <i>Maximum Recording</i> age was set to 300 seconds and the <i>Archival Period</i> was set to a slightly shorter time period of 285 seconds. This overlap ensures that all of your <code>Flight Recorder</code> data is preserved in <b>Cryostat's</b> archives. The initial delay is set to 60 seconds however, so the first archive copy will be made 1 minute after the rule is created. The next copy will be made 5 minutes after that, the next another 5 minute later, etc.</p>
         "
       %}
 
@@ -146,30 +146,30 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   </li>
   <li>
       {% include howto_step.html
-        summary="Observe the new rule in the <i>Automated Rules</i> table"
+        summary="Observe the New Rule in the <i>Automated Rules</i> Table"
         image-name="2.3.0/create-an-automated-rule-5.png"
         caption="
           The new rule will appear in the <i>Automated Rules</i> table."
-      %}  
+      %}
   </li>
   <li>
       {% include_relative _subsections/common/navigate-to-recordings.md %}
   </li>
   <li>
       {% include howto_step.html
-        summary="Observe the automatically generated recording in the <i>Active Recordings</i> table"
+        summary="Observe the automatically generated <code>Recording</code> in the <i>Active Recordings</i> table"
         image-name="2.3.0/create-an-automated-rule-6.png"
         caption="
-          Switch to the <i>Recordings</i> tab and view the new recording in the <i>Active Recordings</i>
+          Switch to the <i>Recordings</i> tab and view the new <code>Recording</code> in the <i>Active Recordings</i>
           table."
-        text="Once you've set up your automated rules, Cryostat will continuously monitor applications that meet the criteria defined in those rules, with no need to restart or redeploy those applications."
-      %}  
+        text="Once you've set up your <code>Automated Rules</code>, <b>Cryostat</b> will continuously monitor applications that meet the criteria defined in those rules, with no need to restart or redeploy those applications."
+      %}
   </li>
 </ol>
 
-### [Custom monitoring with Kubernetes labels or annotations](#custom-monitoring-with-kubernetes-labels-or-annotations)
+### [Custom Monitoring with <b>Kubernetes</b> Labels or Annotations](#custom-monitoring-with-kubernetes-labels-or-annotations)
 
-We can define a rule that applies to any target application that has platform-specific attributes, such as Kubernetes labels or annotations. Here's an example in JSON notation:
+We can define a rule that applies to any target application that has platform-specific attributes, such as **Kubernetes** labels or annotations. Here's an example in `JSON` notation:
 
 <figure>
 {% highlight json %}
@@ -186,14 +186,14 @@ We can define a rule that applies to any target application that has platform-sp
 {% endhighlight %}
 
   <figcaption>
-    To create this rule with the Cryostat UI, follow the guide in <a href="{{ page.url }}#continuous-monitoring-in-a-containerized-jvm">Continuous monitoring in a containerized JVM</a>.
+    To create this rule with the **Cryostat** UI, follow the guide in <a href="{{ page.url }}#continuous-monitoring-in-a-containerized-jvm">Continuous Monitoring in a Containerized <b>JVM</b></a>.
   </figcaption>
 </figure>
 
-Once we've created this rule definition, Cryostat will check all of the existing target applications and watch for new targets that appear with the <i>jfrMonitoring=enabled</i> annotation. Any matching targets found will have a recording started automatically using the custom <i>Demo</i> template from our first use case. It will take an archived snapshot every five minutes and maintain an hour’s worth of these archives in storage.
+Once we've created this rule definition, <b>Cryostat</b> will check all of the existing target applications and watch for new targets that appear with the <code>jfrMonitoring=enabled</code> annotation. Any matching targets found will have a <code>Recording</code> started automatically using the custom <i>Demo</i> template from our first use case. It will take an <code>Archived snapshot</code> every five minutes and maintain an hour’s worth of these archives in storage.
 
-With this rule definition in place, Kubernetes or Red Hat OpenShift users can use familiar tools like <i>kubectl/oc</i> or the OpenShift console to mark target applications for monitoring, without needing to interact directly with the Cryostat API or UI. This opens the door to further automating your workflow.
+With this rule definition in place, </b>Kubernetes</b> or <b>Red Hat OpenShift</b> users can use familiar tools like <code>kubectl/oc</code> or the <code>OpenShift console</code> to mark target applications for monitoring, without needing to interact directly with the <b>Cryostat</b> API or UI. This opens the door to further automating your workflow.
 
-As an example, you might use or implement an Operator that monitors traffic flow or pod restarts and enables monitoring on pods after some criterion threshold is met, then disables it again if the target application's behavior returns to normal. As a Kubernetes administrator, you could receive a notification when this occurs and check the Cryostat archives to retrieve JDK Flight Recorder data from the target application recorded during the problematic period, or you could view these archived recordings in Cryostat’s Grafana dashboard.
+As an example, you might use or implement an <code>Operator</code> that monitors traffic flow or pod restarts and enables monitoring on pods after some criterion threshold is met, then disables it again if the target application's behavior returns to normal. As a <b>Kubernetes</b> administrator, you could receive a notification when this occurs and check the <b>Cryostat</b> archives to retrieve <code><b>JDK</b> Flight Recorder</code> data from the target application recorded during the problematic period, or you could view these <code>Archived Recordings</code> in <b>Cryostat’s</b> <b>Grafana</b> dashboard.
 
-**Note**: An important caveat is that Cryostat does not watch for changes in the Kubernetes annotations or labels; it only watches to see if target applications appear or disappear. To apply the annotation to a target application, we must apply the annotation or label to the application <i>pod</i> (which will cause Kubernetes to roll out a new replica), and not to the <i>deployment</i>.
+<span style="color:red">**Note**</span>: An important caveat is that **Cryostat** does not watch for changes in the **Kubernetes** annotations or labels; it only watches to see if target applications appear or disappear. To apply the annotation to a target application, we must apply the annotation or label to the application <i>pod</i> (which will cause **Kubernetes** to roll out a new replica), and not to the <i>deployment</i>.

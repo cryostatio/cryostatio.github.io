@@ -1,5 +1,6 @@
 ## [Configure Credentials Storage](#configure-credentials-storage)
 
+<<<<<<< HEAD
 Target JVM applications may require Cryostat to pass an authentication
 challenge before being able to communicate over JMX or HTTP and manage JFR.
 
@@ -40,6 +41,32 @@ Cryostat has two supported mechanisms for these credentials:
 Now that you understand the difference, let's continue to see how you can
 configure the Cryostat Web UI to use one or the other when you complete an
 Authentication prompt.
+=======
+Target **JVM** applications may require **Cryostat** to pass an authentication challenge before being able to communicate over **JMX** or `HTTP`
+and manage **JFR**. **Cryostat** has two supported mechanisms for these credentials:
+<ol>
+  <li>
+    <code>Credentials Keyring</code>: see <a href="#store-credentials">Store Credentials</a> for more detail.
+    This mechanism entails uploading a Credentials definition to the <b>Cryostat</b> backend keyring storage. <b>Cryostat</b>
+    automatically checks the keyring for credentials matching a target application when a request to that application
+    is opened. If no credentials are found, <b>Cryostat</b> responds to the requesting client (e.g. the <b>Cryostat Web</b> UI) with
+    a response indicating the authentication failure.
+  </li>
+  <li>
+    <code>X-JMX-Authorization</code> header passthrough: when the <b>Cryostat Web</b> UI receives a <b>JMX</b> authentication failure response
+    from the ,b>Cryostat</b> server, it displays a prompt asking for <b>JMX</b> credentials. Depending on the configuration set in this
+    section, those credentials may either be held locally in your browser session, or they may be uploaded to the <b>Cryostat</b>
+    credentials keyring. If the credentials are held locally in your browser session, then the <b>Cryostat Web</b> UI will
+    automatically attach a custom header with API requests containing the <b>JMX</b> credentials you specify. The <b>Cryostat</b>
+    server sees this header and uses the credentials when opening the <b>JMX</b> connection to the target, but <code>does not
+    persist these credentials</code>. When the <b>JMX</b> credentials passthrough header is present, they supersede credentials
+    stored in the <b>Cryostat</b> server's keyring.
+  </li>
+</ol>
+
+Now that you understand the difference, let's continue to see how you can configure the <b>Cryostat Web</b> UI to use one
+or the other when you complete a Authentication prompt.
+>>>>>>> 17d0854 (done (first commit))
 
 <ol>
   <li>
@@ -47,15 +74,22 @@ Authentication prompt.
   </li>
   <li>
     {% include howto_step.html
-      summary="Locate the Credentials Storage setting"
+      summary="Locate the Credentials Storage Setting"
       image-name="2.3.0/credentials-setting.png"
       text="
+<<<<<<< HEAD
         This setting contains a brief explanation of its purpose and a simple
         dropdown menu with selections for where any Credentials entered into an
         <i>Authentication Required</i> challenge modal will be stored. Choose
         <i>Session (Browser Memory)</i> to use the header passthrough mechanism
         described above, or choose <i>Backend</i> to automatically store the
         credentials in the Cryostat server keyring.
+=======
+        This setting contains a brief explanation of its purpose and a simple dropdown menu with selections for where any
+        Credentials entered into a <code>Authentication Required</code> challenge modal will be stored.
+        Choose <i>Session (Browser Memory)</i> to use the header passthrough mechanism described above, or choose
+        <i>Backend</i> to automatically store the credentials in the <b>Cryostat</b> server keyring.
+>>>>>>> 17d0854 (done (first commit))
       "
     %}
   </li>
