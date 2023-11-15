@@ -1,16 +1,15 @@
-## [View and Download Automated Analysis for a Recording](#view-and-download-automated-analysis-for-a-recording)
+## [View Automated Analysis for a Recording](#view-automated-analysis-for-a-recording)
 Cryostat integrates the same automated analysis reports that you would
-find in [JDK Mission Control](https://github.com/openjdk/jmc). The
-JMC rules engine analyzes your recording and looks for common problems
-and assigns a severity score from 0 (no problem) to 100 (potentially
-severe problem). Results with score 0 are hidden from the report unless
-you select the _Show OK Results_ checkbox. More details on each
-result can be found by clicking on the _+_ symbol to the right of
-the rule name. These details often include suggestions on how to fix
-the problem. Cryostat also allows you to download the report HTML file
-for offline use.
+find in [JDK Mission Control ("JMC")](https://github.com/openjdk/jmc). The
+JMC rules engine analyzes your recording and looks for common problems,
+assigning a severity score from 0 (no problem) to 100 (potentially
+severe problem) to each potential problem type.
 
-Cryostat also provides an *Automated Analysis Card* that is able to display the same information in a more user-friendly format, with more tools and control over the data you see. The card is available for use in the *Dashboard*. Read the section on the [Automated Analysis Card](#automated-analysis-card) for more information.
+Cryostat also provides an *Automated Analysis Card* that is able to display
+the same information in a more flexible, with more tools and control over the
+data you see and the ability to resize the view. The card is available for use in
+the *Dashboard*. Read the section on the
+[Automated Analysis Card](#automated-analysis-card) for more information.
 
 <ol>
   <li>
