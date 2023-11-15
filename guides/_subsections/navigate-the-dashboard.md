@@ -1,5 +1,5 @@
 ## [Navigate the Dashboard](#navigate-the-dashboard)
-The *Dashboard* is the first view you will see when you log into Cryostat. It provides a high-level overview of the state of your Cryostat instance and the target JVM applications it is monitoring.
+The *Dashboard* is the first content view you will see when you log into Cryostat. It provides a high-level overview of the state of your Cryostat instance and the target JVM applications it is monitoring.
 
 {% include_relative _subsections/common/navigate-to-dashboard.md %}
 

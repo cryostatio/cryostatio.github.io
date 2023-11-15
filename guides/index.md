@@ -9,6 +9,8 @@ common actions and workflows of interest and why they are useful.
 * auto-gen TOC:
 {:toc}
 
+{% include_relative _subsections/getting-help.md %}
+
 {% include_relative _subsections/navigate-the-dashboard.md %}
 
 {% include_relative _subsections/use-topology-view.md %}
