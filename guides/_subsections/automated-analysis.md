@@ -6,9 +6,9 @@ assigning a severity score from 0 (no problem) to 100 (potentially
 severe problem) to each potential problem type.
 
 Cryostat also provides an *Automated Analysis Card* that is able to display
-the same information in a more flexible, with more tools and control over the
-data you see and the ability to resize the view. The card is available for use in
-the *Dashboard*. Read the section on the
+the same information in a more flexible format, with more tools and control
+over the data you see and the ability to resize the view. The card is available
+for use in the *Dashboard*. Read the section on the
 [Automated Analysis Card](#automated-analysis-card) for more information.
 
 <ol>
