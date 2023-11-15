@@ -17,7 +17,7 @@ If you clear your browser's local storage, use a private browsing window, or use
 
 If you have completed the tour previously, feel free to click <i>Skip Tour</i> and dive right in to **Cryostat**.
 If you have not completed the tour previously and are unsure what **Cryostat** can do or how to use it, click <i>Get Started</i>
-to begin the guided walkthrough of the **Cryostat** web application.
+to begin the guided walkthrough of the **Cryostat Web** application.
 
 {% include howto_step.html
   summary="Tour Begins"
@@ -55,6 +55,6 @@ and will directly guide you through the UI as you complete them by operating on 
 {% include howto_step.html
   summary="View the Quick Start Catalog"
   image-name="2.4.0/quick-start-catalog.png"
-  caption="The Quick Start catalog contains a series of tutorials you can follow to learn how to accomplish specific tasks."
+  caption="The <i>Quick Start</i> catalog contains a series of tutorials you can follow to learn how to accomplish specific tasks."
   text="Select and complete the tutorials which interest you. You can revisit this catalog at any time and re-do tutorials as many times as you like."
 %}
