@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    bigdecimal (3.1.4)
     colorator (1.1.0)
     concurrent-ruby (1.2.2)
     em-websocket (0.5.3)
@@ -79,6 +80,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bigdecimal
   jekyll (~> 4.3.2)
   jekyll-feed (~> 0.17)
   jekyll-paginate
