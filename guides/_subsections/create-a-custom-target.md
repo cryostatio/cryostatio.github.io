@@ -21,8 +21,8 @@ form to specify *Custom Targets*.
           <img src="{{ site.url }}/images/2.3.0/custom-target-1.png">
         </a>
         <figcaption>
-          Use the <i>Custom Target</i> form to tell Cryostat about a JVM
-          application that are not automatically discovered.
+          Use the <i>Custom Target</i> form to tell Cryostat about JVM
+          applications that are not automatically discovered.
         </figcaption>
       </figure>
     </p>
