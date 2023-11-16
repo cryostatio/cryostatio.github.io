@@ -1,10 +1,10 @@
 ## [Create a Custom Target](#create-a-custom-target)
 
-Cryostat automatically discovers target JVMs using various mechanisms (e.g.
-Kubernetes API, JDP, [Cryostat Agent plugin](#using-the-cryostat-agent)).
-However, in some cases (e.g. for Kubernetes API, JMX port is not `9091` and
-port name is not `jfr-jmx`), Cryostat might not see your applications. In these
-scenarios you can tell Cryostat about them by filling out the *Custom Target*
+**Cryostat** automatically discovers target **JVMs** using various mechanisms (e.g.
+**Kubernetes API**, **JDP**, [**Cryostat Agent** plugin](#using-the-cryostat-agent)).
+However, in some cases (e.g. for **Kubernetes API**, **JMX** port is not `9091` and
+port name is not `jfr-jmx`), **Cryostat** might not see your applications. In these
+scenarios you can tell **Cryostat** about them by filling out the *Custom Target*
 form to specify *Custom Targets*.
 
 <ol>
@@ -21,7 +21,7 @@ form to specify *Custom Targets*.
           <img src="{{ site.url }}/images/2.3.0/custom-target-1.png">
         </a>
         <figcaption>
-          Use the <i>Custom Target</i> form to tell Cryostat about JVM
+          Use the <i>Custom Target</i> form to tell <b>Cryostat</b> about <b>JVM</b>
           applications that are not automatically discovered.
         </figcaption>
       </figure>
@@ -30,7 +30,7 @@ form to specify *Custom Targets*.
     {% include howto_step.html
       summary="Open the <i>Custom Target</i> form"
       image-name="2.3.0/topology-7.png"
-      caption="Click on Catalog Icon to open the Topology Entity Catalog."
+      caption="Click on <i>Catalog Icon</i> to open the <i>Topology Entity Catalog</i>."
       text=open-custom-target-form-text
     %}
   </li>
@@ -40,16 +40,16 @@ form to specify *Custom Targets*.
       image-name="2.3.0/custom-target-2.png"
       caption="Use the form to enter the <i>Custom Target</i> definition."
       text="
-      The <code>Connection URL</code> is required for Cryostat to attempt to
+      The <code>Connection URL</code> is required for <b>Cryostat</b> to attempt to
       find the target. You can optionally provide an  <code>Alias</code> or
-      <code>JMX credentials</code> if the target has JMX authentication enabled.
+      <code><b>JMX</b> credentials</code> if the target has <b>JMX</b> authentication enabled.
       "
     %}
   </li>
   <li>
     {% capture test-custom-target-text %}
       <p>
-        Once you enter a valid connection URL, click on the sample node to test
+        Once you enter a valid <code>connection URL</code>, click on the sample node to test
         the target connection.
         <figure>
           <a href="{{ site.url }}/images/2.3.0/custom-target-4.png" target="_blank">
@@ -65,7 +65,7 @@ form to specify *Custom Targets*.
     {% include howto_step.html
       summary="Test the <i>Custom Target</i> definition"
       image-name="2.3.0/custom-target-3.png"
-      caption="A checkmark will show if Cryostat can connect to the sample app."
+      caption="A &#9989; checkmark will show if <b>Cryostat</b> can connect to the sample app."
       text=test-custom-target-text
     %}
   </li>
@@ -83,7 +83,7 @@ form to specify *Custom Targets*.
       "
       text="
           Once the <i>Custom Target</i> form is successfully submitted, you
-          will be redirected to the Topology View. Here, you can view your
+          will be redirected to the <i>Topology</i> view. Here, you can view your
           target under <i>Custom Targets</i> realm.
       "
     %}
@@ -92,7 +92,7 @@ form to specify *Custom Targets*.
     {% include howto_step.html
       summary="<i>(Optional)</i> Delete <i>Custom Targets</i>"
       image-name="2.3.0/custom-target-6.png"
-      caption="<i>Custom Targets</i> can be cleaned up with Actions menu."
+      caption="<i>Custom Targets</i> can be cleaned up with <i>Actions</i> menu."
       text="
       If the <i>Custom Targets</i> is no longer needed, in the target detail
       panel, click the <i>Actions</i> menu and select <b>Delete Target</b>.

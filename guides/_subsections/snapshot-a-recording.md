@@ -1,16 +1,16 @@
 ## [Snapshot a Recording](#snapshot-a-recording)
-Snapshotting an application produces a new Flight Recording named `snapshot-n`,
-where `n` is a natural number. This snapshot contains all of the JFR data that
-was present in the target JVM at the time that the snapshot was taken and is in
-the `STOPPED` state as soon as it is created (that is, the snapshot will never
+Snapshotting an application produces a new `Flight Recording` named `snapshot-n`,
+where `n` is a natural number. This `snapshot` contains all of the **JFR** data that
+was present in the target **JVM** at the time that the `snapshot` was taken and is in
+the `STOPPED` state as soon as it is created (that is, the` snapshot` will never
 record any further information and is fixed in size). This is useful when you
-have an ongoing, continuous recording active in a target application and want
+have an ongoing, `Continuous Recording` active in a target application and want
 to preserve the specific information at a given point in time. If the
-continuous source recording is configured with a maximum event age or maximum
-recording size then the need for snapshots is more apparent, since without
+`Continuous` source `Recording` is configured with a maximum event age or maximum
+recording size then the need for `snapshots` is more apparent, since without
 snapshotting, some older data will eventually be dropped and lost from the
-source recording. It is also useful when you have multiple concurrent source
-recordings running and want an easy way to capture the sum of all of their data
+source `Recording`. It is also useful when you have multiple concurrent source
+`Recordings` running and want an easy way to capture the sum of all of their data
 at a given point in time.
 
 <ol>
@@ -20,9 +20,9 @@ at a given point in time.
   <li>
     {% capture navigate-recordings-additional-content %}
       <p>
-        If you do not have any recordings present in the Active Recordings
+        If you do not have any <code>Recordings</code> present in the <i>Active Recordings</i>
         view, follow
-        <a href="{{ page.url }}#startstop-a-recording">Start/Stop a Recording</a>
+        <a href="{{ page.url }}#startstop-a-recording">Start/Stop a <code>Recording</code></a>
         to create one, or select a different target application.
       </p>
     {% endcapture %}
@@ -36,20 +36,20 @@ at a given point in time.
       summary="Switch to the <i>Snapshot Recording</i> tab"
       image-name="2.3.0/snapshot-a-recording-1.png"
       caption="
-        Switch to the <i>Snapshot Recording</i> tab and click the <i>Create</i>
+        Switch to the <i>Snapshot Recording</i> Tab and Click the <i>Create</i>
         button.
       "
     %}
   </li>
   <li>
     {% include howto_step.html
-      summary="Observe the new snapshot"
+      summary="Observe the New <code>snapshot</code>"
       image-name="2.3.0/snapshot-a-recording-2.png"
       caption="
         After clicking the <i>Create</i> button you will be returned to the
-        Active Recordings view and the new snapshot recording will be present
-        in the table. The snapshot recording can then be treated as any other
-        active recording in the target application's JVM memory.
+        <i>Active Recordings</i> view and the new <code>snapshot</code> recording will be present
+        in the table. The <code>snapshot</code> recording can then be treated as any other
+        <code>Active Recording</code> in the target application's <b>JVM</b> memory.
       "
     %}
   </li>
