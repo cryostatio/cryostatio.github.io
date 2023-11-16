@@ -65,7 +65,7 @@ Users can attach `Metadata` or `Custom Labels` to **JDK** `Flight Recordings` ma
   <li>
     {% capture bulk-edit-recording-labels-text %}
     <p>
-      Create another <code>Recording</code> on the same target. Then select both <code>Recordings</code> on the <i>Recordings Table</i> and click <i>Edit Labels</i> and <i>Edit</i>.This time, only <code>Labels</code> that are present on both <code>Recordings</code> will be shown in the form. Let's <i>Delete</i> the two common template-related <code>Labels</code>, and add a new <code>Label</code> to both <code>Recordings</code>. Then finally, click <i>Save</i>.
+      Create another <code>Recording</code> on the same target. Then select both <code>Recordings</code> on the <i>Recordings Table</i> and click <i>Edit Labels</i> and start editing. This time, only <code>Labels</code> that are present on both <code>Recordings</code> will be shown in the form. Let's <i>Delete</i> the two common template-related <code>Labels</code>, and <i>Add</i> a new <code>Label</code> to both <code>Recordings</code>. Then finally, click <i>Save</i>.
       <br><br>
       <a href="{{ site.url }}/images/2.3.0/add-and-edit-recording-metadata-labels-8.png" target="_blank">
         <img src="{{ site.url }}/images/2.3.0/add-and-edit-recording-metadata-labels-8.png">
