@@ -26,8 +26,8 @@ Cryostat has two supported mechanisms for these credentials:
     <b>Web Session</b>: This mechanism entails holding Credentials only in the
     Cryostat Web UI's currently active session memory. Whenever the Cryostat
     Web UI makes a request to the Cryostat server, it includes the relevant JMX
-    Credential in an **X-JMX-Authorization** header, which the server reads and
-    passes through to the target application. In this scheme, the Cryostat
+    Credential in an <b>X-JMX-Authorization</b> header, which the server reads
+    and passes through to the target application. In this scheme, the Cryostat
     server does not store nor persist the Credentials in any way - they are only
     held in server memory long enough to complete the current request, then
     are dropped. If the server sees this header on a request it will *not*
