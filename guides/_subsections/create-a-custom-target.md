@@ -95,7 +95,7 @@ form to specify *Custom Targets*.
       caption="<i>Custom Targets</i> can be cleaned up with <i>Actions</i> menu."
       text="
       If the <i>Custom Targets</i> is no longer needed, in the target detail
-      panel, click the <i>Actions</i> menu and select <b>Delete Target</b>.
+      panel, click the <i>Actions</i> menu and select <i>Delete Target</i>.
       "
     %}
   </li>
