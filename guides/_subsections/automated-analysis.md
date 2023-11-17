@@ -51,37 +51,13 @@ for use in the *Dashboard*. Read the section on the
     %}
   </li>
   <li>
-    {% capture download-report-text %}
-    <p>
-      <figure>
-        <a href="{{ site.url }}/images/2.3.0/automated-analysis-4.png" target="_blank">
-          <img src="{{ site.url }}/images/2.3.0/automated-analysis-4.png">
-        </a>
-        <figcaption>
-          View the report on its own without connecting to <b>Cryostat</b>.
-          Check <i>Show OK Results</i> to include results where the rules
-          engine found no issues in the <code>Recording</code>.
-        </figcaption>
-      </figure>
-      <figure>
-        <a href="{{ site.url }}/images/2.3.0/automated-analysis-5.png" target="_blank">
-          <img src="{{ site.url }}/images/2.3.0/automated-analysis-5.png">
-        </a>
-        <figcaption>
-          To download the <code>HTML</code> <i>Automated Analysis</i> report to local disk, right click
-          the page and select <i>Save Page As...</i>. Alternatively, press <kbd>Ctrl</kbd>+<kbd>S</kbd>
-          on Windows/Linux, or <kbd>⌘</kbd>+<kbd>S</kbd> on macOS.
-        </figcaption>
-      </figure>
-    </p>
-    {% endcapture %}
     {% include howto_step.html
       summary="Download the Report"
       image-name="2.3.0/automated-analysis-3.png"
       caption="
         To download the <code>Automated Analysis</code> report for offline viewing,
-        select <i>View Report ...</i> from the <code>Recording's</code> overflow
-        menu.
+        select <i>Download Recording</i> from the <code>Recording's</code> overflow
+        menu \"&#65049;\".
       "
       text=download-report-text
     %}
