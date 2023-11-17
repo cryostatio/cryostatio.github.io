@@ -8,7 +8,7 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
 <ol>
   <li>
     {% include howto_step.html
-      summary="Navigate to the <i>Archives</i> tab"
+      summary="Navigate to the <i>Archives</i> Tab"
       image-name="2.3.0/re-upload-a-recording-to-archives-1.png"
       caption="Select the <i>Uploads</i> tab."
       text="The entire <i>Archives</i> view contains several tabs related to performing operations
@@ -21,7 +21,7 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
       summary="Select the Recording to Upload"
       image-name="2.3.0/re-upload-a-recording-to-archives-2.png"
       caption="
-        Click the '+' button to bring up the upload prompt. Then click <i>Browse...</i> and select the
+        Click the <i>Upload Icon</i> to bring up the upload prompt. Then click <i>Upload</i> and select the
         <code>.jfr</code> file to upload. Note that the file must follow the <b>Cryostat</b> <code>Archive Recording</code>
         naming convention. Mouse over the <sup>[?]</sup> tooltip on the prompt for more information.
       "
@@ -29,15 +29,15 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
   </li>
   <li>
     {% include howto_step.html
-      summary="<i>(Optional)</i> Add Metadata Labels"
+      summary="(Optional) Add <code>Metadata Labels</code>"
       image-name="2.3.0/re-upload-a-recording-to-archives-3.png"
       caption="
-        Click <i>Show metadata options</i> to add optional metadata labels to a <code>Recording</code>.
-        You can either add labels by clicking the <i>Add Label</i> button, or by uploading
-        a custom <code>.json</code> labels file from your local storage. A custom labels file
+        Click <i>Show metadata options</i> to add optional <code>Metadata Labels</code> to a <code>Recording</code>.
+        You can either add <code>Labels</code> by clicking the <i>Add Label</i> button, or by uploading
+        a custom <code>.json</code> <code>Labels</code> file from your local storage. A custom <code>Labels</code> file
         can be downloaded alongside downloading a <code>Recording</code>. To learn how to download a <code>Recording</code>
-        and any associated labels, see <a href='#download-an-active-or-archived-recording'>Download an <code>Active</code> or <code>Archived Recording</code></a>.
-        and for more on <b>Cryostat</b> metadata labels, see <a href='#add-and-edit-recording-metadata-labels'><i>Add</i> and <i>Edit</i> <code>Recording Metadata Labels</code></a>.
+        and any associated <code>Labels</code>, see <a href='#download-an-active-or-archived-recording'>Download an <code>Active</code> or <code>Archived Recording</code></a>.
+        and for more on <b>Cryostat</b> <code>Metadata Labels</code>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit <code>Recording Metadata Labels</code></a>.
       "
     %}
   </li>
