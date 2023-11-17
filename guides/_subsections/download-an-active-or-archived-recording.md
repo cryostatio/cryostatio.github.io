@@ -38,7 +38,7 @@ use [`JDK Mission Control`](https://github.com/openjdk/jmc) for the heavy liftin
       caption="
         Your browser will present you with its standard file-save dialog for both
         the <code>Archived Recording</code>, and a <code>.json</code> file containing any
-        metadata labels that were attached. It may take some time for these dialogs
+        <code>Metadata Labels</code> that were attached. It may take some time for these dialogs
         to appear. Once it does, you can choose to open the <code>Recording</code> file directly
         in <code>JDK Mission Control</code>, or (recommended) to save the <code>Recording</code> to disk.
       "
