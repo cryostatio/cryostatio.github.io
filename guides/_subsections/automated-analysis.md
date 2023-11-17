@@ -56,7 +56,7 @@ Cryostat also provides an *Automated Analysis Card* that is able to display the 
     <p>
       <figure>
         <a href="{{ site.url }}/images/2.4.0/automated-analysis-4.png" target="_blank">
-          <img src="{{ site.url }}/images/2.4.0/automated-analysis-4.png">
+          <img src="{{ site.url }}/images/2.3.0/automated-analysis-4.png">
         </a>
         <figcaption>
           View the report on its own without connecting to Cryostat.
@@ -66,7 +66,7 @@ Cryostat also provides an *Automated Analysis Card* that is able to display the 
       </figure>
       <figure>
         <a href="{{ site.url }}/images/2.4.0/automated-analysis-5.png" target="_blank">
-          <img src="{{ site.url }}/images/2.4.0/automated-analysis-5.png">
+          <img src="{{ site.url }}/images/2.3.0/automated-analysis-5.png">
         </a>
         <figcaption>
           To download the HTML <i>Automated Analysis</i> report to local disk, right click 
