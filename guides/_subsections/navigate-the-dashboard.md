@@ -1,11 +1,11 @@
 ## [Navigate the Dashboard](#navigate-the-dashboard)
-The *Dashboard* is the first view you will see when you log into **Cryostat**. It provides a high-level overview of the state of your **Cryostat** instance and the target **JVM** applications it is monitoring.
+The *Dashboard* is the first view you will see when you log into **Cryostat**. It provides a high-level overview of the state of your **Cryostat** instance and the `target` **JVM** applications it is monitoring.
 
 {% include_relative _subsections/common/navigate-to-dashboard.md %}
 
 ### [Dashboard Cards](#dashboard-cards)
 
-`Dashboard cards` are widgets that display information about your **Cryostat** instance and the target **JVM** applications it is monitoring. Let's walk through the available `cards` and how to add them to your `dashboard`.
+`Dashboard cards` are widgets that display information about your **Cryostat** instance and the `target` **JVM** applications it is monitoring. Let's walk through the available `cards` and how to add them to your `dashboard`.
 
 {% include_relative _subsections/common/card-catalog.md %}
 
@@ -14,31 +14,31 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
 <ol>
   <li>
     {% capture target-jvm-details-text %}
-    The <i>Target JVM Details</i> <code>card</code> displays information about the target <b>JVM</b> application that is currently selected. There are two tabs that display different information:
+    The <i>Target JVM Details</i> <code>card</code> displays information about the <code>target</code> <b>JVM</b> application that is currently selected. There are two tabs that display different information:
     <ul>
         <li>
-            <i>Details Tab</i> - Displays information about the target <b>JVM</b> application, including:
+            <i>Details Tab</i> - Displays information about the <code>target</code> <b>JVM</b> application, including:
             <ol>
                 <li>
-                    <code>Connection URL</code> - The <b>JMX</b> connection URL of the target <b>JVM</b> application.
+                    <code>Connection URL</code> - The <b>JMX</b> connection URL of the <code>target</code> <b>JVM</b> application.
                 </li>
                 <li>
-                    <code>Alias</code> - The alias of the target <b>JVM</b> application.
+                    <code>Alias</code> - The alias of the <code>target</code> <b>JVM</b> application.
                 </li>
                 <li>
-                    <code>JVM ID</code> - The JVM ID of the target <b>JVM</b> application.
+                    <code>JVM ID</code> - The JVM ID of the <code>target</code> <b>JVM</b> application.
                 </li>
                 <li>
-                    <code>Labels</code> - The labels of the target <b>JVM</b> application.
+                    <code>Labels</code> - The labels of the <code>target</code> <b>JVM</b> application.
                 </li>
                 <li>
-                    <code>Annotations</code> - The annotations of the target <b>JVM</b> application.
+                    <code>Annotations</code> - The annotations of the <code>target</code> <b>JVM</b> application.
                 </li>
                 and more...
             </ol>
         </li>
         <li>
-            <i>Resources Tab</i> - Displays the resources associated with the target <b>JVM</b> application. There are two tables:
+            <i>Resources Tab</i> - Displays the resources associated with the <code>target</code> <b>JVM</b> application. There are two tables:
             <ul>
                 <li>
                     <code>Owned Resources:</code> Resources that the <b>JVM</b> owns (i.e. <a href="#startstop-a-recording"><code>Active Recordings</code></a>, <a href="#viewing-archived-recordings"><code>Archived Recordings</code></a>, <a href="#download-edit-and-upload-a-customized-event-template"><code>Event Templates</code></a> and <a href="#download-edit-and-upload-a-customized-event-template"><code>Event Types</code></a>).
@@ -195,7 +195,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
     {% capture mbean-metrics-chart-text %}
     <p>
-        The <i>MBean Metrics Chart</i> <code>card</code> displays performance metrics about the target <b>JVM</b> through remote access to supported <b>Java MXBeans</b> interfaces of the <b>JVM</b>, including <i>Thread, Runtime, OperatingSystem</i>, and <i>Memory MXBeans</i>.
+        The <i>MBean Metrics Chart</i> <code>card</code> displays performance metrics about the <code>target</code> <b>JVM</b> through remote access to supported <b>Java MXBeans</b> interfaces of the <b>JVM</b>, including <i>Thread, Runtime, OperatingSystem</i>, and <i>Memory MXBeans</i>.
     </p>
     <p>
         <b>Cryostat</b> gathers this data and displays them in various charts. You can customize each <code>card</code> by going through the card creation wizard. The wizard will guide you through the process of selecting the metrics you want to display, how you want to display them, and other various configuration options. Some examples of <code>Performance Metrics</code> that can be displayed are:

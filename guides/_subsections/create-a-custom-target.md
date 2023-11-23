@@ -1,6 +1,6 @@
 ## [Create a Custom Target](#create-a-custom-target)
 
-**Cryostat** automatically discovers target **JVMs** using various mechanisms (e.g.
+**Cryostat** automatically discovers `target` **JVMs** using various mechanisms (e.g.
 **Kubernetes API**, **JDP**, [**Cryostat Agent** plugin](#using-the-cryostat-agent)).
 However, in some cases (e.g. for **Kubernetes API**, **JMX** port is not `9091` and
 port name is not `jfr-jmx`), **Cryostat** might not see your applications. In these
