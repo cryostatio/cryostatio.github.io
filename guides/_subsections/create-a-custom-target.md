@@ -28,7 +28,7 @@ form to specify *Custom Targets*.
     </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Open the <i>Custom Target</i> form"
+      summary="Open the <i>Custom Target</i> Form"
       image-name="2.3.0/topology-7.png"
       caption="Click on <i>Catalog Icon</i> to open the <i>Topology Entity Catalog</i>."
       text=open-custom-target-form-text
@@ -36,41 +36,41 @@ form to specify *Custom Targets*.
   </li>
   <li>
     {% include howto_step.html
-      summary="Enter <i>Custom Target</i> definition"
+      summary="Enter <i>Custom Target</i> Definition"
       image-name="2.3.0/custom-target-2.png"
       caption="Use the form to enter the <i>Custom Target</i> definition."
       text="
-      The <code>Connection URL</code> is required for <b>Cryostat</b> to attempt to
-      find the target. You can optionally provide an  <code>Alias</code> or
-      <code><b>JMX</b> credentials</code> if the target has <b>JMX</b> authentication enabled.
+      The <i>Connection URL</i> is required for <b>Cryostat</b> to attempt to
+      find the <code>target</code>. You can optionally provide an  <i>Alias</i> or
+      <i><b>JMX</b> credentials</i> if the <code>target</code> has <b>JMX</b> authentication enabled.
       "
     %}
   </li>
   <li>
     {% capture test-custom-target-text %}
       <p>
-        Once you enter a valid <code>connection URL</code>, click on the sample node to test
-        the target connection.
+        Once you enter a valid <i>Connection URL</i>, click on the sample <code>node</code> to test
+        the <code>target</code> connection.
         <figure>
           <a href="{{ site.url }}/images/2.3.0/custom-target-4.png" target="_blank">
             <img src="{{ site.url }}/images/2.3.0/custom-target-4.png">
           </a>
           <figcaption>
             An exclamation mark and an alert banner will show if an error
-            occurs while connecting to the target.
+            occurs while connecting to the <code>target</code>.
           </figcaption>
         </figure>
       </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Test the <i>Custom Target</i> definition"
+      summary="Test the <i>Custom Target</i> Definition"
       image-name="2.3.0/custom-target-3.png"
       caption="A &#9989; checkmark will show if <b>Cryostat</b> can connect to the sample app."
       text=test-custom-target-text
     %}
   </li>
   <li>
-    <summary>Click <i>Create</i> button to generate a new <i>Custom Target</i>
+    <summary>Click <i>Create</i> Button to Generate a New <i>Custom Target</i>
     definition once the test is successful.</summary>
   </li>
   <li>
@@ -83,8 +83,8 @@ form to specify *Custom Targets*.
       "
       text="
           Once the <i>Custom Target</i> form is successfully submitted, you
-          will be redirected to the <i>Topology</i> view. Here, you can view your
-          target under <i>Custom Targets</i> realm.
+          will be redirected to the <i>Topology View</i>. Here, you can view your
+          <code>target</code> under <i>Custom Targets</i> realm.
       "
     %}
   </li>
