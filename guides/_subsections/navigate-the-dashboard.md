@@ -51,10 +51,10 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
     </ul>
     {% endcapture %}
     {% include howto_step.html
-      summary="Add the <i>Target <b>JVM</b> Details</i> <code>Card</code>"
+      summary="Add the <i>Target JVM Details</i> <code>Card</code>"
       image-name="2.3.0/dashboard/targetjvmdetails-preview.png"
       caption="
-        Click on the <i>Target <b>JVM</b> Details</i> <code>card</code> for a preview.
+        Click on the <i>Target JVM Details</i> <code>card</code> for a preview.
       "
       text=target-jvm-details-text
     %}

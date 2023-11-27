@@ -1,5 +1,5 @@
 ## [Start/Stop a Recording](#startstop-a-recording)
-The first and most basic workflow is to start a `Flight Recording` in a target
+The first and most basic workflow is to start a `Flight Recording` in a `target`
 **JVM**.
 
 <ol>
@@ -30,7 +30,7 @@ The first and most basic workflow is to start a `Flight Recording` in a target
       </p>
       <p>
         Select an event <i>Template</i> or enter a custom event definition. If you are
-        unsure which to choose, the <code>Continuous</code> template is useful for
+        unsure which to choose, the <i>Continuous</i> template is useful for
         always-on production monitoring with the <i>Continuous</i> recording
         duration setting, and the <i>Profiling</i> template is useful for
         collecting extra information for troubleshooting a specifically
@@ -88,15 +88,15 @@ The first and most basic workflow is to start a `Flight Recording` in a target
       </p>
       <p>
         If the <code>Recording</code> has a <code>Fixed Duration</code> then it will automatically stop
-        after the target <b>JVM</b> measures that the duration has elapsed. If the
+        after the <code>target</code> <b>JVM</b> measures that the duration has elapsed. If the
         <code>Recording</code> was created with a <code>Continuous Duration</code> then it will collect
         data until explicitly stopped.
       </p>
       <p>
         After <code>Stopping</code> a <code>Recording</code> it remains in the <i>Active</i> section of
         the <i>Recordings</i> view. This signifies that the <code>Recording</code> data is still
-        present in the target <b>JVM</b>, and not within <b>Cryostat's</b> storage. If the
-        target <b>JVM</b> <code>crashes</code>, is <code>killed</code>, or the process otherwise <code>restarts</code>, then
+        present in the <code>target</code> <b>JVM</b>, and not within <b>Cryostat's</b> storage. If the
+        <code>target</code> <b>JVM</b> crashes, is killed, or the process otherwise restarts, then
         the <code>Recording</code> data will be lost. To learn how to persist the <code>Flight
         Recording</code> data, continue on to
         <a href="{{ page.url }}#archive-a-recording"><code>Archive a Recording</code></a>.
