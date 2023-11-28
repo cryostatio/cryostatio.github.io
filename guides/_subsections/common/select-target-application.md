@@ -2,8 +2,8 @@
   {{ include.select-target-application-caption }}
 {% endcapture %}
 {% capture text-content %}
-  If you wish to create a custom <code>target</code> from here, click <i>Create Target</i> displayed at the bottom and follow  the <a href='#create-a-custom-target'> guide on how to create a custom <code>target</code></a>and proceed from step 3.
-  Also, see <a href='#using-the-cryostat-agent'> Using the Cryostat Agent</a> section to help discover other <code>targets</code>.
+  If you wish to create a custom <code>target</code> from here, click <i>Create Target</i> displayed at the bottom. Go to <a href='#create-a-custom-target'> Create a Custom <code>Target</code></a>and proceed from step 3.
+  Also, see <a href='#using-the-cryostat-agent'> Using the <b>Cryostat Agent</b></a> section to help discover other <code>targets</code>.
 {% endcapture %}
 {% include howto_step.html
   summary="Select the <i>Target Application</i>"

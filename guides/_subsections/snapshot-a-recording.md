@@ -1,10 +1,10 @@
 ## [Snapshot a Recording](#snapshot-a-recording)
 Snapshotting an application produces a new `Flight Recording` named `snapshot-n`,
 where `n` is a natural number. This `snapshot` contains all of the **JFR** data that
-was present in the target **JVM** at the time that the `snapshot` was taken and is in
+was present in the <code>target</code> **JVM** at the time that the `snapshot` was taken and is in
 the `STOPPED` state as soon as it is created (that is, the` snapshot` will never
 record any further information and is fixed in size). This is useful when you
-have an ongoing, `Continuous Recording` active in a target application and want
+have an ongoing, `Continuous Recording` active in a <code>target</code> application and want
 to preserve the specific information at a given point in time. If the
 `Continuous` source `Recording` is configured with a maximum event age or maximum
 recording size then the need for `snapshots` is more apparent, since without
@@ -49,7 +49,7 @@ at a given point in time.
         After clicking the <i>Create</i> button you will be returned to the
         <i>Active Recordings</i> view and the new <code>snapshot</code> recording will be present
         in the table. The <code>snapshot</code> recording can then be treated as any other
-        <code>Active Recording</code> in the target application's <b>JVM</b> memory.
+        <code>Active Recording</code> in the <code>target</code> application's <b>JVM</b> memory.
       "
     %}
   </li>
