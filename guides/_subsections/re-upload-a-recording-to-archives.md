@@ -2,7 +2,7 @@
 After downloading an `Archived Recording` from **Cryostat**, it can be re-uploaded
 into **Cryostat's** archives later. This is useful if, for example, your **Cryostat**
 instance has been scaled down or undeployed for some time and the attached
-storage lost, and you then want to use **Cryostat's** analysis tools with a
+storage is lost, and you then want to use **Cryostat's** analysis tools with a
 previously retrieved <code>Recording</code> in a new **Cryostat** instance.
 
 <ol>

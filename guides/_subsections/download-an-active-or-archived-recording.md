@@ -1,7 +1,7 @@
 ## [Download an Active or Archived Recording](#download-an-active-or-archived-recording)
 **Cryostat** provides some basic capabilities for analysis of **Flight Recording** data
 in-cluster. However, the core analysis workflow is to collect **JFR** files from
-target applications and copy them to local developer or admin workstations, then
+`target` applications and copy them to local developer or admin workstations, then
 use [`JDK Mission Control`](https://github.com/openjdk/jmc) for the heavy lifting.
 
 <ol>
