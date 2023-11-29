@@ -8,7 +8,7 @@ archives are stored in a `PersistentVolumeClaim`.
 When this is requested, **Cryostat** connects to the `target` application and copies
 the `Flight Recorder` data from the selected `Active Recording` into an `Archived
 Recording` file in storage. The `Active Source Recording` may be `Continuous` or
-`Fixed-duration`, using any `Event Template`, in
+`Fixed-duration`, using any *Event Template*, in
 any state (`RUNNING`, `STOPPED`, etc.), and may even be a `snapshot`.
 
 <ol>

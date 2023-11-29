@@ -1,7 +1,7 @@
 ## [Create an Automated Rule](#create-an-automated-rule)
 
 `Automated Rules` are configurations that instruct **Cryostat** to create **JDK** `Flight Recordings` on matching
-target **JVM** applications. Each `Automated Rule` specifies parameters for which `Event Template` to use, how
+target **JVM** applications. Each `Automated Rule` specifies parameters for which *Event Template* to use, how
 much data should be kept in the application recording buffer, and how frequently **Cryostat** should copy the
 application recording buffer into **Cryostat's** own archived storage.
 
@@ -9,7 +9,7 @@ Once you've created a rule, **Cryostat** immediately matches it against all exis
 
 We'll walk through two use cases: `Continuous` monitoring in a containerized **JVM**, and `Custom` monitoring with **Kubernetes** labels or annotations.
 
-### [Continuous Monitoring in a Containerized **JVM**](#continuous-monitoring-in-a-containerized-jvm)
+### [Continuous Monitoring in a Containerized JVM](#continuous-monitoring-in-a-containerized-jvm)
 
 Previously, if we wanted to enable always-on `Continuous` monitoring using JDK Flight Recorder **(JFR)** in a containerized Java virtual machine **(JVM)**, we would set **JVM** flags on the target application, then restart the application to start monitoring. With **Cryostat's** `Automated Rules`, we can enable JDK Flight Recorder  **(JFR)** at runtime to continuously monitor an already-running target application, with no restart, no redeploy, and no downtime.
 
@@ -167,7 +167,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   </li>
 </ol>
 
-### [Custom Monitoring with <b>Kubernetes</b> Labels or Annotations](#custom-monitoring-with-kubernetes-labels-or-annotations)
+### [Custom Monitoring with Kubernetes Labels or Annotations](#custom-monitoring-with-kubernetes-labels-or-annotations)
 
 We can define a rule that applies to any target application that has platform-specific attributes, such as **Kubernetes** labels or annotations. Here's an example in `JSON` notation:
 
@@ -186,7 +186,7 @@ We can define a rule that applies to any target application that has platform-sp
 {% endhighlight %}
 
   <figcaption>
-    To create this rule with the <b>Cryostat</b> UI, follow the guide in <a href="{{ page.url }}#continuous-monitoring-in-a-containerized-jvm">Continuous Monitoring in a Containerized <b>JVM</b></a>.
+    To create this rule with the <b>Cryostat</b> UI, follow the guide in <a href="{{ page.url }}#continuous-monitoring-in-a-containerized-jvm">Continuous Monitoring in a Containerized JVM</a>.
   </figcaption>
 </figure>
 

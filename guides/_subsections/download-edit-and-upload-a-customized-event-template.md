@@ -1,5 +1,5 @@
 ## [Download, Edit, and Upload a Customized Event Template](#download-edit-and-upload-a-customized-event-template)
-Most **JVMs** will come with at least two **JFR** event template definitions included:
+Most **JVMs** will come with at least two **JFR** *Event Templates* definitions included:
 the `Continuous` and `Profiling` templates.
 
 The `Continuous` template:
@@ -21,8 +21,8 @@ Of special note, **JFR** allows for the definition of application-specific custo
 events, which would not be captured in either of the default templates above.
 
 **Cryostat** also provides the <code>ALL</code> meta-template, which enables all
-event types in the selected target application, with default values for each
-event option. This is not a true event template and does not have an `XML`
+event types in the selected `target` application, with default values for each
+event option. This is not a true *Event Template* and does not have an `XML`
 definition to download.
 
 <ol>
@@ -70,11 +70,11 @@ definition to download.
   </li>
   <li>
     {% capture edit-template-additional-content %}
-      The template definition is an <code>XML</code> file, so you may open and edit it
+      The <i>Template</i> definition is an <code>XML</code> file, so you may open and edit it
       with your favourite text editor or <code>XML</code> document editor. The <b>JMC
-      Template Manager</b> can also be used for this purpose, as described
+      Template Manager</b> can also be used for this purpose, as described in
       <a href="{{ page.url }}#edit-template-with-jmc">
-        in this section
+        Edit Template With JMC
       </a>.
     {% endcapture %}
     {% include howto_step.html
@@ -99,7 +99,7 @@ definition to download.
       summary="Open the Template Upload Dialog"
       image-name="2.3.0/download-edit-and-upload-a-customized-event-template-3.png"
       caption="
-        Back on the <i>Cryostat Events</i> view, click the <i>Upload Icon</i>
+        Back on the <i>Cryostat Events View</i>, click the <i>Upload Icon</i>
         in the table toolbar. A dialog will appear.
       "
     %}
@@ -123,7 +123,7 @@ definition to download.
       image-name="2.3.0/download-edit-and-upload-a-customized-event-template-5.png"
       caption="
         Once the <i>Template</i> has been uploaded you will be returned to the
-        <i>Events</i> view, and your template will be present in the
+        <i>Events View</i>, and your template will be present in the
         table.
       "
     %}

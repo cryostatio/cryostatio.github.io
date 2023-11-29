@@ -41,10 +41,10 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
             <i>Resources Tab</i> - Displays the resources associated with the <code>target</code> <b>JVM</b> application. There are two tables:
             <ul>
                 <li>
-                    <code>Owned Resources:</code> Resources that the <b>JVM</b> owns (i.e. <a href="#startstop-a-recording"><code>Active Recordings</code></a>, <a href="#viewing-archived-recordings"><code>Archived Recordings</code></a>, <a href="#download-edit-and-upload-a-customized-event-template"><code>Event Templates</code></a> and <a href="#download-edit-and-upload-a-customized-event-template"><code>Event Types</code></a>).
+                    <code>Owned Resources:</code> Resources that the <b>JVM</b> owns (i.e. <a href="#startstop-a-recording">Active Recordings</a>, <a href="#viewing-archived-recordings">Archived Recordings</a>, <a href="#download-edit-and-upload-a-customized-event-template">Event Templates</a> and <a href="#download-edit-and-upload-a-customized-event-template">Event Types</a>).
                 </li>
                 <li>
-                    <code>Related Resources:</code> Resources that are tied to the <b>JVM</b> by <i><code>Match Expression</code></i> (i.e. <a href="#create-an-automated-rule"><code>Automated Rules</code></a> and <a href="#store-credentials"><code>Credentials</code></a>).
+                    <code>Related Resources:</code> Resources that are tied to the <b>JVM</b> by <i><code>Match Expression</code></i> (i.e. <a href="#create-an-automated-rule">Automated Rules</a> and <a href="#store-credentials"><Credentials</a>).
                 </li>
             </ul>
         </li>

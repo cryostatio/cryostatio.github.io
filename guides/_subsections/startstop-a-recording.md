@@ -37,7 +37,7 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
         identified problem with a fixed <code>Recording</code> duration.
       </p>
       <p>
-        To learn about <code>Metadata Options</code>, see <a href='#add-and-edit-recording-metadata-labels'><i>Add</i> and <i>Edit</i> <code>Recording Metadata Labels</code></a>.
+        To learn about <code>Metadata Options</code>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
       </p>
       "
     %}
@@ -99,7 +99,7 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
         <code>target</code> <b>JVM</b> crashes, is killed, or the process otherwise restarts, then
         the <code>Recording</code> data will be lost. To learn how to persist the <code>Flight
         Recording</code> data, continue on to
-        <a href="{{ page.url }}#archive-a-recording"><code>Archive a Recording</code></a>.
+        <a href="{{ page.url }}#archive-a-recording">Archive a Recording</a>.
       </p>
     {% endcapture %}
     {% include howto_step.html

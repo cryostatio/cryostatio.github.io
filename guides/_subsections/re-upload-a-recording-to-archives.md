@@ -12,7 +12,7 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
       image-name="2.3.0/re-upload-a-recording-to-archives-1.png"
       caption="Select the <i>Uploads</i> tab."
       text="The entire <i>Archives</i> view contains several tabs related to performing operations
-      on <code>Archived Recordings</code>. See <a href='#view-archived-recordings'>Viewing <code>Archived Recordings</code></a>.
+      on <code>Archived Recordings</code>. See <a href='#view-archived-recordings'>Viewing Archived Recordings</a>.
       "
     %}
   </li>
@@ -36,8 +36,8 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
         You can either add <code>Labels</code> by clicking the <i>Add Label</i> button, or by uploading
         a custom <code>.json</code> <code>Labels</code> file from your local storage. A custom <code>Labels</code> file
         can be downloaded alongside downloading a <code>Recording</code>. To learn how to download a <code>Recording</code>
-        and any associated <code>Labels</code>, see <a href='#download-an-active-or-archived-recording'>Download an <code>Active</code> or <code>Archived Recording</code></a>.
-        and for more on <b>Cryostat</b> <code>Metadata Labels</code>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit <code>Recording Metadata Labels</code></a>.
+        and any associated <code>Labels</code>, see <a href='#download-an-active-or-archived-recording'>Download an Active or Archived Recording</a>.
+        and for more on <b>Cryostat</b> <code>Metadata Labels</code>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
       "
     %}
   </li>

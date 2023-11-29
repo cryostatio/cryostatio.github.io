@@ -40,7 +40,7 @@ kubectl get secret ${CRYOSTAT_NAME}-grafana-basic -o jsonpath='{$.data.GF_SECURI
       select-a-recording-caption="
         If you do not have any <b>Recordings</b> present in the <i>Active Recordings</i>
         view, follow
-        <a href='#startstop-a-recording'><i>Start/Stop</i> a <code>Recording</code></a>
+        <a href='#startstop-a-recording'>Start/Stop a Recording</a>
         to create one, or select a different <i>Target</i> application.
         You may also select an <code>Archived Recording</code> to view in <b>Grafana</b>.
       "

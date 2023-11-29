@@ -23,7 +23,7 @@ for use in the *Dashboard*. Read the section on the
       select-a-recording-caption="
         If you do not have any <code>Recordings</code> present in the <i>Active Recordings</i>
         view, follow
-        <a href='#startstop-a-recording'>Start/Stop a <code>Recording</code></a>
+        <a href='#startstop-a-recording'>Start/Stop a Recording</a>
         to create one, or select a different target application.
         You may also select an <code>Archived Recording</code> for <code>Automated Analysis</code>.
       "

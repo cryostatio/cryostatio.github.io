@@ -8,7 +8,7 @@ The *Topology View* provides a visual presentation of all the discovered **JVM**
 
 <ol>
     {% capture topology-graphview-guide-text %}
-    By default, an interactive <i>Graph View</i> of <code>target</code> <b>JVMs</b> (<code>nodes</code>) are shown nested within their associated groups (<i>surrounding lines</i>), for example, <b>Pods</b>, or <b>Realms</b> (i.e. discovery mechanisms to discover <b>Java Applications</b>, such as <b>Kubernetes API, JDP</b> or <a href="#using-the-cryostat-agent"><b>Cryostat Agent</b></a>).
+    By default, an interactive <i>Graph View</i> of <code>target</code> <b>JVMs</b> (<code>nodes</code>) are shown nested within their associated groups (<i>surrounding lines</i>), for example, <b>Pods</b>, or <b>Realms</b> (i.e. discovery mechanisms to discover <b>Java Applications</b>, such as <b>Kubernetes API, JDP</b> or <a href="#using-the-cryostat-agent">Cryostat Agent</a>).
     <br><br>
 
     You can drag <code>target</code> <code>nodes/groups</code> or use the bottom control bar to adjust the graph. For example, zoom out or fit all <code>nodes</code> into view. A <i>toolbar</i> is also available to allow further customization:
@@ -60,9 +60,9 @@ The *Topology View* provides a visual presentation of all the discovered **JVM**
     <ol>
         <li>
         
-        <i>Owned Resources:</i> Resources that the <b>JVM</b> owns (i.e. <a href="#startstop-a-recording"><code>Active Recordings</code></a>, <a href="#viewing-archived-recordings"><code>Archived Recordings</code></a>, <a href="#download-edit-and-upload-a-customized-event-template"><code>Event Templates</code></a> and <a href="#download-edit-and-upload-a-customized-event-template"><code>Event Types</code></a>).</li>
+        <i>Owned Resources:</i> Resources that the <b>JVM</b> owns (i.e. <a href="#startstop-a-recording">Active Recordings</a>, <a href="#viewing-archived-recordings">Archived Recordings</a>, <a href="#download-edit-and-upload-a-customized-event-template">Event Templates</a> and <a href="#download-edit-and-upload-a-customized-event-template">Event Types</a>).</li>
         <li>
-        <i>Related Resources:</i> Resources that are tied to the <b>JVM</b> by <code>Match Expression</code> (i.e. <a href="#create-an-automated-rule"><code>Automated Rules</code></a> and <a href="#store-credentials"><code>Credentials</code></a>).
+        <i>Related Resources:</i> Resources that are tied to the <b>JVM</b> by <code>Match Expression</code> (i.e. <a href="#create-an-automated-rule">Automated Rules</a> and <a href="#store-credentials">Credentials</a>).
         </li>
     </ol>
 
@@ -90,7 +90,7 @@ The *Topology View* provides a visual presentation of all the discovered **JVM**
     {% capture single-action-guide-text %}
     The details panel for each <code>target</code> <b>JVM</b> supports performing simple actions on the <b>JVM</b>. Click the <i>Actions</i> menu to show available options.
     <br><br>
-    For example, select <i>View Recordings</i> to be redirected to the <i>Recordings View</i> for the <code>target</code> <b>JVM</b>, where you can view and manage <a href="#startstop-a-recording"><code>Active Recordings</code></a>.
+    For example, select <i>View Recordings</i> to be redirected to the <i>Recordings View</i> for the <code>target</code> <b>JVM</b>, where you can view and manage <a href="#startstop-a-recording">Active Recordings</a>.
     {% endcapture %}
     {% capture bulk-action-guide-text %}
     The <i>Details</i> panel also supports performing actions on multiple <code>target</code> <b>JVMs</b>. Select a group of <code>targets</code>, for example, a <b>Pod</b>. A drawer panel will appear to show the group details. Select <b>Actions</b> menu to show available options.

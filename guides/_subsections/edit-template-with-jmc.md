@@ -1,7 +1,7 @@
 ## [Edit Template With JMC](#edit-template-with-jmc)
-[`JDK Mission Control`](https://github.com/openjdk/jmc) has a *Template Manager*
-functionality which also contains a graphical wizard for editing `.jfc` event
-template files. This may be preferred to editing the templates directly as `XML`
+[JDK Mission Control](https://github.com/openjdk/jmc) has a *Template Manager*
+functionality which also contains a graphical wizard for editing `.jfc` *Event
+Template* files. This may be preferred to editing the templates directly as `XML`
 plaintext or using `XML` document editors, which do not have `.jfc-specific XSD`
 validation or any hinting for event types and options.
 
@@ -10,7 +10,7 @@ validation or any hinting for event types and options.
     {% capture acquire-template-additional-context %}
       If you do not have an <code>event template definition</code> then you can visit
       <a href="{{ page.url }}#download-edit-and-upload-a-customized-event-template">
-        <i>Download</i>, <i>Edit</i>, and <i>Upload</i> a <code>Customized Event Template</code>
+        Download, Edit, and Upload a Customized Event Template
       </a>
       and follow the first few steps to retrieve one from a remote target
       application accessible by <b>Cryostat</b>. Otherwise, if you have the <b>JDK</b>
@@ -65,12 +65,12 @@ validation or any hinting for event types and options.
   </li>
   <li>
     {% capture use-edited-template-additional-content %}
-      Once your edited <i>Template</i> is saved to to a file on your local workstation
+      Once your edited <i>Template</i> is saved to a file on your local workstation
       it can be used when starting new <code>Flight Recordings</code>. To do this using
       <b>Cryostat</b>, see
-      <a href="{{ page.url }}#download-edit-and-upload-a-customized-event-template"><i>Download</i>, <i>Edit</i>, and <i>Upload</i> a <code>Customized Event Template</code></a>
+      <a href="{{ page.url }}#download-edit-and-upload-a-customized-event-template">Download, Edit, and Upload a Customized Event Template</a>
       for instructions on how to upload the new template to <b>Cryostat</b> and
-      <a href="{{ page.url }}#startstop-a-recording"><i>Start/Stop</i> a <code>Recording</code></a>
+      <a href="{{ page.url }}#startstop-a-recording">Start/Stop a Recording</a>
       for instructions on how to create a new <code>Recording</code> using this <i>Template</i>.
     {% endcapture %}
     {% include howto_step.html

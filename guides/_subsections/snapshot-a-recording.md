@@ -22,7 +22,7 @@ at a given point in time.
       <p>
         If you do not have any <code>Recordings</code> present in the <i>Active Recordings</i>
         view, follow
-        <a href="{{ page.url }}#startstop-a-recording">Start/Stop a <code>Recording</code></a>
+        <a href="{{ page.url }}#startstop-a-recording">Start/Stop a Recording</a>
         to create one, or select a different target application.
       </p>
     {% endcapture %}

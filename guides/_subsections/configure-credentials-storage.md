@@ -7,7 +7,7 @@ challenge before being able to communicate over **JMX** or `HTTP` and manage **J
 
 <ol>
   <li>
-    <code>Credentials Keyring</code>: see <a href="#store-credentials"><code>Store Credentials</code></a>
+    <code>Credentials Keyring</code>: see <a href="#store-credentials">Store Credentials</a>
     for more detail. This mechanism entails uploading a <code>Credentials</code> definition
     to the <b>Cryostat</b> backend's encrypted <code>Keyring</code> storage. <b>Cryostat</b> automatically
     checks the <code>Keyring</code> for <code>Credentials</code> matching a target application when a
@@ -17,7 +17,7 @@ challenge before being able to communicate over **JMX** or `HTTP` and manage **J
     <code>Credentials</code>. If <code>Credentials</code> are entered on the prompt, they will also be
     stored in this same encrypted <code>Keyring</code>.
 
-    <code>Credentials</code> entered in the <a href="#store-credentials"><code>Store Credentials</code></a>
+    <code>Credentials</code> entered in the <a href="#store-credentials">Store Credentials</a>
     table are <code>always</code> stored in the server's encrypted <code>Keyring</code>.
     Additionally, <b>Cryostat Agent</b> <code>HTTP</code> <code>Credentials</code> are always stored in the
     same encrypted <code>Keyring</code>.
