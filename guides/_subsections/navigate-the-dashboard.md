@@ -5,7 +5,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
 
 ### [Dashboard Cards](#dashboard-cards)
 
-`Dashboard cards` are widgets that display information about your **Cryostat** instance and the `target` **JVM** applications it is monitoring. Let's walk through the available `cards` and how to add them to your `dashboard`.
+`Dashboard cards` are widgets that display information about your **Cryostat** instance and the `target` **JVM** applications it is monitoring. Let's walk through the available `cards` and how to add them to your *Dashboard*.
 
 {% include_relative _subsections/common/card-catalog.md %}
 

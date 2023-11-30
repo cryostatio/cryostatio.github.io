@@ -1,7 +1,7 @@
 ## [View Automated Analysis for a Recording](#view-automated-analysis-for-a-recording)
 **Cryostat** integrates the same `Automated Analysis` reports that you would
-find in [JDK Mission Control **("JMC")**](https://github.com/openjdk/jmc). The
-**JMC** rules engine analyzes your **Recording** and looks for common problems,
+find in [JDK Mission Control ("JMC")](https://github.com/openjdk/jmc). The
+**JMC** rules engine analyzes your `Recording` and looks for common problems,
 assigning a severity score from 0 (no problem) to 100 (potentially
 severe problem) to each potential problem type.
 
@@ -24,7 +24,7 @@ for use in the *Dashboard*. Read the section on the
         If you do not have any <code>Recordings</code> present in the <i>Active Recordings</i>
         view, follow
         <a href='#startstop-a-recording'>Start/Stop a Recording</a>
-        to create one, or select a different target application.
+        to create one, or select a different <code>target</code> application.
         You may also select an <code>Archived Recording</code> for <code>Automated Analysis</code>.
       "
     %}

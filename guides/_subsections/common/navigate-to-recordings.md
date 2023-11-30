@@ -1,5 +1,5 @@
 {% capture navigate-to-recordings-include-text %}
-  If the <code>target</code> <b>JVM</b> has <code>SSL/TLS</code> enabled on <b>JMX</b> connections then it may be
+  If the <code>target</code> <b>JVM</b> has <code>SSL/TLS</code> enabled on <b>JMX</b> connections, it may be
   necessary to add the <code>target's</code> certificate to <b>Cryostat's</b> trust store. Go
   to <a href="{{ site.url }}/guides/#add-a-trusted-certificate">Add a Trusted Certificate</a>
   and return to this section after completing that guide.
