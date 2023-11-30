@@ -1,13 +1,13 @@
 ## [View a Recording in Grafana](#view-a-recording-in-grafana)
 **Cryostat** provides integration with **Grafana** to plot curated time series
-metrics from` a `Recording`. By selecting _View in Grafana_ on either an
-`Active` or Archived Recording`, **Cryostat** uploads your `Recording` to
+metrics from a `Recording`. By selecting _View in Grafana_ on either an
+`Active` or `Archived Recording`, **Cryostat** uploads your `Recording` to
 a custom **Grafana Data Source**, and launches **Grafana** in a new browser
 tab. If **Cryostat** was installed to a **Kubernetes/OpenShift** cluster using the
 **Cryostat Operator,** you must retrieve the credentials generated
 by the **Operator** in order to log into **Grafana**. These credentials are stored
 in a `Kubernetes Secret`. Once logged in, navigate to the dashboard titled
-_Dashboard_. You will see a variety of metrics plotted from your <cide>Recording</code>.
+_Dashboard_. You will see a variety of metrics plotted from your `Recording`.
 
 <ol>
   <li>
