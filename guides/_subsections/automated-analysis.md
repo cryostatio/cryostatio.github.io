@@ -50,16 +50,4 @@ for use in the *Dashboard*. Read the section on the
       "
     %}
   </li>
-  <li>
-    {% include howto_step.html
-      summary="Download the Report"
-      image-name="2.3.0/automated-analysis-3.png"
-      caption="
-        To download the <code>Automated Analysis</code> report for offline viewing,
-        select <i>Download Recording</i> from the <code>Recording's</code> overflow
-        menu \"&#65049;\".
-      "
-      text=download-report-text
-    %}
-  </li>
 </ol>
