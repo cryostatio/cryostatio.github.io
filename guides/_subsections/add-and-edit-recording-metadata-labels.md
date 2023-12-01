@@ -19,7 +19,7 @@ Users can attach `Metadata` or `Custom Labels` to **JDK** `Flight Recordings` ma
   </li>
   <li>
     {% include howto_step.html
-      summary="View your <code>Labels</code> on the <i>Active Recordings Table</i>"
+      summary="View your <code>Labels</code> on the <i>Active Recordings</i> Table"
       image-name="2.3.0/add-and-edit-recording-metadata-labels-2.png"
       text="
         The new <code>Recording</code> will appear in the <i>Recordings Tab</i> with your <code>Custom Label</code> as well as default <code>Labels</code> containing information about the selected <code>Recording</code> template.
