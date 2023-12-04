@@ -6,7 +6,7 @@ Here's how to add a trusted `SSL` certificate with the **Cryostat Web** UI.
 <ol>
     <li>
         {% include howto_step.html
-          summary="Navigate to the Security Tab"
+          summary="Navigate to the <i>Security</i> Tab"
           image-name="2.3.0/navigate-to-security.png"
           text="Click the <i>Security</i> tab."
         %}
