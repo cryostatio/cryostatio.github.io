@@ -7,7 +7,7 @@ You can set up a custom trigger condition in Cryostat to initiate Java Flight Re
 
 #### [Configure Custom Trigger for Dynamic Recording](#configure-custom-trigger-for-dynamic-recording)
 When you configure your target application to load the Cryostat agent, you can define one or more custom triggers that are then passed as arguments to the agent.
-For more information see [Using-the-Cryostat-Agent](#using the cryostat agent).
+For more information, learn how to [use the Cryostat Agent](#using-the-cryostat-agent).
 
 #### [Options for Defining a Custom Trigger](#options-for-defining-a-custom-trigger)
 You can define a custom trigger in any of the following ways:
@@ -65,8 +65,8 @@ Consider the following syntax guidelines for defining custom triggers:
     <li>The entire trigger expression must be enclosed in square brackets. For example: <pre>[ProcessCpuLoad > 0.2 ; TargetDuration < duration("30s")]</pre></li>
     <li>The name of the event template must be defined after the trigger expression and preceded by a tilde <code>(~)</code> character. For example: <pre>~profile</pre></li>
     <li>A trigger expression can consist of one or more constraints and a target duration. The set of constraints and target duration must be separated by a semicolon <code>(;)</code> character.</li>
-    <li>Each constraint must include: the name of an MBean counter; a relational operator such as <code> ></code> (greater than), <code>=</code> (equal to), <code> < </code>(less than), and so on; and a specified value. The type of relational operator and value that you can specify depends on the associated MBean counter type. For example: <pre>ProcessCpuLoad > 0.2</pre></li>
-    <li>Constraints can be grouped together by using logical operators such as <code>&&</code> (AND), <code>|| </code> (OR), or <code> ! </code> (NOT) logic. For readability and clarity around the order of operations and operator precedence, grouped constraints may be enclosed in round brackets, but this is not a requirement. For example:
+    <li>Each constraint must include: the name of an MBean counter; a relational operator such as <code>></code> (greater than), <code>=</code> (equal to), <code><</code>(less than), and so on; and a specified value. The type of relational operator and value that you can specify depends on the associated MBean counter type. For example: <pre>ProcessCpuLoad > 0.2</pre></li>
+    <li>Constraints can be grouped together by using logical operators such as <code>&&</code> (AND), <code>||</code> (OR), or <code>!</code> (NOT) logic. For readability and clarity around the order of operations and operator precedence, grouped constraints may be enclosed in round brackets, but this is not a requirement. For example:
     <pre>
   [(MetricA > value1 && MetricB < value2) || MetricC == 'stringvalue' ; TargetDuration > duration("30s")]
     </pre>
