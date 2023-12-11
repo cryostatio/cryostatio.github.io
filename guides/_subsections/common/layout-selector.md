@@ -1,9 +1,9 @@
 {% capture layout-selector-text %}
-The layout selector contains a list of all available layouts. The currently selected layout is indicated with a check mark "✓".
+The <i>Layout Selector</i> contains a list of all available layouts. The currently selected layout is indicated with a check mark "✓".
 {% endcapture %}
 {% include howto_step.html
-summary="Open the layout selector dropdown"
+summary="Open the <i>Layout Selector Dropdown</i>"
 image-name="2.4.0/dashboard/dashboard-layoutselector.png"
-caption="Click the layout selector dropdown to view the available layouts."
+caption="Click the <i>layout selector dropdown</i> to view the available layouts."
 text=layout-selector-text
 %}

@@ -1,15 +1,15 @@
 ## [Archive a Recording](#archive-a-recording)
-In contrast to <i>Active Recordings</i>, which reside within the container
-of the target application, <i>Archived Recordings</i> reside within persistent
-storage attached to a Cryostat instance. In OpenShift, for example, the
+In contrast to `Active Recordings`, which reside within the container
+of the `target` application, `Archived Recordings` reside within persistent
+storage attached to a **Cryostat** instance. In **OpenShift**, for example, the
 archives are stored in a `PersistentVolumeClaim`.
 
-Archived recordings are created by performing archival upon active recordings.
-When this is requested, Cryostat connects to the target application and copies
-the Flight Recorder data from the selected active recording into an archived
-recording file in storage. The active source recording may be continuous or
-fixed-duration, may be using any event template, may be in
-any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
+`Archived Recordings` are created by performing archival upon `Active Recordings`.
+When this is requested, **Cryostat** connects to the `target` application and copies
+the `Flight Recorder` data from the selected `Active Recording` into an `Archived
+Recording` file in storage. The `Active Source Recording` may be `Continuous` or
+`Fixed-duration`, using any *Event Template*, in
+any state (`RUNNING`, `STOPPED`, etc.), and may even be a `snapshot`.
 
 <ol>
   <li>
@@ -21,14 +21,14 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
   <li>
     {% capture select-recording-additional-content %}
       <p>
-        If you do not have any recordings present in the Active Recordings
+        If you do not have any <code>Recordings</code> present in the <i>Active Recordings</i>
         view, follow
         <a href="{{ page.url }}#startstop-a-recording">Start/Stop a Recording</a>
-        to create one, or select a different target application.
+        to create one, or select a different <code>target</code> application.
       </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Select an Active Recording"
+      summary="Select an <i>Active Recording</i>"
       image-name="2.4.0/archive-a-recording-1.png"
       caption=select-recording-additional-content
     %}
@@ -41,14 +41,14 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a snapshot.
       summary="Navigate to the <i>Archived Recordings</i> tab"
       image-name="2.4.0/archive-a-recording-2.png"
       caption="
-        Once the recording has been archived, a new entry will appear in the
-        target JVM's <i>Archived Recordings</i> table. All recordings that were
-        saved from the current target will be listed here in their own table.
-        Switching to a different target from the dropdown will list only the 
-        recordings archived from that source target. The name of the archived 
-        recording reflects the address of the target application, the original 
-        name of the active recording that it was retrieved from, and includes a 
-        timestamp indicating when the archived recording was created.
+        Once the <code>Recording</code> has been archived, a new entry will appear in the
+        <code>target</code> <b>JVM's</b> <i>Archived Recordings</i> table. All <code>Recordings</code> that were
+        saved from the current <code>target</code> will be listed here in their own table.
+        Switching to a different <code>target</code> from the dropdown will list only the
+        <code>Recordings</code> archived from that source <code>target</code>. The name of the <code>Archived
+        Recording</code> reflects the address of the <code>target</code> application, the original
+        name of the <code>Active Recording</code> that it was retrieved from, and includes a
+        <code>timestamp</code> indicating when the <code>Archived Recording</code> was created.
       "
     %}
   </li>
