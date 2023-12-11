@@ -3,7 +3,7 @@ The layout selector contains a list of all available layouts. The currently sele
 {% endcapture %}
 {% include howto_step.html
 summary="Open the layout selector dropdown"
-image-name="2.3.0/dashboard/dashboard-layoutselector.png"
+image-name="2.4.0/dashboard/dashboard-layoutselector.png"
 caption="Click the layout selector dropdown to view the available layouts."
 text=layout-selector-text
 %}

@@ -33,7 +33,7 @@ Cryostat also provides an *Automated Analysis Card* that is able to display the 
   <li>
     {% include howto_step.html
       summary="Expand the recording"
-      image-name="2.3.0/automated-analysis-1.png"
+      image-name="2.4.0/automated-analysis-1.png"
       caption="
         Expand the recording with the chevron to the left of the recording
         name. The automated analysis report will appear below the recording.
@@ -43,7 +43,7 @@ Cryostat also provides an *Automated Analysis Card* that is able to display the 
   <li>
     {% include howto_step.html
       summary="View details and suggestions for results"
-      image-name="2.3.0/automated-analysis-2.png"
+      image-name="2.4.0/automated-analysis-2.png"
       caption="
         Click the <i>+</i> button on the right side of each result to view
         specifics on what the result means and possible suggestions to fix
@@ -55,7 +55,7 @@ Cryostat also provides an *Automated Analysis Card* that is able to display the 
     {% capture download-report-text %}
     <p>
       <figure>
-        <a href="{{ site.url }}/images/2.3.0/automated-analysis-4.png" target="_blank">
+        <a href="{{ site.url }}/images/2.4.0/automated-analysis-4.png" target="_blank">
           <img src="{{ site.url }}/images/2.3.0/automated-analysis-4.png">
         </a>
         <figcaption>
@@ -65,7 +65,7 @@ Cryostat also provides an *Automated Analysis Card* that is able to display the 
         </figcaption>
       </figure>
       <figure>
-        <a href="{{ site.url }}/images/2.3.0/automated-analysis-5.png" target="_blank">
+        <a href="{{ site.url }}/images/2.4.0/automated-analysis-5.png" target="_blank">
           <img src="{{ site.url }}/images/2.3.0/automated-analysis-5.png">
         </a>
         <figcaption>
@@ -78,7 +78,7 @@ Cryostat also provides an *Automated Analysis Card* that is able to display the 
     {% endcapture %}
     {% include howto_step.html
       summary="Download the report"
-      image-name="2.3.0/automated-analysis-3.png"
+      image-name="2.4.0/automated-analysis-3.png"
       caption="
         To download the automated analysis report for offline viewing,
         select <i>View Report ...</i> from the recording's overflow

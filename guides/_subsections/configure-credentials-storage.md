@@ -32,7 +32,7 @@ or the other when you complete a Authentication prompt.
   <li>
     {% include howto_step.html
       summary="Locate the Credentials Storage setting"
-      image-name="2.3.0/credentials-setting.png"
+      image-name="2.4.0/credentials-setting.png"
       text="
         This setting contains a brief explanation of its purpose and a simple dropdown menu with selections for where any
         Credentials entered into a <i>Authentication Required</i> challenge modal will be stored.

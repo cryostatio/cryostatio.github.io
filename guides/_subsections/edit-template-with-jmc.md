@@ -19,7 +19,7 @@ validation or any hinting for event types and options.
     {% endcapture %}
     {% include howto_step.html
       summary="Acquire an Event Template"
-      image-name="2.3.0/edit-template-with-jmc-1.png"
+      image-name="2.4.0/edit-template-with-jmc-1.png"
       caption="
         Ensure that you have an event template definition <i>.jfc</i> file
         somewhere on your local workstation, with read/write permissions.
@@ -30,21 +30,21 @@ validation or any hinting for event types and options.
   <li>
     {% include howto_step.html
       summary="Launch JDK Mission Control"
-      image-name="2.3.0/edit-template-with-jmc-2.png"
+      image-name="2.4.0/edit-template-with-jmc-2.png"
       caption="The main JMC window after launch"
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Open the Template Manager"
-      image-name="2.3.0/edit-template-with-jmc-3.png"
+      image-name="2.4.0/edit-template-with-jmc-3.png"
       caption="Select Window > Flight Recording Template Manager"
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Import the Base Template"
-      image-name="2.3.0/edit-template-with-jmc-4.png"
+      image-name="2.4.0/edit-template-with-jmc-4.png"
       caption="
         Click <i>Import Files...</i>, then browse to and select the
         template from Step 1.
@@ -54,7 +54,7 @@ validation or any hinting for event types and options.
   <li>
     {% include howto_step.html
       summary="Edit the Template"
-      image-name="2.3.0/edit-template-with-jmc-5.png"
+      image-name="2.4.0/edit-template-with-jmc-5.png"
       caption="
         Select the imported template, then click <i>Edit</i> and make your
         desired changes. Before making changes you may also click
@@ -75,7 +75,7 @@ validation or any hinting for event types and options.
     {% endcapture %}
     {% include howto_step.html
       summary="Export the Template"
-      image-name="2.3.0/edit-template-with-jmc-6.png"
+      image-name="2.4.0/edit-template-with-jmc-6.png"
       caption="
         Click <i>Export File...</i> to save the event template to a <i>.jfc</i>
         file on your local workstation.

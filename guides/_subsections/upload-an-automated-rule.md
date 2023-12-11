@@ -23,14 +23,14 @@ Below is an example of a rule file content:
   <li>
       {% include howto_step.html
         summary="Open <i>Automated Rules</i> upload prompt"
-        image-name="2.3.0/upload-an-automated-rule-1.png"
+        image-name="2.4.0/upload-an-automated-rule-1.png"
         caption="Click on upload icon button to open upload prompt."
       %}  
   </li>
   <li>
       {% include howto_step.html
         summary="Attach a rule file by dragging & dropping or clicking <i>Browse...</i>."
-        image-name="2.3.0/upload-an-automated-rule-2.png"
+        image-name="2.4.0/upload-an-automated-rule-2.png"
         caption="Select a rule file to upload."
       %}  
   </li>
@@ -40,7 +40,7 @@ Below is an example of a rule file content:
   <li>
       {% include howto_step.html
         summary="Observe the new rule in the <i>Automated Rules</i> table"
-        image-name="2.3.0/create-an-automated-rule-5.png"
+        image-name="2.4.0/create-an-automated-rule-5.png"
         caption="
           The new rule will appear in the <i>Automated Rules</i> table."
       %}  
