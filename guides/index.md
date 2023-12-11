@@ -3,7 +3,7 @@ layout: guides
 title: Guides on Using Cryostat
 ---
 
-This section explains some common Cryostat features by example, illustrating
+This section explains some common **Cryostat** features by example, illustrating
 common actions and workflows of interest and why they are useful.
 
 * auto-gen TOC:
@@ -54,6 +54,8 @@ common actions and workflows of interest and why they are useful.
 {% include_relative _subsections/download-an-automated-rule.md %}
 
 {% include_relative _subsections/configure-graphical-notifications.md %}
+
+{% include_relative _subsections/using-smart-triggers.md %}
 
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
 [comment]: # TODO
