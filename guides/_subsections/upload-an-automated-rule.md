@@ -30,7 +30,7 @@ Below is an example of a rule file content:
   <li>
       {% include howto_step.html
         summary="Attach a Rule File by Dragging & Dropping or clicking <i>Browse...</i>."
-        image-name="2.3.0/upload-an-automated-rule-2.png"
+        image-name="2.4.0/upload-an-automated-rule-2.png"
         caption="Select a rule file to upload."
       %}
   </li>
