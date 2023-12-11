@@ -1,6 +1,6 @@
 ## [Start/Stop a Recording](#startstop-a-recording)
-The first and most basic workflow is to start a Flight Recording in a target
-JVM.
+The first and most basic workflow is to start a `Flight Recording` in a `target`
+**JVM**.
 
 <ol>
   <li>
@@ -14,37 +14,37 @@ JVM.
   </li>
   <li>
     {% include howto_step.html
-      summary="Configure the new recording"
+      summary="Configure the new <code>Recording</code>"
       image-name="2.3.0/startstop-a-recording-1.png"
       text="
       <p>
-        Enter a name for the new recording. The form will alert you if the name
+        Enter a <i>Name</i> for the new <code>Recording</code>. The form will alert you if the name
         entered has an invalid format. If the name is already in use then the
         creation will fail and you will need to try again.
       </p>
       <p>
-        Select the duration of the recording. The duration can be specified in
-        seconds, minutes, or hours. If you want to record indefinitely, select the
-        <i>Continuous</i> option. You may also want to save the recording to Cryostat archive
-        storage when the recording stops with the <i>Archive on Stop</i> option.
+        Select the <i>Duration</i> of the <code>Recording</code>. The duration can be specified in
+        <code>seconds</code>, <code>minutes</code>, or <code>hours</code>. If you want to record indefinitely, select the
+        <i>Continuous</i> option. You may also want to save the <code>Recording</code> to <b>Cryostat</b> archive
+        storage when the <code>Recording</code> stops with the <i>Archive on Stop</i> option.
       </p>
       <p>
-        Select an event template or enter a custom event definition. If you are
-        unsure which to choose, the <code>Continuous</code> template is useful for
+        Select an event <i>Template</i> or enter a custom event definition. If you are
+        unsure which to choose, the <i>Continuous</i> template is useful for
         always-on production monitoring with the <i>Continuous</i> recording
-        duration setting, and the <code>Profiling</code> template is useful for
+        duration setting, and the <i>Profiling</i> template is useful for
         collecting extra information for troubleshooting a specifically
-        identified problem with a fixed recording duration.
+        identified problem with a fixed <code>Recording</code> duration.
       </p>
       <p>
-        To learn about <i>Metadata Options</i>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
+        To learn about <code>Metadata Options</code>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
       </p>
       "
     %}
   </li>
   <li>
     {% include howto_step.html
-      summary="<i>(Optional)</i> Adjust any <i>Advanced Options</i> for the recording"
+      summary="<i>(Optional)</i> Adjust any <i>Advanced Options</i> for the <code>Recording</code>"
       image-name="2.3.0/startstop-a-recording-2.png"
       text="
       <p>
@@ -55,20 +55,20 @@ JVM.
       </p>
       <p>
         <i>To Disk</i>: Use this parameter to specify whether to write data to
-        your JVM container's disk while recording. By default, this parameter
+        your <b>JVM</b> container's disk while recording. By default, this parameter
         is true.
       </p>
       <p>
         <i>Maximum Size</i>: Use this parameter to specify the maximum size of
-        disk data to keep for the recording. This parameter is valid only when
+        disk data to keep for the <code>Recording</code>. This parameter is valid only when
         the disk parameter is set to true. By default, the maximum size of disk
         data isn’t limited, and this parameter is set to 0.
       </p>
       <p>
         <i>Maximum Age</i>: Use this parameter to specify the maximum number of
-        seconds, minutes, or hours that events should be kept in the recording
+        <code>seconds</code>, <code>minutes</code>, or <code>hours</code> that events should be kept in the <code>Recording</code>
         before being discarded. This parameter is valid only when the disk
-        parameter is set to true, and the recording duration is not <i>Continuous</i>.
+        parameter is set to true, and the <code>Recording</code> duration is not <i>Continuous</i>.
         By default, this parameter is set to 0, which means there is no limit set.
       </p>
       "
@@ -80,30 +80,30 @@ JVM.
   <li>
     {% capture stop-the-recording-additional-content %}
       <p>
-        When you no longer desire for the Flight Recording to be active and
-        collecting data in your target application, select the recording from
-        the list by clicking the checkbox to the left of the recording name.
+        When you no longer desire for the <code>Flight Recording</code> to be <code>Active</code> and
+        collecting data in your target application, select the <code>Recording</code> from
+        the list by clicking the checkbox to the left of the <code>Recording</code> name.
         This will enable the <i>Stop</i> button in the toolbar. Click the
-        <i>Stop</i> button to end the data collection. 
+        <i>Stop</i> button to end the data collection.
       </p>
       <p>
-        If the recording has a fixed duration then it will automatically stop
-        after the target JVM measures that the duration has elapsed. If the
-        recording was created with a continuous duration then it will collect
+        If the <code>Recording</code> has a <code>Fixed Duration</code> then it will automatically stop
+        after the <code>target</code> <b>JVM</b> measures that the duration has elapsed. If the
+        <code>Recording</code> was created with a <code>Continuous Duration</code> then it will collect
         data until explicitly stopped.
       </p>
       <p>
-        After stopping a recording it remains in the <i>Active</i> section of
-        the Recordings view. This signifies that the recording data is still
-        present in the target JVM, and not within Cryostat's storage. If the
-        target JVM crashes, is killed, or the process otherwise restarts, then
-        the recording data will be lost. To learn how to persist the Flight
-        Recording data, continue on to
+        After <code>Stopping</code> a <code>Recording</code> it remains in the <i>Active</i> section of
+        the <i>Recordings</i> view. This signifies that the <code>Recording</code> data is still
+        present in the <code>target</code> <b>JVM</b>, and not within <b>Cryostat's</b> storage. If the
+        <code>target</code> <b>JVM</b> crashes, is killed, or the process otherwise restarts, then
+        the <code>Recording</code> data will be lost. To learn how to persist the <code>Flight
+        Recording</code> data, continue on to
         <a href="{{ page.url }}#archive-a-recording">Archive a Recording</a>.
       </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Stop the recording"
+      summary="<i>Stop</i> the <code>Recording</code>"
       image-name="2.3.0/startstop-a-recording-3.png"
       text=stop-the-recording-additional-content
     %}

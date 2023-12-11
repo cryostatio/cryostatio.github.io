@@ -5,7 +5,7 @@
   {{ include.select-a-recording-additional-content }}
 {% endcapture %}
 {% include howto_step.html
-  summary="Select a recording"
+  summary="Select a <code>Recording</code>"
   image-name="2.3.0/select-a-recording.png"
   caption=caption-content
   text=text-content
