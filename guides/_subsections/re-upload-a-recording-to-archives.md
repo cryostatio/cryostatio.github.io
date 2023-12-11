@@ -9,7 +9,7 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
   <li>
     {% include howto_step.html
       summary="Navigate to the <i>Archives</i> Tab"
-      image-name="2.3.0/re-upload-a-recording-to-archives-1.png"
+      image-name="2.4.0/re-upload-a-recording-to-archives-1.png"
       caption="Select the <i>Uploads</i> tab."
       text="The entire <i>Archives</i> view contains several tabs related to performing operations
       on <code>Archived Recordings</code>. See <a href='#view-archived-recordings'>Viewing Archived Recordings</a>.
@@ -19,7 +19,7 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
   <li>
     {% include howto_step.html
       summary="Select the Recording to Upload"
-      image-name="2.3.0/re-upload-a-recording-to-archives-2.png"
+      image-name="2.4.0/re-upload-a-recording-to-archives-2.png"
       caption="
         Click the <i>Upload Icon</i> to bring up the upload prompt. Then click <i>Upload</i> and select the
         <code>.jfr</code> file to upload. Note that the file must follow the <b>Cryostat</b> <code>Archive Recording</code>
@@ -30,7 +30,7 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
   <li>
     {% include howto_step.html
       summary="(Optional) Add <code>Metadata Labels</code>"
-      image-name="2.3.0/re-upload-a-recording-to-archives-3.png"
+      image-name="2.4.0/re-upload-a-recording-to-archives-3.png"
       caption="
         Click <i>Show metadata options</i> to add optional <code>Metadata Labels</code> to a <code>Recording</code>.
         You can either add <code>Labels</code> by clicking the <i>Add Label</i> button, or by uploading
@@ -44,7 +44,7 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
   <li>
     {% include howto_step.html
       summary="Upload the <code>Recording</code>"
-      image-name="2.3.0/re-upload-a-recording-to-archives-4.png"
+      image-name="2.4.0/re-upload-a-recording-to-archives-4.png"
       caption="Click <i>Upload</i> and observe that the <code>Recording</code> is now present in
       the <i>Uploads</i> tab of the <i>Archives</i> view."
     %}

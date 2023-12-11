@@ -29,7 +29,7 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a `snapshot`.
     {% endcapture %}
     {% include howto_step.html
       summary="Select an <i>Active Recording</i>"
-      image-name="2.3.0/archive-a-recording-1.png"
+      image-name="2.4.0/archive-a-recording-1.png"
       caption=select-recording-additional-content
     %}
   </li>
@@ -39,7 +39,7 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a `snapshot`.
   <li>
     {% include howto_step.html
       summary="Navigate to the <i>Archived Recordings</i> tab"
-      image-name="2.3.0/archive-a-recording-2.png"
+      image-name="2.4.0/archive-a-recording-2.png"
       caption="
         Once the <code>Recording</code> has been archived, a new entry will appear in the
         <code>target</code> <b>JVM's</b> <i>Archived Recordings</i> table. All <code>Recordings</code> that were

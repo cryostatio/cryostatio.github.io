@@ -48,7 +48,7 @@ configure the **Cryostat Web** UI to use one or the other when you complete an
   <li>
     {% include howto_step.html
       summary="Locate the <i>Credentials Storage</i> Setting"
-      image-name="2.3.0/credentials-setting.png"
+      image-name="2.4.0/credentials-setting.png"
       text="
         This setting contains a brief explanation of its purpose and a simple
         dropdown menu with selections for where any <code>Credentials</code> entered into an

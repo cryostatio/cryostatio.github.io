@@ -52,7 +52,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
     {% endcapture %}
     {% include howto_step.html
       summary="Add the <i>Target JVM Details</i> <code>Card</code>"
-      image-name="2.3.0/dashboard/targetjvmdetails-preview.png"
+      image-name="2.4.0/dashboard/targetjvmdetails-preview.png"
       caption="
         Click on the <i>Target JVM Details</i> <code>card</code> for a preview.
       "
@@ -65,14 +65,14 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
               There are no extra steps in the creation wizard for this <code>card</code>. Click <code>Finish</code> to add the <code>card</code> to your dashboard.
         <div class="multi-image">
             <figure>
-                <a href="{{ site.url }}/images/2.3.0/dashboard/targetjvmdetails-details.png" target="_blank">
-                <img src="{{ site.url }}/images/2.3.0/dashboard/targetjvmdetails-details.png" alt="Details tab">
+                <a href="{{ site.url }}/images/2.4.0/dashboard/targetjvmdetails-details.png" target="_blank">
+                <img src="{{ site.url }}/images/2.4.0/dashboard/targetjvmdetails-details.png" alt="Details tab">
                 </a>
                 <figcaption><i>Details Tab</i></figcaption>
             </figure>
             <figure>
-                <a href="{{ site.url }}/images/2.3.0/dashboard/targetjvmdetails-resources.png" target="_blank">
-                <img src="{{ site.url }}/images/2.3.0/dashboard/targetjvmdetails-resources.png" alt="Resources tab">
+                <a href="{{ site.url }}/images/2.4.0/dashboard/targetjvmdetails-resources.png" target="_blank">
+                <img src="{{ site.url }}/images/2.4.0/dashboard/targetjvmdetails-resources.png" alt="Resources tab">
                 </a>
                 <figcaption><i>Resources Tab</i></figcaption>
             </figure>
@@ -91,16 +91,16 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
     </p>
     <h4>Gallery view</h4>
         <figure>
-            <a href="{{ site.url }}/images/2.3.0/dashboard/automatedanalysis-gallery.png" target="_blank">
-                <img src="{{ site.url }}/images/2.3.0/dashboard/automatedanalysis-gallery.png" alt="Gallery view">
+            <a href="{{ site.url }}/images/2.4.0/dashboard/automatedanalysis-gallery.png" target="_blank">
+                <img src="{{ site.url }}/images/2.4.0/dashboard/automatedanalysis-gallery.png" alt="Gallery view">
             </a>
         </figure>
         <p>
             The <i>Gallery</i> view of the <i>Automated Analysis</i> <code>Card</code> displays a <i>Result</i>, a report summary, for each <code>Rule</code> that was triggered in the selected <code>Recording</code>. In this view, each <code>Rule</code> is listed in categories based on the event type. For example, the <code>Thrown Errors</code> and the <code>Thrown Exceptions</code> <code>Rules</code> are part of the <i>exceptions</i> category, as seen in the figure above. By clicking on each <code>Rule</code>, you can view more details about the <code>Rule</code> and the <i>Result</i> that was generated.
         </p>
         <figure>
-            <a href="{{ site.url }}/images/2.3.0/dashboard/automatedanalysis-result.png" target="_blank">
-                <img src="{{ site.url }}/images/2.3.0/dashboard/automatedanalysis-result.png" alt="Automated Analysis Result">
+            <a href="{{ site.url }}/images/2.4.0/dashboard/automatedanalysis-result.png" target="_blank">
+                <img src="{{ site.url }}/images/2.4.0/dashboard/automatedanalysis-result.png" alt="Automated Analysis Result">
             </a>
             <figcaption>
                 The <code>Discouraged Management Agent Settings</code> <code>Rule</code> result with a severity score of 25.0.
@@ -126,8 +126,8 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
         </p>
     <h4>List View</h4>
         <figure>
-            <a href="{{ site.url }}/images/2.3.0/dashboard/automatedanalysis-list.png" target="_blank">
-                <img src="{{ site.url }}/images/2.3.0/dashboard/automatedanalysis-list.png" alt="List view">
+            <a href="{{ site.url }}/images/2.4.0/dashboard/automatedanalysis-list.png" target="_blank">
+                <img src="{{ site.url }}/images/2.4.0/dashboard/automatedanalysis-list.png" alt="List view">
             </a>
         </figure>
         <p>
@@ -148,7 +148,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
     {% endcapture %}
     {% include howto_step.html
       summary="Add the <i>Automated Analysis</i> <code>Card</code>"
-      image-name="2.3.0/dashboard/automatedanalysis-preview.png"
+      image-name="2.4.0/dashboard/automatedanalysis-preview.png"
       caption="
         Click on the <i>Automated Analysis</i> <code>card</code> for a preview.
       "
@@ -166,7 +166,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
     {% endcapture %}
     {% include howto_step.html
       summary="Configure the <i>Automated Analysis</i> <code>Card</code>"
-      image-name="2.3.0/dashboard/automatedanalysis-configuration.png"
+      image-name="2.4.0/dashboard/automatedanalysis-configuration.png"
       caption="Click <i>Next</i> to optionally provide <i>Advanced Configuration</i>."
       text=configure-automated-analysis
     %}
@@ -174,7 +174,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
     {% include howto_step.html
       summary="Finish <code>Card</code> Creation"
-      image-name="2.3.0/dashboard/automatedanalysis-errorview.png"
+      image-name="2.4.0/dashboard/automatedanalysis-errorview.png"
       caption="The <code>card</code> will be added to the dashboard with an error view."
       text="After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard with an error view. This is because the <code>card</code> has not yet detected a special <i>Automated Analysis</i> <code>Recording</code> to source reports from."
     %}
@@ -182,7 +182,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
       {% include howto_step.html
       summary="Click <i>Create Recording</i>"
-      image-name="2.3.0/dashboard/automatedanalysis-success.png"
+      image-name="2.4.0/dashboard/automatedanalysis-success.png"
       caption="The <i>Automated Analysis</i> <code>card</code> displayed with a successful report."
       text="After clicking <i>Create Recording</i>, the <code>card</code> should be populated with report data containing the <i>Results</i> of the <i>Automated Analysis</i> report."
     %}
@@ -209,7 +209,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
     {% endcapture %}
     {% include howto_step.html
       summary="Add the <i>MBean Metrics Chart</i> <code>Card</code>"
-      image-name="2.3.0/dashboard/mbeanmetrics-preview.png"
+      image-name="2.4.0/dashboard/mbeanmetrics-preview.png"
       caption="Click on the <i>MBean Metrics Chart</i> <code>card</code> for a preview."
       text=mbean-metrics-chart-text
     %}
@@ -225,7 +225,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
     {% endcapture %}
     {% include howto_step.html
       summary="Configure the <i>MBean Metrics Chart</i> <code>Card</code>"
-      image-name="2.3.0/dashboard/mbeanmetrics-configuration.png"
+      image-name="2.4.0/dashboard/mbeanmetrics-configuration.png"
       caption="Click <i>Next</i> to provide <code>card</code> configuration."
       text=configure-mbean-metrics-chart
     %}
@@ -238,7 +238,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
     {% endcapture %}
     {% include howto_step.html
       summary="Finish <code>Card</code> Creation"
-      image-name="2.3.0/dashboard/mbeanmetrics.png"
+      image-name="2.4.0/dashboard/mbeanmetrics.png"
       caption="The <i>MBean Metrics Chart</i> <code>card</code> displayed with the <i>Process CPU Load</i> metric."
       text=mbean-metrics-chart-finish
     %}
@@ -253,7 +253,7 @@ The <i>Dashboard</i> is highly customizable and can be configured to display the
     <li>
         {% include howto_step.html
         summary="Add a <code>Card</code> to the <i>Dashboard</i>"
-        image-name="2.3.0/dashboard/targetjvmdetails-preview.png"
+        image-name="2.4.0/dashboard/targetjvmdetails-preview.png"
         caption="Open the <code>card</code> catalog by clicking the <i>Catalog icon</i> on the Dashboard toolbar."
         text="Let's add the <i>Target JVM Details</i> <code>card</code>."
         %}
@@ -261,14 +261,14 @@ The <i>Dashboard</i> is highly customizable and can be configured to display the
     <li>
         {% include howto_step.html
         summary="Resize the <code>Card</code>"
-        image-name="2.3.0/dashboard/dashboard-resize.png"
+        image-name="2.4.0/dashboard/dashboard-resize.png"
         caption="Click and drag the right edge of the <code>card</code> to resize it."
         %}
     </li>
     <li>
         {% include howto_step.html
         summary="Add another <code>Card</code> to the <i>Dashboard</i>"
-        image-name="2.3.0/dashboard/mbeanmetrics-preview.png"
+        image-name="2.4.0/dashboard/mbeanmetrics-preview.png"
         caption="Open the <code>card</code> catalog by clicking the <i>Catalog icon</i> on the Dashboard toolbar."
         text="Let's add the <i>MBean Metrics Chart</i> <code>card</code> this time."
         %}
@@ -276,7 +276,7 @@ The <i>Dashboard</i> is highly customizable and can be configured to display the
     <li>
         {% include howto_step.html
         summary="Rearrange <code>Cards</code>"
-        image-name="2.3.0/dashboard/dashboard-rearrange.png"
+        image-name="2.4.0/dashboard/dashboard-rearrange.png"
         caption="Click and drag the <i>Target JVM Details</i> <code>card's</code> header on top or to the right of the <i>MBeans Metrics Chart</i> <code>card</code> to swap their positions."
         %}
     </li>
@@ -297,15 +297,15 @@ The <i>Dashboard</i> is highly customizable and can be configured to display the
                 </ul>
             </p>
             <figure>
-                <a href="{{ site.url }}/images/2.3.0/dashboard/dashboard-cardremoved.png" target="_blank">
-                    <img src="{{ site.url }}/images/2.3.0/dashboard/dashboard-cardremoved.png" alt="{{ Removed card }}">
+                <a href="{{ site.url }}/images/2.4.0/dashboard/dashboard-cardremoved.png" target="_blank">
+                    <img src="{{ site.url }}/images/2.4.0/dashboard/dashboard-cardremoved.png" alt="{{ Removed card }}">
                 </a>
                 <figcaption>Click <i>Remove</i> to remove the <code>card</code>.</figcaption>
             </figure>
         {% endcapture %}
         {% include howto_step.html
         summary="Remove <code>Cards</code>"
-        image-name="2.3.0/dashboard/dashboard-cardkebab.png"
+        image-name="2.4.0/dashboard/dashboard-cardkebab.png"
         caption="Click the <i>Kebab</i> icon on the <code>card</code> header to open the card actions menu."
         text=remove-card-text
         %}
@@ -327,14 +327,14 @@ By default, the `Default` layout is created for you. This layout contains the ca
     <li>
         {% include howto_step.html
         summary="Click <i>New Layout</i>"
-        image-name="2.3.0/dashboard/dashboard-blanklayout.png"
+        image-name="2.4.0/dashboard/dashboard-blanklayout.png"
         text="Clicking <i>New Layout</i> will create a new blank layout and switch the dashboard view to the new layout. The layout should be called something like <code>Custom1</code>."
         %}
     </li>
     <li>
         {% include howto_step.html
         summary="<i>(Optional)</i> Rename Layouts"
-        image-name="2.3.0/dashboard/dashboard-renamelayout.png"
+        image-name="2.4.0/dashboard/dashboard-renamelayout.png"
         caption="Click the <i>Pencil</i> button to rename the currently selected layout."
         text="You are able to rename layouts by clicking the <i>Pencil</i> button next to the layout selector. This will rename the currently selected layout. You can also rename layouts within the layout selector dropdown itself."
         %}
@@ -342,7 +342,7 @@ By default, the `Default` layout is created for you. This layout contains the ca
     <li>
         {% include howto_step.html
         summary="<i>(Optional)</i> Delete Layouts"
-        image-name="2.3.0/dashboard/dashboard-deletelayout.png"
+        image-name="2.4.0/dashboard/dashboard-deletelayout.png"
         caption="Click 🗑️ <i>Delete</i> to delete the currently selected layout."
         text="Deletion is similar to renaming. Click the trash can icon with the text <i>Delete</i> next to the layout selector to delete the currently selected layout. You can also delete layouts within the layout selector dropdown itself."
         %}
@@ -354,7 +354,7 @@ By default, the `Default` layout is created for you. This layout contains the ca
     <li>
         {% include howto_step.html
         summary="Save a layout as a template"
-        image-name="2.3.0/dashboard/dashboard-layout-setastemplate.png"
+        image-name="2.4.0/dashboard/dashboard-layout-setastemplate.png"
         caption='Click more options "⋮" on the dashboard toolbar, then click <i>Set as template</i> to set the desired layout as a template.'
         text="The layout template will be saved as a <i>User-submitted</i> template in the template picker."
         %}
@@ -370,7 +370,7 @@ By default, the `Default` layout is created for you. This layout contains the ca
     <li>
         {% include howto_step.html
         summary="Select <i>Choose Template</i>"
-        image-name="2.3.0/dashboard/dashboard-layoutselector-options.png"
+        image-name="2.4.0/dashboard/dashboard-layoutselector-options.png"
         text="Click the expandable menu on <i>New Layout</i> button and select <i>Choose Template</i>. This will open the template picker."
         %}
     </li>
@@ -399,7 +399,7 @@ By default, the `Default` layout is created for you. This layout contains the ca
         {% endcapture %}
         {% include howto_step.html
         summary="Choose a Template"
-        image-name="2.3.0/dashboard/dashboard-templatepicker.png"
+        image-name="2.4.0/dashboard/dashboard-templatepicker.png"
         caption="Clicking a template will open a preview where you can view the template's <code>cards</code>."
         text=template-picker-guide-text
         %}
@@ -407,14 +407,14 @@ By default, the `Default` layout is created for you. This layout contains the ca
     <li>
         {% include howto_step.html
         summary="Enter a Name for the New Layout"
-        image-name="2.3.0/dashboard/dashboard-templatepicker-name.png"
+        image-name="2.4.0/dashboard/dashboard-templatepicker-name.png"
         text="A layout name must be entered before the <i>Create</i> button is enabled. The name must be <code>alphanumeric</code>, can only contain <code>underscores</code>, <code>dashes</code>, and <code>periods</code>, and must be <code>20</code> characters or less."
         %}
     </li>
     <li>
         {% include howto_step.html
         summary="Click <i>Create</i>"
-        image-name="2.3.0/dashboard/dashboard-layouttemplate.png"
+        image-name="2.4.0/dashboard/dashboard-layouttemplate.png"
         caption="The new layout will be created and the dashboard view will switch to the new layout with the template applied."
         %}
     </li>

@@ -3,7 +3,7 @@
 {% endcapture %}
 {% include howto_step.html
   summary="Open the <i>Card Catalog</i>"
-  image-name="2.3.0/dashboard/card-catalog.png"
+  image-name="2.4.0/dashboard/card-catalog.png"
   caption="Open the <i>Card Catalog</i> by clicking the <i>Catalog icon</i> on the <i>Dashboard</i> toolbar."
   text=card-catalog-include-text
 %}
