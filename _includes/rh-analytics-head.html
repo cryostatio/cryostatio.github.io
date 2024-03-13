@@ -1,7 +1,9 @@
 {% if jekyll.environment == "development" %}
+  <script id="trustarc" type="text/javascript" src="https://static.dev.redhat.com/libs/redhat/marketing/latest/trustarc/trustarc.js" async="" data-domain="redhat2_test.com" data-debug=""></script>
   <script id="dpal" src="https://www.redhat.com/ma/dpal-staging.js" type="text/javascript"></script>
 {% endif %}
 {% if jekyll.environment == "production" %}
+  <script id="trustarc" type="text/javascript" src="https://static.redhat.com/libs/redhat/marketing/latest/trustarc/trustarc.js" async="" data-domain="redhat2.com" data-debug=""></script>
   <script id="dpal" src="https://www.redhat.com/ma/dpal.js" type="text/javascript"></script>
   <script src="{{ site.baseurl }}/assets/javascript/tracking.js"></script>
   <script src="https://analytics.ossupstream.org/matomo.js" async defer></script>
