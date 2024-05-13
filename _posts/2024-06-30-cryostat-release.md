@@ -13,7 +13,7 @@ author: Andrew Azores
 
 Hello everyone,
 
-It's time for another Cryostat relase. This time, we are pleased to present Cryostat 3.0, a new major version with some significant under-the-hood changes. Here are the key highlights:
+It's time for another Cryostat release. This time, we are pleased to present Cryostat 3.0, a new major version with some significant under-the-hood changes. Here are the key highlights:
 
 1. **Quarkus** re-implementation of the main container: the main Cryostat container was previously built directly using Eclipse Vert.x, but now in 3.0 it has been reimplemented using Quarkus. With this change come several other changes outlined in the next several points, to take advantage of the Quarkus framework's strengths and features so that Cryostat can provide higher performance access to your JDK Flight Recorder data, as well as better integrity and security of your data.
 2. **More powerful configuration**: the main Cryostat container can be configured in the usual SmallRye Config style like any other Quarkus application, which means configuration properties can now be supplied by system property as well as by environment variable, and more configuration properties are available to help advanced users tailor Cryostat to their particular deployment requirements. If you are using the Cryostat Operator or Helm Chart for deployment and configuration then the configuration changes at those levels are relatively simple, but if you roll your own deployment then you will have to make more significant changes to your deployment configurations.
