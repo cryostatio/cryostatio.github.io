@@ -49,18 +49,18 @@ The new feature is **Dynamic Attach**. In short, this means that the Cryostat Ag
 
 ```bash
 $ kubectl cp \
-  /path/to/cryostat-agent.jar \
-  -n my-namespace \
-  mypod:/tmp/cryostat/cryostat-agent.jar
+    /path/to/cryostat-agent.jar \
+    -n my-namespace \
+    mypod:/tmp/cryostat/cryostat-agent.jar
 $ kubectl exec \
-  -n my-namespace \
-  mypod -c mycontainer \
-  -i -t -- \
-  java -jar /tmp/cryostat/cryostat-agent.jar \
-  -Dcryostat.agent.baseuri=http://cryostat:8181 \
-  -Dcryostat.agent.authorization="Bearer ${MY_AUTH_TOKEN}" \
-  -Dcryostat.agent.callback=http://${POD_IP}:9977 \
-  -Dcryostat.agent.api.writes-enabled=true
+    -n my-namespace \
+    mypod -c mycontainer \
+    -i -t -- \
+      java -jar /tmp/cryostat/cryostat-agent.jar \
+      -Dcryostat.agent.baseuri=http://cryostat:8181 \
+      -Dcryostat.agent.authorization="Bearer ${MY_AUTH_TOKEN}" \
+      -Dcryostat.agent.callback=http://${POD_IP}:9977 \
+      -Dcryostat.agent.api.writes-enabled=true
 ```
 
 ### Non-Changes
