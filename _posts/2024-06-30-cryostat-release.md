@@ -29,6 +29,16 @@ Specifically for the Cryostat Operator there are a few items of note:
 1. **Cluster-wide installation** only: the Cryostat Operator can now only be installed cluster-wide, rather than into a subset of cluster namespaces. Cluster-wide installation is the preferred mode for the Operator Lifecycle Manager and per-namespace installations are a deprecated feature, which our Operator has now dropped.
 2. **ClusterCryostat removal**: the `v1beta1/Cryostat` and `v1beta1/ClusterCryostat` custom resources are now unified in the `v1beta2/Cryostat` CR. When creating this CR you specify an installation namespace and an optional list of target namespaces. The installation namespace is the location where the Operator will create the Cryostat Deployment, and on OpenShift this namespace will also be used by the auth proxy for RBAC to control which users have access to the Cryostat application. The list of target namespaces is used to control which namespaces the Cryostat instance should monitor for new target applications to appear within, the same as before. Taken together with point 1 above it is now simpler to install the Operator and configure your Cryostat instance(s): simply install the Operator cluster-wide, then create one or more Cryostat CRs to correspond to namespaces or groups of namespaces that contain your applications.
 
+#### Helm Chart
+
+For the Cryostat Helm Chart, there are new configuration values that can be set:
+1. **authentication.openshift.enabled**: to enable deployment of `openshift-oauth-proxy`. If disabled (as default) then `oauth2_proxy` is deployed instead. Both proxies may be configured to enable Basic authentication (see next item), but for users deploying onto OpenShift, the `openshift-oauth-proxy` also implements integration with the OpenShift cluster SSO
+2. **authentication.basicAuth**: to configure Basic authentication on the auth proxy. When deploying `openshift-oauth-proxy` this is in addition to the OpenShift SSO, whereas when deploying `oauth2_proxy` this is the only out-of-the-box supported user authentication mechanism
+3. **openshiftOauthProxy.accessReview** (OpenShift only): to configure OpenShift SSO user authorization, the SubjectAccessReview/TokenAccessReview can be configured so that the proxy requires different roles from the user
+4. Installation will now include the auth proxy, a `cryostat-db` instance, and a `cryostat-storage` instance as outlined at the top of this post. There will be only one Service, and one Ingress/Route, pointing to the auth proxy
+
+This is not an exhaustive list of all the new configuration values, only a highlight of a few that control new visible features. Please check the chart's updated [`README`](https://github.com/cryostatio/cryostat-helm/blob/main/charts/cryostat/README.md) for a full listing.
+
 ### Non-Changes
 
 What *hasn't* changed?
