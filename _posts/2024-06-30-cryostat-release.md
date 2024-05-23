@@ -39,6 +39,30 @@ For the Cryostat Helm Chart, there are new configuration values that can be set:
 
 This is not an exhaustive list of all the new configuration values, only a highlight of a few that control new visible features. Please check the chart's updated [`README`](https://github.com/cryostatio/cryostat-helm/blob/main/charts/cryostat/README.md) for a full listing.
 
+#### Agent
+
+In this release there is only one new feature implemented and one enhancement.
+
+The minor enhancement first: when the Cryostat Agent starts up it also starts a tiny embedded webserver, which it uses to service requests made by the Cryostat server. This embedded webserver secures itself using Basic authentication. Previously, the Basic username was always `user` and the password was randomly generated and 24 ASCII characters in length. In this release both of these are configurable: the username can be overridden (but defaults to `user`), and the generated password length can be changed (but defaults to 24 characters). The generated password also draws from a larger character set.
+
+The new feature is **Dynamic Attach**. In short, this means that the Cryostat Agent can be attached to an already-running application JVM, as opposed to requiring attachment at JVM startup time via the `-javaagent` flag. This requires that the Agent JAR is available on the same host or in the same container filesystem as the application JVM, and that the user has some way to `exec` the Agent JAR as a separate `java` process to bootstrap the attachment. For example, if the application is deployed in Kubernetes, then the user can set this up by downloading the Cryostat Agent JAR locally, copying it into the application container using `kubectl cp`, and then run the Agent JAR using `kubectl exec`.
+
+```bash
+$ kubectl cp \
+  /path/to/cryostat-agent.jar \
+  -n my-namespace \
+  mypod:/tmp/cryostat/cryostat-agent.jar
+$ kubectl exec \
+  -n my-namespace \
+  mypod -c mycontainer \
+  -i -t -- \
+  java -jar /tmp/cryostat/cryostat-agent.jar \
+  -Dcryostat.agent.baseuri=http://cryostat:8181 \
+  -Dcryostat.agent.authorization="Bearer ${MY_AUTH_TOKEN}" \
+  -Dcryostat.agent.callback=http://${POD_IP}:9977 \
+  -Dcryostat.agent.api.writes-enabled=true
+```
+
 ### Non-Changes
 
 What *hasn't* changed?
