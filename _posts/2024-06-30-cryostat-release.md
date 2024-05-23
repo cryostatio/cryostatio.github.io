@@ -67,7 +67,7 @@ $ kubectl exec \
 
 What *hasn't* changed?
 
-If you are a cluster administrator installing Cryostat you will notice some changes in the Cryostat Operator and Cryostat CR. If you manually deploy Cryostat then there are a large number of setup and configuration changes required, with different and new environment variables and new additional containers to deploy (the auth proxy, database, and object storage mentioned above).
+If you are a cluster administrator installing Cryostat you will notice some changes in the Cryostat Operator and Cryostat CR, or in the Cryostat Helm Chart configuration values. If you manually deploy Cryostat then there are a large number of setup and configuration changes required, with different and new environment variables and new additional containers to deploy (the auth proxy, database, and object storage mentioned above).
 
 From an end user's perspective most things remain the exact same. Despite the major version number increment and breaking configuration changes, this release did not target adding any significant new user features or modifying existing ones. Only a few noteworthy items stand out:
 
