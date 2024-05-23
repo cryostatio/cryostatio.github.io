@@ -63,6 +63,8 @@ $ kubectl exec \
       -Dcryostat.agent.api.writes-enabled=true
 ```
 
+Please note that the `-D` system properties for the Agent are placed *after* the `-jar /path/to/cryostat-agent.jar`. This ensures that they are arguments picked up by the Agent process after it starts, which it receives and uses to set the system properties again when it attaches to the application JVM process that it finds. Any other system properties, including ones passed *before* the `-jar` flag, will take effect on the separate Agent process but will *not* be carried over to the application JVM when the Agent attaches.
+
 ### Non-Changes
 
 What *hasn't* changed?
