@@ -5,7 +5,7 @@ If you have Java Management Extensions **(JMX)** over `SSL` enabled on your cont
     <li>
         {% include howto_step.html
           summary="Navigate to the <i>Security</i> Tab"
-          image-name="3.0.0/navigate-to-security-empty.png"
+          image-name="3.0.0/navigate-to-security.png"
           text="Click the <i>Security</i> tab. This should initially be in an empty state if you have not yet defined any additional trusted certificates."
         %}
     </li>
@@ -28,7 +28,7 @@ certificate(s) within the truststore directory.
     <li>
         {% include howto_step.html
           summary="Navigate to the <i>Security</i> Tab"
-          image-name="3.0.0/navigate-to-security.png"
+          image-name="3.0.0/navigate-to-security-with-certs.png"
           text="Click the <i>Security</i> tab. The file paths of any additional trusted certificates you have added should appear in the list."
         %}
     </li>
