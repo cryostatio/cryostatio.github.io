@@ -19,7 +19,7 @@ validation or any hinting for event types and options.
     {% endcapture %}
     {% include howto_step.html
       summary="Acquire an <i>Event Template</i>"
-      image-name="2.4.0/edit-template-with-jmc-1.png"
+      image-name="3.0.0/edit-template-with-jmc-1.png"
       caption="
         Ensure that you have an <code>event template definition</code> <code>.jfc</code> file
         somewhere on your local workstation, with <code>read/write</code> permissions.
@@ -30,21 +30,21 @@ validation or any hinting for event types and options.
   <li>
     {% include howto_step.html
       summary="Launch <code>JDK Mission Control</code>"
-      image-name="2.4.0/edit-template-with-jmc-2.png"
+      image-name="3.0.0/edit-template-with-jmc-2.png"
       caption="The main <b>JMC</b> window after launch"
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Open the <i>Template Manager</i>"
-      image-name="2.4.0/edit-template-with-jmc-3.png"
+      image-name="3.0.0/edit-template-with-jmc-3.png"
       caption="Select <i>Window</i> > <i>Flight Recording Template Manager</i>"
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Import the Base <i>Template</i>"
-      image-name="2.4.0/edit-template-with-jmc-4.png"
+      image-name="3.0.0/edit-template-with-jmc-4.png"
       caption="
         Click <i>Import Files...</i>, then browse to and select the
         <i>Template</i> from Step 1.
@@ -54,7 +54,7 @@ validation or any hinting for event types and options.
   <li>
     {% include howto_step.html
       summary="Edit the <i>Template</i>"
-      image-name="2.4.0/edit-template-with-jmc-5.png"
+      image-name="3.0.0/edit-template-with-jmc-5.png"
       caption="
         Select the imported <i>Template</i>, then click <i>Edit</i> and make your
         desired changes. Before making changes you may also click
@@ -75,7 +75,7 @@ validation or any hinting for event types and options.
     {% endcapture %}
     {% include howto_step.html
       summary="Export the <i>Template</i>"
-      image-name="2.4.0/edit-template-with-jmc-6.png"
+      image-name="3.0.0/edit-template-with-jmc-6.png"
       caption="
         Click <i>Export File...</i> to save the event template to a <code>.jfc</code>
         file on your local workstation.

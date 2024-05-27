@@ -7,14 +7,14 @@ Here's how to add a trusted `SSL` certificate with the **Cryostat Web** UI.
     <li>
         {% include howto_step.html
           summary="Navigate to the <i>Security</i> Tab"
-          image-name="2.4.0/navigate-to-security.png"
+          image-name="3.0.0/navigate-to-security.png"
           text="Click the <i>Security</i> tab."
         %}
     </li>
     <li>
         {% include howto_step.html
           summary="Upload the Certificate"
-          image-name="2.4.0/add-a-trusted-certificate-upload.png"
+          image-name="3.0.0/add-a-trusted-certificate-upload.png"
           text="
               Click the <i>Upload</i> button on the <i>Import SSL Certificates</i> card. This action opens a file-upload dialog, where you can choose the certificate that you want to upload to <b>Cryostat</b>. You can repeat this process multiple times to add multiple trusted certificates.
           "
