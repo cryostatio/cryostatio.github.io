@@ -17,7 +17,7 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
   <li>
       {% include howto_step.html
       summary="Navigate to the <i>Automated Rules</i> Tab"
-      image-name="2.4.0/create-an-automated-rule-1.png"
+      image-name="3.0.0/create-an-automated-rule-1.png"
       caption="Switch to the <i>Automated Rules</i> tab."
     %}
   </li>
@@ -27,7 +27,7 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
   <li>
       {% include howto_step.html
         summary="Configure the new <code>Automated Rule</code>"
-        image-name="2.4.0/create-an-automated-rule-2.png"
+        image-name="3.0.0/create-an-automated-rule-2.png"
         text="
       <p>
         <i>Name:</i> Enter a name for the new rule. The form will alert you if the name
@@ -113,7 +113,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   <li>
       {% include howto_step.html
         summary="Check your <code>Match Expression</code>"
-        image-name="2.4.0/create-an-automated-rule-3.png"
+        image-name="3.0.0/create-an-automated-rule-3.png"
         caption="You can select a <code>target</code> <b>JVM</b> to view its properties and use them to build your <code>Match Expression</code>."
         text="
           <p>
@@ -125,7 +125,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   <li>
       {% include howto_step.html
         summary="<i>(Optional)</i> Adjust <i>Rule Parameters</i>"
-        image-name="2.4.0/create-an-automated-rule-4.png"
+        image-name="3.0.0/create-an-automated-rule-4.png"
         caption="
           Optionally set the <code>Recording</code> Options and <i>Rule Parameters.</i>"
         text="
@@ -147,7 +147,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   <li>
       {% include howto_step.html
         summary="Observe the new Rule in the <i>Automated Rules</i> Table"
-        image-name="2.4.0/create-an-automated-rule-5.png"
+        image-name="3.0.0/create-an-automated-rule-5.png"
         caption="
           The new rule will appear in the <i>Automated Rules</i> table."
       %}
@@ -158,7 +158,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kub
   <li>
       {% include howto_step.html
         summary="Observe the automatically generated <code>Recording</code> in the <i>Active Recordings</i> Table"
-        image-name="2.4.0/create-an-automated-rule-6.png"
+        image-name="3.0.0/create-an-automated-rule-6.png"
         caption="
           Switch to the <i>Recordings</i> tab and view the new <code>Recording</code> in the <i>Active Recordings</i>
           table."
