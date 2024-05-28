@@ -1,15 +1,7 @@
 ## [Store Credentials](#store-credentials)
 If you have Java Management Extensions **(JMX)** or `HTTP` authentication enabled on
 your containerized **JVMs**, **Cryostat** will prompt you to enter your credentials
-before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**. You can
-<a href="#configure-credentials-storage">Configure Credentials Storage</a> and
-choose whether these credentials are held in browser memory for the current
-session only, or if they are uploaded to **Cryostat's** `Credentials Keyring`. The
-following instructions are only applicable to `Credentials Keyring` storage.
-
-**Note**: for the best experience, it is recommended that you should use the
-`Backend` **JMX** `Credentials Keyring` and choose a strong `Keyring` password when
-deploying the server.
+before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
 
 <ol>
   <li>
@@ -79,13 +71,9 @@ deploying the server.
         Alternatively, credentials may also be stored if you navigate to either
         the <i>Recordings</i> tab or the <i>Events</i> tab and select a <code>target</code>
         <b>JVM</b> with authentication enabled. The authentication form will appear,
-        prompting you to enter your credentials. If you have
-        <a href='#configure-credentials-storage'>configured Backend Credentials Storage</a>,
-        then a new credential definition with the provided username and
-        password will be stored for this specific <code>target</code> application in the
-        <b>Cryostat</b> <code>Keyring</code>. If you have configured credentials with the
-        <i>Session</i> option then these entered credentials will <i>not</i> be
-        stored in the <b>Cryostat</b> <code>keyring</code>.
+        prompting you to enter your credentials. A new credential definition with the provided
+        username and password will be stored for this specific <code>target</code> application
+        in the <b>Cryostat</b> <code>Keyring</code>.
       "
     %}
   </li>
