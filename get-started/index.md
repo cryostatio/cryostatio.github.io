@@ -332,7 +332,7 @@ ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent-shaded.jar"
 ```
 
 Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
-Push that updated image or otherwise get it updated in your Kubernetes registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
+Push that updated image or otherwise get it updated in your **Kubernetes** registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
 the **Cryostat Agent**:
 
 ```yaml
@@ -428,7 +428,7 @@ application is running, with no rebuild, redeployment, or restart. To do this, t
 filesystem (see [above](#statically-attaching-the-cryostat-agent) for details on how and where to acquire it), and you must be able to execute
 a new Java process in the same space as the application.
 
-Let's make this concrete with an example. We will assume you are running your application in Kubernetes and that you have manually downloaded
+Let's make this concrete with an example. We will assume you are running your application in **Kubernetes** and that you have manually downloaded
 the **Cryostat Agent JAR** to your workstation.
 
 ```bash
@@ -451,8 +451,8 @@ $ kubectl exec \
 2. Replace `my-namespace` with the namespace your application is deployed in
 3. Replace `mypod` with the name of your application's Pod
 4. Replace `mycontainer` with the name of your application's container within its Pod (or remove this if it is the only container in the Pod)
-5. Replace `http://cryostat:8181` with the correct internal Service URL for your **Cryostat** server within the same Kubernetes cluster
-6. Replace `${MY_AUTH_TOKEN}` with your own Kubernetes auth token, or one belonging to a Service Account you have created for this purpose
+5. Replace `http://cryostat:8181` with the correct internal Service URL for your **Cryostat** server within the same **Kubernetes** cluster
+6. Replace `${MY_AUTH_TOKEN}` with your own **Kubernetes** auth token, or one belonging to a Service Account you have created for this purpose
 7. Replace `${POD_IP}` with the application Pod's IP Address as found in its Status using `kubectl get -o yaml`
 
 By following this procedure you will copy the **Cryostat Agent JAR** into the application's filesystem (`kubectl cp`), then launch the
@@ -492,9 +492,9 @@ JVMs
   -V, --version          Print version information and exit.
 ```
 
-*Note*: this procedure will only attach the Cryostat Agent to the application once, for the application process' current lifecycle. If the
-application process is restarted then the Agent will no longer be loaded, and you will need to perform the steps above again to re-attach it.
-If you scale up your application so there are more Replicas then these additional instances will also not have the Agent attached. This
+*Note*: this procedure will only attach the **Cryostat Agent** to the application once, for the application process' current lifecycle. If the
+application process is restarted then the **Agent** will no longer be loaded, and you will need to perform the steps above again to re-attach it.
+If you scale up your application so there are more Replicas then these additional instances will also not have the **Agent** attached. This
 workflow is useful primarily for one-off troubleshooting or profiling scenarios. If you find yourself performing these steps often then
 consider [statically attaching the Agent](#statically-attaching-the-cryostat-agent) so that the configuration for attaching it occurs at
 every application startup.
