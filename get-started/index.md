@@ -464,7 +464,7 @@ you can use the wildcard `*` asterisk so that the Agent attaches to every JVM it
 Agent with the `-h` flag to get details about its options:
 
 ```bash
-$ java -jar target/cryostat-agent-0.4.0-SNAPSHOT-shaded.jar -h
+$ java -jar cryostat-agent-{{site.data.versions.agent.version}}-shaded.jar -h
 Usage: CryostatAgent [-hV] [-D=<String=String>]...
                      [--smartTrigger=<smartTriggers>]... [@<filename>...]
                      [<pid>]
