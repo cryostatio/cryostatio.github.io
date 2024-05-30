@@ -277,7 +277,7 @@ is built with **Maven**, packaged into an image with a `Dockerfile`, and running
 is compatible with **Cryostat** versions 2.3.0 and newer, and application **JDKs 11** and newer.
 If you are using an older version of **Cryostat** we recommend upgrading to ensure compatibility.
 Please see the [version compatibility chart](https://github.com/cryostatio/cryostat-agent?tab=readme-ov-file#run-requirements) to ensure
-that your Cryostat server version and Cryostat agent version are correct.
+that your **Cryostat** server version and **Cryostat Agent** version are correct.
 If your application uses a later version of **JDK8** with **JFR** support, please either upgrade to **JDK11+** or [continue to the next section](#using-jmx)
 to learn how to configure your application without the **Cryostat Agent**.
 
@@ -423,13 +423,13 @@ is not detected then it will only publish the HTTP URL.
 
 ##### [Dynamically Attaching the Cryostat Agent](#dynamically-attaching-the-cryostat-agent)
 
-Starting with Cryostat 3.0 and Cryostat Agent 0.4 it is possible to attach the Cryostat Agent to your application while the application is
-running, with no rebuild, redeployment, or restart. To do this, the Agent **JAR** must still be available in your application's filesystem
-(see [above](#statically-attaching-the-cryostat-agent) for details on how and where to acquire it), and you must be able to execute a new
-Java process in the same space as the application.
+Starting with **Cryostat** 3.0 and **Cryostat Agent** 0.4 it is possible to attach the **Cryostat Agent** to your application while the
+application is running, with no rebuild, redeployment, or restart. To do this, the Agent **JAR** must still be available in your application's
+filesystem (see [above](#statically-attaching-the-cryostat-agent) for details on how and where to acquire it), and you must be able to execute
+a new Java process in the same space as the application.
 
 Let's make this concrete with an example. We will assume you are running your application in Kubernetes and that you have manually downloaded
-the Cryostat Agent **JAR** to your workstation.
+the **Cryostat Agent JAR** to your workstation.
 
 ```bash
 $ kubectl cp \
@@ -451,17 +451,17 @@ $ kubectl exec \
 2. Replace `my-namespace` with the namespace your application is deployed in
 3. Replace `mypod` with the name of your application's Pod
 4. Replace `mycontainer` with the name of your application's container within its Pod (or remove this if it is the only container in the Pod)
-5. Replace `http://cryostat:8181` with the correct internal Service URL for your Cryostat server within the same Kubernetes cluster
+5. Replace `http://cryostat:8181` with the correct internal Service URL for your **Cryostat** server within the same Kubernetes cluster
 6. Replace `${MY_AUTH_TOKEN}` with your own Kubernetes auth token, or one belonging to a Service Account you have created for this purpose
 7. Replace `${POD_IP}` with the application Pod's IP Address as found in its Status using `kubectl get -o yaml`
 
-By following this procedure you will copy the Cryostat Agent **JAR** into the application's filesystem (`kubectl cp`), then launch the Agent
-as a Java process (`kubectl exec`). When the Agent is launched in this manner it will look for other Java processes. If it finds exactly one
-other Java process then it will use that process' Attach API and ask the JVM to load the Agent's **JAR**, passing its `-D` arguments over and
-setting them as system properties in the application JVM after the Attach API loads the **JAR**. If you have multiple Java processes running
-within the application container then you can either specify a particular PID to the Cryostat Agent so that it only attaches to that JVM, or
-you can use the wildcard `*` asterisk so that the Agent attaches to every JVM it finds (other than its own bootstrap JVM). You can run the
-Agent with the `-h` flag to get details about its options:
+By following this procedure you will copy the **Cryostat Agent JAR** into the application's filesystem (`kubectl cp`), then launch the
+**Agent** as a Java process (`kubectl exec`). When the **Agent** is launched in this manner it will look for other Java processes. If it
+finds exactly one other Java process then it will use that process' Attach API and ask the JVM to load the Agent's **JAR**, passing its
+`-D` arguments over and setting them as system properties in the application JVM after the Attach API loads the **JAR**. If you have multiple
+Java processes running within the application container then you can either specify a particular PID to the **Cryostat Agent** so that it
+only attaches to that JVM, or you can use the wildcard `*` asterisk so that the Agent attaches to every JVM it finds (other than its own
+bootstrap JVM). You can run the **Agent** with the `-h` flag to get details about its options:
 
 ```bash
 $ java -jar cryostat-agent-{{site.data.versions.agent.version}}-shaded.jar -h
