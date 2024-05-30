@@ -460,7 +460,37 @@ as a Java process (`kubectl exec`). When the Agent is launched in this manner it
 other Java process then it will use that process' Attach API and ask the JVM to load the Agent's **JAR**, passing its `-D` arguments over and
 setting them as system properties in the application JVM after the Attach API loads the **JAR**. If you have multiple Java processes running
 within the application container then you can either specify a particular PID to the Cryostat Agent so that it only attaches to that JVM, or
-you can use the wildcard `*` asterisk so that the Agent attaches to every JVM it finds (other than its own bootstrap JVM).
+you can use the wildcard `*` asterisk so that the Agent attaches to every JVM it finds (other than its own bootstrap JVM). You can run the
+Agent with the `-h` flag to get details about its options:
+
+```bash
+$ java -jar target/cryostat-agent-0.4.0-SNAPSHOT-shaded.jar -h
+Usage: CryostatAgent [-hV] [-D=<String=String>]...
+                     [--smartTrigger=<smartTriggers>]... [@<filename>...]
+                     [<pid>]
+Launcher for Cryostat Agent to self-inject and dynamically attach to workload
+JVMs
+      [@<filename>...]   One or more argument files containing options.
+      [<pid>]            The PID to attach to and attempt to self-inject the
+                           Cryostat Agent. If not specified, the Agent will
+                           look to find exactly one candidate and attach to
+                           that, failing if none or more than one are found.
+                           Otherwise, this should be a process ID, or the '*'
+                           wildcard to request the Agent attempt to attach to
+                           all discovered JVMs.
+  -D, --property=<String=String>
+                         Optional property definitions to supply to the
+                           injected Agent copies to add or override property
+                           definitions once the Agent is running in the
+                           workload JVM. These should be specified as key=value
+                           pairs, ex. -Dcryostat.agent.baseuri=http://cryostat.
+                           service.local . May be specified more than once.
+  -h, --help             Show this help message and exit.
+      --smartTrigger=<smartTriggers>
+                         Smart Triggers definition. May be specified more than
+                           once.
+  -V, --version          Print version information and exit.
+```
 
 *Note*: this procedure will only attach the Cryostat Agent to the application once, for the application process' current lifecycle. If the
 application process is restarted then the Agent will no longer be loaded, and you will need to perform the steps above again to re-attach it.
