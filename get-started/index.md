@@ -424,7 +424,7 @@ is not detected then it will only publish the HTTP URL.
 ##### [Dynamically Attaching the Cryostat Agent](#dynamically-attaching-the-cryostat-agent)
 
 Starting with **Cryostat** 3.0 and **Cryostat Agent** 0.4 it is possible to attach the **Cryostat Agent** to your application while the
-application is running, with no rebuild, redeployment, or restart. To do this, the Agent **JAR** must still be available in your application's
+application is running, with no rebuild, redeployment, or restart. To do this, the **Agent JAR** must still be available in your application's
 filesystem (see [above](#statically-attaching-the-cryostat-agent) for details on how and where to acquire it), and you must be able to execute
 a new Java process in the same space as the application.
 
