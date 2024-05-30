@@ -282,17 +282,10 @@ If your application uses a later version of **JDK8** with **JFR** support, pleas
 to learn how to configure your application without the **Cryostat Agent**.
 
 The **Cryostat Agent** **JAR** must be available to your application **JVM**. The **JAR** asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/releases),
-or you may use the following snippet in your `pom.xml` to streamline this.
+or from [Maven Central](https://mvnrepository.com/artifact/io.cryostat/cryostat-agent). You may also include the Agent as a dependency in your application's `pom.xml` to automate the download:
 
 ```xml
 <project>
-  ...
-  <repositories>
-    <repository>
-      <id>github</id>
-      <url>https://maven.pkg.github.com/cryostatio/cryostat-agent</url>
-    </repository>
-  </repositories>
   ...
   <build>
     <plugins>
@@ -325,8 +318,6 @@ or you may use the following snippet in your `pom.xml` to streamline this.
   ...
 </project>
 ```
-
-<span style="color:red">**Note**:</span> You may be required to [authenticate to the GitHub Maven Packages registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#installing-a-package) in order to pull this **JAR**.
 
 The next time we build our application, the **Cryostat Agent** **JAR** will be located at `target/dependency/cryostat-agent-shaded.jar`. Then we can update our **Dockerfile**:
 
