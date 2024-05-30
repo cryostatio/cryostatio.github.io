@@ -274,8 +274,11 @@ is built with **Maven**, packaged into an image with a `Dockerfile`, and running
 ##### [Using the Cryostat Agent](#using-the-cryostat-agent)
 
 [The **Cryostat Agent**](/guides/#using-the-cryostat-agent)
-is compatible with **Cryostat** versions 2.3.0 and newer, and application **JDKs 11** and newer. If you are using an older version of **Cryostat**, we recommend upgrading to ensure compatibility.
-If your application uses a recent version of **JDK8** with **JFR** support, please either upgrade to **JDK11+** or [continue to the next section](#using-jmx)
+is compatible with **Cryostat** versions 2.3.0 and newer, and application **JDKs 11** and newer.
+If you are using an older version of **Cryostat** we recommend upgrading to ensure compatibility.
+Please see the [version compatibility chart](https://github.com/cryostatio/cryostat-agent?tab=readme-ov-file#run-requirements) to ensure
+that your Cryostat server version and Cryostat agent version are correct.
+If your application uses a later version of **JDK8** with **JFR** support, please either upgrade to **JDK11+** or [continue to the next section](#using-jmx)
 to learn how to configure your application without the **Cryostat Agent**.
 
 The **Cryostat Agent** **JAR** must be available to your application **JVM**. The **JAR** asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/releases),
