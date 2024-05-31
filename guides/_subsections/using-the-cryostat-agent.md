@@ -18,4 +18,3 @@ The programming interfaces for **Cryostat** and its **Agent** are designed to im
 </ol>
 
 For instructions on how to install the **Cryostat Agent** into your applications, [check the Setup section in Getting Started](/get-started/#using-the-cryostat-agent).
-
