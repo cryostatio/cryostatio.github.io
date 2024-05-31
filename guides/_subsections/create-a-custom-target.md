@@ -59,7 +59,13 @@ use a special JMX connection to itself without going through the network stack.
           </a>
           <figcaption>
             An exclamation mark and an alert banner will show if an error
-            occurs while connecting to the <code>target</code>.
+            occurs while connecting to the <code>target</code>. This may
+            occur if the URL is incorrect due to incorrect hostname or
+            port number, or if the port is blocked by a firewall or network
+            policy, or if the JVM listening on the specified port requires
+            JMX credentials that Cryostat does not have in its keyring, or
+            if the JVM listening on the specified port presents an SSL/TLS
+            certificate which Cryostat does not trust.
           </figcaption>
         </figure>
       </p>
