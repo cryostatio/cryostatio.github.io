@@ -44,7 +44,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
                     <code>Owned Resources:</code> Resources that the <b>JVM</b> owns (i.e. <a href="#startstop-a-recording">Active Recordings</a>, <a href="#viewing-archived-recordings">Archived Recordings</a>, <a href="#download-edit-and-upload-a-customized-event-template">Event Templates</a> and <a href="#download-edit-and-upload-a-customized-event-template">Event Types</a>).
                 </li>
                 <li>
-                    <code>Related Resources:</code> Resources that are tied to the <b>JVM</b> by <i><code>Match Expression</code></i> (i.e. <a href="#create-an-automated-rule">Automated Rules</a> and <a href="#store-credentials"><Credentials</a>).
+                    <code>Related Resources:</code> Resources that are tied to the <b>JVM</b> by <i><code>Match Expression</code></i> (i.e. <a href="#create-an-automated-rule">Automated Rules</a> and <a href="#store-credentials">Credentials</a>).
                 </li>
             </ul>
         </li>
