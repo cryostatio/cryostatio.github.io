@@ -7,7 +7,7 @@
 {% endcapture %}
 {% include howto_step.html
   summary="Select the <i>Target Application</i>"
-  image-name="2.4.0/select-target-application.png"
+  image-name="3.0.0/select-target-application.png"
   caption="Clik the <i>Dropdown arrow</i> on the right side of <i>Target</i> prompt to select or create a <code>target</code>."
   text=text-content
 %}
