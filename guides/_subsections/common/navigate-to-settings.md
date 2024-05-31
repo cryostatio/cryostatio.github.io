@@ -6,7 +6,7 @@
 {% endcapture %}
 {% include howto_step.html
   summary="Navigate to <i>Settings</i>"
-  image-name="2.4.0/navigate-to-settings.png"
+  image-name="3.0.0/navigate-to-settings.png"
   caption="
     Click the <i>cog</i> or <i>gear</i> icon in the application masthead to access the <i>Settings</i> view.
   "
