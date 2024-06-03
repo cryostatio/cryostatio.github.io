@@ -11,8 +11,8 @@ If you clear your browser's local storage, use a private browsing window, or use
 {% include howto_step.html
   summary="Welcome Tour"
   image-name="2.4.0/welcome-tour.png"
-  caption="Click through the <i>Welcome Tour</i> to learn how to use **Cryostat**."
-  text="The <i>Welcome Tour</i> provides an introduction to **Cryostat**'s layout and indicates where further tutorials and help can be found."
+  caption="Click through the <i>Welcome Tour</i> to learn how to use <b>Cryostat</b>."
+  text="The <i>Welcome Tour</i> provides an introduction to <b>Cryostat</b>'s layout and indicates where further tutorials and help can be found."
 %}
 
 If you have completed the tour previously, feel free to click <i>Skip Tour</i> and dive right in to **Cryostat**.
