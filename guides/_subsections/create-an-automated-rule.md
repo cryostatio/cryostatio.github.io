@@ -104,7 +104,7 @@ target.annotations.cryostat.PORT > 3000 && target.annotations.platform['io.kuber
 
 !!target.annotations.platform['io.kubernetes/annotation']
 
-/^customer-login[0-9]\*$/.test(target.alias)
+target.alias.matches("^customer-login[0-9]\*$")
 {% endhighlight %}
 
 </figure>
