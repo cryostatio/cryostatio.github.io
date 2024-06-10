@@ -2,7 +2,7 @@
 [JDK Mission Control](https://github.com/openjdk/jmc) has a *Template Manager*
 functionality which also contains a graphical wizard for editing `.jfc` *Event
 Template* files. This may be preferred to editing the templates directly as `XML`
-plaintext or using `XML` document editors, which do not have `.jfc-specific XSD`
+plaintext or using `XML` document editors, which do not have `.jfc`-specific `XSD`
 validation or any hinting for event types and options.
 
 <ol>
