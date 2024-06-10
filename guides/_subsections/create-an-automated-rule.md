@@ -58,7 +58,7 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
     <details>
         <summary>Create your <code>Match Expression</code></summary>
         <p>
-            The <code>Match Expression</code> in a rule definition is a Java-like snippet of code that <b>Cryostat</b> interprets and uses to determine if a rule should be applied to any given <code>target</code>. <code>Match Expressions</code> should thus evaluate to a <code>boolean</code> value. The simplest <code>Match Expressions</code> would be the <code>booleans</code> true or false; if we use true, the rule will apply to every <code>target</code>. The <code>Expression</code> has a <code>target</code> object in global scope, with the following form in <code>JSON</code> notation:
+            The <code>Match Expression</code> in a rule definition is a <code><a href="https://cel.dev/">Common Expression Language</a></code> expression that <b>Cryostat</b> interprets and uses to determine if a rule should be applied to any given <code>target</code>. <code>Match Expressions</code> should thus evaluate to a <code>boolean</code> value. The simplest <code>Match Expressions</code> would be the <code>booleans</code> true or false; if we use true, the rule will apply to every <code>target</code>. The <code>Expression</code> has a <code>target</code> object in global scope, with the following form in <code>JSON</code> notation:
         </p>
         <figure>
 {% highlight json %}
