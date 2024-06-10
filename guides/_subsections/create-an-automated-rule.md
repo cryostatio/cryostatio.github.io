@@ -90,19 +90,19 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
         <figure>
 
 {% highlight bash %}
-target.alias == ’com.example.MainClass’
+target.alias == 'com.example.MainClass'
 
-target.alias == ’myAlias’
+target.alias == 'myAlias'
 
-target.labels[‘com.example/service’] == ’customer-login’
+target.labels[‘com.example/service’] == 'customer-login'
 
-target.labels[‘com.example/service’] != ’customer-login’
+target.labels[‘com.example/service’] != 'customer-login'
 
 target.annotations.cryostat.PORT > 3000
 
-target.annotations.cryostat.PORT > 3000 && target.annotations.platform[‘io.kubernetes/annotation’] == ‘enabled’
+target.annotations.cryostat.PORT > 3000 && target.annotations.platform['io.kubernetes/annotation'] == 'enabled'
 
-!!target.annotations.platform[‘io.kubernetes/annotation’]
+!!target.annotations.platform['io.kubernetes/annotation']
 
 /^customer-login[0-9]\*$/.test(target.alias)
 {% endhighlight %}
