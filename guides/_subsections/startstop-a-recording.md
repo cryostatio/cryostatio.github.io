@@ -20,7 +20,8 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
       <p>
         Enter a <i>Name</i> for the new <code>Recording</code>. The form will alert you if the name
         entered has an invalid format. If the name is already in use then the
-        creation will fail and you will need to try again.
+        creation will fail and you will need to try again, or check the <i>Restart if recording already exists</i>
+        checkbox to allow Cryostat to reuse the same recording name for a new recording with new settings.
       </p>
       <p>
         Select the <i>Duration</i> of the <code>Recording</code>. The duration can be specified in
@@ -35,6 +36,9 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
         duration setting, and the <i>Profiling</i> template is useful for
         collecting extra information for troubleshooting a specifically
         identified problem with a fixed <code>Recording</code> duration.
+        You can also
+        <a href='#download-edit-and-upload-a-customized-event-template'>upload a custom Event Template</a>
+        and select it here.
       </p>
       <p>
         To learn about <code>Metadata Options</code>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
@@ -87,7 +91,7 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
         <i>Stop</i> button to end the data collection.
       </p>
       <p>
-        If the <code>Recording</code> has a <code>Fixed Duration</code> then it will automatically stop
+        If the <code>Recording</code> has a fixed duration then it will automatically stop
         after the <code>target</code> <b>JVM</b> measures that the duration has elapsed. If the
         <code>Recording</code> was created with a <code>Continuous Duration</code> then it will collect
         data until explicitly stopped.
