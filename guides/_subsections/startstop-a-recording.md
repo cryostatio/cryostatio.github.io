@@ -36,6 +36,9 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
         duration setting, and the <i>Profiling</i> template is useful for
         collecting extra information for troubleshooting a specifically
         identified problem with a fixed <code>Recording</code> duration.
+        You can also
+        <a href='#download-edit-and-upload-a-customized-event-template'>upload a custom Event Template</a>
+        and select it here.
       </p>
       <p>
         To learn about <code>Metadata Options</code>, see <a href='#add-and-edit-recording-metadata-labels'>Add and Edit Recording Metadata Labels</a>.
