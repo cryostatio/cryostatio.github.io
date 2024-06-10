@@ -20,7 +20,8 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
       <p>
         Enter a <i>Name</i> for the new <code>Recording</code>. The form will alert you if the name
         entered has an invalid format. If the name is already in use then the
-        creation will fail and you will need to try again.
+        creation will fail and you will need to try again, or check the <i>Restart if recording already exists</i>
+        checkbox to allow Cryostat to reuse the same recording name for a new recording with new settings.
       </p>
       <p>
         Select the <i>Duration</i> of the <code>Recording</code>. The duration can be specified in
