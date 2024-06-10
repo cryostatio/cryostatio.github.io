@@ -2,7 +2,9 @@
 **Cryostat** provides some basic capabilities for analysis of **Flight Recording** data
 in-cluster. However, the core analysis workflow is to collect **JFR** files from
 `target` applications and copy them to local developer or admin workstations, then
-use [`JDK Mission Control`](https://github.com/openjdk/jmc) for the heavy lifting.
+use tools such as [`JDK Mission Control`](https://github.com/openjdk/jmc),
+[`Visual VM`](https://visualvm.github.io/), [`binjr`](https://github.com/binjr/binjr),
+or [`jfr`](https://dev.java/learn/jvm/jfr/tools/) for the heavy lifting.
 
 <ol>
   <li>
@@ -37,10 +39,10 @@ use [`JDK Mission Control`](https://github.com/openjdk/jmc) for the heavy liftin
       image-name="3.0.0/download-an-active-or-archived-recording-2.png"
       caption="
         Your browser will present you with its standard file-save dialog for both
-        the <code>Archived Recording</code>, and a <code>.json</code> file containing any
+        the <code>Archived Recording</code>, and a <code>.metadata.json</code> file containing any
         <code>Metadata Labels</code> that were attached. It may take some time for these dialogs
         to appear. Once it does, you can choose to open the <code>Recording</code> file directly
-        in <code>JDK Mission Control</code>, or (recommended) to save the <code>Recording</code> to disk.
+        in an analysis tool, or to save the <code>Recording</code> to disk for later analysis.
       "
     %}
   </li>
