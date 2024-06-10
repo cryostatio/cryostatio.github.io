@@ -63,6 +63,7 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
         <figure>
 {% highlight json %}
 {
+  "jvmId": "abcd1234",
   "alias": "myAppAlias",
   "connectUrl": "service:jmx:rmi:///jndi/rmi://cryostat:9091/jmxrmi",
   "labels": {
