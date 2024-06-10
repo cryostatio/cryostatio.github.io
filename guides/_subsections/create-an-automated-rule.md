@@ -178,7 +178,7 @@ We can define a rule that applies to any `target` application that has platform-
 {
   "name": "k8sMonitoring",
   "description": "Enable the Demo template on any target with the jfrMonitoring=true annotation",
-  "matchExpression": "target.annotations.platform[‘jfrMonitoring’]==’enabled’",
+  "matchExpression": "'jfrMonitoring' in target.annotations.platform && target.annotations.platform['jfrMonitoring']=='enabled'",
   "eventSpecifier": "template=Demo,type=CUSTOM",
   "archivalPeriodSeconds": 300,
   "preservedArchives": 12
