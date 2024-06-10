@@ -83,7 +83,7 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
 {% endhighlight %}
         </figure>
         <p>
-          The <i>Alias, connectUrl, labels, annotations.platform,</i> and <i>annotations.cryostat</i> properties are all guaranteed to be present on the <code>target</code> object. <i>alias</i> and <i>connectUrl</i> will be non-empty strings. The <i>labels</i> and <i>platform annotations</i> may be empty — in <b>OpenShift</b> or <b>Kubernetes</b>, these are populated from the labels and annotations applied to the <code>target</code>’s pod, if any. The <b>Cryostat</b> annotations map will vary per platform, but on <b>OpenShift</b> or <b>Kubernetes</b> you can expect the <i>HOST, PORT, NAMESPACE,</i> and <i>POD_NAME</i> keys to be present and non-empty.
+          The <i>alias, connectUrl, labels, annotations.platform,</i> and <i>annotations.cryostat</i> properties are all guaranteed to be present on the <code>target</code> object. <i>alias</i> and <i>connectUrl</i> will be non-empty strings. The <i>labels</i> and <i>platform annotations</i> may be empty — in <b>OpenShift</b> or <b>Kubernetes</b>, these are populated from the labels and annotations applied to the <code>target</code>’s pod, if any. The <b>Cryostat</b> annotations map will vary per platform, but on <b>OpenShift</b> or <b>Kubernetes</b> you can expect the <i>HOST, PORT, NAMESPACE,</i> and <i>POD_NAME</i> keys to be present and non-empty.
 
           Here are some examples of <code>Match Expressions</code>:
         </p>
