@@ -91,7 +91,7 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
         <i>Stop</i> button to end the data collection.
       </p>
       <p>
-        If the <code>Recording</code> has a <code>Fixed Duration</code> then it will automatically stop
+        If the <code>Recording</code> has a fixed duration then it will automatically stop
         after the <code>target</code> <b>JVM</b> measures that the duration has elapsed. If the
         <code>Recording</code> was created with a <code>Continuous Duration</code> then it will collect
         data until explicitly stopped.
