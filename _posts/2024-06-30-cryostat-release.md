@@ -35,7 +35,7 @@ Specifically for the Cryostat Operator there are a few items of note:
 For the Cryostat Helm Chart, there are new configuration values that can be set:
 1. **authentication.openshift.enabled**: to enable deployment of `openshift-oauth-proxy`. If disabled (as default) then `oauth2_proxy` is deployed instead. Both proxies may be configured to enable Basic authentication (see next item), but for users deploying onto OpenShift, the `openshift-oauth-proxy` also implements integration with the OpenShift cluster SSO.
 2. **authentication.basicAuth**: to configure Basic authentication on the auth proxy. When deploying `openshift-oauth-proxy` this is in addition to the OpenShift SSO, whereas when deploying `oauth2_proxy` this is the only out-of-the-box supported user authentication mechanism.
-3. **openshiftOauthProxy.accessReview** (OpenShift only): to configure OpenShift SSO user authorization, the SubjectAccessReview/TokenAccessReview can be configured so that the proxy requires different roles from the user
+3. **openshiftOauthProxy.accessReview** (OpenShift only): the `SubjectAccessReview` for testing user/client access via OpenShift SSO can be configured with this property.
 4. Installation will now include the auth proxy, a `cryostat-db` instance, and a `cryostat-storage` instance as outlined at the top of this post. There will be only one Service, and one Ingress/Route, pointing to the auth proxy.
 
 This is not an exhaustive list of all the new configuration values, only a highlight of a few that control new visible features. Please check the chart's updated [`README`](https://github.com/cryostatio/cryostat-helm/blob/main/charts/cryostat/README.md) for a full listing.
