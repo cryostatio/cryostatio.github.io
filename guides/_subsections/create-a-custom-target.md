@@ -1,11 +1,14 @@
 ## [Create a Custom Target](#create-a-custom-target)
 
-**Cryostat** automatically discovers `target` **JVMs** using various mechanisms (e.g.
-**Kubernetes API**, **JDP**, [Cryostat Agent plugin](#using-the-cryostat-agent)).
-However, in some cases (e.g. for **Kubernetes API**, **JMX** port is not `9091` and
-port name is not `jfr-jmx`), **Cryostat** might not see your applications. In these
-scenarios you can tell **Cryostat** about them by filling out the *Custom Target*
-form to specify *Custom Targets*.
+**Cryostat** automatically discovers `target` **JVMs** using various mechanisms
+(e.g. **Kubernetes API**, **JDP**, [Cryostat Agent plugin](#using-the-cryostat-agent)).
+However, in some cases it may not be feasible or desirable to configure your
+application to suit **Cryostat**'s discovery requirements. In these scenarios
+you can tell **Cryostat** about them by filling out the *Custom Target* form to
+specify *Custom Targets*. This can also be used to have **Cryostat** register
+itself as a discovered target by using the special value `localhost:0`, which
+informs **Cryostat**'s **JVM** to use a special **JMX** connection to itself
+without going through the network stack.
 
 <ol>
   <li>
@@ -57,7 +60,13 @@ form to specify *Custom Targets*.
           </a>
           <figcaption>
             An exclamation mark and an alert banner will show if an error
-            occurs while connecting to the <code>target</code>.
+            occurs while connecting to the <code>target</code>. This may
+            occur if the URL is incorrect due to incorrect hostname or
+            port number, or if the port is blocked by a firewall or network
+            policy, or if the JVM listening on the specified port requires
+            JMX credentials that Cryostat does not have in its keyring, or
+            if the JVM listening on the specified port presents an SSL/TLS
+            certificate which Cryostat does not trust.
           </figcaption>
         </figure>
       </p>
