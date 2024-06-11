@@ -10,7 +10,7 @@ If you clear your browser's local storage, use a private browsing window, or use
 
 {% include howto_step.html
   summary="Welcome Tour"
-  image-name="2.4.0/welcome-tour.png"
+  image-name="3.0.0/welcome-tour.png"
   caption="Click through the <i>Welcome Tour</i> to learn how to use <b>Cryostat</b>."
   text="The <i>Welcome Tour</i> provides an introduction to <b>Cryostat</b>'s layout and indicates where further tutorials and help can be found."
 %}
@@ -21,7 +21,7 @@ to begin the guided walkthrough of the **Cryostat Web** application.
 
 {% include howto_step.html
   summary="Tour Begins"
-  image-name="2.4.0/guided-tour.png"
+  image-name="3.0.0/guided-tour.png"
   caption="Click <i>Next</i> through the <i>Welcome Tour</i> to learn how to use **Cryostat**."
   text="Continue through the tour to learn how the UI is organized and where you can find additional help."
 %}
@@ -35,7 +35,7 @@ application masthead, then click <i>Guided tour</i> in the dropdown menu that ap
 
 {% include howto_step.html
   summary="Open Help Menu"
-  image-name="2.4.0/masthead-help.png"
+  image-name="3.0.0/masthead-help.png"
   caption="The <b>?</b> <i>Help</i> menu on the application masthead contains additional resources."
   text="Click <i>Guided tour</i> to relaunch the same tour."
 %}
@@ -47,14 +47,14 @@ and will directly guide you through the UI as you complete them by operating on 
 
 {% include howto_step.html
   summary="Open Help Menu"
-  image-name="2.4.0/masthead-help.png"
+  image-name="3.0.0/masthead-help.png"
   caption="The <b>?</b> <i>Help</i> menu on the application masthead contains additional resources."
   text="Click <i>Quick Starts</i> to view the tutorial catalog."
 %}
 
 {% include howto_step.html
   summary="View the Quick Start Catalog"
-  image-name="2.4.0/quick-start-catalog.png"
+  image-name="3.0.0/quick-start-catalog.png"
   caption="The <i>Quick Start</i> catalog contains a series of tutorials you can follow to learn how to accomplish specific tasks."
   text="Select and complete the tutorials which interest you. You can revisit this catalog at any time and re-do tutorials as many times as you like."
 %}

@@ -33,13 +33,13 @@ The *Topology View* provides a visual presentation of all the discovered **JVM**
 
     {% include howto_step.html
       summary="View <b>JVM</b> Applications with <i>Graph View</i>"
-      image-name="2.4.0/topology-1.png"
+      image-name="3.0.0/topology-1.png"
       caption="View <b>JVM</b> applications with <i>Topology Graph view</i>."
       text=topology-graphview-guide-text
     %}
     {% include howto_step.html
       summary="View <b>JVM</b> Applications with <i>List View</i>"
-      image-name="2.4.0/topology-2.png"
+      image-name="3.0.0/topology-2.png"
       caption="View <b>JVM</b> applications with <i>Topology List</i> view."
       text=topology-listview-guide-text
     %}
@@ -72,13 +72,13 @@ The *Topology View* provides a visual presentation of all the discovered **JVM**
 
     {% include howto_step.html
       summary="View <b>JVM</b> Details"
-      image-name="2.4.0/topology-3.png"
+      image-name="3.0.0/topology-3.png"
       caption="View <code>target</code> <b>JVM’s</b> details with drawer panel."
       text=sidebar-detail-guide-text
     %}
     {% include howto_step.html
       summary="View <b>JVM's</b> Associated Resources"
-      image-name="2.4.0/topology-4.png"
+      image-name="3.0.0/topology-4.png"
       caption="View <b>JVM's</b> associated resources with drawer panel."
       text=sidebar-resource-guide-text
     %}
@@ -95,18 +95,18 @@ The *Topology View* provides a visual presentation of all the discovered **JVM**
     {% capture bulk-action-guide-text %}
     The <i>Details</i> panel also supports performing actions on multiple <code>target</code> <b>JVMs</b>. Select a group of <code>targets</code>, for example, a <b>Pod</b>. A drawer panel will appear to show the group details. Select <b>Actions</b> menu to show available options.
     <br><br>
-    For example, select <i>Start recording</i> to start a <code>Recording</code> on all <code>targets</code> <b>JVMs</b> under this group. <b style="color:red">Caution:</b> repeatedly selecting this option will cause the <code>Recording</code> to be restarted and may result in <code>Recording</code> data loss.
+    For example, select <i>Start recording</i> to start a <code>Recording</code> on all <code>targets</code> <b>JVMs</b> under this group. If this action fails (for example, due to intermittent network issues) then it is safe to repeat this action again: the action will only start new <code>Recordings</code> or replace <code>STOPPED</code> <code>Recordings</code> on <code>targets</code> under this group, it will not affect <code>RUNNING</code> <code>Recordings</code>.
     {% endcapture %}
-    
+
     {% include howto_step.html
       summary="Perform Actions for a Single <b>JVM</b>"
-      image-name="2.4.0/topology-5.png"
+      image-name="3.0.0/topology-5.png"
       caption="Perform actions on an individual <b>JVM</b>."
       text=single-action-guide-text
     %}
     {% include howto_step.html
       summary="Perform Actions for a Group of <b>JVMs</b>"
-      image-name="2.4.0/topology-6.png"
+      image-name="3.0.0/topology-6.png"
       caption="Perform actions on a group of <b>JVMs</b>."
       text=bulk-action-guide-text
     %}
