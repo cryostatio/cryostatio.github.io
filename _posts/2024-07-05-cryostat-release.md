@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cryostat 3.0.0 is Released!
-date: 2024-06-30
+date: 2024-07-05
 synopsis: Cryostat 3.0.0 is here. Learn what's new in this release.
 author: Andrew Azores
 ---
