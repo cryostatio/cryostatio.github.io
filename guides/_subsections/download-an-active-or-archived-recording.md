@@ -4,7 +4,7 @@ in-cluster. However, the core analysis workflow is to collect **JFR** files from
 `target` applications and copy them to local developer or admin workstations, then
 use tools such as [`JDK Mission Control`](https://github.com/openjdk/jmc),
 [`Visual VM`](https://visualvm.github.io/), [`binjr`](https://github.com/binjr/binjr),
-or [`jfr`](https://dev.java/learn/jvm/jfr/tools/) for the heavy lifting.
+or [`jfr`](https://dev.java/learn/jvm/jfr/tools/) for the heavy lifting on your workstation.
 
 <ol>
   <li>
