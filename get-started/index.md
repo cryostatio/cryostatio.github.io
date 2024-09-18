@@ -282,8 +282,9 @@ to learn how to configure your application without the **Cryostat Agent**.
 
 ##### [Statically Attaching the Cryostat Agent](#statically-attaching-the-cryostat-agent)
 
-The **Cryostat Agent** **JAR** must be available to your application **JVM**. The **JAR** asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/releases),
-or from [Maven Central](https://mvnrepository.com/artifact/io.cryostat/cryostat-agent). You may also include the Agent as a dependency in your application's `pom.xml` to automate the download:
+The **Cryostat Agent** **JAR** must be available to your application **JVM**. The **JAR** asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/packages),
+or from [Maven Central](https://mvnrepository.com/artifact/io.cryostat/cryostat-agent). For most use cases the `-shaded` **JAR** would be appropriate.
+You may also include the Agent as a dependency in your application's `pom.xml` to automate the download:
 
 ```xml
 <project>
@@ -432,21 +433,21 @@ the **Cryostat Agent JAR** to your workstation.
 
 ```bash
 $ kubectl cp \
-    /path/to/cryostat-agent.jar \
+    /path/to/cryostat-agent-shaded.jar \
     -n my-namespace \
-    mypod:/tmp/cryostat/cryostat-agent.jar
+    mypod:/tmp/cryostat/cryostat-agent-shaded.jar
 $ kubectl exec \
     -n my-namespace \
     mypod -c mycontainer \
     -i -t -- \
-      java -jar /tmp/cryostat/cryostat-agent.jar \
+      java -jar /tmp/cryostat/cryostat-agent-shaded.jar \
       -Dcryostat.agent.baseuri=http://cryostat:8181 \
       -Dcryostat.agent.authorization="Bearer ${MY_AUTH_TOKEN}" \
       -Dcryostat.agent.callback=http://${POD_IP}:9977 \
       -Dcryostat.agent.api.writes-enabled=true
 ```
 
-1. Replace `/path/to/cryostat-agent.jar` with the real path to the **JAR** on your workstation
+1. Replace `/path/to/cryostat-agent-shaded.jar` with the real path to the **JAR** on your workstation
 2. Replace `my-namespace` with the namespace your application is deployed in
 3. Replace `mypod` with the name of your application's Pod
 4. Replace `mycontainer` with the name of your application's container within its Pod (or remove this if it is the only container in the Pod)
