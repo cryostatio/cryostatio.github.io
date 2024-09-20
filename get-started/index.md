@@ -203,10 +203,9 @@ in on the cluster **SSO** login page.
 
 For direct access to the **Cryostat HTTP API** you may follow the same pattern.
 Using a client such as `curl`, an **OpenShift** auth token can be passed with
-requests using the `Authorization: Bearer` header. The token <span style="color:red">must</span> be `base64`
-encoded. For example,
+requests using the `Authorization: Bearer` header. For example,
 ```bash
-$ curl -v -H "Authorization: Bearer $(oc whoami -t | base64)" https://cryostat.example.com:8181/api/v1/targets
+$ curl -v -H "Authorization: Bearer $(oc whoami -t)" https://cryostat.example.com:8181/api/v1/targets
 ```
 
 ##### [Other Platforms Authentication](#other-platforms-authentication)
@@ -379,10 +378,10 @@ spec:
               # Kubernetes Downward API. Use this value directly as provided. The port number
               # 9977 can be changed but must match the containerPort below.
               value: "http://$(POD_IP):9977"
-              # Replace "abcd1234" with a base64-encoded authentication token. For example,
-              # in your terminal, do 'oc whoami -t | base64' to use your user account's
-              # token as the token that the Agent will pass to authorize itself with
-              # the Cryostat server.
+              # Replace "abcd1234" with an authentication token. For example, on OpenShift,
+              # do 'oc whoami --show-token' in your terminal to retrieve your user account's token.
+              # You may use this as the token that the Agent will pass to authorize itself
+              # with the Cryostat server.
             - name: CRYOSTAT_AGENT_AUTHORIZATION
               value: "Bearer abcd1234"
           ports:
@@ -395,7 +394,7 @@ status: {}
 
 Port number `9977` is the default HTTP port that the **Agent** exposes for its internal webserver that services **Cryostat** requests. The `CRYOSTAT_AGENT_AUTHORIZATION` value is particularly
 noteworthy: these are the credentials that the **Agent** will include in API requests it makes to **Cryostat** to advertise its own presence. You should create a **Kubernetes** `Service Account` for
-this purpose and replace `abcd1234` with the `base64-encoded` authentication token associated with the service account. For testing purposes you may use your own user account's
+this purpose and replace `abcd1234` with the authentication token associated with the service account. For testing purposes you may use your own user account's
 authentication token, for example with `oc whoami --show-token`.
 
 Finally, create a `Service` to enable **Cryostat** to make requests to this **Agent**:
