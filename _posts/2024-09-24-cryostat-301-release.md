@@ -17,7 +17,7 @@ We are pleased to announce the release of Cryostat 3.0.1! This is a minor bugfix
 uncovered with the previous 3.0.0 feature release.
 
 ## [What’s Fixed in 3.0.1?](#whats-new-in-301)
-1. routine maintenance: dependency version updates and container base image version updates
+1. Routine maintenance: dependency version updates and container base image version updates
 2. [Failure to create or update a Cryostat custom resource due to webhook TLS errors](https://github.com/cryostatio/cryostat-operator/pull/927)
 3. [Inability to upload JMC ByteCode Agent instrumentation templates](https://github.com/cryostatio/cryostat-core/pull/454)
 4. [Archived Recording uploads with Labels File fails to parse](https://github.com/cryostatio/cryostat-web/pull/1327)
