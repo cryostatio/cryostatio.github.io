@@ -40,4 +40,4 @@ else you should be able to approve and install the upgrade.
 
 ## Feedback
 Please reach out to the [Cryostat mailing list](mailto:cryostat-development@googlegroups.com) or
-[GitHub Discussion](https://github.com/cryostatio/cryostat/discussions/1659) with any questions or comments.
+[GitHub Discussion](https://github.com/cryostatio/cryostat/discussions/665) with any questions or comments.
