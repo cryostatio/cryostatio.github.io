@@ -337,7 +337,7 @@ We can use this directly in our application **Dockerfile** in a multi-stage buil
 ```Dockerfile
 ARG cryostat_agent_version
 
-FROM quay.io/cryostat/cryostat-agent-init:${agent_version} AS cryostat_agent
+FROM quay.io/cryostat/cryostat-agent-init:${cryostat_agent_version} AS cryostat_agent
 
 FROM ${application_base_img}
 COPY --from=cryostat_agent /cryostat/agent/cryostat-agent-shaded.jar /deployments/app/cryostat-agent-shaded.jar
