@@ -12,7 +12,7 @@ the **web-client** graphical console can become quite noisy.
   <li>
     {% include howto_step.html
       summary="Locate the <i>Notifications</i> Setting"
-      image-name="3.0.0/notifications-setting.png"
+      image-name="4.0.0/notifications-setting.png"
       text="
         The <i>Notifications</i> setting within this view is used to control the graphical display of notifications that
         correspond to <code>WebSocket</code> messages sent by the <b>Cryostat</b> backend when actions and state changes occur. The setting

@@ -7,7 +7,7 @@
   <li>
       {% include howto_step.html
         summary="Open Action Menu for a selected Rule"
-        image-name="3.0.0/download-an-automated-rule-1.png"
+        image-name="4.0.0/download-an-automated-rule-1.png"
         caption="Click the action overflow \"&#65049;\" <i>three-dot</i> menu on the right side of selected rule entry in the table."
       %}
   </li>

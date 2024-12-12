@@ -30,7 +30,7 @@ which you use to log in to Cryostat.
   <li>
     {% include howto_step.html
       summary="Select <i>View in Grafana...</i>"
-      image-name="3.0.0/view-in-grafana-1.png"
+      image-name="4.0.0/view-in-grafana-1.png"
       caption="
         Select <i>View in Grafana...</i> from the <code>Recording's</code> overflow
         menu.
@@ -40,7 +40,7 @@ which you use to log in to Cryostat.
   <li>
     {% include howto_step.html
       summary="View and Interact With Data From Your <code>Recording</code>"
-      image-name="3.0.0/view-in-grafana-2.png"
+      image-name="4.0.0/view-in-grafana-2.png"
       caption="
         Observe the plotted time series data from curated metrics in your
         <code>Recording</code>. Select time ranges to zoom into the data.
