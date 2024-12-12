@@ -283,8 +283,14 @@ to learn how to configure your application without the **Cryostat Agent**.
 ##### [Statically Attaching the Cryostat Agent](#statically-attaching-the-cryostat-agent)
 
 The **Cryostat Agent** **JAR** must be available to your application **JVM**. The **JAR** asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/packages),
-or from [Maven Central](https://mvnrepository.com/artifact/io.cryostat/cryostat-agent). For most use cases the `-shaded` **JAR** would be appropriate.
-You may also include the Agent as a dependency in your application's `pom.xml` to automate the download:
+or from [Maven Central](https://mvnrepository.com/artifact/io.cryostat/cryostat-agent), or as an [**OCI Container**](https://quay.io/repository/cryostat/cryostat-agent-init).
+For most use cases the `-shaded` **JAR** would be appropriate.
+
+###### [Inclusion via JAR](#inclusion-via-maven)
+
+You may manually download the **Agent JAR** directly from the [upstream builds on GitHub](https://github.com/cryostatio/cryostat-agent/packages).
+
+You may also include the **Agent** as a dependency in your application's `pom.xml` to automate the download:
 
 ```xml
 <project>
@@ -325,11 +331,27 @@ The next time we build our application, the **Cryostat Agent** **JAR** will be l
 
 ```Dockerfile
 ...
+# if the JAR was downloaded manually, copy it to an appropriate project location and update the 'from' path here
 COPY target/dependency/cryostat-agent-shaded.jar /deployments/app/
 ...
 # Assume we are using an application framework where the JAVA_OPTS environment variable can be used to pass JVM flags
 ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent-shaded.jar"
 ```
+
+###### [Inclusion via OCI Init Container](#inclusion-via-oci-init-container)
+
+The **Cryostat Agent** is also published as an **OCI Container** which can be used to dynamically launch and attach the **Agent** as an **Init Container**, or used to consume the **Agent** during application multistage container build:
+```Dockerfile
+# add a build stage to retrieve the Cryostat Agent Init Container
+FROM quay.io/cryostat/cryostat-agent-init:{{ site.data.versions.agent.version }} AS cryostat-agent
+
+FROM ${application_base_img}
+# do some other build steps
+# add a build step to the application build stage to copy the Cryostat Agent JAR into the application container
+COPY --from=cryostat-agent /cryostat/agent/cryostat-agent-shaded.jar /path/to/library/cryostat-agent-shaded.jar
+```
+
+###### [Application Container Rebuild and Agent Configuration](#application-container-rebuild-and-agent-configuration)
 
 Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
 Push that updated image or otherwise get it updated in your **Kubernetes** registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
