@@ -325,14 +325,16 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-            - name: CRYOSTAT_AGENT_BASEURI
               # Update this to correspond to the name of your Cryostat instance
-              # if it is not 'cryostat'. This assumes that the target application
-              # and the Cryostat instance are in the same Namespace, but you may
-              # choose to configure the Agent to communicate with a Cryostat in
+              # if it is not 'cryostat'.
+            - name: CRYOSTAT_INSTANCE_NAME
+              value: cryostat
+            - name: CRYOSTAT_AGENT_BASEURI
+              # This assumes that the target application # and the Cryostat instance are in the same
+              # Namespace, but you may choose to configure the Agent to communicate with a Cryostat in
               # a different Namespace, too.
               # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-              value: https://cryostat.$(NAMESPACE).svc.cluster.local:8181
+              value: https://$(CRYOSTAT_INSTANCE_NAME).$(NAMESPACE).svc.cluster.local:4180
             - name: CRYOSTAT_AGENT_API_WRITES_ENABLED
               # Set this to 'true' to turn on the "write" or "mutation" capabilities of the
               # Agent's HTTP API. This defaults to 'false', so the Agent HTTP API only exposes
@@ -349,12 +351,23 @@ spec:
               # Kubernetes Downward API. Use this value directly as provided. The port number
               # 9977 can be changed but must match the containerPort below.
               value: "http://$(POD_IP):9977"
-              # Replace "abcd1234" with an authentication token. For example, on OpenShift,
-              # do 'oc whoami --show-token' in your terminal to retrieve your user account's token.
-              # You may use this as the token that the Agent will pass to authorize itself
-              # with the Cryostat server.
-            - name: CRYOSTAT_AGENT_AUTHORIZATION
-              value: "Bearer abcd1234"
+              # This tells the Agent to look for its Kubernetes serviceaccount token mounted to
+              # its own Pod at the default filesystem path, and use the token there for Bearer
+              # Authorization to the Cryostat instance. This should be the correct behaviour in
+              # most scenarios and allows you to configure the serviceaccount's authorization by
+              # using standard Kubernetes RBAC for the application Pod's serviceaccount.
+            - name: CRYOSTAT_AGENT_AUTHORIZATION_TYPE
+              value: kubernetes
+
+              # These two environment variables should not be set in a production environment.
+              # For development and testing it can be useful to disable TLS trust and hostname
+              # verification. In practice, you should provide the Agent with the Cryostat instance's
+              # TLS certificate so that the Agent can trust it and only establish connections to
+              # that trusted instance. Configuration of the Agent's TLS trust is covered elsewhere.
+            - name: CRYOSTAT_AGENT_WEBCLIENT_TLS_TRUST_ALL
+              value: "true"
+            - name: CRYOSTAT_AGENT_WEBCLIENT_TLS_VERIFY_HOSTNAME
+              value: "false"
           ports:
             - containerPort: 9977
               protocol: TCP
@@ -363,10 +376,9 @@ spec:
 status: {}
 ```
 
-Port number `9977` is the default HTTP port that the **Agent** exposes for its internal webserver that services **Cryostat** requests. The `CRYOSTAT_AGENT_AUTHORIZATION` value is particularly
-noteworthy: these are the credentials that the **Agent** will include in API requests it makes to **Cryostat** to advertise its own presence. You should create a **Kubernetes** `Service Account` for
-this purpose and replace `abcd1234` with the authentication token associated with the service account. For testing purposes you may use your own user account's
-authentication token, for example with `oc whoami --show-token`.
+Port number `9977` is the default HTTP port that the **Agent** exposes for its internal webserver that services **Cryostat** requests.
+If this port number conflicts with another port used by your application, be sure to change both the `ports.containerPort` spec
+as well as the `CRYOSTAT_AGENT_CALLBACK` environment variable.
 
 Finally, create a `Service` to enable **Cryostat** to make requests to this **Agent**:
 
@@ -412,7 +424,7 @@ $ kubectl exec \
     -i -t -- \
       java -jar /tmp/cryostat/cryostat-agent-shaded.jar \
       -Dcryostat.agent.baseuri=http://cryostat:8181 \
-      -Dcryostat.agent.authorization="Bearer ${MY_AUTH_TOKEN}" \
+      -Dcryostat.agent.authorization.type="kubernetes" \
       -Dcryostat.agent.callback=http://${POD_IP}:9977 \
       -Dcryostat.agent.api.writes-enabled=true
 ```
@@ -422,8 +434,7 @@ $ kubectl exec \
 3. Replace `mypod` with the name of your application's Pod
 4. Replace `mycontainer` with the name of your application's container within its Pod (or remove this if it is the only container in the Pod)
 5. Replace `http://cryostat:8181` with the correct internal Service URL for your **Cryostat** server within the same **Kubernetes** cluster
-6. Replace `${MY_AUTH_TOKEN}` with your own **Kubernetes** auth token, or one belonging to a Service Account you have created for this purpose
-7. Replace `${POD_IP}` with the application Pod's IP Address as found in its Status using `kubectl get -o yaml`
+6. Replace `${POD_IP}` with the application Pod's IP Address as found in its Status using `kubectl get -o yaml`
 
 By following this procedure you will copy the **Cryostat Agent JAR** into the application's filesystem (`kubectl cp`), then launch the
 **Agent** as a Java process (`kubectl exec`). When the **Agent** is launched in this manner it will look for other Java processes. If it
