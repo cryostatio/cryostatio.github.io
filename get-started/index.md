@@ -70,22 +70,15 @@ Use the search bar to find the **Red Hat build of Cryostat** catalog item.
   summary="Select the Cryostat Operator and click the Install button"
   image-name="cryostat-operatorhub-install.png"
 %}
-Choose your **Operator** installation mode:
-1. In `All Namespaces` installation mode, the **Cryostat Operator** instance will watch for **Cryostat** or
-**ClusterCryostat** Custom Resources (**CR**s) created in any `Namespace` and create corresponding **Cryostat** instances.
-2. In the `A specific namespace` installation mode, you must also select an installation `Namespace`, and the **Cryostat Operator** instance will only watch for **Cryostat** or **ClusterCryostat** instances created in that same `Namespace`.
+Click "*Install*" and wait for the installation to complete.
 {% include howto_step.html
   summary="Install the Operator"
   image-name="cryostat-operatorhub-install-in-progress.png"
 %}
-Click "*Install*" and wait for the installation to complete. In this example we will proceed with **All Namespaces**.
 
 Continue to [Setup](#setup).
 
 ## [Setup](#setup)
-
-**Note:** An alternative setup using the multi-namespace **ClusterCryostat CR** is described in
-[Alternate Setup](#alternate-setup). For simplicity we will continue with the single-namespace **Cryostat CR**.
 
 ### [Deploying Cryostat](#deploying-cryostat)
 
@@ -560,51 +553,6 @@ application. In this case you may wish to use the [**Cryostat Agent**](#using-th
 communications over **JMX** rather than HTTP. If you do use the **Cryostat Agent** for discovery and **JMX** for remote management,
 you may combine both of the `Service` definitions into a single `Service` with two exposed `ports`.
 
-### [Alternate Setup](#alternate-setup)
-
-#### [Using ClusterCryostats](#using-clustercryostats)
-In [Deploying **Cryostat**](#deploying-cryostat), you created a single-namespace **Cryostat** Custom Resource
-(**CR**) instance.
-
-Single-namespace **Cryostat CRs** instruct the **Operator** to deploy restricted **Cryostat** instances which are only able
-to see target applications deployed in the same namespace as the **Cryostat** instance, which is the same `Namespace` that
-the **CR** is created within.
-
-If you chose to install the **Operator** in **All Namespaces** mode as assumed in this guide, you may also be interested in
-creating **CluterCryostat CRs**. In this configuration, the **Operator** is able to see **Cryostat** and **ClusterCryostat
-CRs** in any project (`Namespace`) and create **Cryostat** deployments corresponding to either **CR** kind in each of their
-respective **Namespaces**. Both of these **CRs** are **Namespace**-specific, and the **Namespace** is used to determine which
-**OpenShift** users are able to access the **Cryostat** instance. For more information, please see the following documents:
-- [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/multi-namespace.md).
-- [Authorization Properties](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#authorization-properties)
-
-**ClusterCryostat CRs** instruct the **Operator** to deploy cross-namespace **Cryostat** instances. A **ClusterCryostat** has
-an `installNamespace`, which is the namespace where the **Cryostat Deployment** will reside, and a list of
-`targetNamespaces`, which are all of the namespaces that the **Cryostat** server will watch for target applications.
-The `targetNamespaces` list does not necessarily need to contain the `installNamespace`, if you do not want **Cryostat**
-to see itself in the target applications that it watches.
-
-```yaml
-apiVersion: operator.cryostat.io/v1beta1
-kind: ClusterCryostat
-metadata:
-  name: clustercryostat-sample
-spec:
-  enableCertManager: true
-  installNamespace: cryostat-testing
-  minimal: false
-  reportOptions:
-    resources: {}
-  storageOptions:
-    pvc:
-      spec:
-        resources: {}
-  targetNamespaces:
-  - cryostat-testing
-  - my-apps-a
-  - my-apps-b
-```
-
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed **Cryostat** and know how to access its
 **web client**, continue on to [Guides]({% link guides/index.md %}) for
@@ -612,7 +560,7 @@ guides through various common actions and workflows.
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
 Reference [**OLM**](https://olm.operatorframework.io/docs/tasks/uninstall-operator/#combine-steps-2-and-3)
-guide on uninstalling **Operators**. Please be sure to delete all **Cryostat** and **ClusterCryostat** Custom Resources before
+guide on uninstalling **Operators**. Please be sure to delete all **Cryostat** Custom Resources before
 uninstalling the **Cryostat Operator**.
 - If your **Cryostat Operator** was installed in **All Namespaces** mode, then its **ClusterServiceVersion** and
 `Subscription` can be found in the **Namespace** **openshift-operators**.
