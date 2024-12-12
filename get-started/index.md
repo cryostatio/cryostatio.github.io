@@ -106,6 +106,10 @@ You can create the **CR** graphically in the **OperatorHub** UI after following 
   summary="Cryostat Resources Before"
   image-name="cryostat-resources-before.png"
 %}
+This is where you will configure your **Cryostat** installation. The **Target Namespaces** field is worth special attention. If you do not set this,
+then the **Cryostat** instance will default to have visibility of other applications within its own (installation) **Namespace** only. By setting a
+list of **Target Namespace** names you can create a Cryostat instance which has visibility of applications in other **Namespaces** in the cluster,
+which may or may not include Cryostat's own installation **Namespace**.
 {% include howto_step.html
   summary="Cryostat Resource Creation"
   image-name="cryostat-resource-creation.png"
@@ -118,13 +122,16 @@ You can create the **CR** graphically in the **OperatorHub** UI after following 
 You can also create the **CR** manually using a **YAML** definition like the following:
 
 ```yaml
-apiVersion: operator.cryostat.io/v1beta1
+apiVersion: operator.cryostat.io/v1beta2
 kind: Cryostat
 metadata:
   name: cryostat-sample
 spec:
-  minimal: false
   enableCertManager: true
+  targetNamespaces:
+    - cryostat
+    - apps1
+    - apps2
   trustedCertSecrets: []
   eventTemplates: []
   storageOptions:
