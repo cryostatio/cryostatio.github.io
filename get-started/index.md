@@ -192,14 +192,7 @@ access to the **Cryostat** instance and the namespace that it is deployed within
   image-name="permissions-auth-page.png"
 %}
 Once you have authenticated through the cluster's **SSO** login you will be
-redirected back to the **Cryostat web** application. The redirect URL contains
-an access token for **Cryostat's** service account with the permissions you have
-granted to it. The **Cryostat web** application passes this **OpenShift** token back
-to the **Cryostat** server on each request using `Bearer` authorization headers.
-The **Cryostat** server forwards this token back to the **OpenShift** auth server on
-each client request to check the token authorization for the current request.
-This access token will eventually expire and you will be required to log back
-in on the cluster **SSO** login page.
+redirected back to the **Cryostat web** application.
 
 For direct access to the **Cryostat HTTP API** you may follow the same pattern.
 Using a client such as `curl`, an **OpenShift** auth token can be passed with
@@ -211,39 +204,16 @@ $ curl -v -H "Authorization: Bearer $(oc whoami -t)" https://cryostat.example.co
 ##### [Other Platforms Authentication](#other-platforms-authentication)
 
 In non-OpenShift environments, **Cryostat** will default to no authentication.
-Access to the web application and the HTTP API will be unsecured. You should
-either configure **Cryostat's** built-in `Basic` authentication system, or better,
-place an authenticating reverse proxy server in front of **Cryostat** so that
-accesses to the **Cryostat** application must first pass through the reverse
-proxy. The configuration of a reverse proxy is out of scope of this guide.
+Access to the web application and the HTTP API will be unsecured.
 
 ###### [Basic Auth](#basic-auth)
 
-**Cryostat** includes a very rudimentary HTTP `Basic` authentication implementation.
-This can be configured by creating a `cryostat-users.properties` file in the
-**Cryostat** server `conf` directory, defined by the environment variable
-`CRYOSTAT_CONFIG_PATH` and defaulting to `/opt/cryostat.d/conf.d`.
-The credentials stored in the Java properties file are the user name and a
-SHA-256 sum hex of the user's password. The property file contents should look
-like:
-
-```properties
-user1=abc123
-user2=def987
-```
-Where `abc123` and `def987` are substituted for the SHA-256 sum hexes of the
-desired user passwords. These can be obtained by ex.
-`echo -n PASS | sha256sum | cut -d' ' -f1`. The `Basic` user credentials `user:pass`
-would therefore be entered as
-`user:d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1`.
-
-This mechanism only supports fully-privileged user definitions, authorized to
-perform any action within the **Cryostat** API.
-
-Once the `cryostat-users.properties` file defining the user credentials is
-created, the environment variable `CRYOSTAT_AUTH_MANAGER` should be set
-to the value `io.cryostat.net.BasicAuthManager` to enable the corresponding
-auth implementation.
+The **Cryosotat Deployment** includes an `oauth2-proxy` instance which will pass through
+all traffic by default, but by using the **Cryostat CR**
+*Advanced > Authorization Options > Basic Auth* configuration property you can enable an
+`HTTP Basic` authentication system. You will need to create a **Secret** containing an
+`htpasswd` file defining the users that should be granted access, then reference this
+**Secret** in the **CR** *Authorization Options*.
 
 ### [Deploy an Application](#deploy-an-application)
 For demo purposes, let's go ahead and deploy a sample application to our
