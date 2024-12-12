@@ -222,8 +222,8 @@ deployed **Cryostat** into a `namespace` where you are already running other
 applications, feel free to [continue to the next step](#configuring-applications).
 
 ```bash
-$ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.10
-$ oc patch svc/quarkus-test -p '{"spec":{"$setElementOrder/ports":[{"port":9097},{"port":8080}],"ports":[{"name":"jfr-jmx","port":9097}]}}'
+$ oc new-app --image=quay.io/redhat-java-monitoring/quarkus-cryostat-agent:latest
+$ oc patch svc/quarkus-cryostat-agent -p '{"spec":{"$setElementOrder/ports":[{"port":9097},{"port":8080}],"ports":[{"name":"jfr-jmx","port":9097}]}}'
 ```
 
 This is a **Quarkus** container in **JVM** mode with **JMX** enabled and pre-configured to
