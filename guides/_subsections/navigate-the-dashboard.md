@@ -214,7 +214,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
       text=mbean-metrics-chart-text
     %}
   </li>
-    <li>
+  <li>
     {% capture configure-mbean-metrics-chart %}
     <p>
       In the next steps of the card creation, you can configure the details of the chart card.
@@ -251,10 +251,10 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
     {% capture jfr-metrics-chart-text %}
     <p>
-        The <i>JFR Metrics Chart</i> <code>card</code> displays performance metrics about the <code>target</code> <b>JVM</b> by visualizing <b>JFR</b> data snapshots via embedded <b>Grafana</b> visualization panels as <i>Dashboard</i> cards. This <a href="#configure-feature-level"><i>Beta</i>-level feature</a>
+      The <i>JFR Metrics Chart</i> <code>card</code> displays performance metrics about the <code>target</code> <b>JVM</b> by visualizing <b>JFR</b> data snapshots via embedded <b>Grafana</b> visualization panels as <i>Dashboard</i> cards. This <a href="#configure-feature-level"><i>Beta</i>-level feature</a>
     </p>
     <p>
-        <b>Cryostat</b> gathers typical <b>JFR</b> data from the selected <b>Target</b>and periodically updates the <b>Grafana</b> visualizations. You can customize each <code>card</code> by going through the card creation wizard. The wizard will guide you through the process of selecting the metrics you want to display, how you want to display them, and other various configuration options. Some examples of <code>Performance Metrics</code> that can be displayed are:
+      <b>Cryostat</b> gathers typical <b>JFR</b> data from the selected <b>Target</b>and periodically updates the <b>Grafana</b> visualizations. You can customize each <code>card</code> by going through the card creation wizard. The wizard will guide you through the process of selecting the metrics you want to display, how you want to display them, and other various configuration options. Some examples of <code>Performance Metrics</code> that can be displayed are:
     </p>
     <ul>
         <li><i>CPU Load</i></li>
@@ -273,7 +273,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
       text=jfr-metrics-chart-text
     %}
   </li>
-    <li>
+  <li>
     {% capture jfr-mbean-metrics-chart %}
     <p>
       In the next steps of the card creation, you can configure the details of the chart card.
@@ -313,6 +313,43 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
       image-name="4.0.0/dashboard/jfrmetrics.png"
       caption="The <i>JFR Metrics Chart</i> <code>card</code> displayed with the <i>Memory Usage</i> metric."
       text=jfr-metrics-chart-finish
+    %}
+  </li>
+</ol>
+
+#### [Diagnostic Actions Card](#diagnostic-actions-card)
+
+<ol>
+  <li>
+    {% capture diagnostics-card-text %}
+    <p>
+      The <i>Diagnostics</i> <code>card</code> allows you to perform non-metrics diagnostic actions against the selected <b>Target</b>. This <a href="#configure-feature-level"><i>Beta</i>-level feature</a>
+    </p>
+    <p>
+      The following diagnostic actions are available:
+      <ul>
+        <li><i>Request JVM to perform Garbage Collection</i></li>
+      </ul>
+    </p>
+    {% endcapture %}
+    {% include howto_step.html
+      summary="Add the <i>Diagnostics</i> <code>Card</code>"
+      image-name="4.0.0/dashboard/diagnostics-preview.png"
+      caption="Click on the <i>Diagnostics</i> <code>card</code>. No preview is available."
+      text=diagnostics-card-text
+    %}
+  </li>
+  <li>
+    {% capture diagnostics-card-created %}
+    <p>
+        After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard.
+    </p>
+    {% endcapture %}
+    {% include howto_step.html
+      summary="Finish <code>Card</code> Creation"
+      image-name="4.0.0/dashboard/diagnostics.png"
+      caption="The <i>Diagnostics</i> <code>card</code>."
+      text=diagnostics-card-created
     %}
   </li>
 </ol>
