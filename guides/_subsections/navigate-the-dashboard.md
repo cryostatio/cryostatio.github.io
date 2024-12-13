@@ -5,7 +5,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
 
 ### [Dashboard Cards](#dashboard-cards)
 
-`Dashboard cards` are widgets that display information about your **Cryostat** instance and the `target` **JVM** applications it is monitoring. Let's walk through the available `cards` and how to add them to your *Dashboard*.
+`Dashboard cards` are widgets that display information about your **Cryostat** instance and the `target` **JVM** applications it is monitoring, or allow you to perform diagnostic actions against the `targets`. Let's walk through the available `cards` and how to add them to your *Dashboard*.
 
 {% include_relative _subsections/common/card-catalog.md %}
 
@@ -241,6 +241,78 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
       image-name="4.0.0/dashboard/mbeanmetrics.png"
       caption="The <i>MBean Metrics Chart</i> <code>card</code> displayed with the <i>Process CPU Load</i> metric."
       text=mbean-metrics-chart-finish
+    %}
+  </li>
+</ol>
+
+#### [JFR Metrics Chart Card](#jfr-metrics-chart-card)
+
+<ol>
+  <li>
+    {% capture jfr-metrics-chart-text %}
+    <p>
+        The <i>JFR Metrics Chart</i> <code>card</code> displays performance metrics about the <code>target</code> <b>JVM</b> by visualizing <b>JFR</b> data snapshots via embedded <b>Grafana</b> visualization panels as <i>Dashboard</i> cards. This <a href="#configure-feature-level"><i>Beta</i>-level feature</a>
+    </p>
+    <p>
+        <b>Cryostat</b> gathers typical <b>JFR</b> data from the selected <b>Target</b>and periodically updates the <b>Grafana</b> visualizations. You can customize each <code>card</code> by going through the card creation wizard. The wizard will guide you through the process of selecting the metrics you want to display, how you want to display them, and other various configuration options. Some examples of <code>Performance Metrics</code> that can be displayed are:
+    </p>
+    <ul>
+        <li><i>CPU Load</i></li>
+        <li><i>Memory Usage</i></li>
+        <li><i>Heap Usage</i></li>
+        <li><i>Network Utilization</i></li>
+        <li><i>File I/O</i></li>
+        <li><i>Exception Statistics</i></li>
+        <li>...</li>
+    </ul>
+    {% endcapture %}
+    {% include howto_step.html
+      summary="Add the <i>JFR Metrics Chart</i> <code>Card</code>"
+      image-name="4.0.0/dashboard/jfrmetrics-preview.png"
+      caption="Click on the <i>JFR Metrics Chart</i> <code>card</code>. No preview is available."
+      text=jfr-metrics-chart-text
+    %}
+  </li>
+    <li>
+    {% capture jfr-mbean-metrics-chart %}
+    <p>
+      In the next steps of the card creation, you can configure the details of the chart card.
+    </p>
+    <p>
+      Configure the metric data by clicking the <i>Performance Metric</i> dropdown and selecting a metric. You can also configure the <i>Data Window</i> to display a specific time range of data and the <i>Refresh Period</i> to control how often the chart is updated.
+    </p>
+    {% endcapture %}
+    {% include howto_step.html
+      summary="Configure the <i>JFR Metrics Chart</i> <code>Card</code>"
+      image-name="4.0.0/dashboard/jfrmetrics-configuration.png"
+      caption="Click <i>Next</i> to provide <code>card</code> configuration."
+      text=jfr-mbean-metrics-chart
+    %}
+  </li>
+  <li>
+    {% capture jfr-metrics-chart-created %}
+    <p>
+        After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard. Initially the card will have no <i>source Recording</i> and display no data.
+    </p>
+    {% endcapture %}
+    {% include howto_step.html
+      summary="Finish <code>Card</code> Creation"
+      image-name="4.0.0/dashboard/jfrmetrics-no-source.png"
+      caption="The <i>JFR Metrics Chart</i> <code>card</code> created with no source recording."
+      text=jfr-metrics-chart-created
+    %}
+  </li>
+  <li>
+    {% capture jfr-metrics-chart-finish %}
+    <p>
+        Click <i>Create</i> on the card to create a <i>source Recording</i>. <b>Cryostat</b> will walk you through creating the <b>Recording</b>. You can simply click through the form and accept the suggested default settings. This will begin a <b>Flight Recording</b> on the selected <b>Target</b> and send you to the <i>Recordings</i> view. Once you return to the <b>Dashboard</b> and the recording is available then <b>Cryostat</b> will begin to process and update the <b>Recording</b> to update the card visualization.
+    </p>
+    {% endcapture %}
+    {% include howto_step.html
+      summary="Start source <b>Flight Recording</b>"
+      image-name="4.0.0/dashboard/jfrmetrics.png"
+      caption="The <i>JFR Metrics Chart</i> <code>card</code> displayed with the <i>Memory Usage</i> metric."
+      text=jfr-metrics-chart-finish
     %}
   </li>
 </ol>
