@@ -25,6 +25,12 @@ event types in the selected `target` application, with default values for each
 event option. This is not a true *Event Template* and does not have an `XML`
 definition to download.
 
+Finally, **Cryostat** also includes some *Preset Event Templates*. These behave like
+*Custom Event Templates* in that the event definition is stored by **Cryostat**, rather
+than the `target` application, but are handled separately can cannot be deleted
+like *Custom Event Templates*. *Preset Event Templates* can only be added to a **Cryostat**
+instance by adding files to a specific configuration directory and restarting **Cryostat**.
+
 <ol>
   <li>
     {% include_relative _subsections/common/select-target-application.md
