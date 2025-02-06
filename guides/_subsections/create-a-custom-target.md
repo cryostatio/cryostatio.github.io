@@ -66,7 +66,9 @@ without going through the network stack.
             policy, or if the JVM listening on the specified port requires
             JMX credentials that Cryostat does not have in its keyring, or
             if the JVM listening on the specified port presents an SSL/TLS
-            certificate which Cryostat does not trust.
+            certificate which Cryostat does not trust. Cryostat will also
+            refuse to add new Custom Target definitions for targets that it
+            has already discovered by other means.
           </figcaption>
         </figure>
       </p>
