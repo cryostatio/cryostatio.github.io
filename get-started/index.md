@@ -301,8 +301,25 @@ COPY target/dependency/cryostat-agent-shaded.jar /deployments/app/
 ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent-shaded.jar"
 ```
 
-Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
-Push that updated image or otherwise get it updated in your **Kubernetes** registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
+The **Cryostat Agent** is also available as an **OCI Container Image** on [quay.io](https://quay.io/repository/cryostat/cryostat-agent-init).
+We can use this directly in our application **Dockerfile** in a multi-stage build, rather than downloading the **Agent** **JAR** from GitHub or Maven Central:
+
+```Dockerfile
+ARG cryostat_agent_version
+
+FROM quay.io/cryostat/cryostat-agent-init:${cryostat_agent_version} AS cryostat_agent
+
+FROM ${application_base_img}
+COPY --from=cryostat_agent /cryostat/agent/cryostat-agent-shaded.jar /deployments/app/cryostat-agent-shaded.jar
+...
+# Assume we are using an application framework where the JAVA_OPTS environment variable can be used to pass JVM flags
+ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent-shaded.jar"
+```
+
+Next we must rebuild our container image. This is specific to your application but will likely look something like
+`docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile --build-arg cryostat_agent_version={{ site.data.versions.agent.version }} .`
+(omit the `--build-arg` if you are not using the multi-stage build step above). Push that updated image or otherwise get it updated in your
+**Kubernetes** registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
 the **Cryostat Agent**:
 
 ```yaml
