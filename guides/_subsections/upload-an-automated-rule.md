@@ -31,7 +31,7 @@ Below is an example of a rule file content:
       {% include howto_step.html
         summary="Attach a Rule File by Dragging & Dropping or clicking <i>Browse...</i>."
         image-name="4.0.0/upload-an-automated-rule-2.png"
-        caption="Select a rule file to upload."
+        caption="Select a rule file to upload. The file should not include the &quot;id&quot; field as this will be assigned by the application database."
       %}
   </li>
   <li>
