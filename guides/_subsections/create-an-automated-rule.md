@@ -82,6 +82,20 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
 }
 {% endhighlight %}
         </figure>
+        The following functions are also available in the <code>Expression</code> execution context:
+        <figure>
+{% highlight typescript %}
+/**
+* @param target the target context object
+* @returns a list of JFR Event Type IDs
+*/
+jfrEventTypeIds(target: Target): string[]
+{% endhighlight %}
+        </figure>
+        See also:
+        <ul>
+            <li><a href="#view-jfr-event-types">JFR Event Types</a></li>
+        </ul>
         <p>
           The <i>alias, connectUrl, labels, annotations.platform,</i> and <i>annotations.cryostat</i> properties are all guaranteed to be present on the <code>target</code> object. <i>alias</i> and <i>connectUrl</i> will be non-empty strings. The <i>jvmId</i> is a hash string computed by Cryostat after it successfully connects to a <code>target</code> <b>JVM</b> and is used to uniquely identify that <b>JVM</b> instance - it will be empty if <b>Cryostat</b> has not yet connected to that <code>target</code> (for example, if its <a href="#add-a-trusted-certificate"><code>SSL/TLS</code> certificate is not trusted</a> or if <a href="#store-credentials"><b>Cryostat</b> is missing the required credentials</a>) The <i>labels</i> and <i>platform annotations</i> may be empty — in <b>OpenShift</b> or <b>Kubernetes</b>, these are populated from the labels and annotations applied to the <code>target</code>’s pod, if any. The <b>Cryostat</b> annotations map will vary per platform, but on <b>OpenShift</b> or <b>Kubernetes</b> you can expect the <i>HOST, PORT, NAMESPACE,</i> and <i>POD_NAME</i> keys to be present and non-empty. Take care to use the <code>has</code> or <code>in</code> operators when dealing with the <i>labels</i> and <i>annotations</i> map structures where specific keys may not exist.
         </p>
