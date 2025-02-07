@@ -33,6 +33,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/re-upload-a-recording-to-archives.md %}
 
+{% include_relative _subsections/view-jfr-event-types.md %}
+
 {% include_relative _subsections/download-edit-and-upload-a-customized-event-template.md %}
 
 {% include_relative _subsections/edit-template-with-jmc.md %}

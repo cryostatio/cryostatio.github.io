@@ -17,8 +17,10 @@ all. It may be useful to use either of these as a starting point and tailor it
 to meet your specific monitoring/profiling needs by including/excluding events,
 increasing/decreasing sample rates, raising/lowering thresholds, etc.
 
-Of special note, **JFR** allows for the definition of application-specific custom
-events, which would not be captured in either of the default templates above.
+Of special note, **JFR** allows for the definition of application-specific or
+framework-level custom events, which would not be captured in either of the default
+templates above. You can [view all of the **JFR** *Event Types*](#view-jfr-event-types)
+for a *Target* application.
 
 **Cryostat** also provides the <code>ALL</code> meta-template, which enables all
 event types in the selected `target` application, with default values for each
@@ -30,6 +32,11 @@ Finally, **Cryostat** also includes some *Preset Event Templates*. These behave 
 than the `target` application, but are handled separately can cannot be deleted
 like *Custom Event Templates*. *Preset Event Templates* can only be added to a **Cryostat**
 instance by adding files to a specific configuration directory and restarting **Cryostat**.
+
+The steps below assume that you have at least one *Target* discovered. If you select
+a discovered *Target* then you can use its templates as starting points for your
+customizations. If you do not first select a *Target* then you may still upload and
+delete **Custom Event Templates**.
 
 <ol>
   <li>
