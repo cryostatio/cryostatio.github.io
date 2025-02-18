@@ -15,11 +15,17 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/navigate-the-dashboard.md %}
 
+{% include_relative _subsections/perform-garbage-collection.md %}
+
 {% include_relative _subsections/use-topology-view.md %}
 
 {% include_relative _subsections/create-a-custom-target.md %}
 
 {% include_relative _subsections/using-the-cryostat-agent.md %}
+
+{% include_relative _subsections/configure-agent-harvester.md %}
+
+{% include_relative _subsections/using-smart-triggers.md %}
 
 {% include_relative _subsections/startstop-a-recording.md %}
 
@@ -56,10 +62,6 @@ common actions and workflows of interest and why they are useful.
 {% include_relative _subsections/download-an-automated-rule.md %}
 
 {% include_relative _subsections/configure-graphical-notifications.md %}
-
-{% include_relative _subsections/using-smart-triggers.md %}
-
-{% include_relative _subsections/perform-garbage-collection.md %}
 
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
 [comment]: # TODO
