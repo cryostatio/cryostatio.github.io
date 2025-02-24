@@ -82,4 +82,4 @@ the upgrade, then restore all of your data. We plan that the next release will a
 
 ## Feedback
 Please reach out to the [Cryostat mailing list](mailto:cryostat-development@googlegroups.com) or
-[GitHub Discussion](https://github.com/cryostatio/cryostat/discussions/665) with any questions or comments.
+[GitHub Discussions](https://github.com/cryostatio/cryostat/discussions) with any questions or comments.
