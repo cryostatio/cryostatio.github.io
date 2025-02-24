@@ -16,13 +16,15 @@ Hello everyone,
 It's time for another Cryostat release. This time, we are very proud to present Cryostat 4.0, a new major version with again some significant under-the-hood changes,
 and some exciting new OpenShift-specific features.
 
-### Feature Highlights
+## Release Highlights
+
+### New Features
 1. **Quarkus and Hibernate JFR integrations** for framework-specific *Flight Recorder* events. If your target application uses Quarkus and contains the `quarkus-jfr` extension (along with `quarkus-rest`), or has `hibernate-jfr` on its classpath, then you can take advantage of the new *Preset Event Templates* that ship with Cryostat. These are open to community contributions for any other popular frameworks and libraries that provide JFR events. Simply start a recording using the relevant preset template and begin capturing these framework-specific events.
 2. **Automated Rules by JFR Event Type ID**: there is a new `jfrEventTypeIds(target): string[]` function available in the `matchExpression` Common Expression Language scope. Pass in the `target` object also in scope and this function returns a list of JFR event type IDs for that target JVM. This enables functionality such as that seen in the new `quarkus` and `hibernate` Automated Rules that ship with Cryostat 4.0, where the rules' expressions are satisfied by target JVMs that support the relevant JFR event types. This makes it even quicker and easier to get started capturing data from applications using these frameworks and libraries.
 3. **Diagnostics Card**: the Cryostat dashboard has a new *Diagnostics* card, which currently exposes one new piece of functionality: you can fire a request for the remote target JVM to run a Garbage Collection cycle. This can be useful when troubleshooting a misbehaving application, or when attempting to optimize the resource allocation for a container.
 4. **Events View** in the Cryostat Web UI is visible even when no target application is selected. Previously this view would lock out until a target JVM was selected. Now, the *Event Types* and *JMC Agent Live Configuration* tabs will be disabled, but the *Event Templates* and *JMC Agent Probe Templates* remain usable so that you can see which templates are available, or upload new ones, even when you have no target applications discoverable.
 
-#### OpenShift-specific Feature Highlights
+#### OpenShift-specific Features
 1. **Agent Autoconfiguration** by the Operator dramatically simplifies the setup and usage of the *Cryostat Agent* with your JVM target applications. Simply install the Operator, create a Cryostat CR, and ensure your target application is located in one of the Cryostat CR's *Target Namespaces*. Then, edit your application's Deployment `.spec.template.metadata.labels` and add `cryostat.io/namespace: ${cryostat-cr-ns}` and `cryostat.io/name: ${cryostat-cr-name}` labels (replacing the `${var}` expressions with corresponding values). This prompts the Cryostat Operator to patch your Deployment to include Volumes containing the Cryostat Agent JAR and required TLS certificates, to include a `JAVA_TOOL_OPTIONS` environment variable containing the `-javaagent` flag to statically attach the Agent to your application, and to include other environment variables to configure the Agent to communicate with the specified Cryostat instance.
 2. **OpenShift Console Plugin** to allow your cluster administrators to access Cryostat features directly from the OpenShift Console, without needing to visit each Cryostat instance's Application (Route) URL and with no secondary authentication step.
 3. **Agent Gateway** container is included in the main Cryostat Deployment for each Cryostat CR. This is a TLS authentication proxy that Agent instances can use with appropriate TLS client certificates to authenticate to their Cryostat instance, rather than needing to use serviceaccount Bearer tokens. This is also used by the *autoconfiguration* feature.
@@ -51,3 +53,20 @@ and some exciting new OpenShift-specific features.
 1. **HTTP Connection Flakiness** between components - in particular Cryostat to Cryostat Reports, or Cryostat to Cryostat Storage - has been resolved.
 2. **Automated Rules** can sometimes fail to activate for various reasons. Cryostat will now attempt to re-test any failed rules with an exponential backoff strategy to ensure that rules are activated on targets as expected.
 3. **WildFly / Agent**: when attaching the Agent to WildFly/JBoss EAP applications previously, the Agent's configuration defaults would not be loaded and all parameters would need to be set explicitly. Now, the default parameters are loaded as usual and only the typical parameters need to be specifically configured.
+
+## Where can I get the latest version of Cryostat?
+You can install Cryostat using our
+[Kubernetes operator on OperatorHub.io](https://operatorhub.io/operator/cryostat-operator)
+or via a
+[Helm Chart](https://github.com/cryostatio/cryostat-helm/releases/tag/v1.0.1)
+. As always, you can also run Cryostat in other environments with a little more manual setup.
+
+If this is your first time installing Cryostat on Kubernetes, you can [Get Started](/get-started) right here on this
+website.
+
+If you had previously installed Cryostat Operator 3.0.0 with OLM, then you may have already been upgraded to 3.0.1, or
+else you should be able to approve and install the upgrade.
+
+## Feedback
+Please reach out to the [Cryostat mailing list](mailto:cryostat-development@googlegroups.com) or
+[GitHub Discussion](https://github.com/cryostatio/cryostat/discussions/665) with any questions or comments.
