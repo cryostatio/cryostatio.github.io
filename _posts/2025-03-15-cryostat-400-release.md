@@ -54,6 +54,18 @@ and some exciting new OpenShift-specific features.
 2. **Automated Rules** can sometimes fail to activate for various reasons. Cryostat will now attempt to re-test any failed rules with an exponential backoff strategy to ensure that rules are activated on targets as expected.
 3. **WildFly / Agent**: when attaching the Agent to WildFly/JBoss EAP applications previously, the Agent's configuration defaults would not be loaded and all parameters would need to be set explicitly. Now, the default parameters are loaded as usual and only the typical parameters need to be specifically configured.
 
+## Media
+
+To accompany this release I have recorded several demo/tutorial videos. These illustrate some of the new features as well
+as highlighting existing Cryostat functionality that seemed to connect naturally:
+- [Cryostat 4.0 Agent Automatic Configuration and OpenShift Console Plugin](https://www.youtube.com/watch?v=uXQt4wCUYsM)
+- [Cryostat 4.0 Non-Java JVM Applications](https://www.youtube.com/watch?v=wuqxM1h5g_w)
+- [Cryostat 4.0 Quarkus and Hibernate Integrations](https://www.youtube.com/watch?v=Dr3XW25XJUE)
+- [Cryostat 4.0 Quarkus Native Image Applications](https://www.youtube.com/watch?v=lG_LHOPu1Mk)
+- [Cryostat 4.0 Agent Harvester](https://www.youtube.com/watch?v=d8CEy_Q03Ts)
+- [Cryostat 4.0 Advanced Agent Autoconfiguration](https://www.youtube.com/watch?v=dIlV-Zszcp0)
+- [Cryostat 4.0 Agent Autoconfiguration Extensions](https://www.youtube.com/watch?v=aPGoaV4O5L8)
+
 ## Where can I get the latest version of Cryostat?
 You can install Cryostat using our
 [Kubernetes operator on OperatorHub.io](https://operatorhub.io/operator/cryostat-operator)
