@@ -58,14 +58,15 @@ and some exciting new OpenShift-specific features.
 You can install Cryostat using our
 [Kubernetes operator on OperatorHub.io](https://operatorhub.io/operator/cryostat-operator)
 or via a
-[Helm Chart](https://github.com/cryostatio/cryostat-helm/releases/tag/v1.0.1)
+[Helm Chart](https://github.com/cryostatio/cryostat-helm)
 . As always, you can also run Cryostat in other environments with a little more manual setup.
 
 If this is your first time installing Cryostat on Kubernetes, you can [Get Started](/get-started) right here on this
 website.
 
-If you had previously installed Cryostat Operator 3.0.0 with OLM, then you may have already been upgraded to 3.0.1, or
-else you should be able to approve and install the upgrade.
+If you had previously installed Cryostat Operator 3.0.0 with OLM you will need to perform a manual upgrade to 4.0.0.
+You should back up all data (Automated Rules, Custom Event Templates, Stored Credentials, Archived Recordings), perform
+the upgrade, then restore all of your data. We plan that the next release will allow a seamless in-place upgrade once again.
 
 ## Feedback
 Please reach out to the [Cryostat mailing list](mailto:cryostat-development@googlegroups.com) or
