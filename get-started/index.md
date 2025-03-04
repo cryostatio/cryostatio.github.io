@@ -280,6 +280,22 @@ If your application or framework requires the use of another environment variabl
 `MODULE_OPTS` or `JAVA_OPTS_APPEND`, then you can use this label to customize which variable
 the **Operator** uses.
 
+The following table lists some tested and known compatible application frameworks and any
+particular adjustments required:
+
+| Framework      | Adjustments                                 |
+|----------------|---------------------------------------------|
+| Quarkus        | N/A                                         |
+| GraalVM Native | Incompatible (Agents not supported)         |
+| Spring Boot    | N/A                                         |
+| Micronaut      | N/A                                         |
+| WildFly        | `cryostat.io/java-options-var: MODULE_OPTS` |
+| JBoss EAP      | Same as WildFly                             |
+| Clojure Kit    | N/A                                         |
+
+Some adjustments may still be required, depending on the application base image used or any
+custom application entrypoint scripts.
+
 ##### [Manually Installing the Cryostat Agent](#manually-installing-the-cryostat-agent)
 
 If you are:
