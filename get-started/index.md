@@ -250,6 +250,11 @@ that your **Cryostat** server version and **Cryostat Agent** version are correct
 If your application uses a later version of **JDK8** with **JFR** support, please either upgrade to **JDK11+** or [continue to the next section](#using-jmx)
 to learn how to configure your application without the **Cryostat Agent**.
 
+The **Cryostat Agent** may even be used with non-Java **JVM** languages, such as Kotlin, Scala,
+Clojure, JRuby, or Jython, so long as these are running on a compatible **HotSpot JVM** which
+implements **JDK Flight Recorder**, allows the attachment of **Agents**, and includes the
+`com.sun.net.httpserver` package. Any **OpenJDK 11+** build should be sufficient.
+
 ##### [Automatic Configuration of the Cryostat Agent](#automatic-configuration-of-the-cryostat-agent)
 
 Since **Cryostat** version 4.0.0, the **Operator** can assist you in automating the use
