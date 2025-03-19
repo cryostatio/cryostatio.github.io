@@ -250,7 +250,145 @@ that your **Cryostat** server version and **Cryostat Agent** version are correct
 If your application uses a later version of **JDK8** with **JFR** support, please either upgrade to **JDK11+** or [continue to the next section](#using-jmx)
 to learn how to configure your application without the **Cryostat Agent**.
 
-##### [Statically Attaching the Cryostat Agent](#statically-attaching-the-cryostat-agent)
+The **Cryostat Agent** may even be used with non-Java **JVM** languages, such as Kotlin, Scala,
+Clojure, JRuby, or Jython, so long as these are running on a compatible **HotSpot JVM** which
+implements **JDK Flight Recorder**, allows the attachment of **Agents**, and includes the
+`com.sun.net.httpserver` package. Any **OpenJDK 11+** build should be sufficient.
+
+##### [Automatic Configuration of the Cryostat Agent](#automatic-configuration-of-the-cryostat-agent)
+
+Since **Cryostat** version 4.0.0, the **Operator** can assist you in automating the use
+of the **Cryostat Agent** with your applications. By adding the `cryostat.io/name`
+and `cryostat.io/namespace` labels to your application Pod (or Deployment spec template)
+you can inform the **Cryostat Operator** that you wish for your application to be
+instrumented with the **Cryostat Agent**. The **Operator** will
+[dynamically inject](#dynamically-attaching-the-cryostat-agent) the **Agent** to your
+application and supply it with the required configuration parameters to register with
+the **Cryostat** instance specified by your `cryostat.io/namespace`/`cryostat.io/name`
+labels.
+
+The following additional labels are available to customize aspects of the injection process:
+- `cryostat.io/callback-port`: by default the **Agent** uses port `9977` as the `HTTP` port
+for receiving requests from the **Cryostat** instance. You can use this label to specify a
+different port number in case `9977` is already used by your application.
+- `cryostat.io/container`: by default the **Operator** will inject the **Agent** to the first
+container within the Pod. Use this if your Pod runs multiple containers and the first one
+is not the one you are interested in injecting the **Agent** into.
+- `cryostat.io/read-only`: by default the **Agent** instance is configured with read-write
+access for the **Cryostat** instance, allowing full usage of actions such as starting
+**Flight Recordings**. If you only want the **Agent** instance to allow read access you
+can set this label to `true`.
+- `cryostat.io/java-options-var`: by default the **Operator** uses the `JAVA_TOOL_OPTIONS`
+environment variable to add the `-javaagent` flag so that the application **JVM** loads the
+**Agent**. This value will be appended to any existing value of the environment variable.
+If your application or framework requires the use of another environment variable, such as
+`MODULE_OPTS` or `JAVA_OPTS_APPEND`, then you can use this label to customize which variable
+the **Operator** uses.
+
+The following table lists some tested and known compatible application frameworks and any
+particular adjustments required:
+
+| Framework      | Adjustments                                 |
+|----------------|---------------------------------------------|
+| Quarkus        | N/A                                         |
+| GraalVM Native | Incompatible (Agents not supported)         |
+| Spring Boot    | N/A                                         |
+| Micronaut      | N/A                                         |
+| WildFly        | `cryostat.io/java-options-var: MODULE_OPTS` |
+| JBoss EAP      | Same as WildFly                             |
+| Clojure Kit    | N/A                                         |
+
+Some adjustments may still be required, depending on the application base image used or any
+custom application entrypoint scripts.
+
+##### [Manually Installing the Cryostat Agent](#manually-installing-the-cryostat-agent)
+
+If you are:
+- not using the **Cryostat Operator**
+- unable to deploy an **Agent** to your application
+- requiring **JMX** connections only
+- requiring no-downtime instrumentation of **Agents**
+then the above automatic **Agent** configuration may not be suitable for your use case.
+Below are descriptions of how to manually attach the **Cryostat Agent** to your application.
+
+###### [Dynamically Attaching the Cryostat Agent](#dynamically-attaching-the-cryostat-agent)
+
+Starting with **Cryostat** 3.0 and **Cryostat Agent** 0.4 it is possible to attach the **Cryostat Agent** to your application while the
+application is running, with no rebuild, redeployment, or restart. To do this, the **Agent JAR** must still be available in your application's
+filesystem (see [above](#statically-attaching-the-cryostat-agent) for details on how and where to acquire it), and you must be able to execute
+a new Java process in the same space as the application.
+
+Let's make this concrete with an example. We will assume you are running your application in **Kubernetes** and that you have manually downloaded
+the **Cryostat Agent JAR** to your workstation.
+
+```bash
+$ kubectl cp \
+    /path/to/cryostat-agent-shaded.jar \
+    -n my-namespace \
+    mypod:/tmp/cryostat/cryostat-agent-shaded.jar
+$ kubectl exec \
+    -n my-namespace \
+    mypod -c mycontainer \
+    -i -t -- \
+      java -jar /tmp/cryostat/cryostat-agent-shaded.jar \
+      -Dcryostat.agent.baseuri=http://cryostat:8181 \
+      -Dcryostat.agent.authorization.type="kubernetes" \
+      -Dcryostat.agent.callback=http://${POD_IP}:9977 \
+      -Dcryostat.agent.api.writes-enabled=true
+```
+
+1. Replace `/path/to/cryostat-agent-shaded.jar` with the real path to the **JAR** on your workstation
+2. Replace `my-namespace` with the namespace your application is deployed in
+3. Replace `mypod` with the name of your application's Pod
+4. Replace `mycontainer` with the name of your application's container within its Pod (or remove this if it is the only container in the Pod)
+5. Replace `http://cryostat:8181` with the correct internal Service URL for your **Cryostat** server within the same **Kubernetes** cluster
+6. Replace `${POD_IP}` with the application Pod's IP Address as found in its Status using `kubectl get -o yaml`
+
+By following this procedure you will copy the **Cryostat Agent JAR** into the application's filesystem (`kubectl cp`), then launch the
+**Agent** as a Java process (`kubectl exec`). When the **Agent** is launched in this manner it will look for other Java processes. If it
+finds exactly one other Java process then it will use that process' Attach API and ask the JVM to load the Agent's **JAR**, passing its
+`-D` arguments over and setting them as system properties in the application JVM after the Attach API loads the **JAR**. If you have multiple
+Java processes running within the application container then you can either specify a particular PID to the **Cryostat Agent** so that it
+only attaches to that JVM, or you can use the wildcard `*` asterisk so that the Agent attaches to every JVM it finds (other than its own
+bootstrap JVM). You can run the **Agent** with the `-h` flag to get details about its options:
+
+```bash
+$ java -jar cryostat-agent-{{site.data.versions.agent.version}}-shaded.jar -h
+Usage: CryostatAgent [-hV] [-D=<String=String>]...
+                     [--smartTrigger=<smartTriggers>]... [@<filename>...]
+                     [<pid>]
+Launcher for Cryostat Agent to self-inject and dynamically attach to workload
+JVMs
+      [@<filename>...]   One or more argument files containing options.
+      [<pid>]            The PID to attach to and attempt to self-inject the
+                           Cryostat Agent. If not specified, the Agent will
+                           look to find exactly one candidate and attach to
+                           that, failing if none or more than one are found.
+                           Otherwise, this should be a process ID, or the '*'
+                           wildcard to request the Agent attempt to attach to
+                           all discovered JVMs.
+  -D, --property=<String=String>
+                         Optional property definitions to supply to the
+                           injected Agent copies to add or override property
+                           definitions once the Agent is running in the
+                           workload JVM. These should be specified as key=value
+                           pairs, ex. -Dcryostat.agent.baseuri=http://cryostat.
+                           service.local . May be specified more than once.
+  -h, --help             Show this help message and exit.
+      --smartTrigger=<smartTriggers>
+                         Smart Triggers definition. May be specified more than
+                           once.
+  -V, --version          Print version information and exit.
+```
+
+*Note*: this procedure will only attach the **Cryostat Agent** to the application once, for the application process' current lifecycle. If the
+application process is restarted then the **Agent** will no longer be loaded, and you will need to perform the steps above again to re-attach it.
+If you scale up your application so there are more Replicas then these additional instances will also not have the **Agent** attached. This
+workflow is useful primarily for one-off troubleshooting or profiling scenarios. If you find yourself performing these steps often then
+consider [statically attaching the Agent](#statically-attaching-the-cryostat-agent) so that the configuration for attaching it occurs at
+every application startup.
+
+###### [Statically Attaching the Cryostat Agent](#statically-attaching-the-cryostat-agent)
 
 The **Cryostat Agent** **JAR** must be available to your application **JVM**. The **JAR** asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/packages),
 or from [Maven Central](https://mvnrepository.com/artifact/io.cryostat/cryostat-agent). For most use cases the `-shaded` **JAR** would be appropriate.
@@ -419,83 +557,6 @@ of the **Cryostat Agent** HTTP API as possible, then continue to [the next secti
 to enable and expose **JMX** for remote management and data access. If the **Cryostat Agent** detects that the application it is attached
 to has **JMX** enabled then it will publish itself to the **Cryostat** server with both an **Agent** HTTP URL and a **JMX** URL. If **JMX**
 is not detected then it will only publish the HTTP URL.
-
-##### [Dynamically Attaching the Cryostat Agent](#dynamically-attaching-the-cryostat-agent)
-
-Starting with **Cryostat** 3.0 and **Cryostat Agent** 0.4 it is possible to attach the **Cryostat Agent** to your application while the
-application is running, with no rebuild, redeployment, or restart. To do this, the **Agent JAR** must still be available in your application's
-filesystem (see [above](#statically-attaching-the-cryostat-agent) for details on how and where to acquire it), and you must be able to execute
-a new Java process in the same space as the application.
-
-Let's make this concrete with an example. We will assume you are running your application in **Kubernetes** and that you have manually downloaded
-the **Cryostat Agent JAR** to your workstation.
-
-```bash
-$ kubectl cp \
-    /path/to/cryostat-agent-shaded.jar \
-    -n my-namespace \
-    mypod:/tmp/cryostat/cryostat-agent-shaded.jar
-$ kubectl exec \
-    -n my-namespace \
-    mypod -c mycontainer \
-    -i -t -- \
-      java -jar /tmp/cryostat/cryostat-agent-shaded.jar \
-      -Dcryostat.agent.baseuri=http://cryostat:8181 \
-      -Dcryostat.agent.authorization.type="kubernetes" \
-      -Dcryostat.agent.callback=http://${POD_IP}:9977 \
-      -Dcryostat.agent.api.writes-enabled=true
-```
-
-1. Replace `/path/to/cryostat-agent-shaded.jar` with the real path to the **JAR** on your workstation
-2. Replace `my-namespace` with the namespace your application is deployed in
-3. Replace `mypod` with the name of your application's Pod
-4. Replace `mycontainer` with the name of your application's container within its Pod (or remove this if it is the only container in the Pod)
-5. Replace `http://cryostat:8181` with the correct internal Service URL for your **Cryostat** server within the same **Kubernetes** cluster
-6. Replace `${POD_IP}` with the application Pod's IP Address as found in its Status using `kubectl get -o yaml`
-
-By following this procedure you will copy the **Cryostat Agent JAR** into the application's filesystem (`kubectl cp`), then launch the
-**Agent** as a Java process (`kubectl exec`). When the **Agent** is launched in this manner it will look for other Java processes. If it
-finds exactly one other Java process then it will use that process' Attach API and ask the JVM to load the Agent's **JAR**, passing its
-`-D` arguments over and setting them as system properties in the application JVM after the Attach API loads the **JAR**. If you have multiple
-Java processes running within the application container then you can either specify a particular PID to the **Cryostat Agent** so that it
-only attaches to that JVM, or you can use the wildcard `*` asterisk so that the Agent attaches to every JVM it finds (other than its own
-bootstrap JVM). You can run the **Agent** with the `-h` flag to get details about its options:
-
-```bash
-$ java -jar cryostat-agent-{{site.data.versions.agent.version}}-shaded.jar -h
-Usage: CryostatAgent [-hV] [-D=<String=String>]...
-                     [--smartTrigger=<smartTriggers>]... [@<filename>...]
-                     [<pid>]
-Launcher for Cryostat Agent to self-inject and dynamically attach to workload
-JVMs
-      [@<filename>...]   One or more argument files containing options.
-      [<pid>]            The PID to attach to and attempt to self-inject the
-                           Cryostat Agent. If not specified, the Agent will
-                           look to find exactly one candidate and attach to
-                           that, failing if none or more than one are found.
-                           Otherwise, this should be a process ID, or the '*'
-                           wildcard to request the Agent attempt to attach to
-                           all discovered JVMs.
-  -D, --property=<String=String>
-                         Optional property definitions to supply to the
-                           injected Agent copies to add or override property
-                           definitions once the Agent is running in the
-                           workload JVM. These should be specified as key=value
-                           pairs, ex. -Dcryostat.agent.baseuri=http://cryostat.
-                           service.local . May be specified more than once.
-  -h, --help             Show this help message and exit.
-      --smartTrigger=<smartTriggers>
-                         Smart Triggers definition. May be specified more than
-                           once.
-  -V, --version          Print version information and exit.
-```
-
-*Note*: this procedure will only attach the **Cryostat Agent** to the application once, for the application process' current lifecycle. If the
-application process is restarted then the **Agent** will no longer be loaded, and you will need to perform the steps above again to re-attach it.
-If you scale up your application so there are more Replicas then these additional instances will also not have the **Agent** attached. This
-workflow is useful primarily for one-off troubleshooting or profiling scenarios. If you find yourself performing these steps often then
-consider [statically attaching the Agent](#statically-attaching-the-cryostat-agent) so that the configuration for attaching it occurs at
-every application startup.
 
 ##### [Using JMX](#using-jmx)
 **Cryostat** is also able to use Java Management Extensions (**JMX**) to communicate with target applications. This is a standard JDK feature that can be enabled by passing **JVM**
