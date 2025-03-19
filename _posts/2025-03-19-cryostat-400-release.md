@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cryostat 4.0.0 is Released!
-date: 2025-03-01
+date: 2025-03-19
 synopsis: Cryostat 4.0.0 is here. Learn what's new in this release.
 author: Andrew Azores
 ---
@@ -72,6 +72,9 @@ You can install Cryostat using our
 or via a
 [Helm Chart](https://github.com/cryostatio/cryostat-helm)
 . As always, you can also run Cryostat in other environments with a little more manual setup.
+
+**Note**: the Helm Chart 4.0.0 release will be a bit delayed this time around. Please watch the GitHub repository for updates
+if you require the Helm Chart.
 
 If this is your first time installing Cryostat on Kubernetes, you can [Get Started](/get-started) right here on this
 website.
