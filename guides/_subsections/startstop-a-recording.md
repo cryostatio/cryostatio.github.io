@@ -15,7 +15,7 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
   <li>
     {% include howto_step.html
       summary="Configure the new <code>Recording</code>"
-      image-name="3.0.0/startstop-a-recording-1.png"
+      image-name="4.0.0/startstop-a-recording-1.png"
       text="
       <p>
         Enter a <i>Name</i> for the new <code>Recording</code>. The form will alert you if the name
@@ -49,7 +49,7 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
   <li>
     {% include howto_step.html
       summary="<i>(Optional)</i> Adjust any <i>Advanced Options</i> for the <code>Recording</code>"
-      image-name="3.0.0/startstop-a-recording-2.png"
+      image-name="4.0.0/startstop-a-recording-2.png"
       text="
       <p>
         In many cases, the <i>Advanced Options</i> can be left with their
@@ -108,7 +108,7 @@ The first and most basic workflow is to start a `Flight Recording` in a `target`
     {% endcapture %}
     {% include howto_step.html
       summary="<i>Stop</i> the <code>Recording</code>"
-      image-name="3.0.0/startstop-a-recording-3.png"
+      image-name="4.0.0/startstop-a-recording-3.png"
       text=stop-the-recording-additional-content
     %}
   </li>

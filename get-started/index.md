@@ -70,22 +70,15 @@ Use the search bar to find the **Red Hat build of Cryostat** catalog item.
   summary="Select the Cryostat Operator and click the Install button"
   image-name="cryostat-operatorhub-install.png"
 %}
-Choose your **Operator** installation mode:
-1. In `All Namespaces` installation mode, the **Cryostat Operator** instance will watch for **Cryostat** or
-**ClusterCryostat** Custom Resources (**CR**s) created in any `Namespace` and create corresponding **Cryostat** instances.
-2. In the `A specific namespace` installation mode, you must also select an installation `Namespace`, and the **Cryostat Operator** instance will only watch for **Cryostat** or **ClusterCryostat** instances created in that same `Namespace`.
+Click "*Install*" and wait for the installation to complete.
 {% include howto_step.html
   summary="Install the Operator"
   image-name="cryostat-operatorhub-install-in-progress.png"
 %}
-Click "*Install*" and wait for the installation to complete. In this example we will proceed with **All Namespaces**.
 
 Continue to [Setup](#setup).
 
 ## [Setup](#setup)
-
-**Note:** An alternative setup using the multi-namespace **ClusterCryostat CR** is described in
-[Alternate Setup](#alternate-setup). For simplicity we will continue with the single-namespace **Cryostat CR**.
 
 ### [Deploying Cryostat](#deploying-cryostat)
 
@@ -113,6 +106,10 @@ You can create the **CR** graphically in the **OperatorHub** UI after following 
   summary="Cryostat Resources Before"
   image-name="cryostat-resources-before.png"
 %}
+This is where you will configure your **Cryostat** installation. The **Target Namespaces** field is worth special attention. If you do not set this,
+then the **Cryostat** instance will default to have visibility of other applications within its own (installation) **Namespace** only. By setting a
+list of **Target Namespace** names you can create a Cryostat instance which has visibility of applications in other **Namespaces** in the cluster,
+which may or may not include Cryostat's own installation **Namespace**.
 {% include howto_step.html
   summary="Cryostat Resource Creation"
   image-name="cryostat-resource-creation.png"
@@ -125,13 +122,16 @@ You can create the **CR** graphically in the **OperatorHub** UI after following 
 You can also create the **CR** manually using a **YAML** definition like the following:
 
 ```yaml
-apiVersion: operator.cryostat.io/v1beta1
+apiVersion: operator.cryostat.io/v1beta2
 kind: Cryostat
 metadata:
   name: cryostat-sample
 spec:
-  minimal: false
   enableCertManager: true
+  targetNamespaces:
+    - cryostat
+    - apps1
+    - apps2
   trustedCertSecrets: []
   eventTemplates: []
   storageOptions:
@@ -192,14 +192,7 @@ access to the **Cryostat** instance and the namespace that it is deployed within
   image-name="permissions-auth-page.png"
 %}
 Once you have authenticated through the cluster's **SSO** login you will be
-redirected back to the **Cryostat web** application. The redirect URL contains
-an access token for **Cryostat's** service account with the permissions you have
-granted to it. The **Cryostat web** application passes this **OpenShift** token back
-to the **Cryostat** server on each request using `Bearer` authorization headers.
-The **Cryostat** server forwards this token back to the **OpenShift** auth server on
-each client request to check the token authorization for the current request.
-This access token will eventually expire and you will be required to log back
-in on the cluster **SSO** login page.
+redirected back to the **Cryostat web** application.
 
 For direct access to the **Cryostat HTTP API** you may follow the same pattern.
 Using a client such as `curl`, an **OpenShift** auth token can be passed with
@@ -211,39 +204,16 @@ $ curl -v -H "Authorization: Bearer $(oc whoami -t)" https://cryostat.example.co
 ##### [Other Platforms Authentication](#other-platforms-authentication)
 
 In non-OpenShift environments, **Cryostat** will default to no authentication.
-Access to the web application and the HTTP API will be unsecured. You should
-either configure **Cryostat's** built-in `Basic` authentication system, or better,
-place an authenticating reverse proxy server in front of **Cryostat** so that
-accesses to the **Cryostat** application must first pass through the reverse
-proxy. The configuration of a reverse proxy is out of scope of this guide.
+Access to the web application and the HTTP API will be unsecured.
 
 ###### [Basic Auth](#basic-auth)
 
-**Cryostat** includes a very rudimentary HTTP `Basic` authentication implementation.
-This can be configured by creating a `cryostat-users.properties` file in the
-**Cryostat** server `conf` directory, defined by the environment variable
-`CRYOSTAT_CONFIG_PATH` and defaulting to `/opt/cryostat.d/conf.d`.
-The credentials stored in the Java properties file are the user name and a
-SHA-256 sum hex of the user's password. The property file contents should look
-like:
-
-```properties
-user1=abc123
-user2=def987
-```
-Where `abc123` and `def987` are substituted for the SHA-256 sum hexes of the
-desired user passwords. These can be obtained by ex.
-`echo -n PASS | sha256sum | cut -d' ' -f1`. The `Basic` user credentials `user:pass`
-would therefore be entered as
-`user:d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1`.
-
-This mechanism only supports fully-privileged user definitions, authorized to
-perform any action within the **Cryostat** API.
-
-Once the `cryostat-users.properties` file defining the user credentials is
-created, the environment variable `CRYOSTAT_AUTH_MANAGER` should be set
-to the value `io.cryostat.net.BasicAuthManager` to enable the corresponding
-auth implementation.
+The **Cryosotat Deployment** includes an `oauth2-proxy` instance which will pass through
+all traffic by default, but by using the **Cryostat CR**
+*Advanced > Authorization Options > Basic Auth* configuration property you can enable an
+`HTTP Basic` authentication system. You will need to create a **Secret** containing an
+`htpasswd` file defining the users that should be granted access, then reference this
+**Secret** in the **CR** *Authorization Options*.
 
 ### [Deploy an Application](#deploy-an-application)
 For demo purposes, let's go ahead and deploy a sample application to our
@@ -252,8 +222,8 @@ deployed **Cryostat** into a `namespace` where you are already running other
 applications, feel free to [continue to the next step](#configuring-applications).
 
 ```bash
-$ oc new-app --docker-image=quay.io/andrewazores/quarkus-test:0.0.10
-$ oc patch svc/quarkus-test -p '{"spec":{"$setElementOrder/ports":[{"port":9097},{"port":8080}],"ports":[{"name":"jfr-jmx","port":9097}]}}'
+$ oc new-app --image=quay.io/redhat-java-monitoring/quarkus-cryostat-agent:latest
+$ oc patch svc/quarkus-cryostat-agent -p '{"spec":{"$setElementOrder/ports":[{"port":9097},{"port":8080}],"ports":[{"name":"jfr-jmx","port":9097}]}}'
 ```
 
 This is a **Quarkus** container in **JVM** mode with **JMX** enabled and pre-configured to
@@ -280,7 +250,145 @@ that your **Cryostat** server version and **Cryostat Agent** version are correct
 If your application uses a later version of **JDK8** with **JFR** support, please either upgrade to **JDK11+** or [continue to the next section](#using-jmx)
 to learn how to configure your application without the **Cryostat Agent**.
 
-##### [Statically Attaching the Cryostat Agent](#statically-attaching-the-cryostat-agent)
+The **Cryostat Agent** may even be used with non-Java **JVM** languages, such as Kotlin, Scala,
+Clojure, JRuby, or Jython, so long as these are running on a compatible **HotSpot JVM** which
+implements **JDK Flight Recorder**, allows the attachment of **Agents**, and includes the
+`com.sun.net.httpserver` package. Any **OpenJDK 11+** build should be sufficient.
+
+##### [Automatic Configuration of the Cryostat Agent](#automatic-configuration-of-the-cryostat-agent)
+
+Since **Cryostat** version 4.0.0, the **Operator** can assist you in automating the use
+of the **Cryostat Agent** with your applications. By adding the `cryostat.io/name`
+and `cryostat.io/namespace` labels to your application Pod (or Deployment spec template)
+you can inform the **Cryostat Operator** that you wish for your application to be
+instrumented with the **Cryostat Agent**. The **Operator** will
+[dynamically inject](#dynamically-attaching-the-cryostat-agent) the **Agent** to your
+application and supply it with the required configuration parameters to register with
+the **Cryostat** instance specified by your `cryostat.io/namespace`/`cryostat.io/name`
+labels.
+
+The following additional labels are available to customize aspects of the injection process:
+- `cryostat.io/callback-port`: by default the **Agent** uses port `9977` as the `HTTP` port
+for receiving requests from the **Cryostat** instance. You can use this label to specify a
+different port number in case `9977` is already used by your application.
+- `cryostat.io/container`: by default the **Operator** will inject the **Agent** to the first
+container within the Pod. Use this if your Pod runs multiple containers and the first one
+is not the one you are interested in injecting the **Agent** into.
+- `cryostat.io/read-only`: by default the **Agent** instance is configured with read-write
+access for the **Cryostat** instance, allowing full usage of actions such as starting
+**Flight Recordings**. If you only want the **Agent** instance to allow read access you
+can set this label to `true`.
+- `cryostat.io/java-options-var`: by default the **Operator** uses the `JAVA_TOOL_OPTIONS`
+environment variable to add the `-javaagent` flag so that the application **JVM** loads the
+**Agent**. This value will be appended to any existing value of the environment variable.
+If your application or framework requires the use of another environment variable, such as
+`MODULE_OPTS` or `JAVA_OPTS_APPEND`, then you can use this label to customize which variable
+the **Operator** uses.
+
+The following table lists some tested and known compatible application frameworks and any
+particular adjustments required:
+
+| Framework      | Adjustments                                 |
+|----------------|---------------------------------------------|
+| Quarkus        | N/A                                         |
+| GraalVM Native | Incompatible (Agents not supported)         |
+| Spring Boot    | N/A                                         |
+| Micronaut      | N/A                                         |
+| WildFly        | `cryostat.io/java-options-var: MODULE_OPTS` |
+| JBoss EAP      | Same as WildFly                             |
+| Clojure Kit    | N/A                                         |
+
+Some adjustments may still be required, depending on the application base image used or any
+custom application entrypoint scripts.
+
+##### [Manually Installing the Cryostat Agent](#manually-installing-the-cryostat-agent)
+
+If you are:
+- not using the **Cryostat Operator**
+- unable to deploy an **Agent** to your application
+- requiring **JMX** connections only
+- requiring no-downtime instrumentation of **Agents**
+then the above automatic **Agent** configuration may not be suitable for your use case.
+Below are descriptions of how to manually attach the **Cryostat Agent** to your application.
+
+###### [Dynamically Attaching the Cryostat Agent](#dynamically-attaching-the-cryostat-agent)
+
+Starting with **Cryostat** 3.0 and **Cryostat Agent** 0.4 it is possible to attach the **Cryostat Agent** to your application while the
+application is running, with no rebuild, redeployment, or restart. To do this, the **Agent JAR** must still be available in your application's
+filesystem (see [above](#statically-attaching-the-cryostat-agent) for details on how and where to acquire it), and you must be able to execute
+a new Java process in the same space as the application.
+
+Let's make this concrete with an example. We will assume you are running your application in **Kubernetes** and that you have manually downloaded
+the **Cryostat Agent JAR** to your workstation.
+
+```bash
+$ kubectl cp \
+    /path/to/cryostat-agent-shaded.jar \
+    -n my-namespace \
+    mypod:/tmp/cryostat/cryostat-agent-shaded.jar
+$ kubectl exec \
+    -n my-namespace \
+    mypod -c mycontainer \
+    -i -t -- \
+      java -jar /tmp/cryostat/cryostat-agent-shaded.jar \
+      -Dcryostat.agent.baseuri=http://cryostat:8181 \
+      -Dcryostat.agent.authorization.type="kubernetes" \
+      -Dcryostat.agent.callback=http://${POD_IP}:9977 \
+      -Dcryostat.agent.api.writes-enabled=true
+```
+
+1. Replace `/path/to/cryostat-agent-shaded.jar` with the real path to the **JAR** on your workstation
+2. Replace `my-namespace` with the namespace your application is deployed in
+3. Replace `mypod` with the name of your application's Pod
+4. Replace `mycontainer` with the name of your application's container within its Pod (or remove this if it is the only container in the Pod)
+5. Replace `http://cryostat:8181` with the correct internal Service URL for your **Cryostat** server within the same **Kubernetes** cluster
+6. Replace `${POD_IP}` with the application Pod's IP Address as found in its Status using `kubectl get -o yaml`
+
+By following this procedure you will copy the **Cryostat Agent JAR** into the application's filesystem (`kubectl cp`), then launch the
+**Agent** as a Java process (`kubectl exec`). When the **Agent** is launched in this manner it will look for other Java processes. If it
+finds exactly one other Java process then it will use that process' Attach API and ask the JVM to load the Agent's **JAR**, passing its
+`-D` arguments over and setting them as system properties in the application JVM after the Attach API loads the **JAR**. If you have multiple
+Java processes running within the application container then you can either specify a particular PID to the **Cryostat Agent** so that it
+only attaches to that JVM, or you can use the wildcard `*` asterisk so that the Agent attaches to every JVM it finds (other than its own
+bootstrap JVM). You can run the **Agent** with the `-h` flag to get details about its options:
+
+```bash
+$ java -jar cryostat-agent-{{site.data.versions.agent.version}}-shaded.jar -h
+Usage: CryostatAgent [-hV] [-D=<String=String>]...
+                     [--smartTrigger=<smartTriggers>]... [@<filename>...]
+                     [<pid>]
+Launcher for Cryostat Agent to self-inject and dynamically attach to workload
+JVMs
+      [@<filename>...]   One or more argument files containing options.
+      [<pid>]            The PID to attach to and attempt to self-inject the
+                           Cryostat Agent. If not specified, the Agent will
+                           look to find exactly one candidate and attach to
+                           that, failing if none or more than one are found.
+                           Otherwise, this should be a process ID, or the '*'
+                           wildcard to request the Agent attempt to attach to
+                           all discovered JVMs.
+  -D, --property=<String=String>
+                         Optional property definitions to supply to the
+                           injected Agent copies to add or override property
+                           definitions once the Agent is running in the
+                           workload JVM. These should be specified as key=value
+                           pairs, ex. -Dcryostat.agent.baseuri=http://cryostat.
+                           service.local . May be specified more than once.
+  -h, --help             Show this help message and exit.
+      --smartTrigger=<smartTriggers>
+                         Smart Triggers definition. May be specified more than
+                           once.
+  -V, --version          Print version information and exit.
+```
+
+*Note*: this procedure will only attach the **Cryostat Agent** to the application once, for the application process' current lifecycle. If the
+application process is restarted then the **Agent** will no longer be loaded, and you will need to perform the steps above again to re-attach it.
+If you scale up your application so there are more Replicas then these additional instances will also not have the **Agent** attached. This
+workflow is useful primarily for one-off troubleshooting or profiling scenarios. If you find yourself performing these steps often then
+consider [statically attaching the Agent](#statically-attaching-the-cryostat-agent) so that the configuration for attaching it occurs at
+every application startup.
+
+###### [Statically Attaching the Cryostat Agent](#statically-attaching-the-cryostat-agent)
 
 The **Cryostat Agent** **JAR** must be available to your application **JVM**. The **JAR** asset can be downloaded [directly from upstream](https://github.com/cryostatio/cryostat-agent/packages),
 or from [Maven Central](https://mvnrepository.com/artifact/io.cryostat/cryostat-agent). For most use cases the `-shaded` **JAR** would be appropriate.
@@ -331,8 +439,25 @@ COPY target/dependency/cryostat-agent-shaded.jar /deployments/app/
 ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent-shaded.jar"
 ```
 
-Next we must rebuild our container image. This is specific to your application but will likely look something like `docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile .`.
-Push that updated image or otherwise get it updated in your **Kubernetes** registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
+The **Cryostat Agent** is also available as an **OCI Container Image** on [quay.io](https://quay.io/repository/cryostat/cryostat-agent-init).
+We can use this directly in our application **Dockerfile** in a multi-stage build, rather than downloading the **Agent** **JAR** from GitHub or Maven Central:
+
+```Dockerfile
+ARG cryostat_agent_version
+
+FROM quay.io/cryostat/cryostat-agent-init:${cryostat_agent_version} AS cryostat_agent
+
+FROM ${application_base_img}
+COPY --from=cryostat_agent /cryostat/agent/cryostat-agent-shaded.jar /deployments/app/cryostat-agent-shaded.jar
+...
+# Assume we are using an application framework where the JAVA_OPTS environment variable can be used to pass JVM flags
+ENV JAVA_OPTS="-javaagent:/deployments/app/cryostat-agent-shaded.jar"
+```
+
+Next we must rebuild our container image. This is specific to your application but will likely look something like
+`docker build -t docker.io/myorg/myapp:latest -f src/main/docker/Dockerfile --build-arg cryostat_agent_version={{ site.data.versions.agent.version }} .`
+(omit the `--build-arg` if you are not using the multi-stage build step above). Push that updated image or otherwise get it updated in your
+**Kubernetes** registry, then modify your application `Deployment` to supply **JVM** system properties or environment variables configuring
 the **Cryostat Agent**:
 
 ```yaml
@@ -355,14 +480,16 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-            - name: CRYOSTAT_AGENT_BASEURI
               # Update this to correspond to the name of your Cryostat instance
-              # if it is not 'cryostat'. This assumes that the target application
-              # and the Cryostat instance are in the same Namespace, but you may
-              # choose to configure the Agent to communicate with a Cryostat in
+              # if it is not 'cryostat'.
+            - name: CRYOSTAT_INSTANCE_NAME
+              value: cryostat
+            - name: CRYOSTAT_AGENT_BASEURI
+              # This assumes that the target application # and the Cryostat instance are in the same
+              # Namespace, but you may choose to configure the Agent to communicate with a Cryostat in
               # a different Namespace, too.
               # (https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-              value: https://cryostat.$(NAMESPACE).svc.cluster.local:8181
+              value: https://$(CRYOSTAT_INSTANCE_NAME).$(NAMESPACE).svc.cluster.local:4180
             - name: CRYOSTAT_AGENT_API_WRITES_ENABLED
               # Set this to 'true' to turn on the "write" or "mutation" capabilities of the
               # Agent's HTTP API. This defaults to 'false', so the Agent HTTP API only exposes
@@ -379,12 +506,23 @@ spec:
               # Kubernetes Downward API. Use this value directly as provided. The port number
               # 9977 can be changed but must match the containerPort below.
               value: "http://$(POD_IP):9977"
-              # Replace "abcd1234" with an authentication token. For example, on OpenShift,
-              # do 'oc whoami --show-token' in your terminal to retrieve your user account's token.
-              # You may use this as the token that the Agent will pass to authorize itself
-              # with the Cryostat server.
-            - name: CRYOSTAT_AGENT_AUTHORIZATION
-              value: "Bearer abcd1234"
+              # This tells the Agent to look for its Kubernetes serviceaccount token mounted to
+              # its own Pod at the default filesystem path, and use the token there for Bearer
+              # Authorization to the Cryostat instance. This should be the correct behaviour in
+              # most scenarios and allows you to configure the serviceaccount's authorization by
+              # using standard Kubernetes RBAC for the application Pod's serviceaccount.
+            - name: CRYOSTAT_AGENT_AUTHORIZATION_TYPE
+              value: kubernetes
+
+              # These two environment variables should not be set in a production environment.
+              # For development and testing it can be useful to disable TLS trust and hostname
+              # verification. In practice, you should provide the Agent with the Cryostat instance's
+              # TLS certificate so that the Agent can trust it and only establish connections to
+              # that trusted instance. Configuration of the Agent's TLS trust is covered elsewhere.
+            - name: CRYOSTAT_AGENT_WEBCLIENT_TLS_TRUST_ALL
+              value: "true"
+            - name: CRYOSTAT_AGENT_WEBCLIENT_TLS_VERIFY_HOSTNAME
+              value: "false"
           ports:
             - containerPort: 9977
               protocol: TCP
@@ -393,10 +531,9 @@ spec:
 status: {}
 ```
 
-Port number `9977` is the default HTTP port that the **Agent** exposes for its internal webserver that services **Cryostat** requests. The `CRYOSTAT_AGENT_AUTHORIZATION` value is particularly
-noteworthy: these are the credentials that the **Agent** will include in API requests it makes to **Cryostat** to advertise its own presence. You should create a **Kubernetes** `Service Account` for
-this purpose and replace `abcd1234` with the authentication token associated with the service account. For testing purposes you may use your own user account's
-authentication token, for example with `oc whoami --show-token`.
+Port number `9977` is the default HTTP port that the **Agent** exposes for its internal webserver that services **Cryostat** requests.
+If this port number conflicts with another port used by your application, be sure to change both the `ports.containerPort` spec
+as well as the `CRYOSTAT_AGENT_CALLBACK` environment variable.
 
 Finally, create a `Service` to enable **Cryostat** to make requests to this **Agent**:
 
@@ -420,84 +557,6 @@ of the **Cryostat Agent** HTTP API as possible, then continue to [the next secti
 to enable and expose **JMX** for remote management and data access. If the **Cryostat Agent** detects that the application it is attached
 to has **JMX** enabled then it will publish itself to the **Cryostat** server with both an **Agent** HTTP URL and a **JMX** URL. If **JMX**
 is not detected then it will only publish the HTTP URL.
-
-##### [Dynamically Attaching the Cryostat Agent](#dynamically-attaching-the-cryostat-agent)
-
-Starting with **Cryostat** 3.0 and **Cryostat Agent** 0.4 it is possible to attach the **Cryostat Agent** to your application while the
-application is running, with no rebuild, redeployment, or restart. To do this, the **Agent JAR** must still be available in your application's
-filesystem (see [above](#statically-attaching-the-cryostat-agent) for details on how and where to acquire it), and you must be able to execute
-a new Java process in the same space as the application.
-
-Let's make this concrete with an example. We will assume you are running your application in **Kubernetes** and that you have manually downloaded
-the **Cryostat Agent JAR** to your workstation.
-
-```bash
-$ kubectl cp \
-    /path/to/cryostat-agent-shaded.jar \
-    -n my-namespace \
-    mypod:/tmp/cryostat/cryostat-agent-shaded.jar
-$ kubectl exec \
-    -n my-namespace \
-    mypod -c mycontainer \
-    -i -t -- \
-      java -jar /tmp/cryostat/cryostat-agent-shaded.jar \
-      -Dcryostat.agent.baseuri=http://cryostat:8181 \
-      -Dcryostat.agent.authorization="Bearer ${MY_AUTH_TOKEN}" \
-      -Dcryostat.agent.callback=http://${POD_IP}:9977 \
-      -Dcryostat.agent.api.writes-enabled=true
-```
-
-1. Replace `/path/to/cryostat-agent-shaded.jar` with the real path to the **JAR** on your workstation
-2. Replace `my-namespace` with the namespace your application is deployed in
-3. Replace `mypod` with the name of your application's Pod
-4. Replace `mycontainer` with the name of your application's container within its Pod (or remove this if it is the only container in the Pod)
-5. Replace `http://cryostat:8181` with the correct internal Service URL for your **Cryostat** server within the same **Kubernetes** cluster
-6. Replace `${MY_AUTH_TOKEN}` with your own **Kubernetes** auth token, or one belonging to a Service Account you have created for this purpose
-7. Replace `${POD_IP}` with the application Pod's IP Address as found in its Status using `kubectl get -o yaml`
-
-By following this procedure you will copy the **Cryostat Agent JAR** into the application's filesystem (`kubectl cp`), then launch the
-**Agent** as a Java process (`kubectl exec`). When the **Agent** is launched in this manner it will look for other Java processes. If it
-finds exactly one other Java process then it will use that process' Attach API and ask the JVM to load the Agent's **JAR**, passing its
-`-D` arguments over and setting them as system properties in the application JVM after the Attach API loads the **JAR**. If you have multiple
-Java processes running within the application container then you can either specify a particular PID to the **Cryostat Agent** so that it
-only attaches to that JVM, or you can use the wildcard `*` asterisk so that the Agent attaches to every JVM it finds (other than its own
-bootstrap JVM). You can run the **Agent** with the `-h` flag to get details about its options:
-
-```bash
-$ java -jar cryostat-agent-{{site.data.versions.agent.version}}-shaded.jar -h
-Usage: CryostatAgent [-hV] [-D=<String=String>]...
-                     [--smartTrigger=<smartTriggers>]... [@<filename>...]
-                     [<pid>]
-Launcher for Cryostat Agent to self-inject and dynamically attach to workload
-JVMs
-      [@<filename>...]   One or more argument files containing options.
-      [<pid>]            The PID to attach to and attempt to self-inject the
-                           Cryostat Agent. If not specified, the Agent will
-                           look to find exactly one candidate and attach to
-                           that, failing if none or more than one are found.
-                           Otherwise, this should be a process ID, or the '*'
-                           wildcard to request the Agent attempt to attach to
-                           all discovered JVMs.
-  -D, --property=<String=String>
-                         Optional property definitions to supply to the
-                           injected Agent copies to add or override property
-                           definitions once the Agent is running in the
-                           workload JVM. These should be specified as key=value
-                           pairs, ex. -Dcryostat.agent.baseuri=http://cryostat.
-                           service.local . May be specified more than once.
-  -h, --help             Show this help message and exit.
-      --smartTrigger=<smartTriggers>
-                         Smart Triggers definition. May be specified more than
-                           once.
-  -V, --version          Print version information and exit.
-```
-
-*Note*: this procedure will only attach the **Cryostat Agent** to the application once, for the application process' current lifecycle. If the
-application process is restarted then the **Agent** will no longer be loaded, and you will need to perform the steps above again to re-attach it.
-If you scale up your application so there are more Replicas then these additional instances will also not have the **Agent** attached. This
-workflow is useful primarily for one-off troubleshooting or profiling scenarios. If you find yourself performing these steps often then
-consider [statically attaching the Agent](#statically-attaching-the-cryostat-agent) so that the configuration for attaching it occurs at
-every application startup.
 
 ##### [Using JMX](#using-jmx)
 **Cryostat** is also able to use Java Management Extensions (**JMX**) to communicate with target applications. This is a standard JDK feature that can be enabled by passing **JVM**
@@ -560,51 +619,6 @@ application. In this case you may wish to use the [**Cryostat Agent**](#using-th
 communications over **JMX** rather than HTTP. If you do use the **Cryostat Agent** for discovery and **JMX** for remote management,
 you may combine both of the `Service` definitions into a single `Service` with two exposed `ports`.
 
-### [Alternate Setup](#alternate-setup)
-
-#### [Using ClusterCryostats](#using-clustercryostats)
-In [Deploying **Cryostat**](#deploying-cryostat), you created a single-namespace **Cryostat** Custom Resource
-(**CR**) instance.
-
-Single-namespace **Cryostat CRs** instruct the **Operator** to deploy restricted **Cryostat** instances which are only able
-to see target applications deployed in the same namespace as the **Cryostat** instance, which is the same `Namespace` that
-the **CR** is created within.
-
-If you chose to install the **Operator** in **All Namespaces** mode as assumed in this guide, you may also be interested in
-creating **CluterCryostat CRs**. In this configuration, the **Operator** is able to see **Cryostat** and **ClusterCryostat
-CRs** in any project (`Namespace`) and create **Cryostat** deployments corresponding to either **CR** kind in each of their
-respective **Namespaces**. Both of these **CRs** are **Namespace**-specific, and the **Namespace** is used to determine which
-**OpenShift** users are able to access the **Cryostat** instance. For more information, please see the following documents:
-- [Multi-namespace](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/multi-namespace.md).
-- [Authorization Properties](https://github.com/cryostatio/cryostat-operator/blob/{{site.data.versions.cryostat.release-branch}}/docs/config.md#authorization-properties)
-
-**ClusterCryostat CRs** instruct the **Operator** to deploy cross-namespace **Cryostat** instances. A **ClusterCryostat** has
-an `installNamespace`, which is the namespace where the **Cryostat Deployment** will reside, and a list of
-`targetNamespaces`, which are all of the namespaces that the **Cryostat** server will watch for target applications.
-The `targetNamespaces` list does not necessarily need to contain the `installNamespace`, if you do not want **Cryostat**
-to see itself in the target applications that it watches.
-
-```yaml
-apiVersion: operator.cryostat.io/v1beta1
-kind: ClusterCryostat
-metadata:
-  name: clustercryostat-sample
-spec:
-  enableCertManager: true
-  installNamespace: cryostat-testing
-  minimal: false
-  reportOptions:
-    resources: {}
-  storageOptions:
-    pvc:
-      spec:
-        resources: {}
-  targetNamespaces:
-  - cryostat-testing
-  - my-apps-a
-  - my-apps-b
-```
-
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed **Cryostat** and know how to access its
 **web client**, continue on to [Guides]({% link guides/index.md %}) for
@@ -612,9 +626,6 @@ guides through various common actions and workflows.
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
 Reference [**OLM**](https://olm.operatorframework.io/docs/tasks/uninstall-operator/#combine-steps-2-and-3)
-guide on uninstalling **Operators**. Please be sure to delete all **Cryostat** and **ClusterCryostat** Custom Resources before
-uninstalling the **Cryostat Operator**.
-- If your **Cryostat Operator** was installed in **All Namespaces** mode, then its **ClusterServiceVersion** and
-`Subscription` can be found in the **Namespace** **openshift-operators**.
-- If your **Cryostat Operator** was installed in **A specific Namespace**, then the **ClusterServiceVersion** and
-`Subscription` will be in that same **Namespace**.
+guide on uninstalling **Operators**.
+- Delete all **Cryostat** Custom Resources before uninstalling the **Cryostat Operator**.
+- The **Cryostat Operator**'s **ClusterServiceVersion** and `Subscription` can be found in the **Namespace** **openshift-operators**.

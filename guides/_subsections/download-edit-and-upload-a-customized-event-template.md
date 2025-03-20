@@ -17,13 +17,26 @@ all. It may be useful to use either of these as a starting point and tailor it
 to meet your specific monitoring/profiling needs by including/excluding events,
 increasing/decreasing sample rates, raising/lowering thresholds, etc.
 
-Of special note, **JFR** allows for the definition of application-specific custom
-events, which would not be captured in either of the default templates above.
+Of special note, **JFR** allows for the definition of application-specific or
+framework-level custom events, which would not be captured in either of the default
+templates above. You can [view all of the **JFR** *Event Types*](#view-jfr-event-types)
+for a *Target* application.
 
 **Cryostat** also provides the <code>ALL</code> meta-template, which enables all
 event types in the selected `target` application, with default values for each
 event option. This is not a true *Event Template* and does not have an `XML`
 definition to download.
+
+Finally, **Cryostat** also includes some *Preset Event Templates*. These behave like
+*Custom Event Templates* in that the event definition is stored by **Cryostat**, rather
+than the `target` application, but are handled separately can cannot be deleted
+like *Custom Event Templates*. *Preset Event Templates* can only be added to a **Cryostat**
+instance by adding files to a specific configuration directory and restarting **Cryostat**.
+
+The steps below assume that you have at least one *Target* discovered. If you select
+a discovered *Target* then you can use its templates as starting points for your
+customizations. If you do not first select a *Target* then you may still upload and
+delete **Custom Event Templates**.
 
 <ol>
   <li>
@@ -42,14 +55,14 @@ definition to download.
       necessary to add the <i>Target's</i> certificate to <b>Cryostat's</b> trust store. Go
       to <a href="{{ page.url }}#add-a-trusted-certificate">Add a Trusted Certificate</a>
       and return to this section after completing that guide.
-      <a href="{{ site.url }}/images/3.0.0/navigate-to-events-2.png" target="_blank">
-        <img src="{{ site.url }}/images/3.0.0/navigate-to-events-2.png">
+      <a href="{{ site.url }}/images/4.0.0/navigate-to-events-2.png" target="_blank">
+        <img src="{{ site.url }}/images/4.0.0/navigate-to-events-2.png">
       </a>
     </p>
     {% endcapture %}
     {% include howto_step.html
       summary="Navigate to Events"
-      image-name="3.0.0/navigate-to-events-1.png"
+      image-name="4.0.0/navigate-to-events-1.png"
       caption="
         Supply <b>JMX</b> credentials to authenticate to the target, if necessary. If
         the target is not configured with <b>JMX</b> authentication then the
@@ -61,7 +74,7 @@ definition to download.
   <li>
     {% include howto_step.html
       summary="Download the <i>Template</i>"
-      image-name="3.0.0/download-edit-and-upload-a-customized-event-template-1.png"
+      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-1.png"
       caption="
         Click the action overflow \"&#65049;\" <i>three-dot</i> menu on the right side of the
         template entry in the table, then click <i>Download</i>.
@@ -79,7 +92,7 @@ definition to download.
     {% endcapture %}
     {% include howto_step.html
       summary="Edit the <i>Template</i>"
-      image-name="3.0.0/download-edit-and-upload-a-customized-event-template-2.png"
+      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-2.png"
       caption=edit-template-additional-content
       text="
         Edit the <i>Template</i> definition to suit your requirements. When you are
@@ -97,7 +110,7 @@ definition to download.
   <li>
     {% include howto_step.html
       summary="Open the <i>Template</i> Upload Dialog"
-      image-name="3.0.0/download-edit-and-upload-a-customized-event-template-3.png"
+      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-3.png"
       caption="
         Back on the <i>Cryostat Events View</i>, click the <i>Upload Icon</i>
         in the table toolbar. A dialog will appear.
@@ -107,7 +120,7 @@ definition to download.
   <li>
     {% include howto_step.html
       summary="Upload the <i>Template</i>"
-      image-name="3.0.0/download-edit-and-upload-a-customized-event-template-4.png"
+      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-4.png"
       caption="
         Click the <i>Browse</i> button. Your browser will present its
         native file chooser dialog to select the file to upload. Browse and
@@ -120,7 +133,7 @@ definition to download.
   <li>
     {% include howto_step.html
       summary="Observe the new <i>Template</i>"
-      image-name="3.0.0/download-edit-and-upload-a-customized-event-template-5.png"
+      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-5.png"
       caption="
         Once the <i>Template</i> has been uploaded you will be returned to the
         <i>Events View</i>, and your template will be present in the

@@ -34,7 +34,7 @@ at a given point in time.
   <li>
     {% include howto_step.html
       summary="Switch to the <i>Snapshot Recording</i> tab"
-      image-name="3.0.0/snapshot-a-recording-1.png"
+      image-name="4.0.0/snapshot-a-recording-1.png"
       caption="
         Switch to the <i>Snapshot Recording</i> Tab and Click the <i>Create</i>
         button.
@@ -44,7 +44,7 @@ at a given point in time.
   <li>
     {% include howto_step.html
       summary="Observe the New <code>snapshot</code>"
-      image-name="3.0.0/snapshot-a-recording-2.png"
+      image-name="4.0.0/snapshot-a-recording-2.png"
       caption="
         After clicking the <i>Create</i> button you will be returned to the
         <i>Active Recordings</i> view and the new <code>snapshot</code> recording will be present

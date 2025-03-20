@@ -20,8 +20,8 @@ without going through the network stack.
       Search for <i>Custom Target</i> tab and click <i>Create</i> to open the
       <i>Custom Target</i> form.
       <figure>
-        <a href="{{ site.url }}/images/3.0.0/custom-target-1.png" target="_blank">
-          <img src="{{ site.url }}/images/3.0.0/custom-target-1.png">
+        <a href="{{ site.url }}/images/4.0.0/custom-target-1.png" target="_blank">
+          <img src="{{ site.url }}/images/4.0.0/custom-target-1.png">
         </a>
         <figcaption>
           Use the <i>Custom Target</i> form to tell <b>Cryostat</b> about <b>JVM</b>
@@ -32,7 +32,7 @@ without going through the network stack.
     {% endcapture %}
     {% include howto_step.html
       summary="Open the <i>Custom Target</i> Form"
-      image-name="3.0.0/topology-7.png"
+      image-name="4.0.0/topology-7.png"
       caption="Click on <i>Catalog Icon</i> to open the <i>Topology Entity Catalog</i>."
       text=open-custom-target-form-text
     %}
@@ -40,7 +40,7 @@ without going through the network stack.
   <li>
     {% include howto_step.html
       summary="Enter <i>Custom Target</i> Definition"
-      image-name="3.0.0/custom-target-2.png"
+      image-name="4.0.0/custom-target-2.png"
       caption="Use the form to enter the <i>Custom Target</i> definition."
       text="
       The <i>Connection URL</i> is required for <b>Cryostat</b> to attempt to
@@ -55,8 +55,8 @@ without going through the network stack.
         Once you enter a valid <i>Connection URL</i>, click on the sample <code>node</code> to test
         the <code>target</code> connection.
         <figure>
-          <a href="{{ site.url }}/images/3.0.0/custom-target-4.png" target="_blank">
-            <img src="{{ site.url }}/images/3.0.0/custom-target-4.png">
+          <a href="{{ site.url }}/images/4.0.0/custom-target-4.png" target="_blank">
+            <img src="{{ site.url }}/images/4.0.0/custom-target-4.png">
           </a>
           <figcaption>
             An exclamation mark and an alert banner will show if an error
@@ -66,14 +66,16 @@ without going through the network stack.
             policy, or if the JVM listening on the specified port requires
             JMX credentials that Cryostat does not have in its keyring, or
             if the JVM listening on the specified port presents an SSL/TLS
-            certificate which Cryostat does not trust.
+            certificate which Cryostat does not trust. Cryostat will also
+            refuse to add new Custom Target definitions for targets that it
+            has already discovered by other means.
           </figcaption>
         </figure>
       </p>
     {% endcapture %}
     {% include howto_step.html
       summary="Test the <i>Custom Target</i> Definition"
-      image-name="3.0.0/custom-target-3.png"
+      image-name="4.0.0/custom-target-3.png"
       caption="A &#9989; checkmark will show if <b>Cryostat</b> can connect to the sample app."
       text=test-custom-target-text
     %}
@@ -85,7 +87,7 @@ without going through the network stack.
   <li>
     {% include howto_step.html
       summary="View the <i>Custom Targets</i>"
-      image-name="3.0.0/custom-target-5.png"
+      image-name="4.0.0/custom-target-5.png"
       caption="The <i>Custom Target</i> will be available under <i>Custom Targets</i> realm."
       text="
           Once the <i>Custom Target</i> form is successfully submitted, you
@@ -97,7 +99,7 @@ without going through the network stack.
   <li>
     {% include howto_step.html
       summary="<i>(Optional)</i> Delete <i>Custom Targets</i>"
-      image-name="3.0.0/custom-target-6.png"
+      image-name="4.0.0/custom-target-6.png"
       caption="<i>Custom Targets</i> can be cleaned up with <i>Actions</i> menu."
       text="
       If the <i>Custom Targets</i> is no longer needed, in the target detail

@@ -17,7 +17,7 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
   <li>
       {% include howto_step.html
       summary="Navigate to the <i>Automated Rules</i> Tab"
-      image-name="3.0.0/create-an-automated-rule-1.png"
+      image-name="4.0.0/create-an-automated-rule-1.png"
       caption="Switch to the <i>Automated Rules</i> tab."
     %}
   </li>
@@ -27,7 +27,7 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
   <li>
       {% include howto_step.html
         summary="Configure the new <code>Automated Rule</code>"
-        image-name="3.0.0/create-an-automated-rule-2.png"
+        image-name="4.0.0/create-an-automated-rule-2.png"
         text="
       <p>
         <i>Name:</i> Enter a name for the new rule. The form will alert you if the name
@@ -82,9 +82,32 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
 }
 {% endhighlight %}
         </figure>
+        The following functions are also available in the <code>Expression</code> execution context:
+        <figure>
+{% highlight typescript %}
+/**
+* @param target the target context object
+* @returns a list of JFR Event Type IDs
+*/
+jfrEventTypeIds(target: Target): string[]
+{% endhighlight %}
+        </figure>
+        See also:
+        <ul>
+            <li><a href="#view-jfr-event-types">JFR Event Types</a></li>
+        </ul>
         <p>
-          The <i>alias, connectUrl, labels, annotations.platform,</i> and <i>annotations.cryostat</i> properties are all guaranteed to be present on the <code>target</code> object. <i>alias</i> and <i>connectUrl</i> will be non-empty strings. The <i>jvmId</i> is a hash string computed by Cryostat after it successfully connects to a <code>target</code> <b>JVM</b> and is used to uniquely identify that <b>JVM</b> instance - it will be empty if <b>Cryostat</b> has not yet connected to that <code>target</code> (for example, if its <a href="#add-a-trusted-certificate"><code>SSL/TLS</code> certificate is not trusted</a> or if <a href="#store-credentials"><b>Cryostat</b> is missing the required credentials</a>) The <i>labels</i> and <i>platform annotations</i> may be empty — in <b>OpenShift</b> or <b>Kubernetes</b>, these are populated from the labels and annotations applied to the <code>target</code>’s pod, if any. The <b>Cryostat</b> annotations map will vary per platform, but on <b>OpenShift</b> or <b>Kubernetes</b> you can expect the <i>HOST, PORT, NAMESPACE,</i> and <i>POD_NAME</i> keys to be present and non-empty. Take care to use the `has` or `in` operators when dealing with the <i>labels</i> and <i>annotations</i> map structures where specific keys may not exist.
-
+          The <i>alias, connectUrl, labels, annotations.platform,</i> and <i>annotations.cryostat</i> properties are all guaranteed to be present on the <code>target</code> object. <i>alias</i> and <i>connectUrl</i> will be non-empty strings. The <i>jvmId</i> is a hash string computed by Cryostat after it successfully connects to a <code>target</code> <b>JVM</b> and is used to uniquely identify that <b>JVM</b> instance - it will be empty if <b>Cryostat</b> has not yet connected to that <code>target</code> (for example, if its <a href="#add-a-trusted-certificate"><code>SSL/TLS</code> certificate is not trusted</a> or if <a href="#store-credentials"><b>Cryostat</b> is missing the required credentials</a>) The <i>labels</i> and <i>platform annotations</i> may be empty — in <b>OpenShift</b> or <b>Kubernetes</b>, these are populated from the labels and annotations applied to the <code>target</code>’s pod, if any. The <b>Cryostat</b> annotations map will vary per platform, but on <b>OpenShift</b> or <b>Kubernetes</b> you can expect the <i>HOST, PORT, NAMESPACE,</i> and <i>POD_NAME</i> keys to be present and non-empty. Take care to use the <code>has</code> or <code>in</code> operators when dealing with the <i>labels</i> and <i>annotations</i> map structures where specific keys may not exist.
+        </p>
+        <p>
+            The <code>Expression</code> also has a <code>jfrEventTypeIds</code> function in global scope, which takes the <code>target</code> object as a parameter and returns a list of <code>string</code>s corresponding to the <b>Flight Recorder Event Types</b> registered in the <code>target</code> <b>JVM</b>.
+        </p>
+        <figure>
+{% highlight typescript %}
+jfrEventTypeIds(target: Target): string[];
+{% endhighlight %}
+        </figure>
+        <p>
           Here are some examples of <code>Match Expressions</code>:
         </p>
         <figure>
@@ -105,6 +128,8 @@ has(target.annotations.cryostat.PORT) && 'io.kubernetes/annotation' in target.an
 !('io.kubernetes/annotation' in target.annotations.platform)
 
 target.alias.matches("^customer-login[0-9]\*$")
+
+jfrEventTypeIds(target).exists(t, t.startsWith('myorg.myapp.'))
 {% endhighlight %}
 
 </figure>
@@ -114,7 +139,7 @@ target.alias.matches("^customer-login[0-9]\*$")
   <li>
       {% include howto_step.html
         summary="Check your <code>Match Expression</code>"
-        image-name="3.0.0/create-an-automated-rule-3.png"
+        image-name="4.0.0/create-an-automated-rule-3.png"
         caption="You can select a <code>target</code> <b>JVM</b> to view its properties and use them to build your <code>Match Expression</code>."
         text="
           <p>
@@ -126,7 +151,7 @@ target.alias.matches("^customer-login[0-9]\*$")
   <li>
       {% include howto_step.html
         summary="<i>(Optional)</i> Adjust <i>Rule Parameters</i>"
-        image-name="3.0.0/create-an-automated-rule-4.png"
+        image-name="4.0.0/create-an-automated-rule-4.png"
         caption="
           Optionally set the <code>Recording</code> Options and <i>Rule Parameters.</i>"
         text="
@@ -148,7 +173,7 @@ target.alias.matches("^customer-login[0-9]\*$")
   <li>
       {% include howto_step.html
         summary="Observe the new Rule in the <i>Automated Rules</i> Table"
-        image-name="3.0.0/create-an-automated-rule-5.png"
+        image-name="4.0.0/create-an-automated-rule-5.png"
         caption="
           The new rule will appear in the <i>Automated Rules</i> table."
       %}
@@ -159,7 +184,7 @@ target.alias.matches("^customer-login[0-9]\*$")
   <li>
       {% include howto_step.html
         summary="Observe the automatically generated <code>Recording</code> in the <i>Active Recordings</i> Table"
-        image-name="3.0.0/create-an-automated-rule-6.png"
+        image-name="4.0.0/create-an-automated-rule-6.png"
         caption="
           Switch to the <i>Recordings</i> tab and view the new <code>Recording</code> in the <i>Active Recordings</i>
           table."
