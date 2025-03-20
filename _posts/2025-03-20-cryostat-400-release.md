@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cryostat 4.0.0 is Released!
-date: 2025-03-19
+date: 2025-03-20
 synopsis: Cryostat 4.0.0 is here. Learn what's new in this release.
 author: Andrew Azores
 ---
