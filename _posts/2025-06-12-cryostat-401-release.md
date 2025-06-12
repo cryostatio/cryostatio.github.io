@@ -30,7 +30,7 @@ uncovered with the previous 4.0.0 feature release.
 11. **Cryostat Operator** `reports` sidecars are correctly configured so that they handle automated analysis report generations
 12. **Cryostat OpenShift Console Plugin** `proxy` handles connection failures to upstream Cryostat instances gracefully, avoiding proxy restart
 13. **Cryostat OpenShift Console Plugin** `dashboard` correctly updates *MBean Metrics* charts
-14. **Cryostat Storage** `volumes` configuration by the entrypoint script respect the underlying implementation's enforced limits
+14. **Cryostat Storage** `volumes` configuration by the entrypoint script respects the underlying implementation's enforced limits
 
 For further details on these items, [check the GitHub Discussions release announcement](https://github.com/cryostatio/cryostat/discussions/938).
 
