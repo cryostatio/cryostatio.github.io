@@ -30,3 +30,23 @@ uncovered with the previous 4.0.0 feature release.
 11. **Cryostat Operator** `reports` sidecars are correctly configured so that they handle automated analysis report generations
 12. **Cryostat OpenShift Console Plugin** `proxy` handles connection failures to upstream Cryostat instances gracefully, avoiding proxy restart
 13. **Cryostat OpenShift Console Plugin** `dashboard` correctly updates *MBean Metrics* charts
+14. **Cryostat Storage** `volumes` configuration by the entrypoint script respect the underlying implementation's enforced limits
+
+For further details on these items, [check the GitHub Discussions release announcement](https://github.com/cryostatio/cryostat/discussions/938).
+
+## Where can I get the latest version of Cryostat?
+You can install Cryostat using our
+[Kubernetes operator on OperatorHub.io](https://operatorhub.io/operator/cryostat-operator)
+or via a
+[Helm Chart](https://github.com/cryostatio/cryostat-helm/releases/tag/v2.0.1)
+. As always, you can also run Cryostat in other environments with a little more manual setup.
+
+If this is your first time installing Cryostat on Kubernetes, you can [Get Started](/get-started) right here on this
+website.
+
+If you had previously installed Cryostat Operator 4.0.0 with OLM, then you may have already been upgraded to 4.0.1, or
+else you should be able to approve and install the upgrade.
+
+## Feedback
+Please reach out to the [Cryostat mailing list](mailto:cryostat-development@googlegroups.com) or
+[GitHub Discussion](https://github.com/cryostatio/cryostat/discussions/938) with any questions or comments.
