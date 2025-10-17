@@ -1,6 +1,6 @@
 cryostat:
   version: '4.1.0'
-  release-branch: 'cryostat-v4.0'
+  release-branch: 'cryostat-v4.1'
 agent:
   version: '0.6.0'
 openshift:
