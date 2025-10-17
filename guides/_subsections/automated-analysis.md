@@ -32,7 +32,7 @@ for use in the *Dashboard*. Read the section on the
   <li>
     {% include howto_step.html
       summary="Expand the <code>Recording</code>"
-      image-name="4.0.0/automated-analysis-1.png"
+      image-name="4.1.0/automated-analysis-1.png"
       caption="
         Expand the <code>Recording</code> with the <i>Chevron</i> to the left of the <code>Recording</code>
         name. The <code>Automated Analysis</code> report will appear below the <code>Recording</code>.
@@ -42,7 +42,7 @@ for use in the *Dashboard*. Read the section on the
   <li>
     {% include howto_step.html
       summary="View Details and Suggestions for Results"
-      image-name="4.0.0/automated-analysis-2.png"
+      image-name="4.1.0/automated-analysis-2.png"
       caption="
         Click on each result to view
         specifics on what the result means and possible suggestions to fix

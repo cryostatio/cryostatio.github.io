@@ -12,7 +12,7 @@
       {% endcapture %}
       {% include howto_step.html
         summary="Add the <i>Diagnostics</i> <code>Card</code>"
-        image-name="4.0.0/dashboard/add-diagnostics-card.png"
+        image-name="4.1.0/dashboard/add-diagnostics-card.png"
         caption="Click on the <i>Diagnostics</i> <code>card</code> for a preview."
         text=perform-garbage-collection-text
       %}
@@ -25,7 +25,7 @@
     {% endcapture %}
     {% include howto_step.html
       summary="Finish <code>Card</code> Creation"
-      image-name="4.0.0/dashboard/diagnostics-card.png"
+      image-name="4.1.0/dashboard/diagnostics-card.png"
       caption="The <i>Diagnostics</i> <code>card</code> displayed on the dashboard."
       text=diagnostics-card-finish
     %}
