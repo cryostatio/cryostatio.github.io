@@ -10,7 +10,7 @@
         Currently <b>Cryostat</b> supports invoking garbage collection, capturing Thread Dumps, and capturing Heap Dumps on <code>target</code> <b>JVMs</b>. Capturing Heap Dumps additionally requires a <b>Cryostat Agent</b> connection.
       </p>
       <p>
-        <b>Heap Dumps</b> are a profiling tool that is built into the JVM. They allow you to capture a snapshot of all the memory currently in use within a JVM Process at a specific moment in time. They proide detailed information about all Java objects and classes residing in memory at the time that aid in diagnosing performance issues, memory leaks, and othe rproblems with memory usage.
+        <b>Heap Dumps</b> are a profiling tool that is built into the JVM. They allow you to capture a snapshot of all the memory currently in use within a JVM Process at a specific moment in time. They provide detailed information about all Java objects and classes residing in heap memory at the time that aid in diagnosing performance issues, memory leaks, and othe problems with memory usage.
       </p>
       {% endcapture %}
       {% include howto_step.html
@@ -23,12 +23,12 @@
     <li>
       {% capture diagnostics-card-finish %}
       <p>
-        After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard. You can click the <i>Invoke Heap Dump</i> button in the middle of the <code>card</code> at any time to trigger a thread dump that will then be uploaded to the archives. If the button is disabled check that the target is a <b>Cryostat Agent</b> target
+        After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard. You can click the <i>Invoke Heap Dump</i> button in the middle of the <code>card</code> at any time to trigger a heap dump that will then be uploaded to the archives. If the button is disabled check that the target is a <b>Cryostat Agent</b> target
     </p>
     {% endcapture %}
     {% include howto_step.html
       summary="Finish <code>Card</code> Creation"
-      image-name="4.1.0/diagnostics-card.png"
+      image-name="4.1.0/dashboard/diagnostics-card.png"
       caption="The <i>Diagnostics</i> <code>card</code> displayed on the dashboard."
       text=diagnostics-card-finish
     %}

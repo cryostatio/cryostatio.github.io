@@ -25,11 +25,7 @@
     {% endcapture %}
     {% include howto_step.html
       summary="Finish <code>Card</code> Creation"
-<<<<<<< HEAD
-      image-name="4.1.0/diagnostics-card.png"
-=======
       image-name="4.1.0/dashboard/diagnostics-card.png"
->>>>>>> upstream/release-410
       caption="The <i>Diagnostics</i> <code>card</code> displayed on the dashboard."
       text=diagnostics-card-finish
     %}
