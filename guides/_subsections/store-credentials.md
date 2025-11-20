@@ -7,7 +7,7 @@ before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
   <li>
     {% include howto_step.html
       summary="Navigate to the <i>Security</i> tab"
-      image-name="4.0.0/navigate-to-security.png"
+      image-name="4.1.0/navigate-to-security.png"
       text="
         First, navigate to the <i>Security</i> tab. The <i>Store Credentials</i> table
         lists all credentials in <b>Cryostat's</b> <code>Keyring</code>. Click <i>Add</i> to define
@@ -18,7 +18,7 @@ before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
   <li>
     {% include howto_step.html
       summary="Enter your Credentials"
-      image-name="4.0.0/store-credentials-1.png"
+      image-name="4.1.0/store-credentials-1.png"
       text="
           A modal will appear. You can select a <code>target</code> <b>JVM</b> to view its
           properties.
@@ -35,7 +35,7 @@ before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
   <li>
     {% include howto_step.html
       summary="Test your Credentials"
-      image-name="4.0.0/store-credentials-3.png"
+      image-name="4.1.0/store-credentials-3.png"
       text="
       Navigate to the <i>Test</i> tab to use the <i>Credential Test</i> table
       to check if the entered credential is valid for the matched <code>targets</code>.
@@ -66,7 +66,7 @@ before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
           (Alternative to Steps 1 and 2) Store Credentials when Connecting to a
           <code>Target</code> <b>JVM</b>
           "
-      image-name="4.0.0/navigate-to-recordings-1.png"
+      image-name="4.1.0/navigate-to-recordings-1.png"
       text="
         Alternatively, credentials may also be stored if you navigate to either
         the <i>Recordings</i> tab or the <i>Events</i> tab and select a <code>target</code>
@@ -80,7 +80,7 @@ before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
   <li>
     {% include howto_step.html
       summary="View your Stored Credentials"
-      image-name="4.0.0/store-credentials-2.png"
+      image-name="4.1.0/store-credentials-2.png"
       text="
         The <i>Store Credentials</i> table will update with a row for each of the credentials you have stored in the <code>Keyring</code>. The <i>matchExpression</i> is visible along with a count of the number of known <code>target</code> applications that these credentials will apply to. You can expand the row to display a list of those matched <code>target</code> applications. For security reasons it is not possible to view the stored <code>username</code> and <code>password</code> associated with a credential definition in the <code>Keyring</code>.
       "

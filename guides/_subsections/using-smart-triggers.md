@@ -56,6 +56,21 @@ This example uses the same custom trigger criteria as the preceding examples.
       </p>
     </details>
   </li>
+  <li>
+    <details>
+      <summary>Using a Configuration File</summary>
+      <p>
+      Smart Triggers may also be defined using a text file, then passing an environment variable or configuration property to the cryostat agent specifying the path to the file with the smart trigger definitions:
+      </p>
+      <pre>
+      - name: CRYOSTAT_AGENT_SMART_TRIGGER_CONFIG_PATH
+        value: "trigger-definitions.txt"
+      </pre>
+      <p>
+      This example uses the same custom trigger definition as the previous examples, written to a file called trigger-definitions.txt
+      </p>
+    </details>
+  </li>
 </ol>
 
 #### [General Syntax Rules for Custom Triggers](#general-syntax-rules-for-custom-triggers)

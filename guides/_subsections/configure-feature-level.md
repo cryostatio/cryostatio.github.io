@@ -10,7 +10,7 @@ For those reasons, *Beta* features are hidden by default in the **Cryostat** UI.
   <li>
     {% include howto_step.html
       summary="Locate the Advanced settings"
-      image-name="4.0.0/advanced-setting.png"
+      image-name="4.1.0/advanced-setting.png"
       text="
         The <i>Advanced</i> tab within this view contains a control to set the <b>Feature Level</b> of the UI. This is set to <i>Production</i> by default. You can enable additional features by setting this to <i>Beta</i>, with the aforementioned caveats in mind. Once this is set, a <i>Beta</i> badge will appear on the <b>Cryostat</b> application titlebar. Additional features enabled by this setting, such as <b>Dashboard</b> cards, will be labelled with a similar badge to indicate the feature level. If you set the feature level back to <i>Production</i> then any <i>Beta</i>-level features will be hidden from the UI again.
       "
