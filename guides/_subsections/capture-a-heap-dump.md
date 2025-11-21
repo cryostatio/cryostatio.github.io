@@ -1,4 +1,4 @@
-## [Capture a Heap Dump](#capture-a-thread-dump)
+## [Capture a Heap Dump](#capture-a-heap-dump)
 <ol>
     <li>
       {% capture capture-a-heap-dump-text %}
@@ -12,26 +12,16 @@
       <p>
         <b>Heap Dumps</b> are a profiling tool that is built into the JVM. They allow you to capture a snapshot of all the memory currently in use within a JVM Process at a specific moment in time. They provide detailed information about all Java objects and classes residing in heap memory at the time that aid in diagnosing performance issues, memory leaks, and othe problems with memory usage.
       </p>
+      <p>
+        You can click the <i>Invoke Heap Dump</i> button in the middle of the <code>card</code> at any time to trigger a heap dump that will then be uploaded to the archives. If the button is disabled check that the target is a <b>Cryostat Agent</b> target
+    </p>
       {% endcapture %}
       {% include howto_step.html
-        summary="Add the <i>Diagnostics</i> <code>Card</code>"
-        image-name="4.1.0/dashboard/add-diagnostics-card.png"
-        caption="Click on the <i>Diagnostics</i> <code>card</code> for a preview."
+        summary="Navigate to the <i>Diagnostics Page</i>"
+        image-name="4.1.0/capture-diagnostics-page.png"
+        caption="Click on <i>Capture/Diagnostics</i> on the sidebar."
         text=capture-a-heap-dump-text
       %}
-    </li>
-    <li>
-      {% capture diagnostics-card-finish %}
-      <p>
-        After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard. You can click the <i>Invoke Heap Dump</i> button in the middle of the <code>card</code> at any time to trigger a heap dump that will then be uploaded to the archives. If the button is disabled check that the target is a <b>Cryostat Agent</b> target
-    </p>
-    {% endcapture %}
-    {% include howto_step.html
-      summary="Finish <code>Card</code> Creation"
-      image-name="4.1.0/dashboard/diagnostics-card.png"
-      caption="The <i>Diagnostics</i> <code>card</code> displayed on the dashboard."
-      text=diagnostics-card-finish
-    %}
     </li>
     <li>
     <summary>Click the <i>Archive</i> button</summary>

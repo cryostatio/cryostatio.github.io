@@ -12,26 +12,16 @@
       <p>
         <b>Thread Dumps</b> are a profiling tool that is built into the <b>JVM</b>. They allow you to capture a snapshot of all the threads currently running within a <b>JVM</b> Process at a specific moment in time. They provide detailed information about each thread that aid in diagnosing performance issues, identifying deadlocks and determining other problems with concurrency.
       </p>
+      <p>
+        You can click the <i>Invoke Thread Dump</i> button in the middle of the <code>card</code> at any time to trigger a thread dump that will then be uploaded to the archives.
+    </p>
       {% endcapture %}
       {% include howto_step.html
-        summary="Add the <i>Diagnostics</i> <code>Card</code>"
-        image-name="4.1.0/dashboard/add-diagnostics-card.png"
-        caption="Click on the <i>Diagnostics</i> <code>card</code> for a preview."
+        summary="Navigate to the <i>Capture/Diagnostics</i> Page"
+        image-name="4.1.0/capture-diagnostics-page.png"
+        caption="Click on <i>Capture/Diagnostics</i> on the sidebar."
         text=capture-a-thread-dump-text
       %}
-    </li>
-    <li>
-      {% capture diagnostics-card-finish %}
-      <p>
-        After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard. You can click the <i>Invoke Thread Dump</i> button in the middle of the <code>card</code> at any time to trigger a thread dump that will then be uploaded to the archives.
-    </p>
-    {% endcapture %}
-    {% include howto_step.html
-      summary="Finish <code>Card</code> Creation"
-      image-name="4.1.0/dashboard/diagnostics-card.png"
-      caption="The <i>Diagnostics</i> <code>card</code> displayed on the dashboard."
-      text=diagnostics-card-finish
-    %}
     </li>
     <li>
     <summary>Click the <i>Archive</i> button</summary>
