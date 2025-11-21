@@ -15,7 +15,7 @@ In order to add a trusted certificate to Cryostat's custom truststore you must f
 This is controlled by the configuration property `ssl.truststore.dir` and defaults to `/truststore`. If you are deploying Cryostat manually in an
 environment like Podman or Docker Compose, you should create a volume containing the certificates and mount it to this location, or bind-mount a host
 directory to this location. If you are using the Cryostat Helm Chart then you should create Secrets containing each trusted certificate and mount
-each within this location. If you are using the Cryostat Operator, you should use the `.Spec.TrustedCertSecrets` `CR` property.
+each within this location. If you are using the Cryostat Operator, see the [section below](#preconfiguring-trusted-certificates-within-cryostat).
 
 Once you have loaded your additional certificates to the truststore you must restart the Cryostat container, since it can only load certificates
 into the JVM truststore at startup time. The container may be restarted automatically when you modify the configuration, depending on your deployment
@@ -33,6 +33,8 @@ certificate(s) within the truststore directory.
         %}
     </li>
 </ol>
+
+### [Preconfiguring Trusted Certificates within Cryostat](#preconfiguring-trusted-certificates-within-cryostat)
 
 Alternatively if deploying **Cryostat** in a **Kubernetes** environment with the **Cryostat Operator**, TLS Certs can be preconfigured in **Cryostat** when creating the custom resource. To begin, create a **Kubernetes** Secret containing the TLS Cert
 
