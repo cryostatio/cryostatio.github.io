@@ -7,7 +7,7 @@ application recording buffer into **Cryostat's** own archived storage.
 
 Once you've created a rule, **Cryostat** immediately matches it against all existing discovered `targets` and starts your `Flight Recording`. **Cryostat** will also apply the rule to newly discovered `targets` that match its definition. You can create multiple rules to match different subsets of `targets` or to layer different recording options for your needs.
 
-We'll walk through two use cases: `Continuous` monitoring in a containerized **JVM**, and `Custom` monitoring with **Kubernetes** labels or annotations.
+We'll walk through three use cases: `Continuous` monitoring in a containerized **JVM**, `Custom` monitoring with **Kubernetes** labels or annotations, and pre-configuring automated rules within **Cryostat**
 
 ### [Continuous Monitoring in a Containerized JVM](#continuous-monitoring-in-a-containerized-jvm)
 
@@ -223,3 +223,47 @@ With this rule definition in place, **Kubernetes** or **Red Hat OpenShift** user
 As an example, you might use or implement an `Operator` that monitors traffic flow or pod restarts and enables monitoring on pods after some criterion threshold is met, then disables it again if the `target` application's behavior returns to normal. As a **Kubernetes** administrator, you could receive a notification when this occurs and check the **Cryostat** archives to retrieve <code><b>JDK</b> Flight Recorder</code> data from the `target` application recorded during the problematic period, or you could view these `Archived Recordings` in **Cryostat’s Grafana** dashboard.
 
 <span style="color:red">**Note**</span>: An important caveat is that **Cryostat** does not watch for changes in the **Kubernetes** annotations or labels; it only watches to see if `target` applications appear or disappear. To apply the annotation to a `target` application, we must apply the annotation or label to the application *pod* (which will cause **Kubernetes** to roll out a new replica), and not to the deployment.
+
+### [Preconfiguring Automated Rules within Cryostat](#preconfiguring-automated-rules-within-cryostat)
+
+From **Cryostat** 4.1 onward, automated rules can be pre-configured within **Cryostat** and be loaded on startup. To begin, create a text file containing an automated rule definition, for an example:
+
+<figure>
+{% highlight json %}
+
+{
+  "name": "k8sMonitoring",
+  "description": "Enable the Demo template on any target with the jfrMonitoring=true annotation",
+  "matchExpression": "'jfrMonitoring' in target.annotations.platform && target.annotations.platform['jfrMonitoring']=='enabled'",
+  "eventSpecifier": "template=Demo,type=CUSTOM",
+  "archivalPeriodSeconds": 300,
+  "preservedArchives": 12
+}
+
+{% endhighlight %}
+
+</figure>
+
+Once this has been done, create a **ConfigMap** within **Kubernetes** or **Red Hat Openshift** from this text file
+
+```kubectl create configmap rule-configmap --from-file=automated-rule.json```
+
+or
+
+```oc create configmap rule-configmap --from-file=automated-rule.json```
+
+Now that this configMap has been created, when creating the **Cryostat Custom Resource** we can specify it, either through the **Red Hat Openshift** console under **Automated Rules** while creating the **Cryostat Custom Resource**, or through the **Custom Resource** YAML:
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta2
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+spec:
+  automatedRules:
+    - configMapName: rule-configmap
+      filename: automated-rule.json
+```
+
+Once the **Custom Resource** has been created, the rule will be pre-loaded into **Cryostat** and be available from startup without any further configuration needed.
+

@@ -33,3 +33,22 @@ certificate(s) within the truststore directory.
         %}
     </li>
 </ol>
+
+Alternatively if deploying **Cryostat** in a **Kubernetes** environment with the **Cryostat Operator**, TLS Certs can be preconfigured in **Cryostat** when creating the custom resource. To begin, create a **Kubernetes** Secret containing the TLS Cert
+
+```kubectl create secret generic application-cert --from-file=tlsCert.crt```
+
+Now that this Secret has been created, when creating the **Cryostat Custom Resource** we can specify it, either through the **Red Hat Openshift** console under **Trusted TLS Certificates** while creating the **Cryostat Custom Resource**, or through the **Custom Resource** YAML:
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta2
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+spec:
+  trustedCertSecrets:
+    - secretName: application-cert
+      certificateKey: tlsCert.crt
+```
+
+Once the **Custom Resource** has been created, the TLS Certificate will be pre-loaded into **Cryostat** and be available from startup without any further configuration needed.
