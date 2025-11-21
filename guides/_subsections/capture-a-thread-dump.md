@@ -13,7 +13,7 @@
         <b>Thread Dumps</b> are a profiling tool that is built into the <b>JVM</b>. They allow you to capture a snapshot of all the threads currently running within a <b>JVM</b> Process at a specific moment in time. They provide detailed information about each thread that aid in diagnosing performance issues, identifying deadlocks and determining other problems with concurrency.
       </p>
       <p>
-        You can click the <i>Invoke Thread Dump</i> button in the middle of the <code>card</code> at any time to trigger a thread dump that will then be uploaded to the archives.
+        You can click the <i>Invoke Thread Dump</i> button in the middle of the <code>card</code> at any time to trigger a <code>Thread Dump</code> that will then be uploaded to the archives.
     </p>
       {% endcapture %}
       {% include howto_step.html
@@ -35,7 +35,7 @@
         <code>target</code> <b>JVM's</b> <i>Thread Dumps</i> table. All <code>Thread Dumps</code> that were
         saved from the current <code>target</code> will be listed here in their own table.
         Switching to a different <code>target</code> from the dropdown will list only the
-        <code>Thread Dumps</code> archived from that source <code>target</code>. Alternatively, clearing the target will provide access to the All-Targets view. The name of the <code>Thread Dump</code> reflects the address of the <code>target</code> application.
+        <code>Thread Dumps</code> archived from that source <code>target</code>. Alternatively, clearing the target will provide access to the All-Targets view. There is also an All-Archives view that allows access to all <code>Thread Dumps</code> currently available in storage. The name of the <code>Thread Dump</code> reflects the address of the <code>target</code> application.
       "
     %}
   </li>
