@@ -17,14 +17,14 @@
     </p>
       {% endcapture %}
       {% include howto_step.html
-        summary="Navigate to the <i>Capture/Diagnostics</i> Page"
+        summary="Navigate to the <i>Diagnostics</i> Page"
         image-name="4.1.0/capture-diagnostics-page.png"
-        caption="Click on <i>Capture/Diagnostics</i> on the sidebar."
+        caption="Click on <i>Diagnostics/Capture</i> on the sidebar."
         text=capture-a-thread-dump-text
       %}
     </li>
     <li>
-    <summary>Click the <i>Archive</i> button</summary>
+    <summary>Click the <i>Invoke Thread Dump</i> button</summary>
   </li>
   <li>
     {% include howto_step.html
