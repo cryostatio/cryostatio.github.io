@@ -87,3 +87,43 @@ before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
     %}
   </li>
 </ol>
+
+### [Preconfiguring Stored Credentials within Cryostat](#preconfiguring-stored-credentials-within-cryostat)
+
+If deploying **Cryostat** in a **Kubernetes** environment through the **Cryostat Operator**, stored credentials can be preconfigured within **Cryostat**.
+
+To begin, create a text file containing a stored credential definition, for example:
+
+{% highlight json %}
+{
+  "matchExpression": "'jfrMonitoring' in target.annotations.platform && target.annotations.platform['jfrMonitoring']=='enabled'",
+  "username": "myuser",
+  "password": "changeit"
+}
+{% endhighlight %}
+
+Then create a **Secret** within **Kubernetes** or **Red Hat Openshift** from this text file:
+
+```yaml
+kubectl create secret generic application-credentials --from-file=credentials.json
+```
+
+or
+
+```yaml
+oc create secret generic application-credentials --from-file=credentials.json
+```
+
+Now that this Secret has been created, when creating the **Cryostat Custom Resource** we can specify it, either through the **Red Hat Openshift** console under **Stored Credentials** while creating the **Cryostat Custom Resource**, or through the **Custom Resource** YAML:
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta2
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+spec:
+  storedCredentials:
+    - secretName: application-credentials
+```
+
+Once the **Custom Resource** has been created, the credentials will be pre-loaded into **Cryostat** and be available from startup without any further configuration needed. 

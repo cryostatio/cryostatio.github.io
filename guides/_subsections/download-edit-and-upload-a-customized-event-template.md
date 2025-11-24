@@ -77,7 +77,7 @@ delete **Custom Event Templates**.
       image-name="4.1.0/download-edit-and-upload-a-customized-event-template-1.png"
       caption="
         Click the action overflow \"&#65049;\" <i>three-dot</i> menu on the right side of the
-        template entry in the table, then click <i>Download</i>.
+        template entry in the table, then click <i>Download</i>. Rename this file to custom-template.xml.
       "
     %}
   </li>
@@ -142,3 +142,30 @@ delete **Custom Event Templates**.
     %}
   </li>
 </ol>
+
+### [Preconfiguring Event Templates within Cryostat](#preconfiguring-event-templates-within-cryostat)
+
+If deploying **Cryostat** in a **Kubernetes** environment through the **Cryostat Operator**, custom event templates can be preconfigured within **Cryostat**.
+
+To begin, create a **ConfigMap** within **Kubernetes** or **Red Hat Openshift** from a custom template, [for example the one created in the previous section](#download-edit-and-upload-a-customized-event-template).
+
+```kubectl create configmap template-configmap --from-file=custom-template.xml```
+
+or
+
+```oc create configmap template-configmap --from-file=custom-template.xml```
+
+Now that this configMap has been created, when creating the **Cryostat Custom Resource** we can specify it, either through the **Red Hat Openshift** console under **Event Templates** while creating the **Cryostat Custom Resource**, or through the **Custom Resource** YAML:
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta2
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+spec:
+  eventTemplates:
+    - configMapName: template-configmap
+      filename: custom-template.xml
+```
+
+Once the **Custom Resource** has been created, the event template will be pre-loaded into **Cryostat** and be available from startup without any further configuration needed. 
