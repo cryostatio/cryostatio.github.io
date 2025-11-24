@@ -7,7 +7,7 @@ application recording buffer into **Cryostat's** own archived storage.
 
 Once you've created a rule, **Cryostat** immediately matches it against all existing discovered `targets` and starts your `Flight Recording`. **Cryostat** will also apply the rule to newly discovered `targets` that match its definition. You can create multiple rules to match different subsets of `targets` or to layer different recording options for your needs.
 
-We'll walk through three use cases: `Continuous` monitoring in a containerized **JVM**, `Custom` monitoring with **Kubernetes** labels or annotations, and pre-configuring automated rules within **Cryostat**
+We'll walk through three use cases: `Continuous` monitoring in a containerized **JVM**, `Custom` monitoring with **Kubernetes** labels or annotations, and pre-configuring automated rules within **Cryostat**.
 
 ### [Continuous Monitoring in a Containerized JVM](#continuous-monitoring-in-a-containerized-jvm)
 
@@ -244,7 +244,7 @@ From **Cryostat** 4.1 onward, automated rules can be pre-configured within **Cry
 
 </figure>
 
-Once this has been done, create a **ConfigMap** within **Kubernetes** or **Red Hat Openshift** from this text file
+Once this has been done, create a **ConfigMap** within **Kubernetes** or **Red Hat Openshift** from this text file:
 
 ```kubectl create configmap rule-configmap --from-file=automated-rule.json```
 

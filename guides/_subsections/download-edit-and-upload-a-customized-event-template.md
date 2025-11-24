@@ -77,7 +77,7 @@ delete **Custom Event Templates**.
       image-name="4.1.0/download-edit-and-upload-a-customized-event-template-1.png"
       caption="
         Click the action overflow \"&#65049;\" <i>three-dot</i> menu on the right side of the
-        template entry in the table, then click <i>Download</i>. Rename this file to custom-template.xml
+        template entry in the table, then click <i>Download</i>. Rename this file to custom-template.xml.
       "
     %}
   </li>
@@ -147,7 +147,7 @@ delete **Custom Event Templates**.
 
 If deploying **Cryostat** in a **Kubernetes** environment through the **Cryostat Operator**, custom event templates can be preconfigured within **Cryostat**.
 
-To begin, create a **ConfigMap** within **Kubernetes** or **Red Hat Openshift** from a custom template, [for example the one created in the previous section](#download-edit-and-upload-a-customized-event-template)
+To begin, create a **ConfigMap** within **Kubernetes** or **Red Hat Openshift** from a custom template, [for example the one created in the previous section](#download-edit-and-upload-a-customized-event-template).
 
 ```kubectl create configmap template-configmap --from-file=custom-template.xml```
 

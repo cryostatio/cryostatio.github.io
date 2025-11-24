@@ -36,7 +36,7 @@ certificate(s) within the truststore directory.
 
 ### [Preconfiguring Trusted Certificates within Cryostat](#preconfiguring-trusted-certificates-within-cryostat)
 
-Alternatively if deploying **Cryostat** in a **Kubernetes** environment with the **Cryostat Operator**, TLS Certs can be preconfigured in **Cryostat** when creating the custom resource. To begin, create a **Kubernetes** Secret containing the TLS Cert
+Alternatively if deploying **Cryostat** in a **Kubernetes** environment with the **Cryostat Operator**, TLS Certs can be preconfigured in **Cryostat** when creating the custom resource. To begin, create a **Kubernetes** Secret containing the TLS Cert.
 
 ```kubectl create secret generic application-cert --from-file=tlsCert.crt```
 
