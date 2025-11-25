@@ -35,8 +35,10 @@
         <code>target</code> <b>JVM's</b> <i>Thread Dumps</i> table. All <code>Thread Dumps</code> that were
         saved from the current <code>target</code> will be listed here in their own table.
         Switching to a different <code>target</code> from the dropdown will list only the
-        <code>Thread Dumps</code> archived from that source <code>target</code>. Alternatively, clearing the target will provide access to the All-Targets view. There is also an All-Archives view that allows access to all <code>Thread Dumps</code> currently available in storage. The name of the <code>Thread Dump</code> reflects the address of the <code>target</code> application.
+        <code>Thread Dumps</code> archived from that source <code>target</code>. Alternatively, clearing the target will provide access to the All-Targets view. There is also an All-Archives view that allows access to all <code>Thread Dumps</code> currently available in storage. 
       "
     %}
+    The name of the <code>Thread Dump</code> when downloaded reflects the address of the <code>target</code> application. Thread dumps also support labels similar to Archived Recordings. See     <a href="#add-and-edit-recording-metadata-labels">
+        Add and Edit Recording Metadata Labels</a>.
   </li>
 </ol>

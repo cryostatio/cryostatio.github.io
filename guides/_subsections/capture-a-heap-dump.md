@@ -35,8 +35,10 @@
         <code>target</code> <b>JVM's</b> <i>Heap Dumps</i> table. All <code>Heap Dumps</code> that were
         saved from the current <code>target</code> will be listed here in their own table.
         Switching to a different <code>target</code> from the dropdown will list only the
-        <code>Heap Dumps</code> archived from that source <code>target</code>. Alternatively, clearing the target will provide access to the All-Targets view. There is also an All-Archives view that allows access to all <code>Heap Dumps</code> currently available in storage. The name of the <code>Heap Dump</code> reflects the address of the <code>target</code> application.
+        <code>Heap Dumps</code> archived from that source <code>target</code>. Alternatively, clearing the target will provide access to the All-Targets view. There is also an All-Archives view that allows access to all <code>Heap Dumps</code> currently available in storage. 
       "
     %}
+    The name of the <code>Heap Dump</code> reflects the address of the <code>target</code> application. Heap dumps also support labels similar to Archived Recordings. See     <a href="#add-and-edit-recording-metadata-labels">
+        Add and Edit Recording Metadata Labels</a>.
   </li>
 </ol>
