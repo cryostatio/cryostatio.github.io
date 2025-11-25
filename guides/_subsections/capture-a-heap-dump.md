@@ -3,7 +3,7 @@
     <li>
       {% capture capture-a-heap-dump-text %}
       <p>
-        The <i>Diagnostics</i> <code>card</code> and Capture/Diagnostics page 
+        The <i>Diagnostics</i> <code>card</code> and Diagnostics/Capture page 
         allows you to perform diagnostic operations on a <code>target</code> <b>JVM</b> through remote access to supported <b>Java MXBeans</b>.
       </p>
       <p>
