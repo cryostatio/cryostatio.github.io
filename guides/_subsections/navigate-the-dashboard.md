@@ -155,33 +155,27 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
       text=automated-analysis-text
     %}
   </li>
-  <li>
-    {% capture configure-automated-analysis %}
+  {% capture automated-analysis-perform-text %}
+    <h4>Perform Analysis</h4>
     <p>
-      In the next steps of the <code>card</code> creation, you can optionally provide <i>Advanced Configuration</i>. You can configure the settings of the special <code>Recording</code> that is used to generate the report. The <i>Current Configuration</i> will be shown and can be edited by clicking the <i>Pencil icon</i>. By default, the <code>Recording</code> uses a <code>Continuous template</code>, a <code>Maximum size</code> of <code>10MB</code>, and a <code>0</code> second <code>Maximum age</code> (meaning an unlimited recording duration).
+        <figure>
+            <a href="{{ site.url }}/images/4.1.0/dashboard/automatedanalysis-noresult.png" target="_blank">
+                <img src="{{ site.url }}/images/4.1.0/dashboard/automatedanalysis-noresult.png" alt="Perform analysis">
+            </a>
+        </figure>
     </p>
-    <p>
-        <b style="color:red;">Note:</b> It is possible that setting both an infinite <code>maximum size</code> and <code>age</code> will result in an <code>Out Of Memory</code> error during report generation.
-    </p>
-    {% endcapture %}
-    {% include howto_step.html
-      summary="Configure the <i>Automated Analysis</i> <code>Card</code>"
-      image-name="4.1.0/dashboard/automatedanalysis-configuration.png"
-      caption="Click <i>Next</i> to optionally provide <i>Advanced Configuration</i>."
-      text=configure-automated-analysis
-    %}
-  </li>
+  {% endcapture %}
   <li>
     {% include howto_step.html
       summary="Finish <code>Card</code> Creation"
-      image-name="4.1.0/dashboard/automatedanalysis-errorview.png"
-      caption="The <code>card</code> will be added to the dashboard with an error view."
-      text="After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard with an error view. This is because the <code>card</code> has not yet detected a special <i>Automated Analysis</i> <code>Recording</code> to source reports from."
+      image-name="4.1.0/dashboard/automatedanalysis-createrecording.png"
+      caption="The <code>card</code> will be added to the dashboard with an empty state. The <code>Create a Recording</code> call to action will guide you through <a href='#startstop-a-recording'>recording creation</a> with suggested default settings. Return to the Dashboard once a recording has been started."
+      text=automated-analysis-perform-text
     %}
   </li>
   <li>
-      {% include howto_step.html
-      summary="Click <i>Create Recording</i>"
+    {% include howto_step.html
+      summary="View results"
       image-name="4.1.0/dashboard/automatedanalysis-success.png"
       caption="The <i>Automated Analysis</i> <code>card</code> displayed with a successful report."
       text="After clicking <i>Create Recording</i>, the <code>card</code> should be populated with report data containing the <i>Results</i> of the <i>Automated Analysis</i> report."
