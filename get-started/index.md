@@ -308,6 +308,7 @@ If you are:
 - unable to deploy an **Agent** to your application
 - requiring **JMX** connections only
 - requiring no-downtime instrumentation of **Agents**
+
 then the above automatic **Agent** configuration may not be suitable for your use case.
 Below are descriptions of how to manually attach the **Cryostat Agent** to your application.
 
