@@ -402,7 +402,7 @@ You may also include the Agent as a dependency in your application's `pom.xml` t
     <plugins>
       <plugin>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>{{ site.data.versions.maven-plugins.dependency.version }}</version>
         <executions>
           <execution>
             <phase>prepare-package</phase>

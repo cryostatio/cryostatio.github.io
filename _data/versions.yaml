@@ -13,6 +13,9 @@ operator-lifecycle-manager:
   version: '0.25.0'
 cert-manager:
   version: '1.13.6'
+maven-plugins:
+  dependency:
+    version: '3.9.0'
 documentation:
   - 'latest'
   - 4.0.0
