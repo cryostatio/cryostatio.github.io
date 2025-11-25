@@ -12,7 +12,7 @@
       {% endcapture %}
       {% include howto_step.html
         summary="Add the <i>Diagnostics</i> <code>Card</code>"
-        image-name="4.1.0/dashboard/add-diagnostics-card.png"
+        image-name="4.1.0/dashboard/diagnostics-preview.png"
         caption="Click on the <i>Diagnostics</i> <code>card</code> for a preview."
         text=perform-garbage-collection-text
       %}

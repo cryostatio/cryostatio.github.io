@@ -245,7 +245,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
     {% capture jfr-metrics-chart-text %}
     <p>
-      The <i>JFR Metrics Chart</i> <code>card</code> displays performance metrics about the <code>target</code> <b>JVM</b> by visualizing <b>JFR</b> data snapshots via embedded <b>Grafana</b> visualization panels as <i>Dashboard</i> cards. This <a href="#configure-feature-level"><i>Beta</i>-level feature</a>. A significant limitation of this card is that it depends upon the stateful <code>jfr-datasource</code> backend component, which only converts one <b>Flight Recording</b> file at a time to <i>Grafana</i> data. Therefore, this card does not behave well if multiple <b>web-client</b> instances are open at the same time, whether used by one user or multiple human users.
+      The <i>JFR Metrics Chart</i> <code>card</code> displays performance metrics about the <code>target</code> <b>JVM</b> by visualizing <b>JFR</b> data snapshots via embedded <b>Grafana</b> visualization panels as <i>Dashboard</i> cards. This is a <a href="#configure-feature-level"><i>Beta</i>-level feature</a>. A significant limitation of this card is that it depends upon the stateful <code>jfr-datasource</code> backend component, which only converts one <b>Flight Recording</b> file at a time to <i>Grafana</i> data. Therefore, this card does not behave well if multiple <b>web-client</b> instances are open at the same time, whether used by one user or multiple human users.
     </p>
     <p>
       <b>Cryostat</b> gathers typical <b>JFR</b> data from the selected <b>Target</b>and periodically updates the <b>Grafana</b> visualizations. You can customize each <code>card</code> by going through the card creation wizard. The wizard will guide you through the process of selecting the metrics you want to display, how you want to display them, and other various configuration options. Some examples of <code>Performance Metrics</code> that can be displayed are:
@@ -317,12 +317,14 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
     {% capture diagnostics-card-text %}
     <p>
-      The <i>Diagnostics</i> <code>card</code> allows you to perform non-metrics diagnostic actions against the selected <b>Target</b>. This <a href="#configure-feature-level"><i>Beta</i>-level feature</a>
+      The <i>Diagnostics</i> <code>card</code> allows you to perform non-metrics diagnostic actions against the selected <b>Target</b>. This is a <a href="#configure-feature-level"><i>Beta</i>-level feature</a>
     </p>
     <p>
       The following diagnostic actions are available:
       <ul>
         <li><i>Request JVM to perform Garbage Collection</i></li>
+        <li><i>Gather a JVM Thread Dump</i></li>
+        <li><i>Gather a JVM Heap Dump</i></li>
       </ul>
     </p>
     {% endcapture %}
