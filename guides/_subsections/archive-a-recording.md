@@ -36,20 +36,27 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a `snapshot`.
   <li>
     <summary>Click the <i>Archive</i> button</summary>
   </li>
+  {% capture archives-view-caption %}
+    Once the <code>Recording</code> has been archived, a new entry will appear in the
+    <code>target</code> <b>JVM's</b> <i>Archived Recordings</i> table.
+  {% endcapture %}
+  {% capture archives-view-text %}
+  <p>
+    All <code>Recordings</code> that were
+    saved from the current <code>target</code> will be listed here in their own table.
+    Switching to a different <code>target</code> from the dropdown will list only the
+    <code>Recordings</code> archived from that source <code>target</code>. The name of the <code>Archived
+    Recording</code> reflects the address of the <code>target</code> application, the original
+    name of the <code>Active Recording</code> that it was retrieved from, and includes a
+    <code>timestamp</code> indicating when the <code>Archived Recording</code> was created.
+  </p>
+  {% endcapture %}
   <li>
     {% include howto_step.html
       summary="Navigate to the <i>Flight Recorder/Analyze/Archives</i> view"
       image-name="4.1.0/archive-a-recording-2.png"
-      caption="
-        Once the <code>Recording</code> has been archived, a new entry will appear in the
-        <code>target</code> <b>JVM's</b> <i>Archived Recordings</i> table. All <code>Recordings</code> that were
-        saved from the current <code>target</code> will be listed here in their own table.
-        Switching to a different <code>target</code> from the dropdown will list only the
-        <code>Recordings</code> archived from that source <code>target</code>. The name of the <code>Archived
-        Recording</code> reflects the address of the <code>target</code> application, the original
-        name of the <code>Active Recording</code> that it was retrieved from, and includes a
-        <code>timestamp</code> indicating when the <code>Archived Recording</code> was created.
-      "
+      caption=archives-view-caption
+      text=archives-view-text
     %}
   </li>
 </ol>
