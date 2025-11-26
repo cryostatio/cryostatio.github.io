@@ -9,7 +9,7 @@
   {{ include.additional-content }}
 {% endcapture %}
 {% include howto_step.html
-  summary="Navigate to <i>Recordings</i>"
+  summary="Navigate to <i>Flight Recorder/Capture/Recordings</i>"
   image-name="4.1.0/navigate-to-recordings-1.png"
   caption="
     Supply <b>JMX</b> credentials to authenticate to the <code>target</code>, if necessary. If
