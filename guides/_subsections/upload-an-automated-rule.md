@@ -22,9 +22,17 @@ Below is an example of a rule file content:
 <ol>
   <li>
       {% include howto_step.html
-        summary="Open <i>Automated Rules</i> upload Prompt"
+      summary="Navigate to the <i>Flight Recorder/Capture/Automated Rules</i> Tab"
+      image-name="4.1.0/create-an-automated-rule-1.png"
+    %}
+  </li>
+  <li>
+    <summary>Click the <i>Upload</i> toolbar button</summary>
+  </li>
+  <li>
+      {% include howto_step.html
+        summary="Open <i>Automated Rules</i> upload modal"
         image-name="4.1.0/upload-an-automated-rule-1.png"
-        caption="Click on <i>Upload Icon</i> button to open upload prompt."
       %}
   </li>
   <li>

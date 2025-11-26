@@ -1,9 +1,9 @@
 ## [Viewing Archived Recordings](#viewing-archived-recordings)
-There are several ways to view <code>Archived Recordings</code>. The first method is to navigate to the <i>Archived Recordings</i> tab. See <a href="#archive-a-recording">Archive a Recording</a>.
+There are several ways to view <code>Archived Recordings</code>. The first method is to navigate to the <i>Flight Recorder/Analyze/Archives</i> view to list <code>Archived Recordings</code> belonging to a single target. See <a href="#archive-a-recording">Archive a Recording</a>.
 
 ### [All-Targets Archived Recordings View](#all-targets-archived-recordings-view)
 
-The second method is to navigate to the <i>All-Targets</i> archived recording view within the <i>Archives</i> tab on <b>Cryostat</b> console sidebar.
+The second method is to view the <i>All-Targets</i> archived recording table within the <i>Flight Recorder/Analyze/Archives</i> view on the <b>Cryostat</b> console sidebar.
 
 The <i>All-Targets</i> view gathers all of <b>Cryostat's</b> discovered <code>target</code> <b>JVM</b> applications into one section for ease of access. Here, we are able to interact with any <code>Archived Recordings</code> that have been saved from a source <code>target</code> by opening a target's nested recordings table.
 
@@ -11,13 +11,19 @@ The <i>All-Targets</i> view gathers all of <b>Cryostat's</b> discovered <code>ta
   <li>
     {% capture navigate-to-all-targets-include-text %}
     <p>
+        If you clear the <code>target</code> selection from the dropdown, the view will
+        change into a nested table format. The outer table will render a list of currently discovered
+        target applications. Expanding each of these table rows will reveal an inner table containing
+        the list of <code>Archived Recordings</code> retrieved from that target.
+    </p>
+    <p>
         The option to automatically hide all <code>targets</code> with zero <code>Archived Recordings</code> is on by default and can be toggled. <code>Targets</code> can also be filtered in the search bar.
     </p>
     {% endcapture %}
     {% include howto_step.html
         summary="Navigate to the <i>All-Targets</i> Archived Recordings view"
         image-name="4.1.0/navigate-to-all-targets.png"
-        caption="Click on the <i>Archives</i> tab on the sidebar, and the first tab should automatically be selected as the <i>All Targets</i> Archives view."
+        caption="Click on the <i>Flight Recorder/Analyze/Archives</i> route on the sidebar, and the first tab should automatically be selected as the <i>Targets</i> Archives view."
         text=navigate-to-all-targets-include-text
     %}
 
@@ -36,7 +42,7 @@ The <i>All-Targets</i> view gathers all of <b>Cryostat's</b> discovered <code>ta
 
 ### [All-Archives Archived Recordings View](#all-archives-archived-recordings-view)
 
-The third method is to navigate to the <i>All-Archives</i> <code>Archived Recording</code> view within the <i>Archives</i> tab on **Cryostat** console sidebar.
+The third method is to navigate to the <i>All-Archives</i> <code>Archived Recording</code> view within the <i>Flight Recorder/Analyze/Archives</i> view on the **Cryostat** console sidebar.
 
 The *All-Archives* view is a view which queries **Cryostat's** internal storage for any created `Archived Recordings` and the directories that contain them. Here, we are able to interact with any `Archived Recordings` that have been saved into storage by opening a nested recordings table within each directory.
 
@@ -52,7 +58,7 @@ This view is used to save any lost `Archived Recordings` in case any `target` **
     {% include howto_step.html
         summary="Navigate to the <i>All-Archives</i> <code>Archived Recordings</code> View"
         image-name="4.1.0/navigate-to-all-archives.png"
-        caption="Click on the <i>Archives</i> tab on the sidebar, and select the second tab titled <i>All Archives</i>."
+        caption="Click on the <i>Flight Recorder/Analyze/Archives</i> view on the sidebar, and select the second tab titled <i>All Archives</i>."
         text=navigate-to-all-archives-include-text
     %}
 

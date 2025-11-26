@@ -1,5 +1,5 @@
 ## [Start/Stop a Recording](#startstop-a-recording)
-The first and most basic workflow is to start a `Flight Recording` in a `target`
+The first and most basic Flight Recorder workflow is to start a `Flight Recording` in a `target`
 **JVM**.
 
 <ol>

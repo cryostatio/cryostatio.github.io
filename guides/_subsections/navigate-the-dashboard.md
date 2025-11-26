@@ -155,33 +155,27 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
       text=automated-analysis-text
     %}
   </li>
-  <li>
-    {% capture configure-automated-analysis %}
+  {% capture automated-analysis-perform-text %}
+    <h4>Perform Analysis</h4>
     <p>
-      In the next steps of the <code>card</code> creation, you can optionally provide <i>Advanced Configuration</i>. You can configure the settings of the special <code>Recording</code> that is used to generate the report. The <i>Current Configuration</i> will be shown and can be edited by clicking the <i>Pencil icon</i>. By default, the <code>Recording</code> uses a <code>Continuous template</code>, a <code>Maximum size</code> of <code>10MB</code>, and a <code>0</code> second <code>Maximum age</code> (meaning an unlimited recording duration).
+        <figure>
+            <a href="{{ site.url }}/images/4.1.0/dashboard/automatedanalysis-noresult.png" target="_blank">
+                <img src="{{ site.url }}/images/4.1.0/dashboard/automatedanalysis-noresult.png" alt="Perform analysis">
+            </a>
+        </figure>
     </p>
-    <p>
-        <b style="color:red;">Note:</b> It is possible that setting both an infinite <code>maximum size</code> and <code>age</code> will result in an <code>Out Of Memory</code> error during report generation.
-    </p>
-    {% endcapture %}
-    {% include howto_step.html
-      summary="Configure the <i>Automated Analysis</i> <code>Card</code>"
-      image-name="4.1.0/dashboard/automatedanalysis-configuration.png"
-      caption="Click <i>Next</i> to optionally provide <i>Advanced Configuration</i>."
-      text=configure-automated-analysis
-    %}
-  </li>
+  {% endcapture %}
   <li>
     {% include howto_step.html
       summary="Finish <code>Card</code> Creation"
-      image-name="4.1.0/dashboard/automatedanalysis-errorview.png"
-      caption="The <code>card</code> will be added to the dashboard with an error view."
-      text="After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard with an error view. This is because the <code>card</code> has not yet detected a special <i>Automated Analysis</i> <code>Recording</code> to source reports from."
+      image-name="4.1.0/dashboard/automatedanalysis-createrecording.png"
+      caption="The <code>card</code> will be added to the dashboard with an empty state. The <code>Create a Recording</code> call to action will guide you through <a href='#startstop-a-recording'>recording creation</a> with suggested default settings. Return to the Dashboard once a recording has been started."
+      text=automated-analysis-perform-text
     %}
   </li>
   <li>
-      {% include howto_step.html
-      summary="Click <i>Create Recording</i>"
+    {% include howto_step.html
+      summary="View results"
       image-name="4.1.0/dashboard/automatedanalysis-success.png"
       caption="The <i>Automated Analysis</i> <code>card</code> displayed with a successful report."
       text="After clicking <i>Create Recording</i>, the <code>card</code> should be populated with report data containing the <i>Results</i> of the <i>Automated Analysis</i> report."
@@ -251,7 +245,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
     {% capture jfr-metrics-chart-text %}
     <p>
-      The <i>JFR Metrics Chart</i> <code>card</code> displays performance metrics about the <code>target</code> <b>JVM</b> by visualizing <b>JFR</b> data snapshots via embedded <b>Grafana</b> visualization panels as <i>Dashboard</i> cards. This <a href="#configure-feature-level"><i>Beta</i>-level feature</a>. A significant limitation of this card is that it depends upon the stateful <code>jfr-datasource</code> backend component, which only converts one <b>Flight Recording</b> file at a time to <i>Grafana</i> data. Therefore, this card does not behave well if multiple <b>web-client</b> instances are open at the same time, whether used by one user or multiple human users.
+      The <i>JFR Metrics Chart</i> <code>card</code> displays performance metrics about the <code>target</code> <b>JVM</b> by visualizing <b>JFR</b> data snapshots via embedded <b>Grafana</b> visualization panels as <i>Dashboard</i> cards. This is a <a href="#configure-feature-level"><i>Beta</i>-level feature</a>. A significant limitation of this card is that it depends upon the stateful <code>jfr-datasource</code> backend component, which only converts one <b>Flight Recording</b> file at a time to <i>Grafana</i> data. Therefore, this card does not behave well if multiple <b>web-client</b> instances are open at the same time, whether used by one user or multiple human users.
     </p>
     <p>
       <b>Cryostat</b> gathers typical <b>JFR</b> data from the selected <b>Target</b>and periodically updates the <b>Grafana</b> visualizations. You can customize each <code>card</code> by going through the card creation wizard. The wizard will guide you through the process of selecting the metrics you want to display, how you want to display them, and other various configuration options. Some examples of <code>Performance Metrics</code> that can be displayed are:
@@ -323,12 +317,14 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
   <li>
     {% capture diagnostics-card-text %}
     <p>
-      The <i>Diagnostics</i> <code>card</code> allows you to perform non-metrics diagnostic actions against the selected <b>Target</b>. This <a href="#configure-feature-level"><i>Beta</i>-level feature</a>
+      The <i>Diagnostics</i> <code>card</code> allows you to perform non-metrics diagnostic actions against the selected <b>Target</b>. This is a <a href="#configure-feature-level"><i>Beta</i>-level feature</a>
     </p>
     <p>
       The following diagnostic actions are available:
       <ul>
         <li><i>Request JVM to perform Garbage Collection</i></li>
+        <li><i>Gather a JVM Thread Dump</i></li>
+        <li><i>Gather a JVM Heap Dump</i></li>
       </ul>
     </p>
     {% endcapture %}

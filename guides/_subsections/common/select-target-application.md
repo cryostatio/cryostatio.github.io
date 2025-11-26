@@ -4,6 +4,7 @@
 {% capture text-content %}
   If you wish to create a <code>Custom Target</code> from here, click <i>Create Target</i> displayed at the bottom. Go to <a href='#create-a-custom-target'> Create a Custom Target</a> and proceed from step 3.
   Also, see <a href='#using-the-cryostat-agent'> Using the Cryostat Agent</a> section to help discover other <code>targets</code>.
+  {{ include.select-target-application-additional-content }}
 {% endcapture %}
 {% include howto_step.html
   summary="Select the <i>Target Application</i>"

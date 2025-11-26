@@ -6,10 +6,10 @@ before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
 <ol>
   <li>
     {% include howto_step.html
-      summary="Navigate to the <i>Security</i> tab"
+      summary="Navigate to the <i>Console/Security</i> view"
       image-name="4.1.0/navigate-to-security.png"
       text="
-        First, navigate to the <i>Security</i> tab. The <i>Store Credentials</i> table
+        First, navigate to the <i>Console/Security</i> view. The <i>Store Credentials</i> table
         lists all credentials in <b>Cryostat's</b> <code>Keyring</code>. Click <i>Add</i> to define
         a new credential.
       "
@@ -69,7 +69,7 @@ before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
       image-name="4.1.0/navigate-to-recordings-1.png"
       text="
         Alternatively, credentials may also be stored if you navigate to either
-        the <i>Recordings</i> tab or the <i>Events</i> tab and select a <code>target</code>
+        the <i>Flight Recorder/Capture/Recordings</i> view or the <i>Flight Recorder/Capture/Events</i> view and select a <code>target</code>
         <b>JVM</b> with authentication enabled. The authentication form will appear,
         prompting you to enter your credentials. A new credential definition with the provided
         username and password will be stored for this specific <code>target</code> application

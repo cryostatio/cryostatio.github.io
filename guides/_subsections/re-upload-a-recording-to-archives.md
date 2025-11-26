@@ -8,7 +8,7 @@ previously retrieved <code>Recording</code> in a new **Cryostat** instance.
 <ol>
   <li>
     {% include howto_step.html
-      summary="Navigate to the <i>Archives</i> Tab"
+      summary="Navigate to the <i>Flight Recorder/Analyze/Archives</i> View"
       image-name="4.1.0/re-upload-a-recording-to-archives-1.png"
       caption="Select the <i>Uploads</i> tab."
       text="The entire <i>Archives</i> view contains several tabs related to performing operations
