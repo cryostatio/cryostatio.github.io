@@ -24,16 +24,6 @@ platform.
 After you have loaded the certificates and verified that the Cryostat container has restarted, you can verify that Cryostat correctly found the
 certificate(s) within the truststore directory.
 
-<ol>
-    <li>
-        {% include howto_step.html
-          summary="Navigate to the <i>Security</i> Tab"
-          image-name="4.1.0/navigate-to-security-with-certs.png"
-          text="Click the <i>Security</i> tab. The file paths of any additional trusted certificates you have added should appear in the list."
-        %}
-    </li>
-</ol>
-
 ### [Preconfiguring Trusted Certificates within Cryostat](#preconfiguring-trusted-certificates-within-cryostat)
 
 Alternatively if deploying **Cryostat** in a **Kubernetes** environment with the **Cryostat Operator**, TLS Certs can be preconfigured in **Cryostat** when creating the custom resource. To begin, create a **Kubernetes** Secret containing the TLS Cert.
