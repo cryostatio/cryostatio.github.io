@@ -3,30 +3,26 @@
     <li>
       {% capture perform-garbage-collection-text %}
       <p>
-        The <i>Diagnostics</i> <code>card</code> allows 
+        The <i>Diagnostics/Capture</i> view allows 
         you to perform diagnostic operations on a <code>target</code> <b>JVM</b> through remote access to supported <b>Java MXBeans</b>.
-      </p>
-      <p>
-        Currently <b>Cryostat</b> supports invoking garbage collection on <code>target</code> <b>JVMs</b>.
       </p>
       {% endcapture %}
       {% include howto_step.html
-        summary="Add the <i>Diagnostics</i> <code>Card</code>"
-        image-name="4.1.0/dashboard/diagnostics-preview.png"
-        caption="Click on the <i>Diagnostics</i> <code>card</code> for a preview."
+        summary="Navigate to the <i>Diagnostics Page</i>"
+        image-name="4.1.0/capture-diagnostics-page.png"
+        caption="Click on <i>Diagnostics/Capture</i> on the sidebar."
         text=perform-garbage-collection-text
       %}
     </li>
     <li>
       {% capture diagnostics-card-finish %}
       <p>
-        After clicking <i>Finish</i>, the <code>card</code> will be added to the dashboard. You can click the <i>Start Garbage Collection</i> button in the middle of the <code>card</code> at any time to trigger a garbage collection cycle.
-    </p>
+      Clicking the <code>Invoke Garbage Collection</code> button causes Cryostat to send a request to the selected target JVM to perform a Garbage Collection cycle. If the target JVM accepts and performs this cycle, and if it was able to free up heap space during the cycle, then the Heap Memory Usage chart should update and reflect the new heap usage.
+      </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Finish <code>Card</code> Creation"
-      image-name="4.1.0/dashboard/diagnostics-card.png"
-      caption="The <i>Diagnostics</i> <code>card</code> displayed on the dashboard."
+      summary="Click the Invoke Garbage Collection button"
+      image-name="4.1.0/capture-diagnostics-invoke-gc.png"
       text=diagnostics-card-finish
     %}
     </li>
