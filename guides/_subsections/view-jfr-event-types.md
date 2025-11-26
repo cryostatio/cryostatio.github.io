@@ -27,7 +27,7 @@ so you can see what kind of data may be captured by **Flight Recordings**.
     </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Navigate to Events"
+      summary="Navigate to Flight Recorder/Capture/Events"
       image-name="4.1.0/navigate-to-events-1.png"
       caption="
         Supply <b>JMX</b> credentials to authenticate to the target, if necessary. If
