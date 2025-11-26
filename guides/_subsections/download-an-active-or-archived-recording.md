@@ -17,9 +17,10 @@ or [`jfr`](https://dev.java/learn/jvm/jfr/tools/) for the heavy lifting on your 
     {% include_relative _subsections/common/select-a-recording.md
         select-a-recording-caption="
         Determine the <code>Recording</code> you wish to download to your local workstation.
-        This may be either an <code>Active</code> or <code>Archived Recording</code>.
-        Select the appropriate tab in the <i>Recordings</i> view. No actual action
-        needs to be taken at this step.
+        If you wish to download an <code>Archived Recording</code>,
+        <a href='#viewing-archived-recordings'>navigate to the Archives view</a>
+        instead. The recording table works the same way between <code>Active</code>
+        and <code>Archived</code> recordings.
       "
     %}
   </li>
