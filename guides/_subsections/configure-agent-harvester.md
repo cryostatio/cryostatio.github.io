@@ -30,7 +30,7 @@ or by setting them as environment variables, for example:
 - name: CRYOSTAT_AGENT_HARVESTER_TEMPLATE  
   value: Profiling
 ```
-#### [Mbean Trigger Integration](#mbean-trigger-integration)
+#### [MBean Trigger Integration](#mbean-trigger-integration)
 
 When the **Cryostat Agent** is configured to start dynamic recordings based on custom MBean triggers, you can also integrate them with the **Harvester** to automatically push the collected **JFR** data to the **Cryostat Server**.
 
