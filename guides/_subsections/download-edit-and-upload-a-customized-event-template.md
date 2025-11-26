@@ -61,7 +61,7 @@ delete **Custom Event Templates**.
     </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Navigate to Events"
+      summary="Navigate to Flight Recorder/Capture/Events"
       image-name="4.1.0/navigate-to-events-1.png"
       caption="
         Supply <b>JMX</b> credentials to authenticate to the target, if necessary. If
@@ -112,8 +112,8 @@ delete **Custom Event Templates**.
       summary="Open the <i>Template</i> Upload Dialog"
       image-name="4.1.0/download-edit-and-upload-a-customized-event-template-3.png"
       caption="
-        Back on the <i>Cryostat Events View</i>, click the <i>Upload Icon</i>
-        in the table toolbar. A dialog will appear.
+        Back on the <i>Events Templates</i> tab, click the <i>Upload Icon</i>
+        in the toolbar. A dialog will appear.
       "
     %}
   </li>
