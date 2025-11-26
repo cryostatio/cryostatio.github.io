@@ -16,9 +16,8 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
 <ol>
   <li>
       {% include howto_step.html
-      summary="Navigate to the <i>Automated Rules</i> Tab"
+      summary="Navigate to the <i>Flight Recorder/Capture/Automated Rules</i> Tab"
       image-name="4.1.0/create-an-automated-rule-1.png"
-      caption="Switch to the <i>Automated Rules</i> tab."
     %}
   </li>
   <li>
@@ -155,13 +154,24 @@ jfrEventTypeIds(target).exists(t, t.startsWith('myorg.myapp.'))
         caption="
           Optionally set the <code>Recording</code> Options and <i>Rule Parameters.</i>"
         text="
-        <p><i>Maximum Size:</i> The maximum size of <code>Recording</code> data retained in the <code>target</code> application's recording buffer. Values less than 1 indicate no limit.</p>
-        <p><i>Maximum Age:</i> The maximum age of <code>Recording</code> data retained in the <code>target</code> application's recording buffer. Values less than 1 indicate no limit.</p>
-        <p><i>Archival Period:</i> Time between copies of <code>Active recording</code> data being pulled into <b>Cryostat</b> archive storage.
-        Values less than 1 prevent data from being copied into archives - <code>Recordings</code> will be started and remain only in <code>target</code> <b>JVM</b> memory.</p>
-        <p><i>Initial Delay:</i> Time between rule creation and when the first archived copy should be transferred. Values less than 1 are treated as being equal to the <i>Archival Period</i> above.</p>
-        <p><i>Preserved Archives:</i> The number of <code>Recording</code> copies to preserve in archives for each <code>target</code> application affected by this rule. Values less than 1 prevent data from being copied into archives - <code>Recordings</code> will be started and remain only in <code>target</code> <b>JVM</b> memory.</p>
-
+          <p>
+            <i>Automatically Analyze:</i> whether <a href='#view-automated-analysis-for-a-target'>automatic analysis</a> should be automatically performed on <code>Archived Recordings</code> collected by this <code>Automated Rule</code>.
+          </p>
+          <p>
+            <i>Maximum Size:</i> the (approximate) maximum size of Flight Recorder data which should be held in the <code>Active Recording</code> buffer by the <b>JVM</b>. If set to <code>0</code> the buffer size will be unlimited. Once the buffer is full, Flight Recorder will discard the oldest data to make space for new data.
+          </p>
+          <p>
+            <i>Maximum Age</i> the (approximate) maximum age of Flight Recorder events which should be held in the <code>Active Recording</code> buffer by the <b>JVM</b>. If set to <code>0</code> events will not be discarded due to age. Once the buffer is full, Flight Recorder will discard the oldest events to make space for new events.
+          </p>
+          <p>
+            <i>Archival Period:</i> how frequently this <code>Automated Rule</code> should copy <code>Active Recording</code> data into <a href='#viewing-archived-recordings'><code>Archives</code></a>. If set to <code>0</code> Cryostat will only start a new <code>Active Recording</code>, but will not periodically copy the data into storage.
+          </p>
+          <p>
+            <i>Initial Delay:</i> Time between rule creation and when the first archived copy should be transferred. If set to <code>0</code> then the first copy will occur at the <i>archival period</i> set above.
+          </p>
+          <p>
+            <i>Preserved Archives:</i> The number of <code>Recording</code> copies to preserve in archives for each <code>target</code> application affected by this rule. If set to <code>0</code> data will never be copied to <code>Archives</code> - <code>Recordings</code> will be started and remain only in <code>target</code> <b>JVM</b> memory.
+          </p>
         <p>In the example image, the <i>Maximum Recording</i> age was set to 300 seconds and the <i>Archival Period</i> was set to a slightly shorter time period of 285 seconds. This overlap ensures that all of your <code>Flight Recorder</code> data is preserved in <b>Cryostat's</b> archives. The initial delay is set to 60 seconds however, so the first archive copy will be made 1 minute after the rule is created. The next copy will be made 5 minutes after that, the next another 5 minute later, etc.</p>
         "
       %}
