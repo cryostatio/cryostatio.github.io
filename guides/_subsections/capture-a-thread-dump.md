@@ -3,7 +3,7 @@
     <li>
       {% capture capture-a-thread-dump-text %}
       <p>
-        The <i>Diagnostics</i> <code>card</code> and Diagnostics/Capture page 
+        The <i>Diagnostics</i> <code>card</code> and <i>Diagnostics/Capture</i> page
         allows you to perform diagnostic operations on a <code>target</code> <b>JVM</b> through remote access to supported <b>Java MXBeans</b>.
       </p>
       <p>
@@ -17,7 +17,7 @@
     </p>
       {% endcapture %}
       {% include howto_step.html
-        summary="Navigate to the <i>Diagnostics</i> Page"
+        summary="Navigate to the <i>Diagnostics/Capture</i> Page"
         image-name="4.1.0/capture-diagnostics-page.png"
         caption="Click on <i>Diagnostics/Capture</i> on the sidebar."
         text=capture-a-thread-dump-text
@@ -28,7 +28,7 @@
   </li>
   <li>
     {% include howto_step.html
-      summary="Navigate to the <i>Thread Dumps</i> tab"
+      summary="Navigate to the <i>Diagnostics/Analyze/Thread Dumps</i> view"
       image-name="4.1.0/archive-a-thread-dump.png"
       caption="
         Once the <code>Thread Dump</code> has been archived, a new entry will appear in the
