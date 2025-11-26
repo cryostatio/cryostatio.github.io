@@ -1,4 +1,4 @@
-## [Configure the Agent Harvester](#configure-agent-harvester)
+## [Configure the Agent Harvester](#configure-the-agent-harvester)
 
 The **Cryostat Agent** contains a **Harvester** feature that allows you to start a new recording with a  given event template on agent initialization, and periodically push the collected **JFR** data to the associated **Cryostat** server. The **Agent** will also attempt to push the tail end of this recording on **JVM** shutdown so that the cause of an unexpected **JVM** shutdown can be captured for later analysis.
 
