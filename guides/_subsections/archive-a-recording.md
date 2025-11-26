@@ -38,7 +38,7 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a `snapshot`.
   </li>
   <li>
     {% include howto_step.html
-      summary="Navigate to the <i>Archived Recordings</i> tab"
+      summary="Navigate to the <i>Flight Recorder/Analyze/Archives</i> view"
       image-name="4.1.0/archive-a-recording-2.png"
       caption="
         Once the <code>Recording</code> has been archived, a new entry will appear in the

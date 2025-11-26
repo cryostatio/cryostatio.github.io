@@ -1,4 +1,4 @@
-## [Snapshot a Recording](#snapshot-a-recording)
+## [Snapshot Recordings](#snapshot-recordings)
 Snapshotting an application produces a new `Flight Recording` named `snapshot-n`,
 where `n` is a natural number. This `snapshot` contains all of the **JFR** data that
 was present in the <code>target</code> **JVM** at the time that the `snapshot` was taken and is in
