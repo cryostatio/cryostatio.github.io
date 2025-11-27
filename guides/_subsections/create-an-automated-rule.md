@@ -7,7 +7,7 @@ application recording buffer into **Cryostat's** own archived storage.
 
 Once you've created a rule, **Cryostat** immediately matches it against all existing discovered `targets` and starts your `Flight Recording`. **Cryostat** will also apply the rule to newly discovered `targets` that match its definition. You can create multiple rules to match different subsets of `targets` or to layer different recording options for your needs.
 
-We'll walk through two use cases: `Continuous` monitoring in a containerized **JVM**, and `Custom` monitoring with **Kubernetes** labels or annotations.
+We'll walk through three use cases: `Continuous` monitoring in a containerized **JVM**, `Custom` monitoring with **Kubernetes** labels or annotations, and pre-configuring automated rules within **Cryostat**.
 
 ### [Continuous Monitoring in a Containerized JVM](#continuous-monitoring-in-a-containerized-jvm)
 
@@ -16,9 +16,8 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
 <ol>
   <li>
       {% include howto_step.html
-      summary="Navigate to the <i>Automated Rules</i> Tab"
-      image-name="4.0.0/create-an-automated-rule-1.png"
-      caption="Switch to the <i>Automated Rules</i> tab."
+      summary="Navigate to the <i>Flight Recorder/Capture/Automated Rules</i> Tab"
+      image-name="4.1.0/create-an-automated-rule-1.png"
     %}
   </li>
   <li>
@@ -27,7 +26,7 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
   <li>
       {% include howto_step.html
         summary="Configure the new <code>Automated Rule</code>"
-        image-name="4.0.0/create-an-automated-rule-2.png"
+        image-name="4.1.0/create-an-automated-rule-2.png"
         text="
       <p>
         <i>Name:</i> Enter a name for the new rule. The form will alert you if the name
@@ -139,7 +138,7 @@ jfrEventTypeIds(target).exists(t, t.startsWith('myorg.myapp.'))
   <li>
       {% include howto_step.html
         summary="Check your <code>Match Expression</code>"
-        image-name="4.0.0/create-an-automated-rule-3.png"
+        image-name="4.1.0/create-an-automated-rule-3.png"
         caption="You can select a <code>target</code> <b>JVM</b> to view its properties and use them to build your <code>Match Expression</code>."
         text="
           <p>
@@ -151,17 +150,28 @@ jfrEventTypeIds(target).exists(t, t.startsWith('myorg.myapp.'))
   <li>
       {% include howto_step.html
         summary="<i>(Optional)</i> Adjust <i>Rule Parameters</i>"
-        image-name="4.0.0/create-an-automated-rule-4.png"
+        image-name="4.1.0/create-an-automated-rule-4.png"
         caption="
           Optionally set the <code>Recording</code> Options and <i>Rule Parameters.</i>"
         text="
-        <p><i>Maximum Size:</i> The maximum size of <code>Recording</code> data retained in the <code>target</code> application's recording buffer. Values less than 1 indicate no limit.</p>
-        <p><i>Maximum Age:</i> The maximum age of <code>Recording</code> data retained in the <code>target</code> application's recording buffer. Values less than 1 indicate no limit.</p>
-        <p><i>Archival Period:</i> Time between copies of <code>Active recording</code> data being pulled into <b>Cryostat</b> archive storage.
-        Values less than 1 prevent data from being copied into archives - <code>Recordings</code> will be started and remain only in <code>target</code> <b>JVM</b> memory.</p>
-        <p><i>Initial Delay:</i> Time between rule creation and when the first archived copy should be transferred. Values less than 1 are treated as being equal to the <i>Archival Period</i> above.</p>
-        <p><i>Preserved Archives:</i> The number of <code>Recording</code> copies to preserve in archives for each <code>target</code> application affected by this rule. Values less than 1 prevent data from being copied into archives - <code>Recordings</code> will be started and remain only in <code>target</code> <b>JVM</b> memory.</p>
-
+          <p>
+            <i>Automatically Analyze:</i> whether <a href='#view-automated-analysis-for-a-target'>automatic analysis</a> should be automatically performed on <code>Archived Recordings</code> collected by this <code>Automated Rule</code>.
+          </p>
+          <p>
+            <i>Maximum Size:</i> the (approximate) maximum size of Flight Recorder data which should be held in the <code>Active Recording</code> buffer by the <b>JVM</b>. If set to <code>0</code> the buffer size will be unlimited. Once the buffer is full, Flight Recorder will discard the oldest data to make space for new data.
+          </p>
+          <p>
+            <i>Maximum Age</i> the (approximate) maximum age of Flight Recorder events which should be held in the <code>Active Recording</code> buffer by the <b>JVM</b>. If set to <code>0</code> events will not be discarded due to age. Once the buffer is full, Flight Recorder will discard the oldest events to make space for new events.
+          </p>
+          <p>
+            <i>Archival Period:</i> how frequently this <code>Automated Rule</code> should copy <code>Active Recording</code> data into <a href='#viewing-archived-recordings'><code>Archives</code></a>. If set to <code>0</code> Cryostat will only start a new <code>Active Recording</code>, but will not periodically copy the data into storage.
+          </p>
+          <p>
+            <i>Initial Delay:</i> Time between rule creation and when the first archived copy should be transferred. If set to <code>0</code> then the first copy will occur at the <i>archival period</i> set above.
+          </p>
+          <p>
+            <i>Preserved Archives:</i> The number of <code>Recording</code> copies to preserve in archives for each <code>target</code> application affected by this rule. If set to <code>0</code> data will never be copied to <code>Archives</code> - <code>Recordings</code> will be started and remain only in <code>target</code> <b>JVM</b> memory.
+          </p>
         <p>In the example image, the <i>Maximum Recording</i> age was set to 300 seconds and the <i>Archival Period</i> was set to a slightly shorter time period of 285 seconds. This overlap ensures that all of your <code>Flight Recorder</code> data is preserved in <b>Cryostat's</b> archives. The initial delay is set to 60 seconds however, so the first archive copy will be made 1 minute after the rule is created. The next copy will be made 5 minutes after that, the next another 5 minute later, etc.</p>
         "
       %}
@@ -173,7 +183,7 @@ jfrEventTypeIds(target).exists(t, t.startsWith('myorg.myapp.'))
   <li>
       {% include howto_step.html
         summary="Observe the new Rule in the <i>Automated Rules</i> Table"
-        image-name="4.0.0/create-an-automated-rule-5.png"
+        image-name="4.1.0/create-an-automated-rule-5.png"
         caption="
           The new rule will appear in the <i>Automated Rules</i> table."
       %}
@@ -184,7 +194,7 @@ jfrEventTypeIds(target).exists(t, t.startsWith('myorg.myapp.'))
   <li>
       {% include howto_step.html
         summary="Observe the automatically generated <code>Recording</code> in the <i>Active Recordings</i> Table"
-        image-name="4.0.0/create-an-automated-rule-6.png"
+        image-name="4.1.0/create-an-automated-rule-6.png"
         caption="
           Switch to the <i>Recordings</i> tab and view the new <code>Recording</code> in the <i>Active Recordings</i>
           table."
@@ -223,3 +233,47 @@ With this rule definition in place, **Kubernetes** or **Red Hat OpenShift** user
 As an example, you might use or implement an `Operator` that monitors traffic flow or pod restarts and enables monitoring on pods after some criterion threshold is met, then disables it again if the `target` application's behavior returns to normal. As a **Kubernetes** administrator, you could receive a notification when this occurs and check the **Cryostat** archives to retrieve <code><b>JDK</b> Flight Recorder</code> data from the `target` application recorded during the problematic period, or you could view these `Archived Recordings` in **Cryostat’s Grafana** dashboard.
 
 <span style="color:red">**Note**</span>: An important caveat is that **Cryostat** does not watch for changes in the **Kubernetes** annotations or labels; it only watches to see if `target` applications appear or disappear. To apply the annotation to a `target` application, we must apply the annotation or label to the application *pod* (which will cause **Kubernetes** to roll out a new replica), and not to the deployment.
+
+### [Preconfiguring Automated Rules within Cryostat](#preconfiguring-automated-rules-within-cryostat)
+
+From **Cryostat** 4.1 onward, automated rules can be pre-configured within **Cryostat** and be loaded on startup. To begin, create a text file containing an automated rule definition, for an example:
+
+<figure>
+{% highlight json %}
+
+{
+  "name": "k8sMonitoring",
+  "description": "Enable the Demo template on any target with the jfrMonitoring=true annotation",
+  "matchExpression": "'jfrMonitoring' in target.annotations.platform && target.annotations.platform['jfrMonitoring']=='enabled'",
+  "eventSpecifier": "template=Demo,type=CUSTOM",
+  "archivalPeriodSeconds": 300,
+  "preservedArchives": 12
+}
+
+{% endhighlight %}
+
+</figure>
+
+Once this has been done, create a **ConfigMap** within **Kubernetes** or **Red Hat Openshift** from this text file:
+
+```kubectl create configmap rule-configmap --from-file=automated-rule.json```
+
+or
+
+```oc create configmap rule-configmap --from-file=automated-rule.json```
+
+Now that this configMap has been created, when creating the **Cryostat Custom Resource** we can specify it, either through the **Red Hat Openshift** console under **Automated Rules** while creating the **Cryostat Custom Resource**, or through the **Custom Resource** YAML:
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta2
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+spec:
+  automatedRules:
+    - configMapName: rule-configmap
+      filename: automated-rule.json
+```
+
+Once the **Custom Resource** has been created, the rule will be pre-loaded into **Cryostat** and be available from startup without any further configuration needed.
+

@@ -55,14 +55,14 @@ delete **Custom Event Templates**.
       necessary to add the <i>Target's</i> certificate to <b>Cryostat's</b> trust store. Go
       to <a href="{{ page.url }}#add-a-trusted-certificate">Add a Trusted Certificate</a>
       and return to this section after completing that guide.
-      <a href="{{ site.url }}/images/4.0.0/navigate-to-events-2.png" target="_blank">
-        <img src="{{ site.url }}/images/4.0.0/navigate-to-events-2.png">
+      <a href="{{ site.url }}/images/4.1.0/navigate-to-events-2.png" target="_blank">
+        <img src="{{ site.url }}/images/4.1.0/navigate-to-events-2.png">
       </a>
     </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Navigate to Events"
-      image-name="4.0.0/navigate-to-events-1.png"
+      summary="Navigate to Flight Recorder/Capture/Events"
+      image-name="4.1.0/navigate-to-events-1.png"
       caption="
         Supply <b>JMX</b> credentials to authenticate to the target, if necessary. If
         the target is not configured with <b>JMX</b> authentication then the
@@ -74,10 +74,10 @@ delete **Custom Event Templates**.
   <li>
     {% include howto_step.html
       summary="Download the <i>Template</i>"
-      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-1.png"
+      image-name="4.1.0/download-edit-and-upload-a-customized-event-template-1.png"
       caption="
         Click the action overflow \"&#65049;\" <i>three-dot</i> menu on the right side of the
-        template entry in the table, then click <i>Download</i>.
+        template entry in the table, then click <i>Download</i>. Rename this file to custom-template.xml.
       "
     %}
   </li>
@@ -92,7 +92,7 @@ delete **Custom Event Templates**.
     {% endcapture %}
     {% include howto_step.html
       summary="Edit the <i>Template</i>"
-      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-2.png"
+      image-name="4.1.0/download-edit-and-upload-a-customized-event-template-2.png"
       caption=edit-template-additional-content
       text="
         Edit the <i>Template</i> definition to suit your requirements. When you are
@@ -110,17 +110,17 @@ delete **Custom Event Templates**.
   <li>
     {% include howto_step.html
       summary="Open the <i>Template</i> Upload Dialog"
-      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-3.png"
+      image-name="4.1.0/download-edit-and-upload-a-customized-event-template-3.png"
       caption="
-        Back on the <i>Cryostat Events View</i>, click the <i>Upload Icon</i>
-        in the table toolbar. A dialog will appear.
+        Back on the <i>Events Templates</i> tab, click the <i>Upload Icon</i>
+        in the toolbar. A dialog will appear.
       "
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Upload the <i>Template</i>"
-      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-4.png"
+      image-name="4.1.0/download-edit-and-upload-a-customized-event-template-4.png"
       caption="
         Click the <i>Browse</i> button. Your browser will present its
         native file chooser dialog to select the file to upload. Browse and
@@ -133,7 +133,7 @@ delete **Custom Event Templates**.
   <li>
     {% include howto_step.html
       summary="Observe the new <i>Template</i>"
-      image-name="4.0.0/download-edit-and-upload-a-customized-event-template-5.png"
+      image-name="4.1.0/download-edit-and-upload-a-customized-event-template-5.png"
       caption="
         Once the <i>Template</i> has been uploaded you will be returned to the
         <i>Events View</i>, and your template will be present in the
@@ -142,3 +142,30 @@ delete **Custom Event Templates**.
     %}
   </li>
 </ol>
+
+### [Preconfiguring Event Templates within Cryostat](#preconfiguring-event-templates-within-cryostat)
+
+If deploying **Cryostat** in a **Kubernetes** environment through the **Cryostat Operator**, custom event templates can be preconfigured within **Cryostat**.
+
+To begin, create a **ConfigMap** within **Kubernetes** or **Red Hat Openshift** from a custom template, [for example the one created in the previous section](#download-edit-and-upload-a-customized-event-template).
+
+```kubectl create configmap template-configmap --from-file=custom-template.xml```
+
+or
+
+```oc create configmap template-configmap --from-file=custom-template.xml```
+
+Now that this configMap has been created, when creating the **Cryostat Custom Resource** we can specify it, either through the **Red Hat Openshift** console under **Event Templates** while creating the **Cryostat Custom Resource**, or through the **Custom Resource** YAML:
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta2
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+spec:
+  eventTemplates:
+    - configMapName: template-configmap
+      filename: custom-template.xml
+```
+
+Once the **Custom Resource** has been created, the event template will be pre-loaded into **Cryostat** and be available from startup without any further configuration needed. 

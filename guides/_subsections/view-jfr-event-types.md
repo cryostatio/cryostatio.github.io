@@ -21,14 +21,14 @@ so you can see what kind of data may be captured by **Flight Recordings**.
       necessary to add the <i>Target's</i> certificate to <b>Cryostat's</b> trust store. Go
       to <a href="{{ page.url }}#add-a-trusted-certificate">Add a Trusted Certificate</a>
       and return to this section after completing that guide.
-      <a href="{{ site.url }}/images/4.0.0/navigate-to-events-2.png" target="_blank">
-        <img src="{{ site.url }}/images/4.0.0/navigate-to-events-2.png">
+      <a href="{{ site.url }}/images/4.1.0/navigate-to-events-2.png" target="_blank">
+        <img src="{{ site.url }}/images/4.1.0/navigate-to-events-2.png">
       </a>
     </p>
     {% endcapture %}
     {% include howto_step.html
-      summary="Navigate to Events"
-      image-name="4.0.0/navigate-to-events-1.png"
+      summary="Navigate to Flight Recorder/Capture/Events"
+      image-name="4.1.0/navigate-to-events-1.png"
       caption="
         Supply <b>JMX</b> credentials to authenticate to the target, if necessary. If
         the target is not configured with <b>JMX</b> authentication then the
@@ -40,7 +40,7 @@ so you can see what kind of data may be captured by **Flight Recordings**.
   <li>
     {% include howto_step.html
       summary="Navigate to Event Types"
-      image-name="4.0.0/navigate-to-event-types-1.png"
+      image-name="4.1.0/navigate-to-event-types-1.png"
       caption="
         Select the <i>Event Types</i> tab to view a table listing of all the <b>JDK Flight Recorder</b>
         <i>Event Types</i> registered in the <i>Target JVM</i>.
