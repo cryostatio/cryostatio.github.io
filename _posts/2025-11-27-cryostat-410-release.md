@@ -112,7 +112,7 @@ Cryostat 4.1.0 has landed. It's a minor release in semantic versioning terms, bu
     </li>
 </ol>
 
-For further details on these items, [check the GitHub Discussions release announcement](https://github.com/cryostatio/cryostat/discussions/1189).
+For further details on these items, [check the GitHub Discussions release announcement](https://github.com/cryostatio/cryostat/discussions/1190).
 
 ## Where can I get the latest version of Cryostat?
 You can install Cryostat using our
@@ -129,4 +129,4 @@ else you should be able to approve and install the upgrade.
 
 ## Feedback
 Please reach out to the [Cryostat mailing list](mailto:cryostat-development@googlegroups.com) or
-[GitHub Discussion](https://github.com/cryostatio/cryostat/discussions/1189) with any questions or comments.
+[GitHub Discussion](https://github.com/cryostatio/cryostat/discussions/1190) with any questions or comments.
