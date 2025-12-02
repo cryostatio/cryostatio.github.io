@@ -63,3 +63,32 @@ spec:
 ```
 
 This can be added to the <code>spec</code> of a **Cryostat Custom Resource** or filled in as fields while creating one in the **Openshift Console**
+
+## [Configuring the Helm Chart with External S3](#configuring-the-helm-chart-with-external-s3)
+
+Similar to the **Cryostat Operator**, the helm chart supports a number of configuration options for configuring **Cryostat** for use with an external **S3 Storage Provider**.
+
+The options present in the helm chart mirror those described for the **Cryostat Operator** above. Note that like the **Cryostat Operator**, the helm chart needs a **Kubernetes Secret** containing the storage access key and secret key:
+
+```bash
+oc create secret generic s3cred \
+  --from-literal=STORAGE_ACCESS_KEY=abcd1234 \
+  --from-literal=STORAGE_ACCESS_KEY_ID=cryostat
+```
+
+Following this, an invocation like the following will deploy **Cryostat** configured to use an external **S3 Storage Provider**:
+
+```bash
+helm install \
+  --set storage.provider.url=https://path-to-storage-provider.com \
+  --set storage.storageSecretName=s3cred \
+  --set storage.provider.region=us-east-1 \
+  --set storage.provider.usePathStyleAccess=false \
+  --set storage.provider.metadata.storageMode=bucket \
+  --set storage.buckets.names.archivedRecordings=cryostat-archivedrecordings \
+  --set storage.buckets.names.archivedReports=cryostat-archivedreports \
+  --set storage.buckets.names.eventTemplates=cryostat-eventtemplates \
+  --set storage.buckets.names.jmcAgentProbeTemplates=cryostat-probes \
+  --set storage.buckets.names.metadata=cryostat-metadata \
+  cryostat ./charts/cryostat
+```
