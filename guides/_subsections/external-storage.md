@@ -1,7 +1,7 @@
 ## [Connect Cryostat to External Storage](#connect-cryostat-to-external-storage)
 When deploying **Cryostat** in a **Kubernetes** environment, you may configure **Cryostat** through the **Cryostat Operator** or **Helm Chart** to use an external S3-compatible storage provider.
 
-## [Configuring the Operator with External S3](#configuring-the-operator-with-external-s3)
+### [Configuring the Operator with External S3](#configuring-the-operator-with-external-s3)
 The **Cryostat Operator** supports a number of configuration options for setting up **Cryostat** to use an External S3 storage provider. These may be configured through the console interface while creating a **Cryostat Custom Resource** or through a YAML file. The <code>objectStorageOptions</code> structure has the following properties:
 
 ```yaml
@@ -64,7 +64,7 @@ spec:
 
 This can be added to the <code>spec</code> of a **Cryostat Custom Resource** or filled in as fields while creating one in the **Openshift Console**
 
-## [Configuring the Helm Chart with External S3](#configuring-the-helm-chart-with-external-s3)
+### [Configuring the Helm Chart with External S3](#configuring-the-helm-chart-with-external-s3)
 
 Similar to the **Cryostat Operator**, the helm chart supports a number of configuration options for configuring **Cryostat** for use with an external **S3 Storage Provider**.
 
