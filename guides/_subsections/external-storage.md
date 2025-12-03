@@ -34,7 +34,7 @@ spec:
 In order for **Cryostat** to successfully connect to an external S3 storage provider, it needs a **Kubernetes Secret** containing an <code>ACCESS_KEY</code> and <code>SECRET_KEY</code>. The details are described above. This secret can be created through the **Openshift Console** interface, or through a yaml or the command line:
 
 ```bash
-oc create secret generic s3cred \ 
+kubectl create secret generic s3cred \ 
 --from-literal=ACCESS_KEY=cryostat \ 
 --from-literal=STORAGE_KEY=123456789
 ```
@@ -71,7 +71,7 @@ Similar to the **Cryostat Operator**, the helm chart supports a number of config
 The options present in the helm chart mirror those described for the **Cryostat Operator** above. Note that like the **Cryostat Operator**, the helm chart needs a **Kubernetes Secret** containing the storage access key and secret key:
 
 ```bash
-oc create secret generic s3cred \
+kubectl create secret generic s3cred \
   --from-literal=STORAGE_ACCESS_KEY=abcd1234 \
   --from-literal=STORAGE_ACCESS_KEY_ID=cryostat
 ```
