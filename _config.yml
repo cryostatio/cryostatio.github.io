@@ -59,6 +59,13 @@ defaults:
   -
     scope:
       path: "" # an empty string here means all files in the project
+      type: "config" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "config"
+      permalink: /config/:name
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
       type: "versions"
     values:
       layout: "guides"
