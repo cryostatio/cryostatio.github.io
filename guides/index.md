@@ -69,7 +69,5 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/external-storage.md %}
 
-{% include_relative _subsections/configuring-the-operator.md %}
-
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
 [comment]: # TODO

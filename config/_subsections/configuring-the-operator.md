@@ -34,7 +34,7 @@ spec:
 ```
 
 ### Custom Event Templates
-All **JDK Flight Recordings** created by **Cryostat** are configured using an event template. These templates specify which events to record, and **Cryostat** includes some templates automatically, including those provided by the target's JVM. **Cryostat** also provides the ability to [upload customized templates](#download-edit-and-upload-a-customized-event-template), which can then be used to create recordings.
+All **JDK Flight Recordings** created by **Cryostat** are configured using an event template. These templates specify which events to record, and **Cryostat** includes some templates automatically, including those provided by the target's JVM. **Cryostat** also provides the ability to [upload customized templates](/guides/#download-edit-and-upload-a-customized-event-template), which can then be used to create recordings.
 
 The **Cryostat Operator** provides an additional feature to pre-configure **Cryostat** with custom templates that are stored in **Config Maps**. When **Cryostat** is deployed from this **Cryostat** object, it will have the listed templates already available for use.
 ```yaml
