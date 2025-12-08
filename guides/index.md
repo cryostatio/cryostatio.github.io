@@ -21,8 +21,6 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/create-a-custom-target.md %}
 
-{% include_relative _subsections/configure-agent-harvester.md %}
-
 {% include_relative _subsections/using-smart-triggers.md %}
 
 {% include_relative _subsections/startstop-a-recording.md %}
