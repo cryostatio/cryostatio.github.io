@@ -1,8 +1,10 @@
 name: Republish
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'  # midnight daily
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
