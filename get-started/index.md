@@ -620,7 +620,7 @@ you may combine both of the `Service` definitions into a single `Service` with t
 
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed **Cryostat** and know how to access its
-**web client**, continue on to [Guides]({% link guides/index.md %}) for
+**web client**, continue on to [Guides](/guides/) for
 guides through various common actions and workflows. For more information on advanced installation configurations, continue to [Config](/config/).
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
