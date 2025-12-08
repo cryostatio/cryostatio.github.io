@@ -242,7 +242,7 @@ is built with **Maven**, packaged into an image with a `Dockerfile`, and running
 
 ##### [Using the Cryostat Agent](#using-the-cryostat-agent)
 
-[The **Cryostat Agent**](/guides/#using-the-cryostat-agent)
+[The **Cryostat Agent**](/config/#using-the-cryostat-agent)
 is compatible with **Cryostat** versions 2.3.0 and newer, and application **JDKs 11** and newer.
 If you are using an older version of **Cryostat** we recommend upgrading to ensure compatibility.
 Please see the [version compatibility chart](https://github.com/cryostatio/cryostat-agent?tab=readme-ov-file#run-requirements) to ensure
