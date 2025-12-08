@@ -550,8 +550,6 @@ spec:
 ...
 ```
 
-More details about the configuration options for the **Cryostat Agent** [are available here](https://github.com/cryostatio/cryostat-agent/blob/{{site.data.versions.cryostat.release-branch}}/README.md#configuration).
-
 You may also be interested in using the **Cryostat Agent** for application discovery, but using **JMX** for remote management and data
 access rather than the **Cryostat Agent** HTTP API. In that case, simply set `CRYOSTAT_AGENT_API_WRITES_ENABLED=false` to turn off as much
 of the **Cryostat Agent** HTTP API as possible, then continue to [the next section](#using-jmx) to additionally configure your application
@@ -623,7 +621,7 @@ you may combine both of the `Service` definitions into a single `Service` with t
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed **Cryostat** and know how to access its
 **web client**, continue on to [Guides]({% link guides/index.md %}) for
-guides through various common actions and workflows.
+guides through various common actions and workflows. For more information on advanced installation configurations, continue to [Config](/config/).
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
 Reference [**OLM**](https://olm.operatorframework.io/docs/tasks/uninstall-operator/#combine-steps-2-and-3)
