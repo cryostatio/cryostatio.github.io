@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Deploying Cryostat in Docker Compose
-date: 2025-12-12
+date: 2025-12-10
 synopsis: Deploy Cryostat in Docker Compose to collect JFR analysis
 author: Andrew Azores
 ---
