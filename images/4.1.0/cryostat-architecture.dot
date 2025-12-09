@@ -1,0 +1,219 @@
+digraph deployment {
+    label="OpenShift Operator Deployment";
+    newrank="true";
+    compound="true";
+
+    subgraph cluster_0 {
+        label="OpenShift Cluster"
+        OperatorCRDs [shape="diamond"];
+
+        subgraph cluster_namespace_c1 {
+            label="Namespace C1";
+
+            subgraph cluster_Cryostat_1 {
+                label="Cryostat Pod";
+                AuthProxy1;
+                {
+                    Cryostat1 -> JFRDatasource1 [color="red" style="dashed"];
+                    JFRDatasource1 -> GrafanaDashboard1 [color="red" style="dashed"];
+                    GrafanaDashboard1 -> AuthProxy1 [color="red" style="dashed"];
+                    Cryostat1 -> AuthProxy1 [color="red" style="dashed" dir="both"];
+                    Cryostat1 -> AuthProxy1 [color="blue" style="dashed" dir="both"];
+                    Cryostat1 -> AgentProxy1 [color="red" style="dashed" dir="both"];
+                }
+            }
+
+            subgraph cluster_Cryostat_Database_1 {
+                label="Cryostat Database"
+                Cryostat1 -> CryostatDb1 [color="orange"];
+            }
+
+            subgraph cluster_Cryostat_Reports_1 {
+                label="Cryostat Reports Pod";
+                Cryostat1 -> CryostatReports [color="red"];
+            }
+        }
+
+        subgraph cluster_namespace_c2 {
+            label="Namespace C2";
+
+            subgraph cluster_Cryostat_2 {
+                label="Cryostat Pod";
+                AuthProxy2;
+                Cryostat2;
+                {
+                    Cryostat2 -> JFRDatasource2 [color="red" style="dashed"];
+                    JFRDatasource2 -> GrafanaDashboard2 [color="red" style="dashed"];
+                    GrafanaDashboard2 -> AuthProxy2 [color="red" style="dashed"]
+                    Cryostat2 -> AuthProxy2 [color="red" style="dashed" dir="both"];
+                    Cryostat2 -> AuthProxy2 [color="blue" style="dashed" dir="both"];
+                    Cryostat2 -> AgentProxy2 [color="red" style="dashed" dir="both"];
+                }
+            }
+
+            subgraph cluster_Cryostat_Database_2 {
+                label="Cryostat Database"
+                Cryostat2 -> CryostatDb2 [color="orange"];
+            }
+
+            subgraph cluster_Cryostat_Storage_2 {
+                label="Cryostat Storage"
+                Cryostat2 -> CryostatStorage2 [color="red"];
+                JFRDatasource2 -> CryostatStorage2 [color="red"];
+            }
+        }
+
+        {
+            rank="same";
+            Cryostat2;
+        }
+
+        subgraph cluster_namespace_c0 {
+            label="Namespace C0";
+
+            subgraph cluster_operator {
+                label="Operator Pod"
+                OperatorControllers;
+            }
+        }
+
+        subgraph cluster_namespace_a {
+            label="Namespace A";
+            subgraph cluster_target1 {
+                label="Application Pod 1"
+                JVM1 -> Cryostat1 [color="green"];
+            }
+        }
+
+        subgraph cluster_namespace_b {
+            label="Namespace B";
+            subgraph cluster_target2 {
+                label="Application Pod 2"
+                JVM2 -> Cryostat1 [color="green"];
+            }
+        }
+
+        subgraph cluster_namespace_y {
+            label="Namespace Y";
+            subgraph cluster_target3 {
+                label="Application Pod 3"
+                subgraph cluster_JVM3 {
+                    label="JVM3";
+                    style="rounded";
+                    subgraph JVM3_Agent {
+                        label="JVM3_Agent";
+                        JVM3_Agent -> AuthProxy2 [color="red" dir="both"];
+                    }
+                }
+            }
+        }
+
+        subgraph cluster_namespace_z {
+            label="Namespace Z";
+            subgraph cluster_target4 {
+                label="Application Pod 4"
+                subgraph cluster_JVM4 {
+                    label="JVM4";
+                    style="rounded";
+                    subgraph JVM4_Agent {
+                        label="JVM4_Agent";
+                        JVM4_Agent -> AgentProxy2 [color="red" dir="both"];
+                    }
+                }
+            }
+        }
+
+        {
+            rank="same";
+            JVM1;
+            JVM2;
+            JVM3_Agent;
+            JVM4_Agent;
+        }
+
+        subgraph cluster_console {
+            label="OpenShift Console";
+
+            subgraph cluster_console_plugin {
+                label="Cryostat Console Plugin"
+                PluginService;
+                PluginPod1 -> PluginService [color="red"];
+                PluginPod1 -> PluginService [color="blue"];
+                PluginPod2 -> PluginService [color="red"];
+                PluginPod2 -> PluginService [color="blue"];
+
+                AuthProxy1 -> PluginPod1 [color="red"];
+                AuthProxy1 -> PluginPod1 [color="blue"];
+                AuthProxy1 -> PluginPod2 [color="red"];
+                AuthProxy1 -> PluginPod2 [color="blue"];
+                AuthProxy2 -> PluginPod1 [color="red"];
+                AuthProxy2 -> PluginPod1 [color="blue"];
+                AuthProxy2 -> PluginPod2 [color="red"];
+                AuthProxy2 -> PluginPod2 [color="blue"];
+            }
+
+            {
+                ConsoleService -> PluginUI [color="red"];
+                ConsoleService -> PluginUI [color="blue"];
+                PluginService -> ConsoleService [color="red"];
+                PluginService -> ConsoleService [color="blue"];
+            }
+        }
+    }
+
+    subgraph cluster_outside {
+        label="Outside";
+
+        User [shape="circle"];
+        {
+            rank="same";
+            WebClient [shape="diamond"];
+        }
+
+        OperatorControllers -> OperatorCRDs [color="red" ltail="cluster_operator"];
+        OperatorCRDs -> User [color="red" label="OpenShift (oc)"];
+        AuthProxy1 -> WebClient [color="red"];
+        AuthProxy2 -> WebClient [color="red"];
+        AuthProxy1 -> WebClient [color="blue"];
+        AuthProxy2 -> WebClient [color="blue"];
+        WebClient -> User [color="red" label="Web Browser"];
+        PluginUI -> User [color="red"];
+        PluginUI -> User [color="blue"];
+        Cryostat1 -> CommercialObjectStorage [color="red"];
+        JFRDatasource1 -> CommercialObjectStorage [color="red"];
+        CryostatReports -> CommercialObjectStorage [color="red"];
+        User -> CommercialObjectStorage [color="red"];
+    }
+
+    subgraph cluster_legend {
+        node [shape="plaintext"]
+        label="Legend"
+        rank="same"
+        key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+        <tr><td align="right" port="i1">HTTP</td></tr>
+        <tr><td align="right" port="i2">HTTPS</td></tr>
+        <tr><td align="right" port="i3">WS</td></tr>
+        <tr><td align="right" port="i4">WSS</td></tr>
+        <tr><td align="right" port="i5">JMX+TLS</td></tr>
+        <tr><td align="right" port="i6">JDBC+TLS</td></tr>
+        <tr><td align="right" port="i7">Other</td></tr>
+        </table>>]
+        key2 [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+        <tr><td port="i1">&nbsp;</td></tr>
+        <tr><td port="i2">&nbsp;</td></tr>
+        <tr><td port="i3">&nbsp;</td></tr>
+        <tr><td port="i4">&nbsp;</td></tr>
+        <tr><td port="i5">&nbsp;</td></tr>
+        <tr><td port="i6">&nbsp;</td></tr>
+        <tr><td port="i7">&nbsp;</td></tr>
+        </table>>]
+        key:i1:e -> key2:i1:w [color=red style=dashed]
+        key:i2:e -> key2:i2:w [color=red]
+        key:i3:e -> key2:i3:w [color=blue style=dashed]
+        key:i4:e -> key2:i4:w [color=blue]
+        key:i5:e -> key2:i5:w [color=green]
+        key:i6:e -> key2:i6:w [color=orange]
+        key:i7:e -> key2:i7:w [color=black style=dashed]
+    }
+
+}
