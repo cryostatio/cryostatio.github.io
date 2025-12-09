@@ -17,4 +17,6 @@ The programming interfaces for **Cryostat** and its **Agent** are designed to im
     <li>Once the <b>Agent</b> has been installed or attached to the running <b>JVM</b> instance, it can begin collecting data and sending it to <b>Cryostat</b> for analysis. If enabled, the <b>Cryostat</b> server that the <b>Cryostat Agent</b> is registered with may also begin to send remote management requests to dynamically <i>Start</i>, <i>Stop</i>, or <i>Delete</i> <code>Flight Recordings</code> as well as to retrieve <b>JFR</b> and <b>MBean</b> data.</li>
 </ol>
 
+More details about the configuration options for the **Cryostat Agent** [are available here](https://github.com/cryostatio/cryostat-agent/blob/{{site.data.versions.cryostat.release-branch}}/README.md#configuration).
+
 For instructions on how to install the **Cryostat Agent** into your applications, [check the Setup section in Getting Started](/get-started/#using-the-cryostat-agent).
