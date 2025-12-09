@@ -511,7 +511,7 @@ spec:
 
 If you wish to use only **Cryostat's Discovery Plugin API**, set the property `spec.targetDiscoveryOptions.disableBuiltInDiscovery` to `true` to disable **Cryostat's** built-in discovery mechanisms. For more details, see the **Discovery Plugin** section in the [OpenAPI schema](https://github.com/cryostatio/cryostat/blob/main/schema/openapi.yaml).
 
-You may also change the list of port names and port numbers that **Cryostat** uses to discover compatible target Endpoints. By default it looks for ports with the name `jfr-jmx` or with the number `9091`.
+You may also change the list of port names and port numbers that **Cryostat** uses to discover compatible target `Endpoint`s. By default it looks for ports with the name `jfr-jmx` or with the number `9091`.
 
 ```yaml
 apiVersion: operator.cryostat.io/v1beta2
