@@ -9,3 +9,5 @@ title: Cryostat Advanced Configuration
 {% include_relative _subsections/configuring-the-operator.md %}
 
 {% include_relative _subsections/using-the-cryostat-agent.md %}
+
+{% include_relative _subsections/configure-agent-harvester.md %}
