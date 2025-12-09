@@ -2,7 +2,7 @@
 
 ### [General Application Architecture w.r.t Security](#general-application-architecture-wrt-security)
 
-The **Cryostat** 4.1 application as a whole consists of the following components:
+The **Cryostat {{ site.data.versions.cryostat.version }}** application as a whole consists of the following components:
 
 * **Cryostat** Deployment
     * Service + Route → Auth container
