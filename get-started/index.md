@@ -242,7 +242,7 @@ is built with **Maven**, packaged into an image with a `Dockerfile`, and running
 
 ##### [Using the Cryostat Agent](#using-the-cryostat-agent)
 
-[The **Cryostat Agent**](/config/#using-the-cryostat-agent)
+[The **Cryostat Agent**](/docs/#using-the-cryostat-agent)
 is compatible with **Cryostat** versions 2.3.0 and newer, and application **JDKs 11** and newer.
 If you are using an older version of **Cryostat** we recommend upgrading to ensure compatibility.
 Please see the [version compatibility chart](https://github.com/cryostatio/cryostat-agent?tab=readme-ov-file#run-requirements) to ensure
@@ -376,7 +376,7 @@ look for different names/numbers.
 ## [Next Steps](#next-steps)
 Now that you have installed and deployed **Cryostat** and know how to access its
 **web client**, continue on to [Guides](/guides/) for
-guides through various common actions and workflows. For more information on advanced installation configurations, continue to [Config](/config/).
+guides through various common actions and workflows. For more information on advanced installation configurations, continue to [Docs](/docs/).
 
 ## [Uninstalling Cryostat Operator](#uninstalling-cryostat-operator)
 Reference [**OLM**](https://olm.operatorframework.io/docs/tasks/uninstall-operator/#combine-steps-2-and-3)

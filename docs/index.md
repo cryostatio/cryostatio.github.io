@@ -1,6 +1,6 @@
 ---
-layout: config
-title: Cryostat Advanced Configuration
+layout: docs
+title: Cryostat Documentation
 ---
 
 * auto-gen TOC:
