@@ -21,10 +21,6 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/create-a-custom-target.md %}
 
-{% include_relative _subsections/using-the-cryostat-agent.md %}
-
-{% include_relative _subsections/configure-agent-harvester.md %}
-
 {% include_relative _subsections/using-smart-triggers.md %}
 
 {% include_relative _subsections/startstop-a-recording.md %}
@@ -66,8 +62,6 @@ common actions and workflows of interest and why they are useful.
 {% include_relative _subsections/capture-a-thread-dump.md %}
 
 {% include_relative _subsections/capture-a-heap-dump.md %}
-
-{% include_relative _subsections/external-storage.md %}
 
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
 [comment]: # TODO
