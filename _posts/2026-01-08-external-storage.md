@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Deploying Cryostat with External Storage
-date: 2025-12-19
+date: 2026-01-08
 synopsis: Use your own choice of commercial or self-hosted object storage with Cryostat
 author: Andrew Azores
 ---
