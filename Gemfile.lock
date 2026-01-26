@@ -18,6 +18,9 @@ GEM
     google-protobuf (4.33.4)
       bigdecimal
       rake (>= 13)
+    google-protobuf (4.33.4-x86_64-linux-gnu)
+      bigdecimal
+      rake (>= 13)
     http_parser.rb (0.8.1)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
@@ -93,7 +96,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.17)
   jekyll-paginate
   minima (~> 2.5)
-  tzinfo (~> 1.2)
+  tzinfo (~> 2.0)
   tzinfo-data
   wdm (~> 0.2.0)
   webrick (~> 1.8)
