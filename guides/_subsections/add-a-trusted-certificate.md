@@ -5,7 +5,7 @@ If you have Java Management Extensions **(JMX)** over `SSL` enabled on your cont
     <li>
         {% include howto_step.html
           summary="Navigate to the <i>Security</i> Tab"
-          image-name="4.1.0/navigate-to-security.png"
+          image-name="4.2.0/navigate-to-security.png"
           text="Click the <i>Security</i> tab. This should initially be in an empty state if you have not yet defined any additional trusted certificates."
         %}
     </li>

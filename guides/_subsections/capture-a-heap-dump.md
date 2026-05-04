@@ -18,7 +18,7 @@
       {% endcapture %}
       {% include howto_step.html
         summary="Navigate to the <i>Diagnostics/Capture</i> Page"
-        image-name="4.1.0/capture-diagnostics-page.png"
+        image-name="4.2.0/capture-diagnostics-page.png"
         caption="Click on <i>Diagnostics/Capture</i> on the sidebar."
         text=capture-a-heap-dump-text
       %}
@@ -29,7 +29,7 @@
   <li>
     {% include howto_step.html
       summary="Navigate to the <i>Diagnostics/Analyze/Heap Dumps</i> view"
-      image-name="4.1.0/archive-a-heap-dump.png"
+      image-name="4.2.0/archive-a-heap-dump.png"
       caption="
         Once the <code>Heap Dump</code> has been archived, a new entry will appear in the
         <code>target</code> <b>JVM's</b> <i>Heap Dumps</i> table. All <code>Heap Dumps</code> that were
