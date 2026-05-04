@@ -9,7 +9,7 @@
       {% endcapture %}
       {% include howto_step.html
         summary="Navigate to the <i>Diagnostics Page</i>"
-        image-name="4.1.0/capture-diagnostics-page.png"
+        image-name="4.2.0/capture-diagnostics-page.png"
         caption="Click on <i>Diagnostics/Capture</i> on the sidebar."
         text=perform-garbage-collection-text
       %}
@@ -22,7 +22,7 @@
     {% endcapture %}
     {% include howto_step.html
       summary="Click the Invoke Garbage Collection button"
-      image-name="4.1.0/capture-diagnostics-invoke-gc.png"
+      image-name="4.2.0/capture-diagnostics-invoke-gc.png"
       text=diagnostics-card-finish
     %}
     </li>

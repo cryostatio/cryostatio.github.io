@@ -1,23 +1,24 @@
 cryostat:
-  version: '4.1.0'
-  release-branch: 'cryostat-v4.1'
+  version: '4.2.0'
+  release-branch: 'cryostat-v4.2'
 agent:
-  version: '0.6.0'
+  version: '0.7.0'
 openshift:
-  version: '4.16'
+  version: '4.19'
 kubernetes:
-  version: '1.29'
+  version: '1.32'
 operator-sdk:
-  version: '1.31.0'
+  version: '1.42.0'
 operator-lifecycle-manager:
   version: '0.25.0'
 cert-manager:
-  version: '1.13.6'
+  version: '1.18.6'
 maven-plugins:
   dependency:
     version: '3.9.0'
 documentation:
   - 'latest'
+  - 4.1.0
   - 4.0.0
   - 3.0.0
   - 2.4.0

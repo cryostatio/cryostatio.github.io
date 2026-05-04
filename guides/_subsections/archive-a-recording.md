@@ -29,7 +29,7 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a `snapshot`.
     {% endcapture %}
     {% include howto_step.html
       summary="Select an <i>Active Recording</i>"
-      image-name="4.1.0/archive-a-recording-1.png"
+      image-name="4.2.0/archive-a-recording-1.png"
       caption=select-recording-additional-content
     %}
   </li>
@@ -54,7 +54,7 @@ any state (`RUNNING`, `STOPPED`, etc.), and may even be a `snapshot`.
   <li>
     {% include howto_step.html
       summary="Navigate to the <i>Flight Recorder/Analyze/Archives</i> view"
-      image-name="4.1.0/archive-a-recording-2.png"
+      image-name="4.2.0/archive-a-recording-2.png"
       caption=archives-view-caption
       text=archives-view-text
     %}
