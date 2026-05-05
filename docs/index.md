@@ -16,6 +16,8 @@ title: Cryostat Documentation
 
 {% include_relative _subsections/external-storage.md %}
 
+{% include_relative _subsections/configuring-the-helm-chart.md %}
+
 # Additional Information
 
 {% include_relative _subsections/operator-architecture.md %}
