@@ -50,7 +50,7 @@ spec:
 Multiple templates can be specified in the `eventTemplates` array. Each `configMapName` must refer to the name of a **Config Map** in the same namespace as **Cryostat**. The corresponding `filename` must be a key within that **Config Map** containing the template file.
 
 ### Trusted TLS Certificates
-By default, **Cryostat** uses TLS when connecting to the user's applications over JMX. In order to verify the identity of the applications **Cryostat** connects to, it should be configured to trust the TLS certificates presented by those applications. One way to do that is to specify certificates that **Cryostat** should trust in the `spec.trustedCertSecrets` property.
+By default, **Cryostat** uses TLS when connecting to the user's applications over JMX. In order to verify the identity of the applications **Cryostat** connects to, it should be configured to trust the TLS certificates presented by those applications. Certificates can be provided through the `spec.trustedCertSecrets` property, and each entry may reference either a **Secret** or a **ConfigMap** in the same namespace as the `Cryostat` object.
 ```yaml
 apiVersion: operator.cryostat.io/v1beta2
 kind: Cryostat
@@ -60,8 +60,12 @@ spec:
   trustedCertSecrets:
   - secretName: my-tls-secret
     certificateKey: ca.crt
+  - configMapName: my-service-ca
+    certificateKey: service-ca.crt
 ```
-Multiple TLS secrets may be specified in the `trustedCertSecrets` array. The `secretName` property is mandatory, and must refer to the name of a Secret within the same namespace as the `Cryostat` object. The `certificateKey` must point to the X.509 certificate file to be trusted. If `certificateKey` is omitted, the default key name of `tls.crt` will be used.
+Multiple certificate entries may be specified in the `trustedCertSecrets` array. Each entry must specify exactly one of `secretName` or `configMapName`. The `certificateKey` must point to the X.509 certificate or CA bundle file to be trusted. If `certificateKey` is omitted, the default key name is `tls.crt` for **Secrets** and `service-ca.crt` for **ConfigMaps**.
+
+The `configMapName` option is useful on **OpenShift**, where service serving certificate CA bundles are commonly injected into **ConfigMap** resources. In that case, the injected certificate bundle normally uses the `service-ca.crt` key, so you can omit `certificateKey` when using that default key name.
 
 ### Storage Options
 **Cryostat** uses <code>storage volumes</code> to persist data in its database and object storage. In the interest of persisting these files across redeployments, **Cryostat** uses a **Persistent Volume Claim** by default. Unless overidden, the operator will create a **Persistent Volume Claim** with the default **Storage Class** and **500MiB** of storage capacity.
@@ -300,6 +304,23 @@ spec:
   targetConnectionCacheOptions:
     targetCacheSize: -1
     targetCacheTTL: 10
+```
+
+### Audit Logging
+
+**Cryostat** can persist audit history in its database. This history enables features that refer back to information about target applications and their Kubernetes lineages after those targets are no longer discoverable.
+
+The `spec.enableAudit` property configures audit logging for the **Cryostat** application. For newly created `Cryostat` objects, the **Cryostat Operator** defaults `spec.enableAudit` to `true`. Existing `Cryostat` objects created before this field was introduced keep their previous behavior until you explicitly set the property.
+
+When audit logging is enabled, the **Cryostat** database grows over time and might require additional storage.
+
+```yaml
+apiVersion: operator.cryostat.io/v1beta2
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+spec:
+  enableAudit: false
 ```
 
 ### Application Database
