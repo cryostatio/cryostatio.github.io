@@ -1,4 +1,4 @@
-## [Capture a Thread Dump](#capture-a-thread-dump)
+## [Analyze a Thread Dump](#analyze-a-thread-dump)
 <ol>
     <li>
       <p>
