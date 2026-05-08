@@ -78,7 +78,7 @@ This example uses the same custom trigger criteria as the preceding examples.
       summary="Navigate to the <i>Capture/Smart Triggers</i> view"
       image-name="4.2.0/create-a-smart-trigger-1.png"
       caption="
-        After navigating to the Capture/Smart Triggers page and clicking the Create button, a form will be displayed allowing for the creation of smart triggers. Simply select the Mbean Attribute for the trigger and set the condition, then select a target duration if desired and select an event template to be used. 
+        After navigating to the Capture/Smart Triggers page and clicking the Create button, a form will be displayed allowing for the creation of smart triggers. Simply select the MBean Attribute for the trigger and set the condition, then select a target duration if desired and select an event template to be used. 
       "
     %}
     {% include howto_step.html
