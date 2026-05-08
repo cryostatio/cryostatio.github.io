@@ -2,7 +2,7 @@
 
 The **Cryostat Helm Chart** supports a large number of configuration options to allow the user to tailor the **Cryostat** deployment to their particular setups and applications. The following guide will detail the available configuration options when deploying the helm chart.
 
-If there are further customizations required to suit your deployment environment, choose the settings values that get you closest to what you need, then manually edit the resulting Kubernetes objects to suit your requirements. You may also consider using helm install --dry-run to render the Kubernetes YAML manifests without installing them, so that you can apply your own customization patches as needed.
+If there are further customizations required to suit your deployment environment, choose the settings values that get you closest to what you need, then manually edit the resulting Kubernetes objects to suit your requirements. You may also consider using <code>helm install --dry-run</code> to render the Kubernetes YAML manifests without installing them, so that you can apply your own customization patches as needed.
 
 ### Configuring TLS
 
