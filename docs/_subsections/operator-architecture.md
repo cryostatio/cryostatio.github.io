@@ -55,6 +55,8 @@ Using labels on a <code>Deployment's</code> <code>metadata.labels</code> or <cod
 
 The environment variable selection can be modified using the <code>cryostat.io/java-options-var</code> label. This defaults to <code>JAVA_TOOL_OPTIONS</code> as described above.
 
+Starting with **Cryostat** 4.2, the Agent Autoconfiguration labels can be applied to the application's <code>Deployment</code> directly, rather than just the <code>Pod Template</code>.
+
 If the <code>Deployment</code> template describes a <code>Pod</code> containing more than one container, the <code>cryostat.io/container</code> can be used to select a container by name. This container will be the one configured to use the **Cryostat Agent**. If this is not specified, the **Operator** will default to picking the first container within the <code>Pod</code>.
 
 The label <code>cryostat.io/read-only</code> can be used to configure the injected **Cryostat Agent** instance to only accept "read" requests on its internal webserver. The **Cryostat Agent** will permit the **Cryostat** instance to perform actions such as querying for the list of active **Flight Recordings**, or the list of registered **JFR** Event Types, or reading MBean metrics. The agent will reject actions such as starting new **Flight Recordings**.
@@ -62,6 +64,27 @@ The label <code>cryostat.io/read-only</code> can be used to configure the inject
 The label <code>cryostat.io/callback-port</code> can be used to control the HTTPS port exposed by the **Cryostat Agent** instance, which is how the **Agent** receives requests from the **Cryostat** instance. This defaults to 9977. If this port number is already used by the application or has some other meaning within the larger deployment, then this label can be used to change the **Cryostat Agent** HTTPS port number.
 
 The label <code>cryostat.io/smart-triggers</code> can be used to attach <code>Smart Triggers</code> to a target application. This label specifies a list of config maps containing <code>Smart Trigger</code> definitions. These config maps will be mounted to the target Pod and a startup flag will be set with the agent to read and enable them. See [using smart triggers](/guides/#using-smart-triggers) for more information on <code>Smart Triggers</code>
+
+### [Agent Autoconfiguration with the Console Plugin](#agent-autoconfiguration-with-the-console-plugin)
+
+The **Cryostat Console Plugin** contains a graphical wizard for registering targets with **Cryostat** through the **Agent Autoconfiguration** feature.
+
+<ol>
+  <li>
+    {% include howto_step.html
+      summary="Select a target in the topology view to register."
+      image-name="4.2.0/agent-autoconfiguration-wizard-1.png"
+      caption="Select the 'Register with Cryostat' option. This will open the graphical wizard for Agent Autoconfiguration."
+    %}
+  </li>
+  <li>
+    {% include howto_step.html
+      summary="Fill out the required fields in the wizard"
+      image-name="4.2.0/agent-autoconfiguration-wizard-2.png"
+      caption="After filling out the wizard with the available Agent Autoconfiguration options, review the configuration and select Register. Agent Autoconfiguration will then be performed with the selected options and the target will be registered with Cryostat"
+    %}
+  </li>
+</ol>
 
 ### [Flow of JFR Data](#flow-of-jfr-data)
 
