@@ -19,7 +19,7 @@ Read the section on the [`Automated Analysis Card`](#automated-analysis-card) fo
   <li>
     {% include howto_step.html
       summary="Click the <code>Analyze</code> toolbar button"
-      image-name="4.1.0/automated-analysis-1.png"
+      image-name="4.2.0/automated-analysis-1.png"
       caption="
         The analysis drawer will appear from the side. If Cryostat has already analyzed recording data from
         this target recently then content will appear in the drawer. If there are no <code>Active Recordings</code>
@@ -31,7 +31,7 @@ Read the section on the [`Automated Analysis Card`](#automated-analysis-card) fo
   <li>
     {% include howto_step.html
       summary="Request analysis"
-      image-name="4.1.0/automated-analysis-2.png"
+      image-name="4.2.0/automated-analysis-2.png"
       caption="
         Click the analysis process button in the corner of the drawer panel.
       "
@@ -40,7 +40,7 @@ Read the section on the [`Automated Analysis Card`](#automated-analysis-card) fo
   <li>
     {% include howto_step.html
       summary="View Details and Suggestions for Results"
-      image-name="4.1.0/automated-analysis-3.png"
+      image-name="4.2.0/automated-analysis-3.png"
       caption="
         Click on each result to view specifics on what the result means and possible suggestions to fix
         the potential problem.
@@ -51,7 +51,7 @@ Read the section on the [`Automated Analysis Card`](#automated-analysis-card) fo
     <p>
     {% include howto_step.html
       summary="View analysis of an archived recording"
-      image-name="4.1.0/automated-analysis-4.png"
+      image-name="4.2.0/automated-analysis-4.png"
       caption="
         Automated analysis results for individual <code>Archived Recordings</code> are also available.
       "

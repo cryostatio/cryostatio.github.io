@@ -71,6 +71,25 @@ This example uses the same custom trigger criteria as the preceding examples.
       </p>
     </details>
   </li>
+  <li>
+    <details>
+      <summary>Using the Cryostat UI</summary>
+      {% include howto_step.html
+      summary="Navigate to the <i>Capture/Smart Triggers</i> view"
+      image-name="4.2.0/create-a-smart-trigger-1.png"
+      caption="
+        After navigating to the Capture/Smart Triggers page and clicking the Create button, a form will be displayed allowing for the creation of smart triggers. Simply select the MBean Attribute for the trigger and set the condition, then select a target duration if desired and select an event template to be used. 
+      "
+    %}
+    {% include howto_step.html
+      summary="View active Smart Triggers"
+      image-name="4.2.0/create-a-smart-trigger-2.png"
+      caption="
+        Once the Smart Trigger has been created it will be displayed in the table.
+      "
+    %}
+    </details>
+  </li>
 </ol>
 
 #### [General Syntax Rules for Custom Triggers](#general-syntax-rules-for-custom-triggers)

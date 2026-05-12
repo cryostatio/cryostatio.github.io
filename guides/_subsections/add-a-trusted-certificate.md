@@ -5,7 +5,7 @@ If you have Java Management Extensions **(JMX)** over `SSL` enabled on your cont
     <li>
         {% include howto_step.html
           summary="Navigate to the <i>Security</i> Tab"
-          image-name="4.1.0/navigate-to-security.png"
+          image-name="4.2.0/navigate-to-security.png"
           text="Click the <i>Security</i> tab. This should initially be in an empty state if you have not yet defined any additional trusted certificates."
         %}
     </li>
@@ -26,11 +26,13 @@ certificate(s) within the truststore directory.
 
 ### [Preconfiguring Trusted Certificates within Cryostat](#preconfiguring-trusted-certificates-within-cryostat)
 
-Alternatively if deploying **Cryostat** in a **Kubernetes** environment with the **Cryostat Operator**, TLS Certs can be preconfigured in **Cryostat** when creating the custom resource. To begin, create a **Kubernetes** Secret containing the TLS Cert.
+Alternatively if deploying **Cryostat** in a **Kubernetes** environment with the **Cryostat Operator**, TLS certificates can be preconfigured in **Cryostat** when creating the custom resource. To begin, create a **Kubernetes** Secret or **ConfigMap** containing the TLS certificate or CA bundle.
 
 ```kubectl create secret generic application-cert --from-file=tlsCert.crt```
 
-Now that this Secret has been created, when creating the **Cryostat Custom Resource** we can specify it, either through the **Red Hat Openshift** console under **Trusted TLS Certificates** while creating the **Cryostat Custom Resource**, or through the **Custom Resource** YAML:
+```kubectl create configmap application-ca --from-file=service-ca.crt```
+
+Now that this Secret or ConfigMap has been created, when creating the **Cryostat Custom Resource** we can specify it, either through the **Red Hat OpenShift** console under **Trusted TLS Certificates** while creating the **Cryostat Custom Resource**, or through the **Custom Resource** YAML:
 
 ```yaml
 apiVersion: operator.cryostat.io/v1beta2
@@ -41,6 +43,10 @@ spec:
   trustedCertSecrets:
     - secretName: application-cert
       certificateKey: tlsCert.crt
+    - configMapName: application-ca
+      certificateKey: service-ca.crt
 ```
 
-Once the **Custom Resource** has been created, the TLS Certificate will be pre-loaded into **Cryostat** and be available from startup without any further configuration needed.
+Each `trustedCertSecrets` entry must specify exactly one of `secretName` or `configMapName`. If `certificateKey` is omitted, the default key name is `tls.crt` for Secrets and `service-ca.crt` for ConfigMaps. The ConfigMap default is useful for OpenShift service CA bundles.
+
+Once the **Custom Resource** has been created, the TLS certificate will be pre-loaded into **Cryostat** and be available from startup without any further configuration needed.

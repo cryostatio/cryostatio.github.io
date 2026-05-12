@@ -63,5 +63,7 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/capture-a-heap-dump.md %}
 
+{% include_relative _subsections/analyze-a-thread-dump.md %}
+
 [comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
 [comment]: # TODO
