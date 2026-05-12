@@ -80,7 +80,7 @@ Continue to [Setup](#setup).
 
 ### [Install via Helm Chart](#install-via-helm-chart)
 
-**Cryostat** can also be installed through the helm chart. Note that installing **Cryostat** through the helm chart will install it directly without the **Cryostat Operator** to manage it. For more information on configuring the helm chart, see [Configuring the Helm Chart](/docs/#configure-the-cryostat-helm-chart)
+**Cryostat** can also be installed through the helm chart. Note that installing **Cryostat** through the helm chart comes with several limitations to be aware of. The helm chart will install **Cryostat** directly without the **Cryostat Operator** to manage it. The helm chart also does not integrate with cert-manager. When installed through the helm chart, the Agent Auto Configuration feature will not work since it requires the **Cryostat Operator**. Finally, the **Openshift Console Plugin** will not be installed by the helm chart. For more information on configuring the helm chart including configuring TLS, see [Configuring the Helm Chart](/docs/#configure-the-cryostat-helm-chart)
 
 #### From Helm repository
 
