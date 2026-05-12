@@ -78,6 +78,37 @@ Click "*Install*" and wait for the installation to complete.
 
 Continue to [Setup](#setup).
 
+### [Install via Helm Chart](#install-via-helm-chart)
+
+**Cryostat** can also be installed through the helm chart. Note that installing **Cryostat** through the helm chart comes with several limitations to be aware of. The helm chart will install **Cryostat** directly without the **Cryostat Operator** to manage it. The helm chart also does not integrate with cert-manager. When installed through the helm chart, the Agent Auto Configuration feature will not work since it requires the **Cryostat Operator**. Finally, the **Openshift Console Plugin** will not be installed by the helm chart. For more information on configuring the helm chart including configuring TLS, see [Configuring the Helm Chart](/docs/#configure-the-cryostat-helm-chart)
+
+#### From Helm repository
+
+The chart is available at the following repositories:
+
+- https://cryostat.io/helm-charts
+- https://charts.openshift.io
+
+To install the chart, add the repository and install, for example:
+
+```bash
+helm repo add cryostat-charts https://cryostat.io/helm-charts
+helm repo update
+helm install cryostat cryostat-charts/cryostat
+```
+
+#### From OCI container registry
+
+The chart is also available as an OCI image on GitHub Container Registry (`ghcr.io`).
+
+To install the chart, run:
+
+```bash
+helm install cryostat oci://ghcr.io/cryostatio/cryostat-helm --version $VERSION
+```
+
+Continue to [Setup](#setup).
+
 ## [Setup](#setup)
 
 ### [Deploying Cryostat](#deploying-cryostat)
