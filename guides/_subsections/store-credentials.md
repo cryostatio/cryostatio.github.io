@@ -6,10 +6,10 @@ before it can access the **JDK** `Flight Recordings` on your `target` **JVMs**.
 <ol>
   <li>
     {% include howto_step.html
-      summary="Navigate to the <i>Console/Security</i> view"
+      summary="Navigate to the <i>Security/Credentials</i> view"
       image-name="4.2.0/navigate-to-security.png"
       text="
-        First, navigate to the <i>Console/Security</i> view. The <i>Store Credentials</i> table
+        First, navigate to the <i>Security/Credentials</i> view. The <i>Store Credentials</i> table
         lists all credentials in <b>Cryostat's</b> <code>Keyring</code>. Click <i>Add</i> to define
         a new credential.
       "
