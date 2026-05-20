@@ -6,12 +6,12 @@
 <ol>
   <li>
       {% include howto_step.html
-        summary="Open Action Menu for a selected Rule"
-        image-name="4.1.0/download-an-automated-rule-1.png"
+        summary="Open the actions menu for a rule"
+        image-name="4.2.0/download-an-automated-rule-1.png"
         caption="Click the action overflow \"&#65049;\" <i>three-dot</i> menu on the right side of selected rule entry in the table."
       %}
   </li>
   <li>
-    <summary>Click <i>Download</i> Button to Download.</summary>
+    <summary>Click <i>Download</i></summary>
   </li>
 </ol>

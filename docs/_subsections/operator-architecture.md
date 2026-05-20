@@ -51,15 +51,42 @@ With this setup, the target applications are not able to assume the privileges a
 
 ### [Agent Autoconfiguration](#agent-autoconfiguration)
 
-Using labels on a <code>Deployment's</code> <code>.spec.template.metadata.labels</code> field, a user can request the **Cryostat Operator** to patch their application <code>Deployment</code> to add and configure the **Cryostat Agent**. The two required labels are <code>cryostat.io/namespace</code> and <code>cryostat.io/name</code>. These should be populated with values corresponding to the installation <code>namespace</code> of a **Cryostat Custom Resource** that the user wishes their application to be registered with. The **Cryostat Operator** will validate that the application <code>Deployment</code> belongs to one of the Target <code>Namespaces</code> of the **Cryostat CR**, and ignore the request if it does not. The patching done by the **Cryostat Operator** involves mounting <code>volumes</code> to the </code>Deployment's</code> <code>Pods</code> containing the **Cryostat Agent** JAR and various TLS certificates required for secure communications; patching the <code>JAVA_TOOL_OPTIONS</code> environment variable to append the <code>-javaagent:/path/to/cryostat-agent.jar</code> flag so that the application statically attaches the **Cryostat Agent** at startup; and adding additional environment variables to the <code>Deployment</code> to configure the **Cryostat Agent** to load the TLS certificates, determine its own callback URL, and to communicate with the **Cryostat Agent** <code>Service</code> in its own <code>Namespace</code>. The **Cryostat Operator** places an Agent <code>Service</code> in each Target <code>namespace</code>, which points at the **Agent Proxy (Gateway)** component of the associated **Cryostat** instance.
+Using labels on a <code>Deployment's</code> <code>metadata.labels</code> or <code>.spec.template.metadata.labels</code> field, a user can request the **Cryostat Operator** to patch their application <code>Deployment</code> to add and configure the **Cryostat Agent**. The two required labels are <code>cryostat.io/namespace</code> and <code>cryostat.io/name</code>. These should be populated with values corresponding to the installation <code>namespace</code> of a **Cryostat Custom Resource** that the user wishes their application to be registered with. The **Cryostat Operator** will validate that the application <code>Deployment</code> belongs to one of the Target <code>Namespaces</code> of the **Cryostat CR**, and ignore the request if it does not. The patching done by the **Cryostat Operator** involves mounting <code>volumes</code> to the </code>Deployment's</code> <code>Pods</code> containing the **Cryostat Agent** JAR and various TLS certificates required for secure communications; patching the <code>JAVA_TOOL_OPTIONS</code> environment variable to append the <code>-javaagent:/path/to/cryostat-agent.jar</code> flag so that the application statically attaches the **Cryostat Agent** at startup; and adding additional environment variables to the <code>Deployment</code> to configure the **Cryostat Agent** to load the TLS certificates, determine its own callback URL, and to communicate with the **Cryostat Agent** <code>Service</code> in its own <code>Namespace</code>. The **Cryostat Operator** places an Agent <code>Service</code> in each Target <code>namespace</code>, which points at the **Agent Proxy (Gateway)** component of the associated **Cryostat** instance.
 
 The environment variable selection can be modified using the <code>cryostat.io/java-options-var</code> label. This defaults to <code>JAVA_TOOL_OPTIONS</code> as described above.
+
+Starting with **Cryostat** 4.2, the Agent Autoconfiguration labels can be applied to the application's <code>Deployment</code> directly, rather than just the <code>Pod Template</code>.
 
 If the <code>Deployment</code> template describes a <code>Pod</code> containing more than one container, the <code>cryostat.io/container</code> can be used to select a container by name. This container will be the one configured to use the **Cryostat Agent**. If this is not specified, the **Operator** will default to picking the first container within the <code>Pod</code>.
 
 The label <code>cryostat.io/read-only</code> can be used to configure the injected **Cryostat Agent** instance to only accept "read" requests on its internal webserver. The **Cryostat Agent** will permit the **Cryostat** instance to perform actions such as querying for the list of active **Flight Recordings**, or the list of registered **JFR** Event Types, or reading MBean metrics. The agent will reject actions such as starting new **Flight Recordings**.
 
 The label <code>cryostat.io/callback-port</code> can be used to control the HTTPS port exposed by the **Cryostat Agent** instance, which is how the **Agent** receives requests from the **Cryostat** instance. This defaults to 9977. If this port number is already used by the application or has some other meaning within the larger deployment, then this label can be used to change the **Cryostat Agent** HTTPS port number.
+
+The label <code>cryostat.io/smart-triggers</code> can be used to attach <code>Smart Triggers</code> to a target application. This label specifies a list of config maps containing <code>Smart Trigger</code> definitions. These config maps will be mounted to the target Pod and a startup flag will be set with the agent to read and enable them. See [using smart triggers](/guides/#using-smart-triggers) for more information on <code>Smart Triggers</code>
+
+There are also several labels for configuring the agent harvester through Agent Autoconfiguration. The label <code>cryostat.io/harvester-template</code> can be used to specify a recording template for use when starting an agent harvester recording. The labels <code>cryostat.io/harvester-period</code> and <code>cryostat.io/harvester-max-files</code> can be used to specify the length of time between JFR collections and pushes by the harvester, and the maximum number of pushed files that Cryostat will keep from the agent respectively. See [configuring the agent harvester](/docs/#configure-the-agent-harvester) for more information on configuring the agent harvester.
+
+### [Agent Autoconfiguration with the Console Plugin](#agent-autoconfiguration-with-the-console-plugin)
+
+The **Cryostat Console Plugin** contains a graphical wizard for registering targets with **Cryostat** through the **Agent Autoconfiguration** feature.
+
+<ol>
+  <li>
+    {% include howto_step.html
+      summary="Select a target in the topology view to register."
+      image-name="4.2.0/agent-autoconfiguration-wizard-1.png"
+      caption="Select the 'Register with Cryostat' option. This will open the graphical wizard for Agent Autoconfiguration."
+    %}
+  </li>
+  <li>
+    {% include howto_step.html
+      summary="Fill out the required fields in the wizard"
+      image-name="4.2.0/agent-autoconfiguration-wizard-2.png"
+      caption="After filling out the wizard with the available Agent Autoconfiguration options, review the configuration and select Register. Agent Autoconfiguration will then be performed with the selected options and the target will be registered with Cryostat"
+    %}
+  </li>
+</ol>
 
 ### [Flow of JFR Data](#flow-of-jfr-data)
 

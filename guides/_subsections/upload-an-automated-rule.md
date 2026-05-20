@@ -23,7 +23,7 @@ Below is an example of a rule file content:
   <li>
       {% include howto_step.html
       summary="Navigate to the <i>Flight Recorder/Capture/Automated Rules</i> Tab"
-      image-name="4.1.0/create-an-automated-rule-1.png"
+      image-name="4.2.0/create-an-automated-rule-1.png"
     %}
   </li>
   <li>
@@ -32,23 +32,23 @@ Below is an example of a rule file content:
   <li>
       {% include howto_step.html
         summary="Open <i>Automated Rules</i> upload modal"
-        image-name="4.1.0/upload-an-automated-rule-1.png"
+        image-name="4.2.0/upload-an-automated-rule-1.png"
       %}
   </li>
   <li>
       {% include howto_step.html
-        summary="Attach a Rule File by Dragging & Dropping or clicking <i>Browse...</i>."
-        image-name="4.1.0/upload-an-automated-rule-2.png"
+        summary="Attach a rule file by dragging and dropping it or clicking <i>Upload</i>"
+        image-name="4.2.0/upload-an-automated-rule-2.png"
         caption="Select a rule file to upload. The file should not include the &quot;id&quot; field as this will be assigned by the application database."
       %}
   </li>
   <li>
-    <summary>Click <i>Submit</i> Button to Upload.</summary>
+    <summary>Click <i>Submit</i> to upload the rule</summary>
   </li>
   <li>
       {% include howto_step.html
         summary="Observe the new rule in the <i>Automated Rules</i> table"
-        image-name="4.1.0/create-an-automated-rule-5.png"
+        image-name="4.2.0/create-an-automated-rule-5.png"
         caption="
           The new rule will appear in the <i>Automated Rules</i> table."
       %}
