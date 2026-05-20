@@ -21,11 +21,11 @@ Previously, if we wanted to enable always-on `Continuous` monitoring using **JDK
     %}
   </li>
   <li>
-    <summary>Click the <i>Create</i> Button</summary>
+    <summary>Click <i>Create</i> to open the create modal</summary>
   </li>
   <li>
       {% include howto_step.html
-        summary="Configure the new <code>Automated Rule</code>"
+        summary="Configure the new <code>Automated Rule</code> in the create modal"
         image-name="4.2.0/create-an-automated-rule-2.png"
         text="
       <p>
@@ -142,7 +142,7 @@ jfrEventTypeIds(target).exists(t, t.startsWith('myorg.myapp.'))
         caption="You can select a <code>target</code> <b>JVM</b> to view its properties and use them to build your <code>Match Expression</code>."
         text="
           <p>
-          When you enter a <code>Match Expression</code> in the <i>Match Expression</i> field, the <i>Match Expression Visualizer</i> will highlight which <code>targets</code> are matched.
+          When you enter a <code>Match Expression</code> in the <i>Match Expression</i> field, the <i>Match Expression Visualizer</i> in the create modal will highlight which <code>targets</code> are matched.
           </p>
           "
       %}
@@ -178,7 +178,7 @@ jfrEventTypeIds(target).exists(t, t.startsWith('myorg.myapp.'))
 
   </li>
   <li>
-    <summary>Click the <i>Create</i> Button</summary>
+    <summary>Click <i>Create</i> in the modal</summary>
   </li>
   <li>
       {% include howto_step.html
@@ -276,4 +276,3 @@ spec:
 ```
 
 Once the **Custom Resource** has been created, the rule will be pre-loaded into **Cryostat** and be available from startup without any further configuration needed.
-
