@@ -12,6 +12,7 @@ The **Harvester** supports a number of configuration options that can be used to
 - `cryostat.agent.harvester.exit.max-size-b` [`long`]: the JFR `maxsize` setting, specified in bytes, to apply to exit uploads as described above.
 - `cryostat.agent.harvester.max-age-ms` [`long`]: the JFR `maxage` setting, specified in milliseconds, to apply to periodic uploads during the application lifecycle. Defaults to `0`, which is interpreted as 1.5x the harvester period (`cryostat.agent.harvester.period-ms`).
 - `cryostat.agent.harvester.max-size-b` [`long`]: the JFR `maxsize` setting, specified in bytes, to apply to periodic uploads during the application lifecycle. Defaults to `0`, which means `unlimited`.
+- `cryostat.agent.harvester.autoanalyze` [`boolean`]: whether the pushed recordings should be marked for automatic analysis by the Cryostat server. Defaults to true.
 
 Note that the **Harvester Period** and **Template** options must be set for the **Harvester** to regularly push **JFR** data. If only the **Template** is set the **Harvester** will only attempt to push on shutdown. If neither are set the **Harvester** will not do anything unless configured alongside **Smart Triggers** as described below.
 
@@ -30,6 +31,9 @@ or by setting them as environment variables, for example:
 - name: CRYOSTAT_AGENT_HARVESTER_TEMPLATE  
   value: Profiling
 ```
+
+The **Cryostat Operator** supports several labels for configuring the **Harvester** through **Agent Autoconfiguration**. For more information, see [Agent Autoconfiguration](/docs/#agent-autoconfiguration)
+
 #### [MBean Trigger Integration](#mbean-trigger-integration)
 
 When the **Cryostat Agent** is configured to start dynamic recordings based on custom MBean triggers, you can also integrate them with the **Harvester** to automatically push the collected **JFR** data to the **Cryostat Server**.
