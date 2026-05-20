@@ -28,7 +28,7 @@
   </li>
   <li>
     {% include howto_step.html
-      summary="Navigate to the <i>Diagnostics/Analyze/Thread Dumps</i> view"
+      summary="Navigate to the <i>Diagnostics/Analyze/Thread Dump Archives</i> view"
       image-name="4.2.0/archive-a-thread-dump.png"
       caption="
         Once the <code>Thread Dump</code> has been archived, a new entry will appear in the
