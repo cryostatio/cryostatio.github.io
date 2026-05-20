@@ -74,18 +74,18 @@ This example uses the same custom trigger criteria as the preceding examples.
   <li>
     <details>
       <summary>Using the Cryostat UI</summary>
-      {% include howto_step.html
+    {% include howto_step.html
       summary="Navigate to the <i>Capture/Triggers</i> view"
       image-name="4.2.0/create-a-smart-trigger-1.png"
       caption="
-        After navigating to the Capture/Triggers page and clicking the Create button, a form will be displayed allowing for the creation of smart triggers. Simply select the MBean Attribute for the trigger and set the condition, then select a target duration if desired and select an event template to be used. 
+        After navigating to the Capture/Triggers page and clicking the Create button, a form will be displayed allowing for the creation of smart triggers. Simply select the MBean Attribute for the trigger and set the condition, then select a target duration if desired and select an event template to be used. Custom event templates may be used as well as the built in templates. For more information on the available MBean Attributes, see <a href='#supported-mbean-attributes'>Supported MBean Attributes</a>.
       "
     %}
     {% include howto_step.html
       summary="View active Smart Triggers"
       image-name="4.2.0/create-a-smart-trigger-2.png"
       caption="
-        Once the Smart Trigger has been created it will be displayed in the table.
+        Once the Smart Trigger has been created it will be displayed in the table, showing the conditions that must be met as well as the Recording Template used for starting a Recording once conditions are met. From this table, the user can filter by any of the displayed attributes (ID, duration, condition, template), for instance entering Profiling will display any active Smart Triggers using the Profiling template. Triggers may also be deleted, stopping them from activating.
       "
     %}
     </details>
@@ -124,3 +124,34 @@ Consider the following syntax guidelines for defining custom triggers:
     </pre>
     </li>
 </ol>
+
+#### [Supported MBean Attributes](#supported-mbean-attributes)
+
+The following MBean Attributes are supported for use with Smart Triggers:
+
+**Operating System Metrics**
+- DaemonThreadCount
+- ThreadCount
+- AvailableProcessors
+- SystemCpuLoad
+- SystemLoadAverage
+- ProcessCpuLoad
+- TotalPhyiscalMemorySize
+- FreePhysicalMemorySize
+- TotalSwapSpaceSize
+
+**Thread Metrics**
+- ThreadCount
+- DaemonThreadCount
+
+**Runtime Metrics**
+- StartTime
+- Uptime
+
+**Memory Metrics**
+- HeapMemoryUsage
+- NonHeapMemoryUsage
+- HeapMemoryUsagePercent
+
+
+
