@@ -14,7 +14,7 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
 <ol>
   <li>
     {% capture target-jvm-details-text %}
-    The <i>Target JVM Details</i> <code>card</code> displays information about the <code>target</code> <b>JVM</b> application that is currently selected. There are two tabs that display different information:
+    The <i>Target JVM Details</i> <code>card</code> displays information about the <code>target</code> <b>JVM</b> application that is currently selected. There are three tabs that display different information:
     <ul>
         <li>
             <i>Details Tab</i> - Displays information about the <code>target</code> <b>JVM</b> application, including:
@@ -48,6 +48,9 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
                 </li>
             </ul>
         </li>
+        <li>
+            <i>Lineage Tab</i> - Displays an embedded Topology graph view isolating the <code>target</code> <b>JVM</b> application, the Discovery Node it's attached to, that Node's parent Node, up to the Realm level.
+        </li>
     </ul>
     {% endcapture %}
     {% include howto_step.html
@@ -75,6 +78,12 @@ The *Dashboard* is the first view you will see when you log into **Cryostat**. I
                 <img src="{{ site.url }}/images/4.2.0/dashboard/targetjvmdetails-resources.png" alt="Resources tab">
                 </a>
                 <figcaption><i>Resources Tab</i></figcaption>
+            </figure>
+            <figure>
+                <a href="{{ site.url }}/images/4.2.0/dashboard/targetjvmdetails-lineage.png" target="_blank">
+                <img src="{{ site.url }}/images/4.2.0/dashboard/targetjvmdetails-lineage.png" alt="Lineage tab">
+                </a>
+                <figcaption><i>Lineage Tab</i></figcaption>
             </figure>
         </div>
     </details>
