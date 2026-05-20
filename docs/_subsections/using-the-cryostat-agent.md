@@ -8,6 +8,8 @@ The **Agent** may also be configured, using the property `cryostat.agent.api.wri
 
 The programming interfaces for **Cryostat** and its **Agent** are designed to implement **Cryostat's** specific feature set, rather than being generalized and flexible like **JMX**. The benefit of this is that the security considerations are easier to understand and model, but choosing to use the **Cryostat Agent** over **JMX** may also forego the ability to interoperate with other **JMX** tooling such as `JDK Mission Control`, `visualvm`, `jconsole`, `hawtio`, etc.
 
+Note that <code>cryostat.agent.baseuri</code> and <code>cryostat.agent.callback</code> are required properties. These ensure that the agent can communicate with Cryostat and Cryostat can communicate back to the agent.
+
 <ol>
     <li>The <b>Cryostat Agent</b> retrieves a wide range of information from those <b>Cryostat</b> applications such as <code>memory usage</code>, <code>CPU utilization</code>, etc. </li>
     <li>The <b>Cryostat</b> analyzes these collected data to identify problems that might be affecting the application’s performance.</li>

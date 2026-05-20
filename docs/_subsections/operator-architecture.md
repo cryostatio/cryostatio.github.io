@@ -65,6 +65,8 @@ The label <code>cryostat.io/callback-port</code> can be used to control the HTTP
 
 The label <code>cryostat.io/smart-triggers</code> can be used to attach <code>Smart Triggers</code> to a target application. This label specifies a list of config maps containing <code>Smart Trigger</code> definitions. These config maps will be mounted to the target Pod and a startup flag will be set with the agent to read and enable them. See [using smart triggers](/guides/#using-smart-triggers) for more information on <code>Smart Triggers</code>
 
+There are also several labels for configuring the agent harvester through Agent Autoconfiguration. The label <code>cryostat.io/harvester-template</code> can be used to specify a recording template for use when starting an agent harvester recording. The labels <code>cryostat.io/harvester-period</code> and <code>cryostat.io/harvester-max-files</code> can be used to specify the length of time between JFR collections and pushes by the harvester, and the maximum number of pushed files that Cryostat will keep from the agent respectively. See [configuring the agent harvester](/docs/#configure-the-agent-harvester) for more information on configuring the agent harvester.
+
 ### [Agent Autoconfiguration with the Console Plugin](#agent-autoconfiguration-with-the-console-plugin)
 
 The **Cryostat Console Plugin** contains a graphical wizard for registering targets with **Cryostat** through the **Agent Autoconfiguration** feature.
