@@ -1,5 +1,5 @@
 ## [View the Audit Log](#view-the-audit-log)
-**Cryostat 4.2** can persist audit history for changes to its entities when
+**Cryostat** can persist audit history for changes to its entities when
 audit logging is enabled. This history includes changes to targets and discovery
 data, recordings, automated rules, credentials, diagnostic resources, event
 templates, JMC Agent probe templates, garbage collection requests, and
@@ -26,7 +26,7 @@ information about enabling or disabling audit logging, see
       summary="Navigate to the <i>Security/Audit Log</i> view"
       image-name="4.2.0/audit-log-1.png"
       caption="
-        Click <i>Security</i> on the sidebar, then click <i>Audit Log</i>. The
+        Click <i>Audit Log</i> in the sidebar under the <i>Security</i> heading. The
         view opens with <i>Start Time</i> and <i>End Time</i> controls for
         choosing the audit query range.
       "
