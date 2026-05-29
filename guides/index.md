@@ -53,6 +53,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/add-a-trusted-certificate.md %}
 
+{% include_relative _subsections/view-audit-log.md %}
+
 {% include_relative _subsections/create-an-automated-rule.md %}
 
 {% include_relative _subsections/upload-an-automated-rule.md %}
