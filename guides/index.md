@@ -43,6 +43,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/view-in-grafana.md %}
 
+{% include_relative _subsections/view-in-analytics.md %}
+
 {% include_relative _subsections/automated-analysis.md %}
 
 {% include_relative _subsections/add-and-edit-recording-metadata-labels.md %}
@@ -66,6 +68,3 @@ common actions and workflows of interest and why they are useful.
 {% include_relative _subsections/analyze-a-thread-dump.md %}
 
 {% include_relative _subsections/use-async-profiler.md %}
-
-[comment]: # ## [Analyze Recordings Online](#analyze-recordings-online)
-[comment]: # TODO
