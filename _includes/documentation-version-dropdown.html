@@ -1,0 +1,16 @@
+<div>
+  <label id="{{ include.id }}-version-label" for="{{ include.id }}-version-dropdown">Version</label>
+  <select id="{{ include.id }}-version-dropdown" class="documentation-version-dropdown">
+    {% for version in site.data.versions.documentation %}
+      {% if version == 'latest' %}
+        {% assign version_url = '/' | append: include.section | append: '/' %}
+      {% else %}
+        {% assign version_url = '/version/' | append: version | append: '/' | append: include.section | append: '/' %}
+      {% endif %}
+      {% assign version_page = site.pages | where: 'url', version_url | first %}
+      {% if version_page %}
+        <option value="{{ version_url | relative_url }}" {% if page.url == version_url %}selected{% endif %}>{% if version == 'latest' %}{{ site.data.versions.cryostat.version }} - {% endif %}{{ version | capitalize }}</option>
+      {% endif %}
+    {% endfor %}
+  </select>
+</div>

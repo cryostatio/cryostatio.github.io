@@ -4,22 +4,8 @@ layout: default
 
 {% include back-to-top.html %}
 
-{% assign versioned_page = page.url | startswith: '/version/' %}
-{% if versioned_page %}
-  {% assign docversion = page.url | replace_regex: '^/version/([^/]+)/.*', '\1' %}
-{% else %}
-  {% assign docversion = 'latest' %}
-{% endif %}
-
 <div class="home">
-    <div>
-        <label id="configindex-version-label">Version</label>
-        <select id="configindex-version-dropdown">
-            {% for version in site.data.versions.documentation %}
-              <option value="{{ version }}" {% if docversion == version %}selected{% endif %}>{% if version == 'latest' %}{{ site.data.versions.cryostat.version }} - {% endif %}{{ version | capitalize }}</option>
-            {% endfor %}
-          </select>
-    </div>
+  {% include documentation-version-dropdown.html section='docs' id='configindex' %}
 
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
