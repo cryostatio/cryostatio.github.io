@@ -38,8 +38,7 @@ This will start a local development server, open your default browser pointing t
 and `_subsections/`. The shared version selector uses the release list in
 `_data/versions.yaml` and only offers versions with an index page for that section.
 The Docs section was introduced during 4.1.0, so earlier releases are only listed
-under Guides. The 4.1.0 Docs archive was restored from `4cfdc91^`, immediately before
-the 4.2.0 release update.
+under Guides.
 
 Before updating the latest documentation for a new release:
 
