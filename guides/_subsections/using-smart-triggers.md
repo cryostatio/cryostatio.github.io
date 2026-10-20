@@ -22,7 +22,7 @@ You can define a custom trigger in any of the following ways:
 The following example shows how to specify a simple custom trigger by using a <b>JVM</b> system property flag:
       </p>
       <pre>
-  -Dcryostat.agent.smart-trigger.definitions="{"condition":"ProcessCpuLoad > 0.2", "duration":"30000", "recordingTemplate":"profile"}"
+  -Dcryostat.agent.smart-trigger.definitions='{"condition":"ProcessCpuLoad > 0.2", "duration":"30000", "recordingTemplate":"profile"}'
       </pre>
       <p>
       The preceding example trigger instructs the <b>Agent</b> to start a <b>JFR</b> <code>Recording</code> if the <i>ProcessCpuLoad</i> metric has a value greater than 0.2 for a duration of more than 30 seconds: This example also instructs the <b>Agent</b> to use the <i>Profile</i> event template for the <b>JFR</b> <code>Recording</code>.
@@ -37,7 +37,7 @@ The following example shows how to specify a simple custom trigger by using an e
       </p>
       <pre>
   - name: CRYOSTAT_AGENT_SMART_TRIGGER_DEFINITIONS
-    value: "{"condition":"ProcessCpuLoad > 0.2", "duration":"30s", "recordingTemplate":"profile"}"
+    value: '{"condition":"ProcessCpuLoad > 0.2", "duration":"30000", "recordingTemplate":"profile"}'
       </pre>
       <p>
 This example uses the same custom trigger criteria as the preceding example.
@@ -85,16 +85,17 @@ Consider the following syntax guidelines for defining custom triggers:
 <ol>
     <li>A custom trigger definition must consist of an expression that defines the overall trigger condition, a duration specifying how long the condition must be met, and the name of an event template that is used for the <b>JFR</b> <code>Recording</code>. Optionally, the trigger definition may include conditions for stopping the created recording as well as the number of times the trigger may activate.</li>
     <li>The entire trigger expression must follow a specific JSON format:
-    <code>{ "condition": "constraint1(&&/||)constraint2...constraintN" ,
+    <pre>    {
+      "condition": "constraint1(&&/||)constraint2...constraintN" ,
       "duration": "number of milliseconds" ,
       "stopCondition": "constraint1(&&/||)constraint2...constraintN",
       "stopDuration": "number of milliseconds" ,
       "recordingTemplate": "recordingTemplateNameOrLabel",
       "invocationCountTarget": "number of triggers"
-    }</code>
+    }</pre>
     </li>
     <li> For example: <code>{"condition":"ProcessCpuLoad > 0.2", "duration":"30000", "recordingTemplate":"profile"}</code></li>
-    <li>A <code>cpndition</code> expression can consist of one or more constraints. </li>
+    <li>A <code>condition</code> expression can consist of one or more constraints. </li>
     <li>Each constraint must include: the name of an MBean counter; a relational operator such as <code>></code> (greater than), <code>=</code> (equal to), <code><</code>(less than), and so on; and a specified value. The type of relational operator and value that you can specify depends on the associated MBean counter type. For example: <pre>ProcessCpuLoad > 0.2</pre></li>
     <li>Constraints can be grouped together by using logical operators such as <code>&&</code> (AND), <code>||</code> (OR), or <code>!</code> (NOT) logic. For readability and clarity around the order of operations and operator precedence, grouped constraints may be enclosed in round brackets, but this is not a requirement. For example:
     <pre>
@@ -106,18 +107,18 @@ Consider the following syntax guidelines for defining custom triggers:
     </li>
     <li>The <code>stopCondition</code> property follows the same syntax rules as the condition property, the difference being stopCondition specifies conditions for stopping the created recording.</li>
     <li>
-    Only one <code>target</code> duration can be defined for a custom trigger. The <code>target</code> duration is applied to the entire trigger expression that is enclosed within the square brackets
+    Only one <code>duration</code> and <code>stopDuration</code> can be defined for a custom trigger. The <code>duration</code> is applied to the entire trigger expression that is defined by the <code>condition</code> field, and <code>stopDuration</code> is applied to the <code>stopCondition</code> field.
     </li>
     <li>
-    A <code>target</code> duration is expressed in terms of milliseconds,  For example, <code>30000</code> means 30 seconds, <code>300000</code> means five minutes and so on.
+    The <code>duration</code> and <code>stopDuration</code> fields are expressed in terms of milliseconds,  For example, <code>30000</code> means 30 seconds, <code>300000</code> means five minutes and so on.
     </li>
-    <li>
-    A <code>target</code> duration is optional. If a <code>target</code> duration is not specified, triggering will occur immediately once the trigger conditions are met.
+    <li><code>duration</code> and <code>stopDuration</code> are optional fields for specifying how long the <code>condition</code> and <code>stopCondition</code> respectively must be met before a recording is started. If not included, a recording will be started immediately when the condition is met.
     </li>
     <li>
     Multiple custom trigger definitions can be specified together, each of which relates to a separate <b>JFR</b> <code>Recording</code>. Different custom trigger definitions must be separated by a comma <code>(,)</code> character. For example:
     <pre>
-  {"condition":"ProcessCpuLoad>0.2","recordingTemplate":"profile"},{"condition":"ThreadCount>30","recordingTemplate":"Continuous"}
+  [{"condition":"ProcessCpuLoad>0.2","recordingTemplate":"profile"},
+  {"condition":"ThreadCount>30","recordingTemplate":"Continuous"}]
     </pre>
     </li>
     <li>
@@ -128,15 +129,14 @@ Consider the following syntax guidelines for defining custom triggers:
     </li>
     <li>
     For an example of a complete smart trigger definition:
-    <code>
-    {
-      "condition": "(ProcessCpuLoad>0.5||SystemCpuLoad>0.25)&&HeapMemoryUsagePercent>0.1",
-      "duration": "60000",
-      "stopCondition":"ProcessCpuLoad<0.4",
+    <pre>  {
+      "condition":"(ProcessCpuLoad>0.5||SystemCpuLoad>0.25)&&HeapMemoryUsagePercent>0.1",
+      "duration":"60000",
+      "stopCondition":"ProcessCpuLoad<=0.4",
       "stopDuration":"30000",
       "recordingTemplate": "Continuous"
-    }
-    </code>
+  }
+    </pre>
     </li>
 </ol>
 
