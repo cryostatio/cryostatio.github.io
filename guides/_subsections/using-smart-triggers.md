@@ -112,7 +112,7 @@ Consider the following syntax guidelines for defining custom triggers:
     <li>
     The <code>duration</code> and <code>stopDuration</code> fields are expressed in terms of milliseconds,  For example, <code>30000</code> means 30 seconds, <code>300000</code> means five minutes and so on.
     </li>
-    <li><code>duration</code> and <code>stopDuration</code> are optional fields for specifying how long the <code>condition</code> and <code>stopCondition</code> respectively must be met before a recording is started. If not included, a recording will be started immediately when the condition is met.
+    <li><code>duration</code> and <code>stopDuration</code> are optional fields for specifying how long the <code>condition</code> and <code>stopCondition</code> respectively must be met before a recording action is taken. If stopDuration is ommitted, a recording will be started immediately upon the condition being met. Similarly, if stopDuration is omitted, the recording will be stopped immediately.
     </li>
     <li>
     Multiple custom trigger definitions can be specified together, each of which relates to a separate <b>JFR</b> <code>Recording</code>. Different custom trigger definitions must be separated by a comma <code>(,)</code> character. For example:
