@@ -22,7 +22,7 @@ You can define a custom trigger in any of the following ways:
 The following example shows how to specify a simple custom trigger by using a <b>JVM</b> system property flag:
       </p>
       <pre>
-  -Dcryostat.agent.smart-trigger.definitions='{"condition":"ProcessCpuLoad > 0.2", "duration":"30000", "recordingTemplate":"profile"}'
+  -Dcryostat.agent.smart-trigger.definitions='[{"condition":"ProcessCpuLoad > 0.2", "duration":"30000", "recordingTemplate":"profile"}]'
       </pre>
       <p>
       The preceding example trigger instructs the <b>Agent</b> to start a <b>JFR</b> <code>Recording</code> if the <i>ProcessCpuLoad</i> metric has a value greater than 0.2 for a duration of more than 30 seconds: This example also instructs the <b>Agent</b> to use the <i>Profile</i> event template for the <b>JFR</b> <code>Recording</code>.
@@ -37,7 +37,7 @@ The following example shows how to specify a simple custom trigger by using an e
       </p>
       <pre>
   - name: CRYOSTAT_AGENT_SMART_TRIGGER_DEFINITIONS
-    value: '{"condition":"ProcessCpuLoad > 0.2", "duration":"30000", "recordingTemplate":"profile"}'
+    value: '[{"condition":"ProcessCpuLoad > 0.2", "duration":"30000", "recordingTemplate":"profile"}]'
       </pre>
       <p>
 This example uses the same custom trigger criteria as the preceding example.
