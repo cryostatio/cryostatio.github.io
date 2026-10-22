@@ -125,7 +125,7 @@ Consider the following syntax guidelines for defining custom triggers:
     <code>invocationCountTarget</code> is an optional field that allows for finer control over the trigger lifecycle, specifying a specific number of times it should go through its lifecycle. By default smart triggers will monitor continuously and start/stop a recording each time the conditions are met.
     </li>
     <li>
-    When specifying a trigger condition, <code>triggerActivationCount</code>, <code>timeLastActivated</code>, and <code>durationSinceLastActivation</code> are optional variables that can be used in the expression. For instance <code>processCpuLoad > 0.2 && durationSinceLastActivation > 30000</code>. This example will activate when the CPU load exceeds 0.2 and the trigger hasn't previously activated in the last 30 seconds.
+    When specifying a trigger condition, <code>triggerActivationCount</code>, <code>timeLastActivated</code>, and <code>durationSinceLastActivation</code> are optional variables that can be used in the expression. For instance <code>ProcessCpuLoad > 0.2 && durationSinceLastActivation > 30000</code>. This example will activate when the CPU load exceeds 0.2 and the trigger hasn't previously activated in the last 30 seconds.
     </li>
     <li>
     For an example of a complete smart trigger definition:
