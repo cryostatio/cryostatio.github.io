@@ -79,19 +79,19 @@
   </li>
   <li>
     {% include howto_step.html
-      summary="View Collections"
+      summary="View Duplicate Arrays"
       image-name="4.2.0/analyze-a-heap-dump-9.png"
       caption="
-        The Collections view provides a detailed breakdown of every problematic collection found in the heap memory, the class declaring each, the total memory footprint of each collection, the number of problematic objects contained in each collection type, and the number of non problematic collections of that type. Expanding the collection will show detailed information on the objects that are consuming large amounts of memory. The class, memory overhead, number of instances, and problem type will be shown. Hovering over the problem type will provide a tooltip with detailed information on what the identified problem means. In this case, LENGTH_ZERO and LENGTH_ONE indicate standalone arrays of length 0 or 1 that are wasting memory.
+        The Duplicate Arrays view provides a detailed breakdown of memory wasted by storing duplicated arrays. Each entry in the table shows the field and class declaring the duplicate arrays, the memory consumed by each, and the number of duplicated and non-duplicate arrays being declared by each class and field combination. Expanding a row will show the value of the duplicated arrays for each class and field combination and how many copies there are of each.
       "
     %}
   </li>
   <li>
     {% include howto_step.html
-      summary="View Duplicate Arrays"
+      summary="View High Size Objects"
       image-name="4.2.0/analyze-a-heap-dump-10.png"
       caption="
-        The Duplicate Arrays view provides a detailed breakdown of memory wasted by storing duplicated arrays. Each entry in the table shows the field and class declaring the duplicate arrays, the memory consumed by each, and the number of duplicated and non-duplicate arrays being declared by each class and field combination. Expanding a row will show the value of the duplicated arrays for each class and field combination and how many copies there are of each.
+        The High Size Objects view provides a detailed breakdown of every object found in the heap memory that is consuming large amounts of memory. The table tracks the class declaring each, the total memory footprint of each object,  and the number of problematic objects contained in each. Expanding the object will show detailed information on the objects that are consuming large amounts of memory. The class, memory overhead, and number of instances will be shown. 
       "
     %}
   </li>
@@ -101,6 +101,15 @@
       image-name="4.2.0/analyze-a-heap-dump-11.png"
       caption="
         The Duplicate Strings view provides a detailed breakdown of memory wasted by storing duplicated strings. Each entry in the table shows the field and class declaring the duplicate strings, the memory consumed by each, the number of duplicated strings, the amount of memory consumed internally by char arrays for those strings, and the number of non-duplicate strings being declared by each class and field combination. Expanding a row will show the value of the duplicated strings for each class and field combination and how many copies there are of each.
+      "
+    %}
+  </li>
+  <li>
+    {% include howto_step.html
+      summary="View Weak HashMaps"
+      image-name="4.2.0/analyze-a-heap-dump-13.png"
+      caption="
+        The WeakHashMaps view provides a detailed breakdown of memory wasted by WeakHashMap instances that have references from values to keys. Each entry in the table shows the field and class declaring the WeakHashMaps, the memory consumed by each, and the number of problematic HashMaps. Each row can be expanded to view the classes defining the WeakHashMap instances.
       "
     %}
   </li>
