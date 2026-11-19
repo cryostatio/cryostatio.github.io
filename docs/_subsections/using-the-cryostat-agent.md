@@ -220,7 +220,7 @@ spec:
               # readonly access to certain low-sensitivity calls. If this is 'true' then the
               # Agent will allow Cryostat to dynamically request JFR recordings to be started,
               # stopped, deleted, etc. as well as listed and retrieved.
-              value: true
+              value: "true"
             - name: POD_IP
               valueFrom:
                 fieldRef:

@@ -34,9 +34,9 @@ spec:
 In order for **Cryostat** to successfully connect to an external S3 storage provider, it needs a **Kubernetes Secret** containing an <code>ACCESS_KEY</code> and <code>SECRET_KEY</code>. The details are described above. This secret can be created through the **Openshift Console** interface, or through a yaml or the command line:
 
 ```bash
-kubectl create secret generic s3cred \ 
---from-literal=ACCESS_KEY=cryostat \ 
---from-literal=STORAGE_KEY=123456789
+kubectl create secret generic s3cred \
+--from-literal=ACCESS_KEY=cryostat \
+--from-literal=SECRET_KEY=123456789
 ```
 
 With this **Secret** created, we can now create a sample configuration to connect **Cryostat** to an external storage provider hosted at <code>some-storage-provider</code>:

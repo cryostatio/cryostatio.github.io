@@ -9,7 +9,7 @@ Additional Trigger conditions may be set to configure when a recording started b
 
 #### [Configure Custom Trigger for Dynamic Recording](#configure-custom-trigger-for-dynamic-recording)
 When you configure your `target` application to load the **Cryostat Agent**, you can define one or more custom triggers that are then passed as arguments to the **Agent**.
-For more information, learn how to [use the Cryostat Agent](#using-the-cryostat-agent).
+For more information, learn how to [use the Cryostat Agent](/docs/#using-the-cryostat-agent).
 
 #### [Options for Defining a Custom Trigger](#options-for-defining-a-custom-trigger)
 You can define a custom trigger in any of the following ways:
@@ -64,14 +64,14 @@ This example uses the same custom trigger criteria as the preceding example.
       <summary>Using the Cryostat UI</summary>
     {% include howto_step.html
       summary="Navigate to the <i>Capture/Triggers</i> view"
-      image-name="4.2.0/create-a-smart-trigger-1.png"
+      image-name="4.3.0/create-a-smart-trigger-1.png"
       caption="
         After navigating to the Capture/Triggers page and clicking the Create button, a form will be displayed allowing for the creation of smart triggers. Simply select the MBean Attribute for the trigger and set the condition, then select a target duration if desired and select an event template to be used. Custom event templates may be used as well as the built in templates. For more information on the available MBean Attributes, see <a href='#supported-mbean-attributes'>Supported MBean Attributes</a>.
       "
     %}
     {% include howto_step.html
       summary="View active Smart Triggers"
-      image-name="4.2.0/create-a-smart-trigger-2.png"
+      image-name="4.3.0/create-a-smart-trigger-2.png"
       caption="
         Once the Smart Trigger has been created it will be displayed in the table, showing the conditions that must be met as well as the Recording Template used for starting a Recording once conditions are met. From this table, the user can filter by any of the displayed attributes (ID, duration, condition, template), for instance entering Profiling will display any active Smart Triggers using the Profiling template. Triggers may also be deleted, stopping them from activating.
       "

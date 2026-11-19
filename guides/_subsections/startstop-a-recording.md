@@ -15,7 +15,7 @@ The first and most basic Flight Recorder workflow is to start a `Flight Recordin
   <li>
     {% include howto_step.html
       summary="Configure the new <code>Recording</code>"
-      image-name="4.2.0/startstop-a-recording-1.png"
+      image-name="4.3.0/startstop-a-recording-1.png"
       text="
       <p>
         Enter a <i>Name</i> for the new <code>Recording</code>. The form will alert you if the name
@@ -49,7 +49,7 @@ The first and most basic Flight Recorder workflow is to start a `Flight Recordin
   <li>
     {% include howto_step.html
       summary="<i>(Optional)</i> Adjust any <i>Advanced Options</i> for the <code>Recording</code>"
-      image-name="4.2.0/startstop-a-recording-2.png"
+      image-name="4.3.0/startstop-a-recording-2.png"
       text="
       <p>
         In many cases, the <i>Advanced Options</i> can be left with their
@@ -71,8 +71,8 @@ The first and most basic Flight Recorder workflow is to start a `Flight Recordin
       <p>
         <i>Maximum Age</i>: Use this parameter to specify the maximum number of
         <code>seconds</code>, <code>minutes</code>, or <code>hours</code> that events should be kept in the <code>Recording</code>
-        before being discarded. This parameter is valid only when the disk
-        parameter is set to true, and the <code>Recording</code> duration is not <i>Continuous</i>.
+        before being discarded. This parameter is valid only when the To Disk
+        parameter is set to true.
         By default, this parameter is set to 0, which means there is no limit set.
       </p>
       "
@@ -108,7 +108,7 @@ The first and most basic Flight Recorder workflow is to start a `Flight Recordin
     {% endcapture %}
     {% include howto_step.html
       summary="<i>Stop</i> the <code>Recording</code>"
-      image-name="4.2.0/startstop-a-recording-3.png"
+      image-name="4.3.0/startstop-a-recording-3.png"
       text=stop-the-recording-additional-content
     %}
   </li>

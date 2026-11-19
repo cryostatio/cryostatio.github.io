@@ -75,14 +75,14 @@ The **Cryostat Console Plugin** contains a graphical wizard for registering targ
   <li>
     {% include howto_step.html
       summary="Select a target in the topology view to register."
-      image-name="4.2.0/agent-autoconfiguration-wizard-1.png"
+      image-name="4.3.0/agent-autoconfiguration-wizard-1.png"
       caption="Select the 'Register with Cryostat' option. This will open the graphical wizard for Agent Autoconfiguration."
     %}
   </li>
   <li>
     {% include howto_step.html
       summary="Fill out the required fields in the wizard"
-      image-name="4.2.0/agent-autoconfiguration-wizard-2.png"
+      image-name="4.3.0/agent-autoconfiguration-wizard-2.png"
       caption="After filling out the wizard with the available Agent Autoconfiguration options, review the configuration and select Register. Agent Autoconfiguration will then be performed with the selected options and the target will be registered with Cryostat"
     %}
   </li>
