@@ -2,7 +2,7 @@
 
 ### [General Application Architecture w.r.t Security](#general-application-architecture-wrt-security)
 
-The **Cryostat {{ site.data.versions.cryostat.version }}** application as a whole consists of the following components:
+The **Cryostat 4.2.0 ** application as a whole consists of the following components:
 
 * **Cryostat** Deployment
     * Service + Route → Auth container
@@ -36,8 +36,8 @@ The <code>Routes</code> are configured with TLS Re-Encryption so all connections
 ### [Sample Deployment Scenario](#sample-deployment-scenario)
 
 <figure>
-  <a href="{{ site.url }}/images/{{ site.data.versions.cryostat.version }}/cryostat-architecture.dot.svg" target="_blank">
-    <img src="{{ site.url }}/images/{{ site.data.versions.cryostat.version }}/cryostat-architecture.dot.svg" alt="Cryostat installation graph">
+  <a href="{{ site.url }}/images/4.2.0/cryostat-architecture.dot.svg" target="_blank">
+    <img src="{{ site.url }}/images/4.2.0/cryostat-architecture.dot.svg" alt="Cryostat installation graph">
   </a>
 </figure>
 
