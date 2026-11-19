@@ -232,7 +232,7 @@ With this rule definition in place, **Kubernetes** or **Red Hat OpenShift** user
 
 As an example, you might use or implement an `Operator` that monitors traffic flow or pod restarts and enables monitoring on pods after some criterion threshold is met, then disables it again if the `target` application's behavior returns to normal. As a **Kubernetes** administrator, you could receive a notification when this occurs and check the **Cryostat** archives to retrieve <code><b>JDK</b> Flight Recorder</code> data from the `target` application recorded during the problematic period, or you could view these `Archived Recordings` in **Cryostat’s Grafana** dashboard.
 
-<span style="color:red">**Note**</span>: An important caveat is that **Cryostat** does not watch for changes in the **Kubernetes** annotations or labels; it only watches to see if `target` applications appear or disappear. To apply the annotation to a `target` application, we must apply the annotation or label to the application *pod* (which will cause **Kubernetes** to roll out a new replica), and not to the deployment.
+<span style="color:red">**Note**</span>: An important caveat is that **Cryostat** does not watch for changes in the **Kubernetes** annotations or labels; it only watches to see if `target` applications appear or disappear.
 
 ### [Preconfiguring Automated Rules within Cryostat](#preconfiguring-automated-rules-within-cryostat)
 
