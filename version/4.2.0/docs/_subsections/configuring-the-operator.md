@@ -237,9 +237,9 @@ spec:
         cpu: 1000m
         memory: 512Mi
     databaseResources:
-      requests: 600m
-        cpu: 256Mi
-        memory: 
+      requests:
+        cpu: 600m
+        memory: 256Mi
       limits:
         cpu: 800m
         memory: 512Mi

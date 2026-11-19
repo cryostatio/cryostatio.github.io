@@ -27,7 +27,7 @@ or by setting them as environment variables, for example:
 
 ```
 - name: CRYOSTAT_AGENT_HARVESTER_PERIOD_MS
-  value: 1000
+  value: "1000"
 - name: CRYOSTAT_AGENT_HARVESTER_TEMPLATE  
   value: Profiling
 ```
