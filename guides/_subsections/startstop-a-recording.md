@@ -71,8 +71,8 @@ The first and most basic Flight Recorder workflow is to start a `Flight Recordin
       <p>
         <i>Maximum Age</i>: Use this parameter to specify the maximum number of
         <code>seconds</code>, <code>minutes</code>, or <code>hours</code> that events should be kept in the <code>Recording</code>
-        before being discarded. This parameter is valid only when the disk
-        parameter is set to true, and the <code>Recording</code> duration is not <i>Continuous</i>.
+        before being discarded. This parameter is valid only when the To Disk
+        parameter is set to true.
         By default, this parameter is set to 0, which means there is no limit set.
       </p>
       "
