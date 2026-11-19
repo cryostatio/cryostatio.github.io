@@ -18,6 +18,8 @@ title: Cryostat Documentation
 
 {% include_relative _subsections/configuring-the-helm-chart.md %}
 
+{% include_relative _subsections/configure-rbac-permissions.md %}
+
 # Additional Information
 
 {% include_relative _subsections/operator-architecture.md %}
