@@ -15,4 +15,4 @@ Alongside this feature, Cryostat supports a Permissions page to view the current
 
 Actions that the current user is allowed to perform will be displayed as <b>Authorized</b> while actions that are restricted will be displayed as <b>Unauthorized</b>.
 
-For more information on configuring RBAC Mappings for Cryostat, see [Configuring RBAC Permissions](/docs/#view-fine-grained-rbac-permissions)
+For more information on configuring RBAC Mappings for Cryostat, see [Configuring RBAC Permissions](/docs/#configure-rbac-permissions)
