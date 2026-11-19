@@ -226,7 +226,7 @@ We can define a rule that applies to any `target` application that has platform-
   </figcaption>
 </figure>
 
-Once we've created this rule definition, **Cryostat** will check all of the existing `target` applications and watch for new `targets` that appear with the `jfrMonitoring=enabled` annotation. Any matching `targets` found will have a `Recording` started automatically using the *Custom Demo* template from our first use case. It will take an `Archived snapshot` every five minutes and maintain an hour’s worth of these archives in storage.
+Once we've created this rule definition, **Cryostat** will check all of the existing `target` applications and watch for new `targets` that appear with the `jfrMonitoring=enabled` annotation. Any matching `targets` found will have a `Recording` started automatically using the [*Custom Demo* template](#download-edit-and-upload-a-customized-event-template) from our first use case. It will take an `Archived snapshot` every five minutes and maintain an hour’s worth of these archives in storage.
 
 With this rule definition in place, **Kubernetes** or **Red Hat OpenShift** users can use familiar tools like `kubectl/oc` or the `OpenShift console` to mark `target` applications for monitoring, without needing to interact directly with the **Cryostat** API or UI. This opens the door to further automating your workflow.
 
