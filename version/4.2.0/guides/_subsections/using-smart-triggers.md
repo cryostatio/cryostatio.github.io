@@ -9,7 +9,7 @@ Additional Trigger conditions may be set to configure when a recording started b
 
 #### [Configure Custom Trigger for Dynamic Recording](#configure-custom-trigger-for-dynamic-recording)
 When you configure your `target` application to load the **Cryostat Agent**, you can define one or more custom triggers that are then passed as arguments to the **Agent**.
-For more information, learn how to [use the Cryostat Agent](#using-the-cryostat-agent).
+For more information, learn how to [use the Cryostat Agent](/version/4.2.0/docs/#using-the-cryostat-agent).
 
 #### [Options for Defining a Custom Trigger](#options-for-defining-a-custom-trigger)
 You can define a custom trigger in any of the following ways:

@@ -32,7 +32,7 @@ or by setting them as environment variables, for example:
   value: Profiling
 ```
 
-The **Cryostat Operator** supports several labels for configuring the **Harvester** through **Agent Autoconfiguration**. For more information, see [Agent Autoconfiguration](/docs/#agent-autoconfiguration)
+The **Cryostat Operator** supports several labels for configuring the **Harvester** through **Agent Autoconfiguration**. For more information, see [Agent Autoconfiguration](/version/4.2.0/docs/#agent-autoconfiguration)
 
 #### [MBean Trigger Integration](#mbean-trigger-integration)
 
