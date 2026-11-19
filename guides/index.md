@@ -69,4 +69,8 @@ common actions and workflows of interest and why they are useful.
 
 {% include_relative _subsections/analyze-a-thread-dump.md %}
 
+{% include_relative _subsections/analyze-a-heap-dump.md %}
+
 {% include_relative _subsections/use-async-profiler.md %}
+
+{% include_relative _subsections/view-fine-grained-rbac-permissions.md %}

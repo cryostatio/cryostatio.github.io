@@ -33,7 +33,7 @@ session data, download it to your workstation, and analyze the data separately.
   <li>
     {% include howto_step.html
       summary="Navigate to async-profiler"
-      image-name="4.2.0/async-profiler-1.png"
+      image-name="4.3.0/async-profiler-1.png"
       caption="
         Navigate to the async-profiler view. If your target application is not
         using the Cryostat Agent, or if the AsyncProfilerMXBean is not detected,
@@ -45,7 +45,7 @@ session data, download it to your workstation, and analyze the data separately.
   <li>
     {% include howto_step.html
       summary="Start a profiling session"
-      image-name="4.2.0/async-profiler-2.png"
+      image-name="4.3.0/async-profiler-2.png"
       caption="
         Click the Create button to move into the profiling session creation
         form view. This view allows you to select which profiling data types
@@ -64,7 +64,7 @@ session data, download it to your workstation, and analyze the data separately.
   <li>
     {% include howto_step.html
       summary="Wait for the session to complete"
-      image-name="4.2.0/async-profiler-3.png"
+      image-name="4.3.0/async-profiler-3.png"
       caption="
         Once the session has been created you will be brought back to the
         session table view and the new session will be visible. Only one active
@@ -81,7 +81,7 @@ session data, download it to your workstation, and analyze the data separately.
   <li>
     {% include howto_step.html
       summary="Download and delete sessions"
-      image-name="4.2.0/async-profiler-4.png"
+      image-name="4.3.0/async-profiler-4.png"
       caption="
         After a session concludes, the action menu Download item is unlocked
         and you will be able to download the session in .jfr binary file format

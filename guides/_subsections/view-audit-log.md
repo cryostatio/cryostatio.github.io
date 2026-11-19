@@ -24,7 +24,7 @@ information about enabling or disabling audit logging, see
   <li>
     {% include howto_step.html
       summary="Navigate to the <i>Security/Audit Log</i> view"
-      image-name="4.2.0/audit-log-1.png"
+      image-name="4.3.0/audit-log-1.png"
       caption="
         Click <i>Audit Log</i> in the sidebar under the <i>Security</i> heading. The
         view opens with <i>Start Time</i> and <i>End Time</i> controls for
@@ -35,7 +35,7 @@ information about enabling or disabling audit logging, see
   <li>
     {% include howto_step.html
       summary="Query audit revisions"
-      image-name="4.2.0/audit-log-2.png"
+      image-name="4.3.0/audit-log-2.png"
       caption="
         Select the <i>Start Time</i> and <i>End Time</i> values for the audit
         history you want to inspect, then click the <i>Query</i> icon button.
@@ -47,7 +47,7 @@ information about enabling or disabling audit logging, see
   <li>
     {% include howto_step.html
       summary="Expand a revision to view entity changes"
-      image-name="4.2.0/audit-log-3.png"
+      image-name="4.3.0/audit-log-3.png"
       caption="
         Expand a revision row to view the entity changes recorded in that
         revision. Each entity table shows the entity ID, operation type, and
@@ -58,7 +58,7 @@ information about enabling or disabling audit logging, see
   <li>
     {% include howto_step.html
       summary="Download the audit log report"
-      image-name="4.2.0/audit-log-4.png"
+      image-name="4.3.0/audit-log-4.png"
       caption="
         After a query returns revisions, click the <i>Download audit log as
         JSON</i> icon button to download the full audit report for the selected
