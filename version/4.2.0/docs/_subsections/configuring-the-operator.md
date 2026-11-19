@@ -257,7 +257,7 @@ Note that if you define limits lower than the default requests, the resource req
 
 ### Network Options
 When running on **Kubernetes**, the **Cryostat Operator** requires Ingress configurations for each of its services to make them available outside of the cluster. For a `Cryostat` object named `x`, the following Ingress configuration must be specified within the `spec.networkOptions` property:
-- `coreConfig` exposing the service `x` on port `8181` (or alternate specified in [Service Options](#service-options)).
+- `coreConfig` exposing the service `x` on port `4180` (or alternate specified in [Service Options](#service-options)).
 
 The user is responsible for providing the hostname for this Ingress. In Minikube, this can be done by adding an entry to the host machine's `/etc/hosts` for the hostname, pointing to Minikube's IP address. See: https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
@@ -285,7 +285,7 @@ spec:
                 service:
                   name: cryostat-sample
                   port:
-                    number: 8181
+                    number: 4180
 ```
 
 When running on **OpenShift**, labels and annotations specified in `coreConfig` will be applied to the coresponding Route created by the operator.
