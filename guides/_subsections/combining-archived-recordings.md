@@ -61,10 +61,16 @@ file like any other, and can be analyzed or interacted with just the same.
         is any one single existing recording which already covers the entire
         timeframe given, then the request will be accepted but no synthetic
         recording will be created. If there is no available data within the
-        requested timeframe then the operation will fail.
-
-        The optional tag field can be set to influence the filename assigned to
-        the new synthetic recording.
+        requested timeframe then the operation will fail. If the start or end
+        timestamp falls anywhere within the time span covered by a recording,
+        then that recording <b>is</b> selected as a candidate to ensure that
+        the requested range is fully covered, so the resulting recording may
+        incude event data from before the given start timestamp or after the
+        given end timestamp. The optional tag field can be set to influence the
+        filename assigned to the new synthetic recording. Take note that the
+        candidate recordings are combined by simple JFR file concatenation and
+        there is no deduplication or other filtering applied. Duplicated chunks
+        and events are handled at parse time rather than at construction time.
       "
     %}
   </li>
