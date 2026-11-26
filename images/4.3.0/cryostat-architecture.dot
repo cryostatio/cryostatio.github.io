@@ -7,6 +7,11 @@ digraph deployment {
         label="OpenShift Cluster"
         OperatorCRDs [shape="diamond"];
 
+        subgraph cluster_infrastructure {
+            label="OpenShift API";
+            APIServer;
+        }
+
         subgraph cluster_namespace_c1 {
             label="Namespace C1";
 
@@ -15,6 +20,7 @@ digraph deployment {
                 AuthProxy1;
                 {
                     Cryostat1 -> JFRDatasource1 [color="red" style="dashed"];
+                    APIServer -> Cryostat1 [color="red"];
                     JFRDatasource1 -> GrafanaDashboard1 [color="red" style="dashed"];
                     GrafanaDashboard1 -> AuthProxy1 [color="red" style="dashed"];
                     Cryostat1 -> AuthProxy1 [color="red" style="dashed" dir="both"];
@@ -43,6 +49,7 @@ digraph deployment {
                 Cryostat2;
                 {
                     Cryostat2 -> JFRDatasource2 [color="red" style="dashed"];
+                    APIServer -> Cryostat2 [color="red"];
                     JFRDatasource2 -> GrafanaDashboard2 [color="red" style="dashed"];
                     GrafanaDashboard2 -> AuthProxy2 [color="red" style="dashed"]
                     Cryostat2 -> AuthProxy2 [color="red" style="dashed" dir="both"];
@@ -142,10 +149,12 @@ digraph deployment {
                 PluginPod2 -> PluginService [color="red"];
                 PluginPod2 -> PluginService [color="blue"];
 
+                APIServer -> AuthProxy1 [color="red"];
                 AuthProxy1 -> PluginPod1 [color="red"];
                 AuthProxy1 -> PluginPod1 [color="blue"];
                 AuthProxy1 -> PluginPod2 [color="red"];
                 AuthProxy1 -> PluginPod2 [color="blue"];
+                APIServer -> AuthProxy2 [color="red"];
                 AuthProxy2 -> PluginPod1 [color="red"];
                 AuthProxy2 -> PluginPod1 [color="blue"];
                 AuthProxy2 -> PluginPod2 [color="red"];
