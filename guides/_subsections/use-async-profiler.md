@@ -1,6 +1,6 @@
 ## [Use async-profiler](#use-async-profiler)
 
-**Cryostat 4.2** includes basic integration with
+**Cryostat** includes integration with
 [`async-profiler`](https://github.com/async-profiler/async-profiler).
 This is a [beta-level feature](#configure-feature-level) which requires opt-in
 before it is visible in the UI. The integration is also only currently
@@ -21,10 +21,8 @@ your application.
 
 Once these prerequisites are satisfied you are ready to start using
 **Cryostat** to remotely control `async-profiler` and capture its profiling
-data. In this release, **Cryostat** does not provide any facilities for
-archiving `async-profiler` data into object storage nor does it provide any
-capabilities for analyzing `async-profiler` data. You can retrieve the profiling
-session data, download it to your workstation, and analyze the data separately.
+data. There are two supported methods for collecting `async-profiler` data;
+the first method is to use it standalone:
 
 <ol>
   <li>
@@ -92,3 +90,12 @@ session data, download it to your workstation, and analyze the data separately.
     %}
   </li>
 </ol>
+
+The second method is to use `async-profiler` as an enhancement to *Flight Recorder*
+via `jfrsync.` When [creating a *Flight Recording*](#startstop-a-recording) with
+*Beta* features enabled, using the *Cryostat Agent*, and with `async-profiler`
+loaded in the *Target* application, there is a form section on the *recording*
+creation modal which can be enabled and configured just like the one above.
+When used in this mode, the `async-profiler` data will be embedded in the
+captured *Flight Recorder* data stream and any [archived recordings](#arhive-a-recording)
+captured from it.
