@@ -73,6 +73,72 @@ spec:
             defaultPermission: pods/exec:create
 ```
 
+Kubernetes RBAC also allows for authorization checks on resource names by pure string matching: the named permission does not need to actually be associated with a real resource Kind in the cluster. It is therefore possible to configure **Cryostat** as follows:
+
+```yaml
+spec:
+  authorizationOptions:
+    # Deny by default. Any permission without an explicit mapping below falls
+    # through to these, which point at a synthetic resource that no Role grants.
+    rbacDefaultPermissions:
+      defaultReadPermission: cryostatnothing:get
+      defaultWritePermission: cryostatnothing:get
+      defaultDeletePermission: cryostatnothing:get
+      defaultPermission: cryostatnothing:get
+
+    rbacPermissions:
+      "activerecordings:read": cryostatactiverecordings:get
+      "activerecordings:write": cryostatactiverecordings:update
+      "activerecordings:delete": cryostatactiverecordings:delete
+
+      "archivedrecordings:read": cryostatarchivedrecordings:get
+      "archivedrecordings:write": cryostatarchivedrecordings:update
+      "archivedrecordings:delete": cryostatarchivedrecordings:delete
+
+      ...
+```
+
+Individual users or user groups can then be granted granular permissions within the **Cryostat** API using standard Kubernetes Roles:
+
+```yaml
+kind: Role
+metadata:
+  name: cryostat-all-reader
+  namespace: cryostat-installation-namespace
+rules:
+  # Entry gate. The auth proxy performs a SelfSubjectAccessReview for
+  # "get pods" in the install namespace before any request reaches Cryostat.
+  # Without this rule the user is rejected at the proxy and none of the
+  # permissions below are ever evaluated.
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - get
+
+  - apiGroups:
+      - ""
+    resources:
+      - cryostatactiverecordings
+      - cryostatarchivedrecordings
+      ...
+    verbs:
+      - get
+```
+
+Then you can create a <code>RoleBinding</code> to grant the readonly set of permissions to a user. This can be combined with a tiered ladder of read-write permissions and read-write-delete (all actions) permissions to grant different users varying levels of access within Cryostat. Using this same concept it is also possible to separate permissions for different resource types: for example, you can configure **Cryostat** such that some users have access to only `Flight Recorder` while others also gain access to `Heap Dumps`.
+
+These permission checks are performed within the **Cryostat** instance's installation namespace (the namespace where the Custom Resource is located) by default, so users need to hold the appropriate permissions via a <code>Role</code> within that namespace. You may also configure **Cryostat** to require a <code>ClusterRole</code> and <code>ClusterRoleBinding</code>:
+
+```yaml
+spec:
+  authorizationOptions:
+    # users/clients only need to hold the given permission in the CR
+    # installation namespace (cryostat-rbac), not cluster-wide
+    namespacedRBACPermissions: true
+```
+
 By default, **Cryostat** will cache SSAR decisions for 1 minute, this can be overridden by setting the <code>decisionCacheTTL</code> property to 0s, ensuring that a fresh SSAR is performed for each operation:
 
 ```yaml
